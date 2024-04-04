@@ -34,8 +34,10 @@
         }
     }
 	String applyTeamNameList = applyTeamArray.toJSONString();
+	
 	//게임 결과
 	List<GameResultDTO> gameResultList = (List<GameResultDTO>) request.getAttribute("gameResultList");
+	
 	//신청 팀 비율
 	int per = (applyTeamList.size() * 100) / game.getGame_type();
 	String subst_date = game.getGame_subst_date();
@@ -105,6 +107,7 @@
 				<div class="img_area">
 					<img src="https://png.pngtree.com/thumb_back/fw800/background/20230521/pngtree-4-tee-wallpapers-for-footballers-with-highresolution-image_2669464.jpg"/>
 				</div>
+				<% if(gameResultList == null || gameResultList.size()==0) { %>
 				<h4>참가팀 (<%= applyTeamList.size() %>)</h4>
 				<div class="main_bottom">
 				<% if(applyTeamList.size() > 0) { %>
@@ -131,6 +134,33 @@
 					<div class="no-apply"> 참가 신청한 팀이 없습니다.</div>
 					<% } %>
 				</div>
+				<% } else { %>
+				<h4>경기 결과</h4>
+				<div class="main_bottom">
+					<ul class="resultList">
+						<% 
+						for(GameResultDTO result : gameResultList) {
+							String team1 ="";
+							String team2 ="";
+							for(GameApplyTeam applyteam : applyTeamList){
+								if(applyteam.getT_num() == result.getTeam1_num()){
+									team1 = applyteam.getT_name();
+								} else if(applyteam.getT_num() == result.getTeam2_num()){
+									team2 = applyteam.getT_name();;
+								}
+							}
+						%>
+						<li>
+							<div class="date">4월4일 <% if(result.getGame_type()==2){out.print("결승전");}else{out.print(result.getGame_type()+"강");} %></div>
+							<div class="team1"><%= team1 %> <%= result.getTeam1_score() %></div>
+							<div class="team2"> | <%= result.getTeam2_score() %> <%= team2 %></div>
+						</li>
+						<%
+						}
+						%>
+					</ul>
+				</div>
+				<% } %>
 			</section>
 			<aside class="gameApply_area">
 				<div class="apply_content">

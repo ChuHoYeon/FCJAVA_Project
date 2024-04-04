@@ -22,7 +22,7 @@ public class GameResult {
 		
 		List<GameResultDTO> gameResultList = dbConnection.selectList("getGameResult", gameNum);
 		dbConnection.close();
-		
+
 		return gameResultList;
 	}
 }

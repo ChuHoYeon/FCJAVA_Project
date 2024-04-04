@@ -38,10 +38,10 @@ public class GameControllDetail implements DBinterface {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date targetDate = dateFormat.parse(game.getGame_fn_date());
 		Date currentDate = new Date();
+		List<GameResultDTO> gameResultList = null;
 		if (currentDate.after(targetDate)) {
-            System.out.println("경기끝났음");
             GameResult gameResult = GameResult.getGameResult();
-            List<GameResultDTO> gameResultList = gameResult.GameResultList(gameNum);
+            gameResultList = gameResult.GameResultList(gameNum);
             request.setAttribute("gameResultList", gameResultList);
         }
 		return "gameDetail.jsp";
