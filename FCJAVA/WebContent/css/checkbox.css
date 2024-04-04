@@ -1,0 +1,48 @@
+.checkbox_class {
+
+    display : none;
+}
+
+.checkbox_label {
+
+color : #404040;
+background-color : #ffffff;    
+border-radius : 1rem;
+font-size : 12px;
+line-height : 16px;
+padding : 8px;
+margin : 4px;    
+border-radius: 9px;
+text-align : center;
+}
+
+.checkbox_label:hover {
+
+background-color : #A0A0A0;
+}
+
+
+/* .checkbox_label_click {
+
+color : #FFFFFF;
+background-color : #b22222;  
+border-radius : 1rem;
+font-size : 12px;
+line-height : 16px;
+padding : 8px;
+margin : 4px;    
+border-radius: 9px;
+text-align : center;
+} */
+
+.checkbox_class:checked + label {
+    color : #FFFFFF;
+background-color : #b22222;  
+border-radius : 1rem;
+font-size : 12px;
+line-height : 16px;
+padding : 8px;
+margin : 4px;    
+border-radius: 9px;
+text-align : center;
+}

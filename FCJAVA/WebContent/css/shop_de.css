@@ -1,0 +1,85 @@
+.shop_de_section {
+    width: 1280px;
+    height: 1680px;
+    margin: 0 auto;
+
+}
+
+.sh_de1 {
+
+    width: 100%;
+    float: left;
+
+}
+
+
+.shop_de_section ul li {
+    list-style: none;
+    display: inline-block;
+    background-color: aquamarine;
+    margin-right: 10px;
+    width: 70px;
+    height: 70px;
+
+}
+
+
+
+.sum_box{
+    width:1280px;
+    height: 650px;
+}
+
+.text_box {
+    width: 680px;
+    float: left;
+
+}
+
+.de_title {
+    font-size: 24pt;
+    line-height: 60px;
+    margin-top: 120px;
+}
+
+.de_title2 {
+    width: 1280px;
+    height: 50px;
+    font-size: 20pt;
+    
+   margin: 0 auto;
+}
+
+
+.image_box {
+    width: 600px;
+    float: left;
+}
+
+.btn_de1 {
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 300px;
+    height: 40px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.ct1 {
+    width: 2200px;
+    height: 1000px;
+    margin: 0 auto;
+}
+
+.pr1 {
+    font-size: 16pt;
+}
+
+
+.swiper{
+    width :100%;
+    margin: auto;
+}
+

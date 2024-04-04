@@ -1,0 +1,116 @@
+.section {
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.div0, .gpsbox {
+    width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.fdimg, .imgbox, .imgord, .bt, .div1, .div2, .div3, .tab, .dvi4 {
+    margin: 10px;
+}
+
+.fdimg {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* 이미지가 div를 벗어나지 않도록 함 */
+}
+
+.imgbox, .imgord {
+    position: relative;
+    margin-top: -20px; /* 이전 요소와의 간격 조절 */
+}
+
+.bt22 {
+    width: auto; /* 버튼의 기본 너비를 사용 */
+    height: auto; /* 버튼의 기본 높이를 사용 */
+    margin-top: 20px;
+}
+
+.tab {
+    width: 500px;
+    background-color: yellow;
+}
+
+.dvi4 {
+    width: 900px;
+}
+
+.gpsbox {
+    height: auto; /* 내용에 따라 높이 자동 조정 */
+}
+
+.swiper{
+    float: left;
+    width: 900px;
+    margin-left: 15px;
+    /* background-color: red; */
+    top: 20px;
+}
+   /* Your existing styles plus the ones below */
+        .rules-flex-container {
+            display: flex; /* This will lay out its children horizontally */
+            justify-content: space-between; /* This will space the children evenly */
+            padding: 15px;
+            background-color: #fff; /* Example background color */
+            margin-top: 15px;
+        }
+        
+        .rule-part {
+            flex: 1; /* Each child will take equal amount of space */
+            margin: 0 10px; /* Optional: Adds some space between the sections */
+        }
+
+        /* Style adjustments for table to ensure it doesn't overflow its container */
+        .rule-part .tab {
+            width: 100%; /* Makes table width responsive to its parent container */
+            table-layout: fixed; /* Prevents table from overflowing its container */
+        }
+        
+        /*  */
+        body {
+	font-family: 'Arial', sans-serif;
+	margin: 0;
+	padding: 0;
+;
+}
+
+.container {
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+.soccer-field {
+	/* background-color: #228B22; */
+	padding: 20px;
+
+	margin-top: 20px;
+}
+
+.rules {
+	background-color: #fff;
+	padding: 15px;
+	margin-top: 15px;
+}
+
+.btn {
+	display: inline-block;
+	padding: 10px 20px;
+	cursor: pointer;
+	background-color: #333;
+	color: white;
+	border: none;
+	margin-top: 10px;
+}

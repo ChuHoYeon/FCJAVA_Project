@@ -1,0 +1,181 @@
+@charset "UTF-8";
+.teamList a:link, .teamList a:visited {
+	color: black;
+	text-decoration: none;
+}
+.teamList li {
+	border-bottom: 1px solid #cccccc;
+}
+.teamList li:last-of-type {
+    border: none;
+}
+.teamList:last-of-type {
+    overflow: auto;
+    height: 323px;
+}
+.top-title-area {
+	padding: 40px 0 0 0;
+}
+.top-title {
+	width: 1280px;
+	margin: 0 auto;
+    border-bottom: 2px solid #444;
+    display: flex;
+    gap: 12px;
+}
+.top-title .back-btn {
+    border: none;
+    background: none;
+}
+.top-title .back-btn img {
+	width: 33px;
+}
+.top-title h3 {
+	margin: 0;
+}
+.gameInfo_Main {
+	min-height: 856px;
+}
+.gameDetail_content {
+	width: 1280px;
+	margin: 0 auto;
+	padding: 20px 0 0 0;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+.gameMain_area {
+    width: calc(100% - 410px);
+}
+.img_area img {
+    width: -webkit-fill-available;
+    height: 320px;
+    border-radius: 12px;
+}
+.gameApply_area {
+	width: 384px;
+    height: 100%;
+    position: sticky;
+    top: 70px;
+}
+.apply_content {
+	display: flex;
+	flex-direction: column;
+    gap: 18px;
+}
+.game_info {
+	display: grid;
+    grid-template-columns: 80px auto;
+    grid-template-rows: repeat(5, minmax(0px, auto));
+    align-items: center;
+    gap: 16px 13px;
+    background: hsla(225, 5%, 46%, .05);
+    border-radius: 12px;
+    padding: 14px 12px 14px 20px;
+}
+.game_info .game_label {
+	text-align: center;
+    font-weight: bold;
+}
+.game_info .game_data {
+	font-size: 13pt;
+}
+.apply_btn {
+	width: -webkit-fill-available;
+    height: 34px;
+    border: none;
+    padding: 0 28px;
+    color: #fff;
+    background-color: #444;
+    border-radius: 10px;
+    height: 48px;
+    cursor: pointer;
+}
+.end-apply {
+	cursor: default;
+	background-color: #b22222;
+}
+.ready-apply {
+	cursor: default;
+	background-color: #035177;
+}
+.no-apply {
+    text-align: center;
+    height: 345px;
+    line-height: 345px;
+}
+.cancel-apply {
+	background-color: #b22222;
+}
+.bar-container {
+	width: 100%;
+	background-color: #CCCCCC;
+	text-align: center;
+	color: white;
+	border-radius: 5px;
+	position: relative;
+}
+#content_bar {
+	height: 24px;
+	background-color: #444;
+	border-radius: 5px;
+	max-width: 100%;
+}
+.content_int {
+	position: absolute;
+	color: white;
+	top: 0;
+	width: 100%;
+}
+
+.main_bottom {
+	height: 345px;
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    padding: 10px 6px;
+}
+.teamList:last-of-type::-webkit-scrollbar {
+	width: 5px;  /* 스크롤바의 너비 */
+}
+.teamList:last-of-type::-webkit-scrollbar-thumb {
+	height: 30%; /* 스크롤바의 길이 */
+    background: gray; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+.teamList:last-of-type::-webkit-scrollbar-track {
+	background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+.gameMain_area h4 {
+	margin: 25px 0;
+}
+.apply_team_area {
+    display: flex;
+    align-items: center;
+    padding: 7px;
+    border-bottom: 1px solid #c2c2c2;
+}
+.apply_team_area:hover {
+	filter: brightness(0.5);
+    background-color: #80808029
+}
+.apply_team_area:last-of-type {
+	border-bottom: 0;
+}
+.apply_team_area .teamLogo {
+	margin-right: 25px;
+    width: 45px;
+    height: 45px;
+}
+.apply_team_area .teamLogo img {
+	border-radius: 50%;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    border: 1px solid #ebebeb;
+}
+.apply_team_area .applyteamName, .apply_team_area .applyteamNameModal {
+    margin-right: auto;
+}
+.apply_team_area .applyDate {
+    padding-right: 20px;
+}

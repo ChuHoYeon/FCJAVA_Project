@@ -1,0 +1,89 @@
+.loginMain {
+    min-height: 713px;
+    }
+
+.contents {
+    width: 450px;
+    margin: 145px auto 0 auto;
+    padding: 40px 85px 85px 85px;
+    border: 1px solid #bbbbbb;
+    border-radius: 8px;
+}
+
+.contents h1 {
+	margin-left: 83px;
+    font-size: 49pt;
+    margin-bottom: 20px;
+}
+.contents h5 {
+    margin-bottom: 47px;
+    font-weight: 400;
+    font-size: 11pt
+}
+.contents table {
+    text-align: center;
+    margin: 0 auto;
+}
+
+td:nth-child(1) {
+    text-align: left;
+    width: 90px;
+
+}
+
+td:nth-child(3) {
+    width: 130px;
+}
+
+.inputBox {
+    width: 426px;
+    font-size: 13pt;
+    padding: 8px 10px;
+}
+
+#loginbtn {
+    background-color: #b22222;
+    color: white;
+    border: 0;
+    border-radius: 9px;
+    width: 100%;
+    margin-top: 18px;
+    padding: 10px 30px;
+    font-size: 13pt;
+}
+#loginbtn:hover {
+    cursor: pointer;
+}
+
+.loginSub {
+    font-size: 10pt;
+}
+.loginSub:link {
+    color: black;
+    text-decoration: none;
+}
+.loginSub:visited {
+    color: black;
+    text-decoration: none;
+}
+.idPwLabel {
+	display: block;
+}
+#alertID, #alertPW {
+	font-weight: bold;
+	font-size: 10pt;
+    color: #2B448F;
+    margin: 10px 0;
+}
+.ipsBox {
+	padding-left: 81px;
+	margin-top: 15px;
+}
+.ipsBox .ips {
+	text-align: center;
+	display: inline-block;
+	padding: 0px 13px;
+}
+.ips~.ips{
+	border-left: 1px solid #888888;
+}

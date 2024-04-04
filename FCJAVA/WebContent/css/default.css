@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+}
+header { 
+    width: auto;
+    height: 100px;
+    background-color: #B22222;
+
+}
+footer {
+    width: auto;
+    height: 100px;
+    background-color: #B22222;
+}
+
+.wid {
+    width: 1280px;
+    margin: 0 auto;
+}
+#loginjoin{
+    height: 40px;
+}
+#login{
+    float: right;
+    color: white;
+}
+#join{
+    float: right;
+    color: white;
+    margin-left: 10px;
+}
+#logo{
+    color: white;
+}
+nav > ul > li{
+    list-style: none;
+    display: inline;
+    float: right;
+    color: white;
+    margin-left: 10px;
+}

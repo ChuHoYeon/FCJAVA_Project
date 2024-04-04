@@ -1,0 +1,78 @@
+.teaminfo {
+    height: 180px;
+    margin: 40px 0;
+}
+.teamlogoarea {
+    width: 320px;
+    height: 180px;
+    float: left;
+}
+.teamlogo {
+    width: 180px;
+    height: 180px;
+    border: 1px solid #bebebe;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+.teamlogo > img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+.teaminfoarea {
+    width: 800px;
+    height: 180px;
+    float: left;
+    background-color: antiquewhite;
+}
+.t_info {
+    width: 400px;
+    height: 180px;
+    float: left;
+    background-color: aliceblue;
+}
+.t_info > h2 {
+    margin: 0;
+}
+.t_info > p {
+    margin-bottom: 0;
+}
+.t_memo {
+    width: 400px;
+    height: 180px;
+    float: left;
+    background-color: aquamarine;
+}
+.teamjoinarea {
+    width: 160px;
+    height: 180px;
+    float: left;
+}
+
+.teamnav {
+    height: 40px;
+    background-color: gainsboro;
+}
+.teamnav > ul {
+    width: 950px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 0;
+}
+.teamnav > ul >li {
+    list-style-type: none;
+    display: inline;
+    margin: 60px;
+}
+
+iframe {
+    border: none;
+    width: 1278px;
+    height: 830px;
+    overflow: hidden;
+    border: 1px solid #bebebe;
+}
+.wid {
+    width: 1280px;
+    margin: 0 auto;
+}

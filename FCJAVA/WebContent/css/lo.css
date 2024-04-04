@@ -1,0 +1,54 @@
+        margin-top: -500px;
+        margin-left: 0px;
+    }
+    .bt6{
+        width: 640px;
+        height: 500px;
+        background-color: yellow;
+        margin-top: -500px;
+        margin-left: 640px;
+    }
+    .li0{
+        float: left;
+        margin-left: 850px;
+    }
+    .li1{
+        float: left;
+        margin-left: 1500px;
+    }
+    footer {
+        width: auto;
+        height: 200px;
+        background-color: #f5f6f7;
+        border-top: 1px solid #ebebeb;
+    } 
+    .div1 {
+        width: 1200px;
+        height: 20px;
+        margin: 0 auto;
+        padding: 9px;
+        border-bottom : 1px solid #ebebeb;
+    }
+    #fn {
+        float: left;
+    }
+    #sns {
+        float: right;
+
+    }
+    .div2 {
+        width: 1200px;
+        margin: 0 auto;
+        padding: 9px;
+    }
+    #ad {
+        float: left;
+        margin-right: 20px;
+    }
+    #fn {
+        float: left;
+    }
+    #mk{
+        float: right;
+    }
+

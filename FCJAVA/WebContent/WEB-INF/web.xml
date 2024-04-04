@@ -1,0 +1,46 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5"> 
+    <servlet>
+        <servlet-name>name</servlet-name>
+        <servlet-class>com.fcjava.controller.Usercontroll</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>name</servlet-name>
+        <url-pattern>*.user</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>team</servlet-name>
+        <servlet-class>com.fcjava.controller.TeamControll</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>team</servlet-name>
+        <url-pattern>*.team</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>game</servlet-name>
+        <servlet-class>com.fcjava.controller.GameControll</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>game</servlet-name>
+        <url-pattern>*.game</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>prd</servlet-name>
+        <servlet-class>com.fcjava.controller.PrdControll</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>prd</servlet-name>
+        <url-pattern>*.prd</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>stadium</servlet-name>
+        <servlet-class>com.fcjava.controller.Stadium_Controll</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>stadium</servlet-name>
+        <url-pattern>*.stadium1</url-pattern>
+    </servlet-mapping>
+</web-app> 

@@ -1,0 +1,259 @@
+
+a {
+    text-decoration-line: none;
+    color : rgb(0, 0, 0);
+}
+
+
+.bo1{
+    border: 1px solid rgb(0,0,0);
+}
+
+.mysection{
+    width: 1280px;
+    height: 900px;
+    margin: 20px auto;
+    
+}
+
+.my_box_g{
+    width : 1200px; 
+    height: 250px;
+    margin: 0 auto;
+}
+.my_box{
+    width:  300px;
+    height: 200px;
+    background-color: black;
+    margin-left:0 ;
+    margin-right: 10px;
+    background-image: url(../png/board.png);
+    background-size: 300px 200px;
+}
+
+section{
+        width : 1280px;
+        margin :0 auto;
+        
+    }
+
+    .mainb{
+        width: 100%;
+      
+    }
+
+    .swiper {
+        width: 100%;
+        
+      }
+      
+    .title_f{
+        width : 1280px;
+        height:30px;
+    }
+
+    .title_h{
+        width : 640px;
+        height: 30px;
+        font-size: 16pt;
+
+    }
+
+    .gr1{
+        width : 1200px;
+        height : 260px;
+        margin: 20px;
+        
+    }
+
+    .pl1{ 
+    width : 548px;
+    height: 283px;
+    margin-left : 40px; 
+    margin-top : 20px;
+    margin-right: 40px;
+    margin-bottom: 20px; 
+    
+    }
+
+    .playrank_back{
+        width : 548px;
+        height: 283px;
+    }
+
+    .playpic{ 
+        width : 283px;
+        height: 283px;
+        background-color: aqua;
+           }
+    .playtext{
+        width :200px ; 
+        height : 255px;
+        margin-left:20px;
+        }
+    
+
+
+    .pl2{ 
+        width : 548px;
+        height: 283px;
+        margin: 20px;
+    
+        }
+
+.group1 {
+    width:1280px;
+    height: 30px;
+    margin :10px auto;
+    
+}
+
+.group2 {
+    width:1280px;
+    height: 340px;
+    margin :10px auto;
+    
+}
+
+
+.group3 {
+    width:1280px;
+    height: 400px;
+    margin :0 auto;
+    
+}
+
+.c_title{
+    width: 450px; 
+    text-align: left;
+}
+
+
+section li {
+list-style: none;
+float:left;
+margin :0 auto;
+
+}
+ul{
+    margin : 0;
+    padding : 0;
+}
+
+.ri1 { 
+    float : right;   
+    margin-right :50px;
+    color: rgb(12, 92, 92);
+    text-decoration-line: none;
+}
+
+
+.left1{
+    float : left;  
+}
+
+.width300{
+    width: 300px;
+    float: left;
+    margin-top: 30px;
+    margin-left: 20px;
+
+}
+
+.sum1{
+    width: 1200px;
+    height: 260px;
+    /* margin-left: 10px; */
+    background-color: rgb(235, 230, 230);}
+
+
+    .infor{
+        width: 1150px;
+        height: 260px;
+    }
+
+
+    .mbox1{
+        float: left;
+        width: 300px;
+        height: 200px;
+        /* margin: 20px; */
+        margin-left: 20px;
+        margin-top: 20px;
+            /* background-color: red; */
+        }
+
+        .ord{
+            width: 500px;
+            height: 50px;
+            margin-top: 30px;
+            
+            
+        }
+    
+        .box-warp12{
+            width:510px;
+            height: 200px;
+            float: left;
+        }
+
+
+
+        .box-wrap {
+            width: 500px;
+            height: 30px;
+            font-size: 14px;
+            
+        }
+
+        .box-wrap1 {
+            
+            width: 500px;
+            height: 30px;
+            
+            
+            font-size: 14px;
+            
+        
+        }
+
+        .tm_box{
+            /* width: 1000px;
+            height:30px; */
+            width: 50px;
+            height: 30px;
+            margin: 1px;
+            background-color: #ffffff;
+            border: 1px solid red;
+            float: left;
+        }
+
+        .box_si{
+            box-sizing: border-box;
+            margin: 2px;
+        }
+
+
+        .bt{
+            /* width: 100px;
+            height: 10px; */
+            /* float: left; */
+            width: 100px;
+            height: 20px;
+            margin-left: 90px;
+            margin-top: 10px;
+        }
+
+
+        .btn-two {
+            color: rgb(243, 243, 243); 
+            padding: 15px 25px;
+            display: inline-block;
+            border: 1px solid rgba(0,0,0,0.21);
+            border-bottom-color: rgba(0,0,0,0.34);
+            text-shadow:0 1px 0 rgba(0,0,0,0.15);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
+                        0 2px 0 -1px rgba(0,0,0,0.13), 
+                        0 3px 0 -1px rgba(0,0,0,0.08), 
+                        0 3px 13px -1px rgba(0,0,0,0.21);
+          }

@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.writeSection {
+	width: 938px;
+	min-height: 858px;
+	margin: 0 auto;
+}
+
+.frm-flex {
+	display: flex;
+	flex-direction: column;
+}
+.writeMemo {
+	padding: 29px;
+	border: 1px solid #ebebeb;
+}
+.writeTitle {
+	border: 1px solid #ebebeb;
+	padding: 11px;
+}
+.boardTitle {
+	font-size: 12pt;
+    width: -webkit-fill-available;
+    border: none;
+    padding: 13px 16px;
+    background-color: #F5F6F8;
+    border-radius: 10px;
+}
+.boardTitle:focus {
+	outline-color: #DEE1E5
+}
+.boardContent {
+	font-size: 12pt;
+    width: -webkit-fill-available;
+    min-height: 414px;
+    resize: none;
+    border: none;
+}
+.boardContent:focus {
+	outline: none;
+}
+.nav-footer {
+	margin-top: 20px;
+}
+.nav-right {
+	float: right;	
+}
+.nav-right .nav-btn {
+	margin-left: 10px;
+}
+.nav-btn {
+	font-size: 12pt;
+	border-radius: 3px;
+    height: 36px;
+    padding: 0 25px;
+    border: 1px solid #303030;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+}
+.sectionTop {
+    background-color: #e6e6e6;
+}
+.fBorderSection {
+    width: 936px;
+    margin: 0 auto;
+    padding: 32px 0;
+}
+.borderTitle {
+	text-align: center;
+	margin-bottom: 20px;
+}
+.borderSubTitle {
+	text-align: center;
+	font-size: 11pt;
+}
+.writeLabel {
+	padding: 21px 0;
+    font-size: 18pt;
+}

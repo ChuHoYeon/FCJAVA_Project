@@ -1,0 +1,251 @@
+section {
+    min-height: 1080px;
+}
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+.cont {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.cont a:link {
+    color: black;
+    text-decoration: none;
+}
+
+.myteamlabel {
+    width: 1280px;
+    font-size: 24pt;
+    margin: 50px auto 30px auto;
+}
+
+.teamsearch {
+    width: 830px;
+    margin: 0 auto 30px auto;
+    border: 1px solid gray;
+    padding: 32px 32px;
+    border-radius: 9px;
+}
+
+.teamsearch div {
+    margin: 0 0 16px 0;
+}
+
+.teamsearch div:last-of-type {
+    margin: 0;
+}
+
+.teamsearch div h4 {
+    display: inline;
+}
+
+#city2 {
+    margin-left: 110px;
+}
+
+.acweek h4 {
+    margin-right: 19px;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+.checkbox_set {
+    margin-right: 15px;
+    border-radius: 3px;
+    color: #454545;
+	text-decoration: none;
+	border: 1px solid #c5c5c5;
+	font-weight: normal;
+	font-size: 12pt;
+	padding: 8px 24px;
+	display: inline-block;
+	cursor: pointer;
+}
+input[type="checkbox"]:checked + .checkbox_set {
+    background: #035177;
+    color: #fff;
+}
+
+.slabel h4 {
+    margin-right: 40.5px;
+}
+
+.slabel #chkSearch {
+	margin-left: 10px;
+    margin-right: 10px;
+    background-color: black;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.slabel #chkReset {
+    display: none;
+}
+
+.slabel #resetIcon {
+    font-size: 26pt;
+    position: absolute;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+#input_tname {
+    font-size: 12pt;
+    height: 30px;
+    width: 290px;
+    border: 1px solid #c5c5c5;
+    border-radius: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12pt;
+    height: 36px;
+}
+
+.team {
+    position: relative;
+    width: 595px;
+    height: 180px;
+    border: 1px solid #404040;
+    display: inline-block;
+    border-radius: 9px;
+    background-color: white;
+}
+
+.teamMl {
+    margin-left: 22px;
+    cursor: pointer;
+}
+
+#teamlists li:last-child {
+    margin-bottom: 50px;
+}
+
+#teamlists li {
+    margin-bottom: 30px;
+    height: 182px;
+}
+
+.teamlogo {
+    width: 130px;
+    height: 130px;
+    top: 50%;
+    margin-top: -65px;
+    position: absolute;
+    left: 50px;
+}
+
+.teamlogo>img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 1px solid #ebebeb;
+}
+
+.teamTitle {
+    width: 330px;
+    font-size: 16pt;
+    position: absolute;
+    left: 220px;
+    margin: 0;
+    top: 36px;
+}
+
+.teamin {
+    position: absolute;
+    top: 123px;
+    margin-top: -34px;
+    left: 221px;
+}
+
+.teamTitle>h2 {
+    margin: 0;
+    font-size: 16pt;
+}
+
+.teamin .teaminLeft1 {
+    width: 152px;
+    font-size: 12pt;
+    float: left;
+}
+.teamin .teaminLeft2 {
+	width: 176px;
+    font-size: 12pt;
+    float: left;
+}
+.teamIntro {
+    width: 420px;
+    height: 97px;
+    position: absolute;
+    top: 94px;
+    margin-top: -34px;
+    left: 460px;
+    word-break: break-all;
+}
+
+.plusbtn {
+    width: 300px;
+    margin: 40px auto;
+}
+
+.plusbtn #team-more {
+    width: 300px;
+    height: 48px;
+    background-color: #b22222;
+    color: white;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#teamlists {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 640px 640px;
+}
+
+#headerUp {
+    width: 53px;
+    height: 53px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+#headerUp a span {
+    font-size: 40pt;
+    color: #b22222;
+    cursor: pointer;
+    z-index: 999;
+}
+.pop-logo {
+    float: left;
+    margin: 15px;
+}
+
+.pop-logo img {
+    width: 126px;
+    height: 126px;
+    border-radius: 50%;
+    border: 1px solid #ebebeb;
+}
+
+.pop-info {
+    float: left;
+    margin-left: 30px;
+    margin-top: 15px;
+}
+.pop-info p {
+	margin: 0;
+}
+.pop-info p:first-of-type {
+	margin-top: 5px;
+}

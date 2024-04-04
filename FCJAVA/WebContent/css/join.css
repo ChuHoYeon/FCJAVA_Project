@@ -1,0 +1,114 @@
+#joinMain {
+    width: 1280px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#joinForm {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#allJoin {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#joinHeader {
+    font-size: 24pt;
+    border-bottom: 3px solid #b22222;
+    width: 128px;
+    margin: 0 auto 35px auto;
+    text-align: center;
+}
+
+.infoBox label:first-child {
+    display: block;
+    font-size: 12pt;
+    margin-bottom: 3px;
+}
+
+.infor {
+    width: 100%;
+    border: 0;
+    height: 30px;
+}
+
+.mailAddr {
+    width: 575px;
+    border: 0;
+    height: 30px;
+}
+
+input {
+    font-size: 12pt;
+    outline: none;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]+label {
+    display: inline-block;
+    background-color: #f6f6f6;
+    color: #454545;
+    border: 1px solid #c5c5c5;
+    cursor: pointer;
+    width: 90px;
+    text-align: center;
+    height: 38px;
+    line-height: 38px;
+}
+
+input[type="radio"]:checked+label {
+    background-color: #b22222;
+    color: white;
+}
+
+.inpStyle {
+    color: #454545;
+    border: 1px solid #c5c5c5;
+    background-color: #f6f6f6;
+    font-size: 12pt;
+    height: 36px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.infoBox {
+    padding: 10px;
+    border-bottom: 2px solid #cccccc;
+}
+
+.warning {
+    margin-bottom: 8px;
+    margin-left: 15px;
+    font-size: 11pt;
+    color: red;
+    font-weight: 500;
+}
+
+.infoBox button {
+    font-size: 12pt;
+}
+
+.joinbtnBox {
+    width: 460px;
+    margin: 20px auto;
+}
+
+#addr1:disabled {
+    background-color: white;
+}
+
+.joinbtnBox input {
+    width: 460px;
+    font-size: 16pt;
+    background-color: #b22222;
+    color: white;
+    border: 0;
+    padding: 15px 0;
+    cursor: pointer;
+}

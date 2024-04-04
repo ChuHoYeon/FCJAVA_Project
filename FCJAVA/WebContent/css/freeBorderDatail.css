@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+.mainContent {
+	min-height: 858px;
+}
+.mainContent a:link {
+	text-decoration: none;
+	color: #fff;
+}
+.mainContent a:visited {
+	color: #fff;
+}
+.updateContent {
+	display: inline-block;
+}
+.navButton {
+	display: inline-block;
+    font-size: 12pt;
+	border-radius: 3px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 25px;
+    border: 1px solid #303030;
+    cursor: pointer;
+    background-color: #444;
+    color: #fff;
+}
+.navHeader {
+	width: 938px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 14px;
+    padding-top: 20px;
+}
+
+.navFooter {
+	width: 938px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 0;
+}
+.navHeader .navLeft {
+	float: left;
+}
+.navLeft .navButton {
+	margin-right: 8px;
+}
+.navHeader .navRight {
+	float: right;
+}
+.content {
+	width: 878px;
+	margin: 0 auto;
+	border: 1px solid #e6e6e6;
+    border-radius: 6px;
+    padding: 29px;
+	
+}
+.content_title {
+	width: 938px;
+    margin: 0 auto;
+    padding: 50px 0 25px 0;
+    border-bottom: 1px solid black;
+}
+.content_title h1 {
+	font-size: 24pt;
+}
+.content_header {
+	background-color: #F6F5F5;
+	padding: 13px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #e6e6e6;
+}
+.titleBox {
+	position: relative;
+}
+.content_header h2 {
+	margin-bottom: 10px;
+}
+.btn-favorite {
+	position: absolute;
+	top: 5px;
+	right: 0px;
+	width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+.l-label {
+	font-size: 10pt;
+	font-weight: 500;
+}
+.l-label > .sm-label {
+	font-weight: bold;
+}
+.sm-label + .sm-label {
+	font-weight: 400;
+}
+.content_viewer {
+	min-height: 406px;
+    border: 1px solid #ebebeb;
+}
+.sectionTop {
+    background-color: #e6e6e6;
+}
+.fBorderSection {
+    width: 936px;
+    margin: 0 auto;
+    padding: 32px 0;
+}
+.borderTitle {
+	text-align: center;
+	margin-bottom: 20px;
+}
+.borderSubTitle {
+	text-align: center;
+	font-size: 11pt;
+}
+.writeLabel {
+	width: 938px;
+	margin: 0 auto;
+	padding: 21px 0 21px 0;
+    font-size: 18pt;
+}

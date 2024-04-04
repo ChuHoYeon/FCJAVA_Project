@@ -1,0 +1,45 @@
+.border {
+    width: 900px;
+    margin: 0 auto;
+}
+.up {
+    height: 24px;
+    margin: 50px 0;
+}
+.search {
+    float: right;
+}
+.up > input[type=text] {
+    height: 18px;
+}
+.up > select {
+    height: 24px;
+}
+table {
+    width: 900px;
+    border-collapse: collapse;
+}
+td:nth-child(1) {
+    width: 60px;    
+    text-align: center;
+}
+td:nth-child(2) {
+    width: 700px;
+}
+td:nth-child(3) {
+    width: 80px;
+    text-align: center;
+}
+td:nth-child(4) {
+    width: 110px;
+    text-align: center;
+}
+th {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ebebeb;
+}
+td {
+    height: 30px;
+    padding: 7px;
+    border-bottom: 1px solid #ababab;
+}
