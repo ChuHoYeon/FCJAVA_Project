@@ -29,7 +29,7 @@
 	<jsp:include page="headerPage.jsp" />
 
 	<section class="s_box_board">
-		<div class="s_box_top"> 
+		<div class="s_box_top">
 			<input class="se_box1" type="text" maxlength="30" size="30" placeholder=" 검색어를입력해주세요">
 			<input class="btn4" type="button" value="검색">
 		</div>
