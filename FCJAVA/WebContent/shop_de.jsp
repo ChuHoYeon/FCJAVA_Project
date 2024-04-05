@@ -20,6 +20,7 @@
 	String prdNum = request.getParameter("PrdNum");
 	PrdDTO realPrd = null;
 
+	
 	if (prdList != null && prdNum != null) {
 		for (PrdDTO prd : prdList) {
 			if (prdNum.equals(Integer.toString(prd.getPrd_no()))) {
