@@ -3,12 +3,17 @@
 <%@ page import="com.fcjava.dto.GameDTO" %>
 <%@ page import="com.fcjava.dto.TeamDTO" %>
 <%@ page import="com.fcjava.dto.GameResultDTO" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.fcjava.dto.GameApplyTeam" %>
+<%@ page import="com.fcjava.model.StringChange" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="org.json.simple.*" %>
 <%
 	String sessionID = (String) session.getAttribute("ID");
 	GameDTO game =(GameDTO) request.getAttribute("game");
+	
+	StringChange stringChange = new StringChange();
 	//나의 팀 리스트
   	JSONArray myTeamListArray = new JSONArray();
 	List<TeamDTO> myTeamList = (List<TeamDTO>) session.getAttribute("MyTeamList");
@@ -63,6 +68,7 @@
 <body>
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
+	
 	<!-- Modal -->
 	<div class="modal" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered">
@@ -95,6 +101,7 @@
 	  </div>
 	</div>
 	<!-- Modal -->
+	
 	<main class="gameInfo_Main">
 		<div class="top-title-area">
 			<div class="top-title">
@@ -107,10 +114,10 @@
 				<div class="img_area">
 					<img src="https://png.pngtree.com/thumb_back/fw800/background/20230521/pngtree-4-tee-wallpapers-for-footballers-with-highresolution-image_2669464.jpg"/>
 				</div>
-				<% if(gameResultList == null || gameResultList.size()==0) { %>
+				<% if(gameResultList == null) { %>
 				<h4>참가팀 (<%= applyTeamList.size() %>)</h4>
 				<div class="main_bottom">
-				<% if(applyTeamList.size() > 0) { %>
+					<% if(applyTeamList.size() > 0) { %>
 					<ul class="teamList">
  					<%
 					    for(GameApplyTeam team : applyTeamList) {
@@ -134,32 +141,6 @@
 					<div class="no-apply"> 참가 신청한 팀이 없습니다.</div>
 					<% } %>
 				</div>
-				<% } else { %>
-				<h4>경기 결과</h4>
-				<div class="main_bottom">
-					<ul class="resultList">
-						<% 
-						for(GameResultDTO result : gameResultList) {
-							String team1 ="";
-							String team2 ="";
-							for(GameApplyTeam applyteam : applyTeamList){
-								if(applyteam.getT_num() == result.getTeam1_num()){
-									team1 = applyteam.getT_name();
-								} else if(applyteam.getT_num() == result.getTeam2_num()){
-									team2 = applyteam.getT_name();;
-								}
-							}
-						%>
-						<li>
-							<div class="date">4월4일 <% if(result.getGame_type()==2){out.print("결승전");}else{out.print(result.getGame_type()+"강");} %></div>
-							<div class="team1"><%= team1 %> <%= result.getTeam1_score() %></div>
-							<div class="team2"> | <%= result.getTeam2_score() %> <%= team2 %></div>
-						</li>
-						<%
-						}
-						%>
-					</ul>
-				</div>
 				<% } %>
 			</section>
 			<aside class="gameApply_area">
@@ -170,9 +151,9 @@
 						<span class="game_label">대회 장소</span>
 						<div class="game_data"><%= game.getGame_place() %></div>
 						<span class="game_label">접수 기간</span>
-						<div class="game_data"><%= game.getGame_subst_date().substring(0, game.getGame_subst_date().length()-3) %><br>~ <%= game.getGame_subfn_date().substring(0, game.getGame_subfn_date().length()-3) %></div>
+						<div class="game_data"><%= game.getGame_subst_date().substring(0, game.getGame_subst_date().length()-5) %><br>~ <%= game.getGame_subfn_date().substring(0, game.getGame_subfn_date().length()-5) %></div>
 						<span class="game_label">대회 기간</span>
-						<div class="game_data"><%= game.getGame_st_date().substring(0, game.getGame_st_date().length()-3) %><br>~ <%= game.getGame_fn_date().substring(0, game.getGame_fn_date().length()-3) %></div>
+						<div class="game_data"><%= game.getGame_st_date().substring(0, game.getGame_st_date().length()-5) %><br>~ <%= game.getGame_fn_date().substring(0, game.getGame_fn_date().length()-5) %></div>
 						<span class="game_label">대회 정보</span>
 						<div class="game_data"><% if(game.getGame_memo() != null) {out.print(game.getGame_memo());}%></div>
 					</div>
@@ -186,6 +167,63 @@
 				</div>
 			</aside>
 		</div>
+		<% if(gameResultList != null) {%>
+		<div class="gameResult_content">
+			<h4>경기 결과</h4>
+				<% if(gameResultList.size() > 0) { %>
+					<ul class="resultList">
+						<% 
+						SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						for(GameResultDTO result : gameResultList) {
+							Date gameDate = dateFormat.parse(result.getGame_date());
+							String month = String.valueOf(gameDate.getMonth()+1);
+							String date = String.valueOf(gameDate.getDate());
+							String day = stringChange.getDay(gameDate.getDay());
+							String hours = String.valueOf(gameDate.getHours());
+							String minutes = String.valueOf(gameDate.getMinutes());
+							String time = stringChange.lengthCheck(month)+"."+stringChange.lengthCheck(date)+" "+day+" "+stringChange.lengthCheck(hours)+":"+stringChange.lengthCheck(minutes);
+							
+							String team1 ="";
+							String team2 ="";
+							for(GameApplyTeam applyteam : applyTeamList){
+								if(applyteam.getT_num() == result.getTeam1_num()){
+									team1 = applyteam.getT_name();
+								} else if(applyteam.getT_num() == result.getTeam2_num()){
+									team2 = applyteam.getT_name();;
+								}
+							}
+						%>
+						<li>
+							<div class="resultDate">
+								<div><% if(result.getGame_type()==2){out.print("결승전");}else{out.print(result.getGame_type()+"강전");} %></div>
+								<div><%= time %></div>
+							</div>
+							<div class="resultTeamList">
+								<div class="resultTeam">
+									<div class="resultTeamName">
+										<div class="resultTeamLogo"><img alt="팀 로고" src="png/defaultLogo.png"></div>
+										<div class="TeamName"><%= team1 %></div>
+									</div>
+									<div class="score"><%= result.getTeam1_score() %></div>
+								</div>
+								<div class="resultTeam">
+									<div class="resultTeamName">
+										<div class="resultTeamLogo"><img alt="팀 로고" src="png/teamlogo4.png"></div>
+										<div class="TeamName"><%= team2 %></div>
+									</div>
+									<div class="score"><%= result.getTeam2_score() %></div>
+								</div>
+							</div>
+						</li>
+						<%
+						}
+						%>
+					</ul>
+				<% } else { %>
+					<div style="text-align: center;">경기가 종료되었습니다. 결과가 준비되는 동안 잠시만 기다려주세요</div>
+				<% } %>
+		</div>
+		<% } %>
 	</main>
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
@@ -201,6 +239,7 @@
 	let duplicationName = "";
 	let duplicationNumber;
 	let nowDate = new Date();
+	let $scores = $('.score');
 	
 	$("#content_bar").css("width", per+"%");
 	
@@ -239,6 +278,21 @@
 		$(".apply_btn").text("종료");
 		$(".apply_btn").addClass("end-apply");
 	}
+	
+	for (var i = 0; i < $scores.length - 1; i += 2) {
+	    let $score1 = $($scores[i]);
+	    let $score2 = $($scores[i + 1]);
+	    
+	    let score1 = parseInt($score1.text());
+	    let score2 = parseInt($score2.text());
+	    
+	    if (score1 > score2) {
+	      $score1.addClass('win');
+	    } else if (score1 < score2) {
+	      $score2.addClass('win');
+	    }
+	  }
+	
 	//신청버튼
 	$(".apply").click(function() {
 		const sessionID = <%= sessionID %>;
@@ -283,7 +337,8 @@
 		}
 	});
 	$(".back-btn").on("click", function() {
-		window.location.href = "fcjava.game?page=gameList";
+		//window.location.href = "fcjava.game?page=gameList";
+		window.history.back();
 	})
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>

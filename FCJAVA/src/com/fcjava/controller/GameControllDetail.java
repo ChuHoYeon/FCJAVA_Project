@@ -11,7 +11,6 @@ import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.GameApplyTeam;
 import com.fcjava.dto.GameDTO;
 import com.fcjava.dto.GameResultDTO;
-import com.fcjava.model.GameAllSelect;
 import com.fcjava.model.GameDetail;
 import com.fcjava.model.GameResult;
 import com.fcjava.model.GameTeamSelect;
@@ -35,6 +34,7 @@ public class GameControllDetail implements DBinterface {
 		List<GameApplyTeam> applyTeamList = gameTeamSelect.selectApplyTeam(gameNum);
 		request.setAttribute("applyTeamList", applyTeamList);
 		
+		//현재날짜가 대회기간이후일 경우 실행
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date targetDate = dateFormat.parse(game.getGame_fn_date());
 		Date currentDate = new Date();

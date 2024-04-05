@@ -176,9 +176,9 @@
 	                		} else if (currentTime > substDate && currentTime < subfnDate) {
 	                			state = "<span class='status'>접수중</span>";
 	                		} else if (currentTime > subfnDate && currentTime < finalDate) {
-	                			state = "<span class='start-status'>진행중</span>";
+	                			state = "<span class='status start-status'>진행중</span>";
 	                		} else if (currentTime > finalDate) {
-	                			state = "<span class='end-status'>종료</span>";
+	                			state = "<span class='status end-status'>종료</span>";
 	                		}
 	                		let str = "<li><a href='fcjava.game?page=2&game_num="+data[i].num+"' class='game-card'><div class='card-thumb'><div class='game-status'>"+state+"</div>";
 	                		let str1 = "<img src='https://cdn.life-sports.kr/news/photo/202401/2333_2856_3017.jpg'/></div><div class='card-title'><article><p class='m'> "+month+"월</p><p class='d'> "+day+" </p></article><div class='title-holder'><h3>"+data[i].name+"</h3>";

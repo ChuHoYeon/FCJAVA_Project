@@ -49,7 +49,6 @@
 }
 .img_area img {
     width: -webkit-fill-available;
-    height: 320px;
     border-radius: 12px;
 }
 .gameApply_area {
@@ -182,10 +181,84 @@
 .apply_team_area .applyDate {
     padding-right: 20px;
 }
+/* 경기결과 */
+.gameResult_content {
+	width: 1280px;
+	margin: 20px auto 0 auto;
+}
+.gameResult_content > h4 {
+	margin: 0;
+	background: black;
+	color: white;
+    padding-left: 20px;
+    font-size: 18pt;
+    height: 70px;
+    line-height: 70px;
+}
 .resultList {
 	display: grid;
-    grid-template-columns: 420px 420px;
+    grid-template-columns: 640px 640px;
+    margin-bottom: 40px;
+}
+.resultList::-webkit-scrollbar {
+	width: 5px;  /* 스크롤바의 너비 */
+}
+.resultList::-webkit-scrollbar-thumb {
+	height: 30%; /* 스크롤바의 길이 */
+    background: gray; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+.resultList::-webkit-scrollbar-track {
+	background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
 }
 .resultList li {
+	padding: 17px 20px;
+	border-right: 1px solid #cfcece;
+	border-bottom: 1px solid #cfcece;
+	display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.resultList li:nth-child(2n+1) {
+	border-left: 1px solid #cfcece;
+}
+.resultList li:nth-child(1), .resultList li:nth-child(2) {
+	border-top: 1px solid #cfcece;
+}
+.resultTeamList {
     display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.resultTeam {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.resultTeamName {
+	display: flex;
+	align-items: center;
+    gap: 17px;
+}
+.resultTeamLogo img {
+	width: 43px;
+	height: 43px;
+	border: 1px solid #ebebeb;
+	border-radius: 50%;
+}
+.resultDate {
+	display: flex;
+    justify-content: space-between;
+}
+.TeamName {
+	font-size: 17pt;
+	font-weight: 300;
+}
+.score {
+	font-size: 18pt;
+	font-weight: 800;
+	color: #A0A0A0;
+}
+.win {
+	color: black;
 }
