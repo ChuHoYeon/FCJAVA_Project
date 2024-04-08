@@ -50,6 +50,7 @@
 
 .gpsbox {
     height: auto; 
+    border: 2px solid #9b9b9b;
 }
 
 .swiper{
@@ -82,9 +83,16 @@
         /*  */
 
 .container {
-	width: 66%;
+	width: 80%; 
 	margin: auto;
 	overflow: hidden;
+}
+.container_box {
+	width: 78%; /* 66 */
+	margin: auto;
+	border: 2px solid #9b9b9b;
+	
+	
 }
 
 .soccer-field {
@@ -119,9 +127,10 @@
 
 }
 .mubox{
-	    width: 921px;
+	width: 903px;
     margin: 0 auto;
-	
+    border: 2px solid #9b9b9b;
+	margin-top: 10px;
 }
 .tmbox{
 	width: 200px;
@@ -129,4 +138,22 @@
 }
 
  /*  */
+ #live-chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  
+  border: none;
+  border-radius: 16px;
+  background: royalblue;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  box-shadow: 0px 5px 15px gray;
+  cursor: pointer;
+}
+
+body {
+  height: 200vh;
+}
 

@@ -48,7 +48,7 @@
 		</section>
 
 
-		<div class="container">
+		<div class="container_box">
 			<div class="rules-flex-container">
 				<div class="lvbox">
 					<h2>이용금액</h2>
@@ -91,24 +91,15 @@
 			</section>
 		</div>
 	</div>
+	<div class="gpsbox"><h2>위치</h2>
+        <div><img src="img/gps.PNG"></div>
+
+</div>
+	<button id="live-chat">예약하기</button>
 
 	<jsp:include page="footerPage.jsp" />
 
-	<script>
-		document.getElementById('submit-btn')
-				.addEventListener(
-						'click',
-						function() {
-							var bookingDate = document
-									.getElementById('booking-date').value;
-							if (bookingDate) {
-								alert('선택하신 날짜로 예약을 확인합니다: ' + bookingDate);
-								// 이 부분에 실제 예약 로직을 구현해야 한다
-							} else {
-								alert('예약 날짜를 선택해주세요.');
-							}
-						});
-	</script>
+	
 </body>
 </html>
 
