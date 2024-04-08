@@ -28,6 +28,7 @@
 
 <body>
 	<!-- 헤더 -->
+	
 	<jsp:include page="headerPage.jsp" />
 
 	<section class="s_box_board">
