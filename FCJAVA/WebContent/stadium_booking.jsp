@@ -91,7 +91,7 @@
 			</section>
 		</div>
 	</div>
-	<div class="gpsbox"><h2>위치</h2>
+	<div class="gpsbox"><h2>위치</h2>  
         <div><img src="img/gps.PNG"></div>
 
 </div>

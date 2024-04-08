@@ -53,6 +53,7 @@
 	
 	<div class="stm_cont">
 		<div class="myteamlabel">구장 목록</div>
+		<a href="stadium_import1.jsp" >구장 등록</a>
 		<div class="statbox"></div>
 		<form class="stm_teamsearch">
 			<div class="slabel">
@@ -79,9 +80,11 @@
 			<div id="city2"></div>
 			<div class="slabel">
 				<h4>구장 이름</h4>
-				<input type="text" id="input_tname" /> <input type="button"id="chkSearch" value="검색하기" /> 
+				<input type="text" id="input_tname" /> 
+				<input type="button"id="chkSearch" value="검색하기" /> 
 				<input type="reset" id="chkReset"value="초기화" /> 
-				<input type="button"id="chkSearch" value="구장등록" /> 
+				
+				
 				<label for="chkReset" id="resetIcon"class="material-symbols-outlined"> refresh </label>
 			</div>
 		</form>
