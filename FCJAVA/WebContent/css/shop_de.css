@@ -24,10 +24,11 @@
 }
 
 
+
 .sum_box{
     width:1280px;
     height: 650px;
-}  
+}
 
 .text_box {
     width: 680px;
@@ -82,3 +83,13 @@
     margin: auto;
 }
 
+a {
+    text-decoration-line: none;
+}
+
+.ma1 {
+	
+margin-top: 30px;
+margin-bottom: 30px; 
+
+	}

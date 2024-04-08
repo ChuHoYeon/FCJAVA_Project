@@ -16,19 +16,18 @@
 %>
 
 <%
-	List<PrdDTO> prdList = (List<PrdDTO>) request.getAttribute("Prd");
-	String prdNum = request.getParameter("PrdNum");
-	PrdDTO realPrd = null;
+    List<PrdDTO> prdList = (List<PrdDTO>) request.getAttribute("Prd");
+    String prdNum = request.getParameter("PrdNum");
+    PrdDTO realPrd = null;
 
-	
-	if (prdList != null && prdNum != null) {
-		for (PrdDTO prd : prdList) {
-			if (prdNum.equals(Integer.toString(prd.getPrd_no()))) {
-				realPrd = prd;
-				break; // 해당 상품을 찾았으면 반복문 종료
-			}
-		}
-	}
+    if (prdList != null && prdNum != null) {
+        for (PrdDTO prd : prdList) {
+            if (prdNum.equals(Integer.toString(prd.getPrd_no()))) {
+                realPrd = prd;
+                break; // 해당 상품을 찾았으면 반복문 종료
+            }
+        }
+    }
 %>
 
 
@@ -62,14 +61,32 @@
 <!-- 헤더 js -->
 <script src="js/header.js"></script>
 
+
+
+<!--구글 폰트 -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+	rel="stylesheet">
+<!--구글 아이콘-->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<!--jQuery url-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- 헤더 css -->
+<link rel="stylesheet" href="css/header.css" type="text/css">
+<!-- 헤더 js -->
+<script src="js/header.js"></script>
+
+
+
 </head>
 
 <script>
     $(document).ready(function(){
         //로그인
         var id = "<%=id%>";
-        var sessionID = "<%=sessionID%>
-	";
+        var sessionID = "<%=sessionID%>";
 						if ((id === 'null' && sessionID === 'null') | id === '') {
 							$(".join1 #loginNav")
 									.html(
@@ -157,7 +174,8 @@ $('.over').hover(function(){
 	<section class="shop_de_section">
 		<div class="sum_box">
 			<div class="image_box">
-				<div class="sh_de1">
+				<div class="sh_de1 ma1">
+				<div> <a href="index.jsp">Home </a> > <a href="fcjava.prd?page=prdUniform">  유니폼  </a>> <%= realPrd.getPrd_name() %> </div> 
 					<img class="ch1" src="png/de1.jpg" alt="">
 				</div>
 				<ul>
@@ -173,8 +191,11 @@ $('.over').hover(function(){
 				<div class="pr1">
 					<p><%=realPrd.getPrd_price()%></p>
 				</div>
-				<p>풍부한 레이어드 디자인에 직물과 가죽, 플라스틱 액센트가 더해져 이번 시즌 가장 멋진 스니커즈가 탄생했습니다.</p>
-				<p>현재 컬러: 라이트 오어우드 브라운/메탈릭 실버/검 미디엄 브라운/세일</p>
+				<br/>
+				<br/>
+
+				<p><%=realPrd.getPrd_memo() %></p>
+				<br/>
 				<p>스타일 번호: FZ3780-101</p>
 			</div>
 			<form>

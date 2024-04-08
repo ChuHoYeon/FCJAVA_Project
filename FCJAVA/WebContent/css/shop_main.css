@@ -25,7 +25,6 @@
 	background-repeat: no-repeat;
 }
 
-
 .font1 {
 	font-size: 30px;
 	text-align: center;
@@ -229,10 +228,11 @@ ul {
 }
 
 .s_box_top {
-	width: 1280px;
-	height: 200px;
+	width: 100%;
+	height: 108px;
 	margin: auto;
 	display: block;
+	background-color: #e6e6e6;
 }
 
 .s_box_board_in {
@@ -258,28 +258,45 @@ ul {
 
 .btn4 {
 	width: 200px;
-	height: 60px;
+	height: 42px;
 	background: #000;
 	color: white;
+	border-radius: 10px 10px 10px 10px;
+	margin-bottom : 20px;
+	
 }
-
 .btn5 {
 	width: 200px;
-	height: 60px;
+	height: 42px;
 	background: #000;
 	color: white;
 	margin-left: 450px;
+	border-radius: 10px 10px 10px 10px;
 	margin-top: 20px;
 }
 
+
 .btn6 {
 	width: 200px;
-	height: 60px;
+	height: 42px;
 	background: #000;
 	color: white;
+border-radius: 10px 10px 10px 10px;
 	margin-left: 10px;
 	margin-top: 20px;
 }
+
+
+.btn7 {
+	width: 200px;
+	height: 42px;
+	background: #000;
+	color: white;
+	margin-bottom : 20px;
+	border-radius: 10px 10px 10px 10px;
+}
+
+
 
 
 .btn8 {
@@ -294,18 +311,36 @@ ul {
 }
 
 .se_box1 {
-	width: 300px;
-	height: 60px;
-	margin-top: 30px;
+	width: 500px;
+	height: 40px;
+	margin-top: 40px;
+	margin-bottom : 40px;
+	margin-left:310px;
 	align-items: center;
 	border-radius: 10px 10px 10px 10px;
 }
+
 
 .text002 {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	font-size: 10pt;
+}
+
+.text003 {
+	padding: 32px 0px ;
+	text-align: center;
+	font-size: 24pt;
+	font-weight: bold;
+}
+
+
+.text004 {
+	margin-top : 20pt;
+	text-align: center;
+	font-size: 10pt;
+	
 }
 
 .titleHiden {
