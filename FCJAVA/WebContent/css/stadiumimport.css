@@ -1,5 +1,9 @@
  .imbox {
- 
         margin: 0 auto;
-
+		overflow: auto;
     }
+.mubox{
+	width: 500px;
+	margin: 0 auto;
+	border: 2px solid #9b9b9b;
+}

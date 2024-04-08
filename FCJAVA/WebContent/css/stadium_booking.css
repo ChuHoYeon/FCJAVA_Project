@@ -39,8 +39,9 @@
 }
 
 .tab {
-    width: 500px;
-    background-color: yellow;
+    width: 300px;
+    margin: 0 auto;
+/*     background-color: yellow; */
 }
 
 .dvi4 {
@@ -48,7 +49,8 @@
 }
 
 .gpsbox {
-    height: auto; /* 내용에 따라 높이 자동 조정 */
+    height: auto; 
+    border: 2px solid #9b9b9b;
 }
 
 .swiper{
@@ -58,38 +60,39 @@
     /* background-color: red; */
     top: 20px;
 }
-   /* Your existing styles plus the ones below */
+
         .rules-flex-container {
-            display: flex; /* This will lay out its children horizontally */
-            justify-content: space-between; /* This will space the children evenly */
+            display: flex; 
+            /* justify-content: space-between;  */
             padding: 15px;
-            background-color: #fff; /* Example background color */
+            background-color: #fff; 
             margin-top: 15px;
         }
         
         .rule-part {
-            flex: 1; /* Each child will take equal amount of space */
-            margin: 0 10px; /* Optional: Adds some space between the sections */
+            flex: 1; 
+            margin: 0 10px; 
         }
 
-        /* Style adjustments for table to ensure it doesn't overflow its container */
+      
         .rule-part .tab {
-            width: 100%; /* Makes table width responsive to its parent container */
-            table-layout: fixed; /* Prevents table from overflowing its container */
+            width: 100%; 
+            table-layout: fixed; 
         }
         
         /*  */
-        body {
-	font-family: 'Arial', sans-serif;
-	margin: 0;
-	padding: 0;
-;
-}
 
 .container {
-	width: 80%;
+	width: 80%; 
 	margin: auto;
 	overflow: hidden;
+}
+.container_box {
+	width: 78%; /* 66 */
+	margin: auto;
+	border: 2px solid #9b9b9b;
+	
+	
 }
 
 .soccer-field {
@@ -114,3 +117,43 @@
 	border: none;
 	margin-top: 10px;
 }
+.lvbox{
+	width: 250px;
+}
+
+.qabox{
+	width: 300px;
+	margin-left:auto;
+
+}
+.mubox{
+	width: 903px;
+    margin: 0 auto;
+    border: 2px solid #9b9b9b;
+	margin-top: 10px;
+}
+.tmbox{
+	width: 200px;
+	margin: 0 auto;	
+}
+
+ /*  */
+ #live-chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  
+  border: none;
+  border-radius: 16px;
+  background: royalblue;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  box-shadow: 0px 5px 15px gray;
+  cursor: pointer;
+}
+
+body {
+  height: 200vh;
+}
+
