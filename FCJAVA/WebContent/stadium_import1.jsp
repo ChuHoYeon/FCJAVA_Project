@@ -89,6 +89,6 @@
 			</div>
 			</div>
 		</form>
-		<jsp:include page="footerPage.jsp" />
+		<jsp:include page="footerPage.jsp" />  
 </body>
 </html>
