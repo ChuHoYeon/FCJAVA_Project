@@ -30,10 +30,10 @@
 				ResultSet myTeamrs = stmt.executeQuery("SELECT * FROM fc_java.team_info WHERE BINARY id='"+id+"';");
 				while(myTeamrs.next()) {
 					TeamDTO team = new TeamDTO();
-					team.setNumber(myTeamrs.getInt("t_num"));
-					team.setName(myTeamrs.getString("t_name"));
-					team.setLogo(myTeamrs.getString("t_name"));
-					team.setMaxNum(myTeamrs.getInt("max_p_num"));
+					team.setT_num(myTeamrs.getInt("t_num"));
+					team.setT_name(myTeamrs.getString("t_name"));
+					team.setT_logo(myTeamrs.getString("t_name"));
+					team.setMax_p_num(myTeamrs.getInt("max_p_num"));
 					myTeamList.add(team);
 				}
 				
