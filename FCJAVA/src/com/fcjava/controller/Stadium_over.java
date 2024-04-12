@@ -18,7 +18,7 @@
 		@Override
 		public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			// TODO Auto-generated method stub
-			// ±¸Àå ¸®½ºÆ®
+			// êµ¬ìž¥ ë¦¬ìŠ¤íŠ¸
 			StadiumCreatein sta1 = StadiumCreatein.getcreateStadium1();
 			List<StadiumDTO> stadiums = sta1.Stadiumin(); 
 			request.setAttribute("stadiums", stadiums); 

@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class SqlDAO {
-	private static SqlSessionFactory sqlSession; //°´Ã¼¸¦ ÇÑ¹ø¸¸ ¸¸µé¸éµÈ´Ù.
+	private static SqlSessionFactory sqlSession; //ê°ì²´ë¥¼ í•œë²ˆë§Œ ë§Œë“¤ë©´ëœë‹¤.
 	public static SqlSessionFactory getSqlSession(){
 		return sqlSession;
 	}

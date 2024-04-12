@@ -10,17 +10,17 @@ import com.fcjava.dto.GameDTO;
 import com.fcjava.model.GameAllSelect;
 
 public class GameControllAllSelect implements DBinterface {
-	//ÆÄÀÏ2
-	static GameControllAllSelect gameControllAllSelect = new GameControllAllSelect(); //ÆÄÀÏ2 °´Ã¼
+	//íŒŒì¼2
+	static GameControllAllSelect gameControllAllSelect = new GameControllAllSelect(); //íŒŒì¼2 ê°ì²´
 	public static GameControllAllSelect getGameControllSelect() {
 		return gameControllAllSelect;
 	}
 
 	@Override
-	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception { //ÆÄÀÏ2 ¸Ş¼Òµå
+	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception { //íŒŒì¼2 ë©”ì†Œë“œ
 		// TODO Auto-generated method stub
-		GameAllSelect gameAllSelect = GameAllSelect.getGameAllSelect(); // [3] ÆÄÀÏ3 °´Ã¼ °¡Á®¿À±â
-		List<GameDTO> gameList = gameAllSelect.getAllSelect(); // [7] ¸®ÅÏ°ª ´ã±â = [4] ÆÄÀÏ3 ¸Ş¼Òµå ½ÇÇà 
+		GameAllSelect gameAllSelect = GameAllSelect.getGameAllSelect(); // [3] íŒŒì¼3 ê°ì²´ ê°€ì ¸ì˜¤ê¸°
+		List<GameDTO> gameList = gameAllSelect.getAllSelect(); // [7] ë¦¬í„´ê°’ ë‹´ê¸° = [4] íŒŒì¼3 ë©”ì†Œë“œ ì‹¤í–‰ 
 		
 		request.setAttribute("Games", gameList); // [8] 
 		return "gameList.jsp"; //[9]

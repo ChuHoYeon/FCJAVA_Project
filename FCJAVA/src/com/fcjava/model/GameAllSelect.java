@@ -9,18 +9,18 @@ import com.fcjava.dao.SqlDAO;
 import com.fcjava.dto.GameDTO;
 
 public class GameAllSelect {
-	//ÆÄÀÏ3
-	static GameAllSelect gameAllSelect = new GameAllSelect(); //ÆÄÀÏ3 °´Ã¼
+	//íŒŒì¼3
+	static GameAllSelect gameAllSelect = new GameAllSelect(); //íŒŒì¼3 ê°ì²´
 	public static GameAllSelect getGameAllSelect() {
 		return gameAllSelect;
 	}
 	
 	SqlSessionFactory sql = SqlDAO.getSqlSession();
 	
-	public List<GameDTO> getAllSelect() { //ÆÄÀÏ3 ¸Ş¼Òµå
+	public List<GameDTO> getAllSelect() { //íŒŒì¼3 ë©”ì†Œë“œ
 		SqlSession getSql = sql.openSession(); //connection
-		List<GameDTO> gameList = getSql.selectList("allSelectGame"); // [5] DB°Ë»ö ÈÄ °á°ú °¡Á®¿À±â
+		List<GameDTO> gameList = getSql.selectList("allSelectGame"); // [5] DBê²€ìƒ‰ í›„ ê²°ê³¼ ê°€ì ¸ì˜¤ê¸°
 		getSql.close();
-		return gameList; // [6] °¡Á®¿Â °á°ú ¸®ÅÏ
+		return gameList; // [6] ê°€ì ¸ì˜¨ ê²°ê³¼ ë¦¬í„´
 	}
 }

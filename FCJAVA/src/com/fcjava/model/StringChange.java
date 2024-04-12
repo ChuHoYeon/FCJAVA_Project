@@ -2,36 +2,36 @@ package com.fcjava.model;
 
 public class StringChange {
 	
-	//DateÀÇ ¿äÀÏ int°ªÀ» ¹®ÀÚ·Î ¹Ù²ãÁÜ
+	//Dateì˜ ìš”ì¼ intê°’ì„ ë¬¸ìë¡œ ë°”ê¿”ì¤Œ
 	public String getDay(int day) {
 		String returnDay ="";
 		switch (day) {
 	    case 0:
-	    	returnDay = "ÀÏ¿äÀÏ";
+	    	returnDay = "ì¼ìš”ì¼";
 	        break;
 	    case 1:
-	    	returnDay = "¿ù¿äÀÏ";
+	    	returnDay = "ì›”ìš”ì¼";
 	        break;
 	    case 2:
-	    	returnDay = "È­¿äÀÏ";
+	    	returnDay = "í™”ìš”ì¼";
 	        break;
 	    case 3:
-	    	returnDay = "¼ö¿äÀÏ";
+	    	returnDay = "ìˆ˜ìš”ì¼";
 	    	break;
 	    case 4:
-	    	returnDay = "¸ñ¿äÀÏ";
+	    	returnDay = "ëª©ìš”ì¼";
 	    	break;
 	    case 5:
-	    	returnDay = "±İ¿äÀÏ";
+	    	returnDay = "ê¸ˆìš”ì¼";
 	    	break;
 	    case 6:
-	    	returnDay = "Åä¿äÀÏ";
+	    	returnDay = "í† ìš”ì¼";
 	    	break;
 	}
 		return returnDay;
 	}
 	
-	//³¯Â¥,½Ã°£ÀÌ 1±ÛÀÚÀÏ°æ¿ì ¾Õ¿¡ 0ºÙ¿©ÁÜ
+	//ë‚ ì§œ,ì‹œê°„ì´ 1ê¸€ìì¼ê²½ìš° ì•ì— 0ë¶™ì—¬ì¤Œ
 	public String lengthCheck(String time) {
 		if(time.length() == 1) {
 			time = "0"+time;

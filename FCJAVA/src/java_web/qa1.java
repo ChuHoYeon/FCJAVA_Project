@@ -16,7 +16,7 @@ public class qa1 {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java","root","1234");
 			if(conn == null){
-				throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù.<br>"); //db¿¬°á
+				throw new Exception("ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.<br>"); //dbì—°ê²°
 			}
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from str_qa ;");

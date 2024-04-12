@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class selectdb {
 
-    // ±¸¸Å ÈÄ±â ¸ñ·ÏÀ» °¡Á®¿À´Â ¸Ş¼­µå
+    // êµ¬ë§¤ í›„ê¸° ëª©ë¡ì„ ê°€ì ¸ì˜¤ëŠ” ë©”ì„œë“œ
     public ArrayList<board_get_set> exme() throws Exception {
         Connection conn = null;
         Statement stmt = null;
@@ -16,7 +16,7 @@ public class selectdb {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java", "root", "1234");
             if (conn == null) {
-                throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                throw new Exception("ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             }
 
             stmt = conn.createStatement();
@@ -42,7 +42,7 @@ public class selectdb {
         return cc;
     }
 
-    // ±¸¸Å ÈÄ±â ÀÛ¼º ¸Ş¼­µå
+    // êµ¬ë§¤ í›„ê¸° ì‘ì„± ë©”ì„œë“œ
     public void exww(String title, String bon) throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -51,7 +51,7 @@ public class selectdb {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java", "root", "doqwls2014");
             if (conn == null) {
-                throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                throw new Exception("ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             }
 
             pstmt = conn.prepareStatement("INSERT INTO board_1 (title, bon, c_time, u_time, user) VALUES (?, ?, NOW(), NOW(), 'default_user')");
@@ -59,9 +59,9 @@ public class selectdb {
             pstmt.setString(2, bon);
             int insertedRows = pstmt.executeUpdate();
             if (insertedRows > 0) {
-                System.out.println(insertedRows + "°³ÀÇ ·¹ÄÚµå°¡ »ğÀÔµÇ¾ú½À´Ï´Ù.");
+                System.out.println(insertedRows + "ê°œì˜ ë ˆì½”ë“œê°€ ì‚½ì…ë˜ì—ˆìŠµë‹ˆë‹¤.");
             } else {
-                System.out.println("·¹ÄÚµå »ğÀÔ ½ÇÆĞ");
+                System.out.println("ë ˆì½”ë“œ ì‚½ì… ì‹¤íŒ¨");
             }
         } finally {
             try {

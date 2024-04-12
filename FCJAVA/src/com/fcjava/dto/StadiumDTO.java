@@ -1,17 +1,17 @@
 package com.fcjava.dto;
 
 public class StadiumDTO {
-	String g_no; //±¸Àå¹øÈ£
-	String gmem_id; //°ü¸®ÀÚ id
-	String g_name; //±¸Àå ¸í
-	String g_time; //¿î¿µ½Ã°£
-	String g_size; //±¸Àå Å©±â
-	String g_add; //±¸Àå ÁÖ¼Ò
-	String g_memo; // ±¸Àå ¼³¸í
-	String g_img; // ÀÌ¹ÌÁö
-	String g_com_num; // »ç¾÷ÀÚ ¹øÈ£
-	String g_com_add; // »ç¾÷ÀÚÁÖ¼Ò
-	String g_com_pnum; // »ç¾÷Àú ÀüÈ­¹øÈ£
+	String g_no; //êµ¬ì¥ë²ˆí˜¸
+	String gmem_id; //ê´€ë¦¬ì id
+	String g_name; //êµ¬ì¥ ëª…
+	String g_time; //ìš´ì˜ì‹œê°„
+	String g_size; //êµ¬ì¥ í¬ê¸°
+	String g_add; //êµ¬ì¥ ì£¼ì†Œ
+	String g_memo; // êµ¬ì¥ ì„¤ëª…
+	String g_img; // ì´ë¯¸ì§€
+	String g_com_num; // ì‚¬ì—…ì ë²ˆí˜¸
+	String g_com_add; // ì‚¬ì—…ìì£¼ì†Œ
+	String g_com_pnum; // ì‚¬ì—…ì € ì „í™”ë²ˆí˜¸
 
 	
 	static final String NAME = "";
