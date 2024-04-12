@@ -21,7 +21,7 @@ public class Stadium_Nextboo implements DBinterface{
 		StadiumBoonext boo1 = StadiumBoonext.getStadiumBoonext();
 		StadiumDTO stadium = boo1.getStadiums(str_num);
 		request.setAttribute("stadium", stadium);
-		return "stadium_booking.jsp";
+		return "stadium_booking.jsp";  
 	}
 	
 

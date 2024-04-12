@@ -4,7 +4,7 @@
 <% StadiumDTO stadium =(StadiumDTO)request.getAttribute("stadium"); %>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <!--구글 폰트 -->
 <link

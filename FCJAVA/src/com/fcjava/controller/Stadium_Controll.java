@@ -24,7 +24,7 @@ public class Stadium_Controll extends HttpServlet {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			} 
 			request.getRequestDispatcher(url).forward(request, response);
 		}
 		else if (pageNumber.equals("2")) {

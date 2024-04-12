@@ -9,7 +9,7 @@ import com.fcjava.dto.StadiumDTO;
 public class StadiumBoonext {
 	
 	static StadiumBoonext nextboo = new StadiumBoonext();
-	public static StadiumBoonext getStadiumBoonext() {
+	public static StadiumBoonext getStadiumBoonext() { 
 		return nextboo;
 	}
 
