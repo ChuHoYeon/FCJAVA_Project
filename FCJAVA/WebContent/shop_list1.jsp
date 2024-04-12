@@ -77,62 +77,7 @@
 					}
 				}
 			%>
-			<li class="sh2"><a href="shop_de.jsp"><img class="over"
-					src="png/uni/un2_1.avif" width="300px" height="300px">
-					<p class="prd_title">리스폰스 CL</p>
-					<p class="shop_price">129,000 원</p> </a></li>
-			<li class="sh2"><a href="shop_de.jsp"><img class="over"
-					src="png/uni/un3_1.avif" width="300px" height="300px">
-					<p class="prd_title">Women originals Purple 스탠 스미스 CS</p>
-					<p class="shop_price">119,000 원</p> </a></li>
-			<li class="sh2"><a href="shop_de.jsp"><img class="over"
-					src="png/uni/un4_1.avif" width="300px" height="300px">
-					<p class="prd_title">Women originals Purple 스탠 스미스 CS</p>
-					<p class="shop_price">119,000 원</p> </a></li>
-
-			<li class="sh2"><a href="shop_de.jsp"> <img class="over"
-					src="png/uni/un5_1.avif" width="300px" height="300px">
-					<p class="prd_title">아스티어</p>
-					<p class="shop_price">139,000 원</p>
-			</a></li>
-
-			<li class="sh2"><a href="shop_de.jsp"> <img class="over"
-					src="png/uni/un6_1.avif" width="300px" height="300px">
-					<p class="prd_title">오즈밀렌</p>
-					<p class="shop_price">139,000 원</p>
-			</a></li>
-			<li class="sh2"><a href="shop_de.jsp"> <img class="over"
-					src="png/uni/un7_1.avif" width="300px" height="300px">
-					<p class="prd_title">아디폼 스탠 스미스 뮬</p>
-					<p class="shop_price">79,000 원</p>
-			</a></li>
-			<li class="sh2"><a href="shop_de.jsp"> <img class="over"
-					src="png/uni/un8_1.avif" width="300px" height="300px">
-					<p class="prd_title">아디폼 스탠 스미스 뮬</p>
-					<p class="shop_price">79,000 원</p>
-			</a></li>
-			<li class="sh2"><a href="shop_de.jsp"> <img class="over"
-					src="png/uni/un9_1.avif" width="300px" height="300px">
-					<p class="prd_title">아디폼 스탠 스미스 뮬</p>
-					<p class="shop_price">79,000 원</p>
-			</a></li>
-			<li class="sh2"><a href="shop_de.jsp"> <img class="over"
-					src="png/uni/un10_1.avif" width="300px" height="300px">
-					<p class="prd_title">아디폼 스탠 스미스 뮬</p>
-					<p class="shop_price">79,000 원</p>
-			</a></li>
-
-			<li class="sh2"><a href="shop_de.jsp"> <img class="over"
-					src="png/uni/un11_1.avif" width="300px" height="300px">
-					<p class="prd_title">아디폼 스탠 스미스 뮬</p>
-					<p class="shop_price">79,000 원</p>
-			</a></li>
-
-			<li class="sh2"><a href="shop_de.html"> <img class="over"
-					src="png/uni/un12_1.avif" width="300px" height="300px">
-					<p class="prd_title">아디폼 스탠 스미스 뮬</p>
-					<p class="shop_price">79,000 원</p>
-			</a></li>
+	
 		</ul>
 
 	</section>
