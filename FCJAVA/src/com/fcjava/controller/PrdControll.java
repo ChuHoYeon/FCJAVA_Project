@@ -16,7 +16,7 @@ public class PrdControll extends HttpServlet {
 		String url = "";
 
 		if(pageNumber.equals("6")) {
-			//쇼핑몰 어쩌고 저쩌고
+			//쇼핑몰 등록
 			System.out.println("1");
 			connection=PrdOveRide.getPrdOveRide();
 			try {
@@ -29,7 +29,7 @@ public class PrdControll extends HttpServlet {
 
 		}
 		if(pageNumber.equals("prdUniform")) {
-			//���θ� ����Ʈ �ҷ����� 
+			//쇼핑몰 리스트 불러오기 
 			System.out.println("1");
 			connection=PrdControllSelect.getPrdControllSelect();
 			try {
@@ -43,7 +43,7 @@ public class PrdControll extends HttpServlet {
 		}		
 		
 		if(pageNumber.equals("prdDetail")) {
-			//���θ� �� �ҷ����� 
+			//쇼핑몰 상세 불러오기 
 			System.out.println("1");
 			connection=PrdDeControll.getPrdDeControll();
 			try {

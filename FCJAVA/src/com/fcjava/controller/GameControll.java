@@ -13,17 +13,17 @@ import com.fcjava.controller.interfaces.DBinterface;
 
 public class GameControll extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		//ÆÄÀÏ1
-		//¾î´À ÄÁÆ®·Ñ·¯¸¦ ½ÇÇàÇÒÁö Á¤ÇØÁÖ´Â °Í.
+		//íŒŒì¼1
+		//ì–´ëŠ ì»¨íŠ¸ë¡¤ëŸ¬ë¥¼ ì‹¤í–‰í• ì§€ ì •í•´ì£¼ëŠ” ê²ƒ.
 		String pageNumber = request.getParameter("page");
 		DBinterface connection;
 		String url = "";
 
 		if (pageNumber.equals("gameList")) {
-			//´ëÈ¸ ÀüÃ¼ ¸®½ºÆ® ºÒ·¯¿À±â
-			connection = GameControllAllSelect.getGameControllSelect(); // [1] ÆÄÀÏ2 °´Ã¼ °¡Á®¿À±â
+			//ï¿½ï¿½È¸ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+			connection = GameControllAllSelect.getGameControllSelect(); // [1] ï¿½ï¿½ï¿½ï¿½2 ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			try {
-				url = connection.DBconnection(request, response); // [10] ¸®ÅÏ°ª ´ã±â = [2] ÆÄÀÏ2 ¸Ş¼Òµå ½ÇÇà
+				url = connection.DBconnection(request, response); // [10] ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ = [2] ï¿½ï¿½ï¿½ï¿½2 ï¿½Ş¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -32,7 +32,7 @@ public class GameControll extends HttpServlet {
 			request.getRequestDispatcher(url).forward(request, response); // [11]
 		}
 		else if (pageNumber.equals("gameSearch")) {
-			//´ëÈ¸ °Ë»ö
+			//ï¿½ï¿½È¸ ï¿½Ë»ï¿½
 			GameControllSearch gameControll = GameControllSearch.getGameControllSearch();
 			JSONArray jsonArray = null;
 			try {
@@ -45,7 +45,7 @@ public class GameControll extends HttpServlet {
 			response.getWriter().print(jsonArray.toJSONString());
 		}
 		else if (pageNumber.equals("2")) {
-			//´ëÈ¸ »ó¼¼Á¤º¸ ºÒ·¯¿À±â
+			//ï¿½ï¿½È¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 			connection = GameControllDetail.getGameControllDetail();
 			try {
 				url = connection.DBconnection(request, response);
@@ -57,7 +57,7 @@ public class GameControll extends HttpServlet {
 			request.getRequestDispatcher(url).forward(request, response);
 		}
 		else if (pageNumber.equals("apply")) {
-			//´ëÈ¸ ½ÅÃ»
+			//ï¿½ï¿½È¸ ï¿½ï¿½Ã»
 			connection = GameControllApply.getGameControllApply();
 			try {
 				url = connection.DBconnection(request, response);
@@ -70,7 +70,7 @@ public class GameControll extends HttpServlet {
 			//request.getRequestDispatcher(url).forward(request, response);
 		}
 		else if (pageNumber.equals("applyCancel")) {
-			//´ëÈ¸ ½ÅÃ» Ãë¼Ò
+			//ï¿½ï¿½È¸ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½
 			connection = GameControllApplyCancel.getGameControllApplyCancel();
 			try {
 				url = connection.DBconnection(request, response);
