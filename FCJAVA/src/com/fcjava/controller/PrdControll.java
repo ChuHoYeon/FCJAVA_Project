@@ -16,7 +16,7 @@ public class PrdControll extends HttpServlet {
 		String url = "";
 
 		if(pageNumber.equals("6")) {
-			//¼îÇÎ¸ô µî·Ï
+			//ì‡¼í•‘ëª° ì–´ì©Œê³  ì €ì©Œê³ 
 			System.out.println("1");
 			connection=PrdOveRide.getPrdOveRide();
 			try {
@@ -29,7 +29,7 @@ public class PrdControll extends HttpServlet {
 
 		}
 		if(pageNumber.equals("prdUniform")) {
-			//¼îÇÎ¸ô ¸®½ºÆ® ºÒ·¯¿À±â 
+			//ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ 
 			System.out.println("1");
 			connection=PrdControllSelect.getPrdControllSelect();
 			try {
@@ -43,7 +43,7 @@ public class PrdControll extends HttpServlet {
 		}		
 		
 		if(pageNumber.equals("prdDetail")) {
-			//¼îÇÎ¸ô »ó¼¼ ºÒ·¯¿À±â 
+			//ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ 
 			System.out.println("1");
 			connection=PrdDeControll.getPrdDeControll();
 			try {
