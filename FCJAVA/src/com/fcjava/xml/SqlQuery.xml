@@ -44,7 +44,7 @@
 	<!-- $대회 상세 #신청 -->
 	<insert id="applyGame" parameterType="com.fcjava.dto.GameApplyDTO">
 		INSERT INTO fc_java.game_apply 
-		VALUES(#{game_num},#{team_num},now());
+		VALUES(#{game_num},#{team_num},now(),default);
 	</insert>
 	<!-- $대회 상세 #신청 취소 -->
 	<delete id="applyCancelGame" parameterType="com.fcjava.dto.GameApplyDTO">

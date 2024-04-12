@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="fc_java.FreeBorder"%>
-<%@ page import="fc_java.FreeBorderLikes"%>
+<%@ page import="fc_java.FreeBorderDTO"%>
+<%@ page import="fc_java.FreeBorderLikesDTO"%>
 <%@ page import="java.util.ArrayList" %>
 <jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
 <%
 	String sessionID = (String) session.getAttribute("ID");
-	ArrayList<FreeBorder> freeBorder = db.selectAllFreeBorder();
+	ArrayList<FreeBorderDTO> freeBorder = db.selectAllFreeBorder();
 	
 	String selectText = request.getParameter("selectText");
 	String searchText = request.getParameter("searchText");;
@@ -14,9 +14,9 @@
 		freeBorder = db.selectFreeBorder(selectText, searchText);
 	}
 	
-	ArrayList<FreeBorderLikes> freeBorderLikes = db.selectAllFreeBorderLikes(sessionID);
+	ArrayList<FreeBorderLikesDTO> freeBorderLikes = db.selectAllFreeBorderLikes(sessionID);
 	int totalBorde = 0;
-	for(FreeBorder freeborder : freeBorder) {
+	for(FreeBorderDTO freeborder : freeBorder) {
 		totalBorde += 1;
 	}
 %>
@@ -36,7 +36,7 @@
 </head>
 <script>
 	$(function(){
-		let sessionID = <%= sessionID %>;
+		let sessionID = <%=sessionID%>;
 		if(sessionID == null){
 			$(".topbtn").hide();
 		}
@@ -107,34 +107,35 @@
 					</div>
 				</form>
 				<div class="totalBorder">
-					<p>총 게시물 <strong><%=totalBorde %></strong>건</p>
+					<p>총 게시물 <strong><%=totalBorde%></strong>건</p>
 				</div>
 				<ul class="freeBorderList">
 					<%
 						if (totalBorde != 0){
-							for(FreeBorder freeborder : freeBorder) {
-								out.print("<li class='srchlist'><a href='freeBorderDetail.jsp?number="+freeborder.getNumber()+"' class='title'><span class='flag-career'>"+freeborder.getNumber()+"</span>");
-								out.print("<p>"+freeborder.getTitle()+"</p></a><div class='borderInfo'><span>"+freeborder.getId()+"</span>");
-								out.print("<span>"+freeborder.getTime()+"</span></div><div class='flag-btn'>");
-								out.print("<button type='button' class='btn-favorite' value='"+freeborder.getNumber()+"'>");
-								if(!freeBorderLikes.isEmpty()){
-									Boolean res = false;
-									for(FreeBorderLikes likes : freeBorderLikes){
-										if(likes.getId().equals(freeborder.getId()) && likes.getNumber()==freeborder.getNumber()){
-											res =true;
-										}
-									}
-									if (res){
-										out.print("<img class='love' srcset='png/love-red.svg' width='24' height='24'/>");
-									} else {
-										out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
-									}
-								} else {
-									out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
-								}
-								out.print("</button></div></li>");
-							}
-						} else { %>
+													for(FreeBorderDTO freeborder : freeBorder) {
+														out.print("<li class='srchlist'><a href='freeBorderDetail.jsp?number="+freeborder.getNumber()+"' class='title'><span class='flag-career'>"+freeborder.getNumber()+"</span>");
+														out.print("<p>"+freeborder.getTitle()+"</p></a><div class='borderInfo'><span>"+freeborder.getId()+"</span>");
+														out.print("<span>"+freeborder.getTime()+"</span></div><div class='flag-btn'>");
+														out.print("<button type='button' class='btn-favorite' value='"+freeborder.getNumber()+"'>");
+														if(!freeBorderLikes.isEmpty()){
+															Boolean res = false;
+															for(FreeBorderLikesDTO likes : freeBorderLikes){
+																if(likes.getId().equals(freeborder.getId()) && likes.getNumber()==freeborder.getNumber()){
+																	res =true;
+																}
+															}
+															if (res){
+																out.print("<img class='love' srcset='png/love-red.svg' width='24' height='24'/>");
+															} else {
+																out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
+															}
+														} else {
+															out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
+														}
+														out.print("</button></div></li>");
+													}
+												} else {
+					%>
 						<li class="srchNo">검색된 내용이 없습니다.</li>
 					<%
 						}

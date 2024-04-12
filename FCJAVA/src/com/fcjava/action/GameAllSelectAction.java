@@ -1,4 +1,4 @@
-package com.fcjava.controller;
+package com.fcjava.action;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.GameDTO;
 import com.fcjava.model.GameAllSelect;
 
-public class GameControllAllSelect implements DBinterface {
+public class GameAllSelectAction implements DBinterface {
 	//파일2
-	static GameControllAllSelect gameControllAllSelect = new GameControllAllSelect(); //파일2 객체
-	public static GameControllAllSelect getGameControllSelect() {
+	static GameAllSelectAction gameControllAllSelect = new GameAllSelectAction(); //파일2 객체
+	public static GameAllSelectAction getGameControllSelect() {
 		return gameControllAllSelect;
 	}
 

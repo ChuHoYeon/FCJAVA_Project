@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="fc_java.FreeBorder"%>
+<%@ page import="fc_java.FreeBorderDTO"%>
 <jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
 <%
 	String number = request.getParameter("number");
-	FreeBorder board = db.choiceFreeBorder(number);
+	FreeBorderDTO board = db.choiceFreeBorder(number);
 %>
 <!DOCTYPE html>
 <html>

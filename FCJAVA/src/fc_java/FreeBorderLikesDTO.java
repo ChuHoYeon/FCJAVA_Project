@@ -1,6 +1,6 @@
 package fc_java;
 
-public class FreeBorderLikes {
+public class FreeBorderLikesDTO {
 	String id;
 	public String getId() {
 		return id;

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="fc_java.FreeBorder"%>
+<%@ page import="fc_java.FreeBorderDTO"%>
 <jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
 <%
 	String number = request.getParameter("number");
 	String sessionID = (String) session.getAttribute("ID");
-	FreeBorder board = db.choiceFreeBorder(number);
+	FreeBorderDTO board = db.choiceFreeBorder(number);
 	Boolean like = db.choiceFreeBorderLike(sessionID, number);
 	Boolean check = false;
 	if(board.getId().equals(sessionID)){
