@@ -197,16 +197,21 @@ $('.over').hover(function(){
 				<p><%=realPrd.getPrd_memo() %></p>
 				<br/>
 				<p>스타일 번호: FZ3780-101</p>
+				<br/>
 			</div>
-			<form>
-				<br> <input type="radio" name="sinsize"> 245 <input
-					type="radio" name="sinsize"> 250 <input type="radio"
-					name="sinsize"> 255 <input type="radio" name="sinsize">
-				260 <input type="radio" name="sinsize"> 265 <input
-					type="radio" name="sinsize"> 270 <input type="radio"
-					name="sinsize"> 275 <input type="radio" name="sinsize">
-				280 <input type="radio" name="sinsize"> 285 <input
-					type="radio" name="sinsize"> 290 <br>
+			<form>		
+				
+				<input type="radio" id="opt1" name="sinsize" class="dinon"> 
+				<label for="opt1" class="labtn1"> 245  </label>
+				<input type="radio" id="opt2" name="sinsize" class="dinon"> 
+				<label for="opt2" class="labtn1"> 250  </label>
+				<input type="radio" id="opt3" name="sinsize" class="dinon"> 
+				<label for="opt3" class="labtn1"> 255  </label>
+				<input type="radio" id="opt4" name="sinsize" class="dinon"> 
+				<label for="opt4" class="labtn1"> 260  </label>
+				<input type="radio" id="opt5" name="sinsize" class="dinon"> 
+				<label for="opt5" class="labtn1"> 265  </label>
+				
 				<button class="btn_de1">즉시결제</button>
 			</form>
 		</div>

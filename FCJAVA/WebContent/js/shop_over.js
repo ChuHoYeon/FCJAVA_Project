@@ -27,11 +27,11 @@ $(document).ready(function () {
 $(document).ready(function(){ 
  
   $('.tab1').hover(function(){
-     $(this).css('color','blue' );
+     $(this).css('background-color','pink' );
   });   
  
  $('.tab1').mouseout(function(){
-     $(this).css('color','white' );
+     $(this).css('background-color','black' );
  });
 });
 
