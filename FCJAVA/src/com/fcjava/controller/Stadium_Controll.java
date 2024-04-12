@@ -16,8 +16,8 @@ public class Stadium_Controll extends HttpServlet {
 		String url = "";
 		
 		if (pageNumber.equals("1")) {
-			//êµ¬ì¥ ë“±ë¡
-			System.out.println("1ë²ˆ ì„±ê³µ");
+			//±¸Àå µî·Ï
+			System.out.println("1¹ø ¼º°ø");
 			connection = Stadium_ControllApply.getStadium();
 			try {
 				url = connection.DBconnection(request, response);
@@ -28,8 +28,8 @@ public class Stadium_Controll extends HttpServlet {
 			request.getRequestDispatcher(url).forward(request, response);
 		}
 		if (pageNumber.equals("2")) {
-			//êµ¬ì¥ ë¦¬ìŠ¤íŠ¸
-			System.out.println("1ë²ˆ ì„±ê³µ");
+			//±¸Àå ¸®½ºÆ®
+			System.out.println("1¹ø ¼º°ø");
 			connection = Stadium_over.getStadium();
 			try {
 				url = connection.DBconnection(request, response);

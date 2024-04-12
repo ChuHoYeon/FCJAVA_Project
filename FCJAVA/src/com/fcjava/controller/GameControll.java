@@ -13,17 +13,17 @@ import com.fcjava.controller.interfaces.DBinterface;
 
 public class GameControll extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		//íŒŒì¼1
-		//ì–´ëŠ ì»¨íŠ¸ë¡¤ëŸ¬ë¥¼ ì‹¤í–‰í• ì§€ ì •í•´ì£¼ëŠ” ê²ƒ.
+		//ÆÄÀÏ1
+		//¾î´À ÄÁÆ®·Ñ·¯¸¦ ½ÇÇàÇÒÁö Á¤ÇØÁÖ´Â °Í.
 		String pageNumber = request.getParameter("page");
 		DBinterface connection;
 		String url = "";
 
 		if (pageNumber.equals("gameList")) {
-			//ëŒ€íšŒ ì „ì²´ ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸°
-			connection = GameControllAllSelect.getGameControllSelect(); // [1] íŒŒì¼2 ê°ì²´ ê°€ì ¸ì˜¤ê¸°
+			//´ëÈ¸ ÀüÃ¼ ¸®½ºÆ® ºÒ·¯¿À±â
+			connection = GameControllAllSelect.getGameControllSelect(); // [1] ÆÄÀÏ2 °´Ã¼ °¡Á®¿À±â
 			try {
-				url = connection.DBconnection(request, response); // [10] ë¦¬í„´ê°’ ë‹´ê¸° = [2] íŒŒì¼2 ë©”ì†Œë“œ ì‹¤í–‰
+				url = connection.DBconnection(request, response); // [10] ¸®ÅÏ°ª ´ã±â = [2] ÆÄÀÏ2 ¸Ş¼Òµå ½ÇÇà
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -32,7 +32,7 @@ public class GameControll extends HttpServlet {
 			request.getRequestDispatcher(url).forward(request, response); // [11]
 		}
 		else if (pageNumber.equals("gameSearch")) {
-			//ëŒ€íšŒ ê²€ìƒ‰
+			//´ëÈ¸ °Ë»ö
 			GameControllSearch gameControll = GameControllSearch.getGameControllSearch();
 			JSONArray jsonArray = null;
 			try {
@@ -45,7 +45,7 @@ public class GameControll extends HttpServlet {
 			response.getWriter().print(jsonArray.toJSONString());
 		}
 		else if (pageNumber.equals("2")) {
-			//ëŒ€íšŒ ìƒì„¸ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°
+			//´ëÈ¸ »ó¼¼Á¤º¸ ºÒ·¯¿À±â
 			connection = GameControllDetail.getGameControllDetail();
 			try {
 				url = connection.DBconnection(request, response);
@@ -57,7 +57,7 @@ public class GameControll extends HttpServlet {
 			request.getRequestDispatcher(url).forward(request, response);
 		}
 		else if (pageNumber.equals("apply")) {
-			//ëŒ€íšŒ ì‹ ì²­
+			//´ëÈ¸ ½ÅÃ»
 			connection = GameControllApply.getGameControllApply();
 			try {
 				url = connection.DBconnection(request, response);
@@ -70,7 +70,7 @@ public class GameControll extends HttpServlet {
 			//request.getRequestDispatcher(url).forward(request, response);
 		}
 		else if (pageNumber.equals("applyCancel")) {
-			//ëŒ€íšŒ ì‹ ì²­ ì·¨ì†Œ
+			//´ëÈ¸ ½ÅÃ» Ãë¼Ò
 			connection = GameControllApplyCancel.getGameControllApplyCancel();
 			try {
 				url = connection.DBconnection(request, response);

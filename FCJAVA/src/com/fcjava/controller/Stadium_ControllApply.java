@@ -16,7 +16,7 @@ public class Stadium_ControllApply  implements DBinterface{
 	@Override
 	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		//Íµ¨Ïû• Îì±Î°ù
+		//±∏¿Â µÓ∑œ
 		StadiumCreate sta = StadiumCreate.getcreateStadium();
 		String g_no = request.getParameter("no");
 		String gmem_id = request.getParameter("id");

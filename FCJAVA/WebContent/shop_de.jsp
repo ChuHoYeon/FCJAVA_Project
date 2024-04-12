@@ -211,6 +211,12 @@ $('.over').hover(function(){
 				<label for="opt4" class="labtn1"> 260  </label>
 				<input type="radio" id="opt5" name="sinsize" class="dinon"> 
 				<label for="opt5" class="labtn1"> 265  </label>
+				<input type="radio" id="opt6" name="sinsize" class="dinon"> 
+				<label for="opt6" class="labtn1"> 270  </label>
+				<input type="radio" id="opt7" name="sinsize" class="dinon"> 
+				<label for="opt7" class="labtn1"> 275  </label>
+				<input type="radio" id="opt8" name="sinsize" class="dinon"> 
+				<label for="opt8" class="labtn1"> 280  </label>
 				
 				<button class="btn_de1">즉시결제</button>
 			</form>
