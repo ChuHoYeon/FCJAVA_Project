@@ -1,25 +1,27 @@
 package com.fcjava.dto;
 
-public class TeamDTO {
+import java.util.Date;
 
-	private int number;
-	private String id;
-	private String name;
-	private String logo;
-	private String city;
-	private String time;
-	private String info;
-	private String cday;
-	private int maxNum;
-	private String skill;
-	private String sns;
-	private String age;
+public class TeamDTO {
 	
-	public int getNumber() {
-		return number;
+	private int t_num;
+	private String id;
+	private String t_name;
+	private String t_logo;
+	private String hom_city;
+	private String week_time;
+	private String t_info;
+	private Date t_c_day;
+	private int max_p_num;
+	private String t_skill;
+	private String t_sns;
+	private String t_age;
+	
+	public int getT_num() {
+		return t_num;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setT_num(int t_num) {
+		this.t_num = t_num;
 	}
 	public String getId() {
 		return id;
@@ -27,64 +29,65 @@ public class TeamDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getT_name() {
+		return t_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setT_name(String t_name) {
+		this.t_name = t_name;
 	}
-	public String getLogo() {
-		return logo;
+	public String getT_logo() {
+		return t_logo;
 	}
-	public void setLogo(String logo) {
-		this.logo = logo;
+	public void setT_logo(String t_logo) {
+		this.t_logo = t_logo;
 	}
-	public String getCity() {
-		return city;
+	public String getHom_city() {
+		return hom_city;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setHom_city(String hom_city) {
+		this.hom_city = hom_city;
 	}
-	public String getTime() {
-		return time;
+	public String getWeek_time() {
+		return week_time;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setWeek_time(String week_time) {
+		this.week_time = week_time;
 	}
-	public String getInfo() {
-		return info;
+	public String getT_info() {
+		return t_info;
 	}
-	public void setInfo(String info) {
-		this.info = info;
+	public void setT_info(String t_info) {
+		this.t_info = t_info;
 	}
-	public String getCday() {
-		return cday;
+	public Date getT_c_day() {
+		return t_c_day;
 	}
-	public void setCday(String cday) {
-		this.cday = cday;
+	public void setT_c_day(Date t_c_day) {
+		this.t_c_day = t_c_day;
 	}
-	public int getMaxNum() {
-		return maxNum;
+	public int getMax_p_num() {
+		return max_p_num;
 	}
-	public void setMaxNum(int maxNum) {
-		this.maxNum = maxNum;
+	public void setMax_p_num(int max_p_num) {
+		this.max_p_num = max_p_num;
 	}
-	public String getSkill() {
-		return skill;
+	public String getT_skill() {
+		return t_skill;
 	}
-	public void setSkill(String skill) {
-		this.skill = skill;
+	public void setT_skill(String t_skill) {
+		this.t_skill = t_skill;
 	}
-	public String getSns() {
-		return sns;
+	public String getT_sns() {
+		return t_sns;
 	}
-	public void setSns(String sns) {
-		this.sns = sns;
+	public void setT_sns(String t_sns) {
+		this.t_sns = t_sns;
 	}
-	public String getAge() {
-		return age;
+	public String getT_age() {
+		return t_age;
 	}
-	public void setAge(String age) {
-		this.age = age;
+	public void setT_age(String t_age) {
+		this.t_age = t_age;
 	}
+	
 }

@@ -137,7 +137,7 @@
 		                        </div>
 		                        <div class="modal-footer">
 		                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-		                            <a href="index.jsp" class="btn btn-danger" role="button">팀 이동</a>
+		                            <a href="fcjava.team?page=detail&teamNumber=<%=teams.getNumber()%>" class="btn btn-danger" role="button">팀 이동</a>
 		                        </div>
 		                    </div>
 		                </div>

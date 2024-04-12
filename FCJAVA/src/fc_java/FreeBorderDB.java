@@ -5,21 +5,21 @@ import java.util.ArrayList;
 
 
 public class FreeBorderDB {
-	//DB ì‹œì‘
+	//DB ½ÃÀÛ
 	Connection startConnection() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java", "root", "1234");
 		if (conn == null) {
-			throw new Exception("ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.<br>");
+			throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù.<br>");
 		}
 		return conn;
 	}
-	//DB ì¢…ë£Œ
+	//DB Á¾·á
 	void endConnection(Connection conn, Statement stmt) throws Exception {
 		stmt.close();
 		conn.close();
 	}
-	//ììœ ê²Œì‹œíŒ - ì „ì²´
+	//ÀÚÀ¯°Ô½ÃÆÇ - ÀüÃ¼
 	public ArrayList<FreeBorder> selectAllFreeBorder() throws Exception {
 		ArrayList<FreeBorder> freeBorderList = new ArrayList<>();
 		Connection conn = null;
@@ -43,7 +43,7 @@ public class FreeBorderDB {
 		}
 		return freeBorderList;
 	}	
-	//ììœ ê²Œì‹œíŒ - ê²€ìƒ‰
+	//ÀÚÀ¯°Ô½ÃÆÇ - °Ë»ö
 	public ArrayList<FreeBorder> selectFreeBorder(String selectText, String searchText) throws Exception {
 		ArrayList<FreeBorder> freeBorderList = new ArrayList<>();
 		Connection conn = null;
@@ -70,7 +70,7 @@ public class FreeBorderDB {
 		}
 		return freeBorderList;
 	}
-	//ììœ ê²Œì‹œíŒ - ì¢‹ì•„ìš” ì „ì²´
+	//ÀÚÀ¯°Ô½ÃÆÇ - ÁÁ¾Æ¿ä ÀüÃ¼
 	public ArrayList<FreeBorderLikes> selectAllFreeBorderLikes(String id) throws Exception {
 		ArrayList<FreeBorderLikes> freeBorderLikes = new ArrayList<>();
 		Connection conn = null;
@@ -91,7 +91,7 @@ public class FreeBorderDB {
 		}
 		return freeBorderLikes;
 	}
-	//ê¸€ ì‘ì„±
+	//±Û ÀÛ¼º
 	public void insertFreeBorder(String id, String tilte, String memo) throws Exception {
 		Connection conn = null;
 		Statement stmt = null;
@@ -101,13 +101,13 @@ public class FreeBorderDB {
 			stmt = conn.createStatement();
 			int rowNum = stmt.executeUpdate(sql);
 			if(rowNum < 1){
-				throw new Exception("ë°ì´í„°ë¥¼ DBì— ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+				throw new Exception("µ¥ÀÌÅÍ¸¦ DB¿¡ ÀÔ·ÂÇÒ ¼ö ¾ø½À´Ï´Ù.");
 			}
 		} finally {
 			endConnection(conn, stmt);
 		}
 	}
-	//ììœ ê²Œì‹œíŒ - ì¢‹ì•„ìš” ì¶”ê°€
+	//ÀÚÀ¯°Ô½ÃÆÇ - ÁÁ¾Æ¿ä Ãß°¡
 		public void insertFreeBorderLike(String id, String number) throws Exception {
 			Connection conn = null;
 			Statement stmt = null;
@@ -117,13 +117,13 @@ public class FreeBorderDB {
 				stmt = conn.createStatement();
 				int rowNum = stmt.executeUpdate(sql);
 				if(rowNum < 1){
-					throw new Exception("ë°ì´í„°ë¥¼ DBì— ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+					throw new Exception("µ¥ÀÌÅÍ¸¦ DB¿¡ ÀÔ·ÂÇÒ ¼ö ¾ø½À´Ï´Ù.");
 				}
 			} finally {
 				endConnection(conn, stmt);
 			}
 		}
-	//ììœ ê²Œì‹œíŒ - ê¸€ ë¶ˆëŸ¬ì˜¤ê¸°
+	//ÀÚÀ¯°Ô½ÃÆÇ - ±Û ºÒ·¯¿À±â
 	public FreeBorder choiceFreeBorder(String number) throws Exception {
 		Connection conn = null;
 		Statement stmt = null;
@@ -145,7 +145,7 @@ public class FreeBorderDB {
 		}
 		return freeBorder;
 	}
-	//ììœ ê²Œì‹œíŒ - ì¢‹ì•„ìš” ë¶ˆëŸ¬ì˜¤ê¸°
+	//ÀÚÀ¯°Ô½ÃÆÇ - ÁÁ¾Æ¿ä ºÒ·¯¿À±â
 		public Boolean choiceFreeBorderLike(String id, String number) throws Exception {
 			Connection conn = null;
 			Statement stmt = null;
@@ -163,7 +163,7 @@ public class FreeBorderDB {
 			}
 			return isLike;
 		}
-	//ê¸€ ìˆ˜ì •
+	//±Û ¼öÁ¤
 	public void updateFreeBorder (String number, String title, String memo) throws Exception {
 		Connection conn = null;
 		Statement stmt = null;
@@ -173,13 +173,13 @@ public class FreeBorderDB {
 			stmt = conn.createStatement();
 			int rowNum = stmt.executeUpdate(sql);
 			if(rowNum < 1){
-				throw new Exception("ë°ì´í„°ë¥¼ DBì— ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+				throw new Exception("µ¥ÀÌÅÍ¸¦ DB¿¡ ÀÔ·ÂÇÒ ¼ö ¾ø½À´Ï´Ù.");
 			}
 		} finally {
 			endConnection(conn, stmt);
 		}
 	}
-	//ê¸€ ì‚­ì œ
+	//±Û »èÁ¦
 	public void deleteFreeBorder(String number) throws Exception {
 		Connection conn = null;
 		Statement stmt = null;
@@ -189,13 +189,13 @@ public class FreeBorderDB {
 			stmt = conn.createStatement();
 			int rowNum = stmt.executeUpdate(sql);
 			if(rowNum < 1){
-				throw new Exception("ë°ì´í„°ë¥¼ DBì— ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+				throw new Exception("µ¥ÀÌÅÍ¸¦ DB¿¡ ÀÔ·ÂÇÒ ¼ö ¾ø½À´Ï´Ù.");
 			}
 		} finally {
 			endConnection(conn, stmt);
 		}
 	}
-	//ììœ ê²Œì‹œíŒ - ì¢‹ì•„ìš” ì·¨ì†Œ
+	//ÀÚÀ¯°Ô½ÃÆÇ - ÁÁ¾Æ¿ä Ãë¼Ò
 	public void deleteFreeBorderLike(String id, String number) throws Exception {
 		Connection conn = null;
 		Statement stmt = null;
@@ -205,7 +205,7 @@ public class FreeBorderDB {
 			stmt = conn.createStatement();
 			int rowNum = stmt.executeUpdate(sql);
 			if(rowNum < 1){
-				throw new Exception("ë°ì´í„°ë¥¼ DBì— ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+				throw new Exception("µ¥ÀÌÅÍ¸¦ DB¿¡ ÀÔ·ÂÇÒ ¼ö ¾ø½À´Ï´Ù.");
 			}
 		} finally {
 			endConnection(conn, stmt);

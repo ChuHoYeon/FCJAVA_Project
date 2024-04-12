@@ -20,8 +20,8 @@
 	if (myTeamList != null) {
         for (TeamDTO team : myTeamList) {
             JSONObject teamObject = new JSONObject();
-            teamObject.put("num", team.getNumber());
-            teamObject.put("name", team.getName());
+            teamObject.put("num", team.getT_num());
+            teamObject.put("name", team.getT_name());
             myTeamListArray.add(teamObject);
         }
     }
@@ -83,12 +83,12 @@
 			<ul class="teamList">
    			<% for (TeamDTO team : myTeamList){ %>
    				<li>
-	   				<a href="fcjava.game?page=apply&game_num=<%= game.getGame_num() %>&team_num=<%= team.getNumber() %>" class="teamChoice">
+	   				<a href="fcjava.game?page=apply&game_num=<%= game.getGame_num() %>&team_num=<%= team.getT_num() %>" class="teamChoice">
 		      			<div class="apply_team_area">
 							<div class="teamLogo">
 								<img src="png/defaultLogo.png" />
 							</div>
-							<div class="applyteamNameModal"><%= team.getName() %></div>
+							<div class="applyteamNameModal"><%= team.getT_name() %></div>
 						</div>
 					</a>
 				</li>

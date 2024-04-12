@@ -5,21 +5,21 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class TeamDB {
-		//DB ì‹œì‘
+		//DB ½ÃÀÛ
 		Connection startConnection() throws Exception {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java", "root", "1234");
 			if (conn == null) {
-				throw new Exception("ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.<br>");
+				throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù.<br>");
 			}
 			return conn;
 		}
-		//DB ì¢…ë£Œ
+		//DB Á¾·á
 		void endConnection(Connection conn, Statement stmt) throws Exception {
 			stmt.close();
 			conn.close();
 		}
-		//íŒ€ ë¦¬ìŠ¤íŠ¸ - ì „ì²´ íŒ€ ë¶ˆëŸ¬ì˜¤ê¸°
+		//ÆÀ ¸®½ºÆ® - ÀüÃ¼ ÆÀ ºÒ·¯¿À±â
 		public ArrayList<Team> selectAllTeam() throws Exception {
 			ArrayList<Team> teamList = new ArrayList<>();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -53,7 +53,7 @@ public class TeamDB {
 			}
 			return teamList;
 		}
-		//íŒ€ ì´ë¦„ ì¤‘ë³µí™•ì¸
+		//ÆÀ ÀÌ¸§ Áßº¹È®ÀÎ
 		public Boolean isTeamName(String teamName) throws Exception {
 			Boolean result = false;
 			Connection conn = null;
@@ -71,7 +71,7 @@ public class TeamDB {
 			}
 			return result;
 		}
-		//íŒ€ ìƒì„±
+		//ÆÀ »ı¼º
 		public void insertTeam(String id, String name, String logo, String city, String week, String info, String maxNum, String skill, String sns, String age) throws Exception {
 			Connection conn = null;
 			Statement stmt = null;
@@ -81,7 +81,7 @@ public class TeamDB {
 				stmt = conn.createStatement();
 				int rowNum = stmt.executeUpdate(insertSql);
 				if(rowNum < 1){
-					throw new Exception("ë°ì´í„°ë¥¼ DBì— ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+					throw new Exception("µ¥ÀÌÅÍ¸¦ DB¿¡ ÀÔ·ÂÇÒ ¼ö ¾ø½À´Ï´Ù.");
 				}
 			} finally {
 				endConnection(conn, stmt);

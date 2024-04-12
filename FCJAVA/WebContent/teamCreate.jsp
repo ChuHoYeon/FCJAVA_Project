@@ -97,15 +97,15 @@
 			</div>
 			<div class="infoLine">
 				<label class="menuLabel">연령대</label>
-				<input type="radio" name="age" id="age10" value="10"/>
+				<input type="radio" name="age" id="age10" value="10~20대"/>
 				<label for="age10" class="menuBtn">10~20대</label>
-				<input type="radio" name="age" id="age20" value="20"/>
+				<input type="radio" name="age" id="age20" value="20~30대"/>
 				<label for="age20" class="menuBtn">20~30대</label>
-				<input type="radio" name="age" id="age30" value="30"/>
+				<input type="radio" name="age" id="age30" value="30~40대"/>
 				<label for="age30" class="menuBtn">30~40대</label>
-				<input type="radio" name="age" id="age40" value="40"/>
+				<input type="radio" name="age" id="age40" value="40~50대"/>
 				<label for="age40" class="menuBtn">40~50대</label>
-				<input type="radio" name="age" id="age50" value="50"/>
+				<input type="radio" name="age" id="age50" value="50~60대"/>
 				<label for="age50" class="menuBtn">50~60대</label>
 			</div>
 			<div class="infoLine">
