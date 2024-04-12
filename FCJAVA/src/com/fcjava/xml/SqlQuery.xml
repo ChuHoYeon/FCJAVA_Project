@@ -73,4 +73,10 @@
     <select id="sta_select" resultType="com.fcjava.dto.StadiumDTO">   
          SELECT * FROM fc_java.stadium1;
     </select>
+    <!-- 구장 리스트 -->
+    <select id="selectsta" resultType="com.fcjava.dto.StadiumDTO">
+		SELECT * 
+		FROM fc_java.stadium1 
+		WHERE g_no = #{g_no};
+	</select>
 </mapper>

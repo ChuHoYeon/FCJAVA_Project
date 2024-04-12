@@ -43,36 +43,6 @@ var checkboxValues = {
   "stm_btn23": 0
 };
 
-$('.checkbox_class').change(function() {
- 
-  var checkedCount = 0;
-  
- 
-  $('.checkbox_class').each(function() {
-    if ($(this).prop('checked')) {
-      checkedCount++;
-    }
-  });
-  
-  // 4개 이상이 선택된 경우 경고창 표시
-  if (checkedCount >= 4) {
-    alert("최대 이용시간은 3시간입니다.");
-    $(this).prop('checked', false); 
-    return;
-  }
-  
-  // 변경된 체크박스의 값을 checkboxValues에 업데이트
-  var checkboxID = $(this).attr('id');
-  var isChecked = $(this).prop('checked');
-  var value = isChecked ? 30000 : 0; // 체크하면 30000, 아니면 0
-  checkboxValues[checkboxID] = value;
-
-  //금액 계산
-  var total = Object.values(checkboxValues).reduce((a, b) => a + b, 0);
-  
-  // 금액을 화면에 표시
-  $('.won h3').text(total.toLocaleString() + " 원");
-});
 
 
 // 금액/시간

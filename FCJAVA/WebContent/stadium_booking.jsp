@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.fcjava.dto.StadiumDTO" %>
+<% StadiumDTO stadium =(StadiumDTO)request.getAttribute("stadium"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +30,7 @@
 
 	<div class="container">
 		<section class="soccer-field">
-			<h2>축구장 정보</h2>
+			<h2><%= stadium.getG_name() %></h2>
 			<div class="div0">
 				<div class="swiper">
 					<div class="swiper-wrapper">
@@ -84,8 +86,7 @@
 			<section class="rules">
 				<h2>이용 규칙</h2>
 				<h3>꼭 지켜주세요</h3>
-				<h3>1.사용 종료 후 소등 및 구장문 잠금 필수입니다. 잠금 미흡하여 사고 발생 시, 책임을 물을 수
-					있습니다.</h3>
+				<h3>1.사용 종료 후 소등 및 구장문 잠금 필수입니다. 잠금 미흡하여 사고 발생 시, 책임을 물을 수있습니다.</h3>
 				<h3>2.절대 금연 구장입니다. 흡연 적발 시 과태료 부과 및 퇴장 조치되며 앞으로 구장 예약이 불가능합니다.</h3>
 				<h3>3.가져온 쓰레기는 반드시 쓰레기통에 버려주시고 경기가 끝난 후 뒷정리 꼭 부탁드립니다.</h3>
 			</section>
