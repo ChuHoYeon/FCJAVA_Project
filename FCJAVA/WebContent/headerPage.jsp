@@ -23,6 +23,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 	<!--jQuery url-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<!-- bootstrap css -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- 헤더 css -->
 	<link rel="stylesheet" href="css/header.css" type="text/css">
 	<!-- 헤더 js -->
@@ -54,12 +56,44 @@
     });
 </script>
 <body>
+	<!-- 팀  Modal -->
+	<div class="modal" id="myTeamListModal" data-bs-backdrop="static" tabindex="-1">
+	  <div class="modal-dialog"> <!-- modal-dialog-centered -->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">내 팀</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="header-team-areaList">
+      		<%
+      		int teamCount = (myTeamList != null) ? myTeamList.size() : 0;
+      		for(int i=0; i<3; i++) {
+      			if(i < teamCount && myTeamList != null) { %>
+      			<a href="fcjava.team?page=detail&teamNumber=<%= myTeamList.get(i).getT_num() %>">
+		      		<div class="header-team-area">
+		      			<div class="header-team-logo"><img alt="팀 로고" src="png/defaultLogo.png"></div>
+		      			<div class="header-team-name"><%= myTeamList.get(i).getT_name() %></div>
+		      		</div>
+      			</a>
+      		<% } else { %>
+      			<a href="teamCreate.jsp">
+      				<div class="teamCreatingGo">+</div>
+      			</a>
+   			<% }} %>
+	      	</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- 팀  Modal -->
+	
 	<header class="hed0">
         <div class="hed1">
             <div class="join1">
                 <span id="joinNav"><!--<a href="join.jsp" class="right1 f-10">회원가입</a>--></span>
                 <span id="loginNav"><!--<a href="login.jsp" class="right1 f-10">로그인 </a>--></span>
-                <a href="teamCreate.jsp" class="right1" id="myTeam">
+                <a class="right1" id="myTeam" data-bs-toggle="modal" data-bs-target="#myTeamListModal">
                     <span class="material-symbols-outlined">
                         groups
                     </span>
@@ -114,5 +148,7 @@
             </div>
         </div> <!-- layer -->
     </header>
+    <!-- bootstrap js -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -19,6 +19,19 @@ public class TeamControll extends HttpServlet {
 		String url = "";
 		
 		if(pageNumber.equals("detail")) {
+			//팀 상세
+			connection = TeamDetailAction.getTeamDetailAction();
+			try {
+				url = connection.DBconnection(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		else if(pageNumber.equals("apply")) {
+			//팀 가입
 			connection = TeamDetailAction.getTeamDetailAction();
 			try {
 				url = connection.DBconnection(request, response);

@@ -5,6 +5,7 @@
     margin: 0 auto;
     padding: 50px 0;
     gap: 20px;
+    min-height: 856px;
 }
 .left-teamInfo {
 	display: flex;
@@ -40,14 +41,20 @@
 .subArea {
 	width: 100%;
 }
-#team-apply {
+.applyleaveBtn {
 	width: -webkit-fill-available;
 	height: 40px;
-	background-color: #035177;
-	color: white;
 	border: none;
 	border-radius: 3px;
 	cursor: pointer;
+}
+.joinTeam {
+	background-color: #035177;
+	color: white;
+}
+.leaveTeam {
+	background-color: #b22222;
+	color: white;
 }
 
 .right-info {
@@ -149,11 +156,17 @@
 	height: 32px; 
 	margin-right: 8px;
 }
-.player .player-name img {
+.player .player-name .player-img img {
 	width: 32px;
 	height: 32px;
 	border: 1px solid #ebebeb;
 	border-radius: 50%;
+}
+.player .player-name .player-captain {
+	margin-left: 5px;
+}
+.player .player-name .player-captain img {
+	width: 25px;
 }
 .player .player-backnum {
 	text-align: center;
@@ -180,7 +193,7 @@
 	color: #f7f7f9;
 	text-align: left;
 	font-size: 10pt;
-	
+	height: 50px;
 }
 .player .player-memo .memo-in .player-me {
 	overflow: hidden;

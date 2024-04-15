@@ -28,7 +28,7 @@
 						<img src="png/defaultLogo.png"/>
 					</div>
 					<label for="logoImgPlue">로고 변경</label>
-					<input type="file" accept="image/*" id="logoImgPlue" onchange="logoChange(this)"/>
+					<input type="file" accept="image/*" name="teamLogo" id="logoImgPlue" onchange="logoChange(this)"/>
 				</div>
 			</div>
 			<div class="infoLine">

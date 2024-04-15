@@ -8,6 +8,13 @@
 	FROM fc_java.team_info
 	WHERE t_num = #{t_num};
 	</select>
+	<!-- $팀 상세 #가입한 선수목록 -->
+	<select id="selectPlayerList" resultType="com.fcjava.dto.PlayerDTO">
+	SELECT *
+	FROM fc_java.pl_info
+	WHERE t_num = #{t_num};
+	</select>
+	
 	<!-- $대회 목록 #모든 리스트 -->
 	<select id="allSelectGame" resultType="com.fcjava.dto.GameDTO">
 		SELECT * 
