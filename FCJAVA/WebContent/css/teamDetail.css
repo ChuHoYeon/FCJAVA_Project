@@ -77,6 +77,23 @@
 	border-bottom: 2px solid;
 	color: black;
 }
+#teamApplyForm {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+.player-photo {
+	width: 150px;
+	height: 150px;
+	margin: 0 auto;
+}
+.player-photo img {
+	width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    border: 1px solid #ebebeb;
+}
+
 .side-top {
     width: 100%;
     display: flex;
@@ -204,6 +221,28 @@
 .player .player-date {
 	text-align: center;
     width: 180px;
+}
+.photo-area {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.photo-change-label label {
+	cursor: pointer;
+}
+.player-info {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	justify-items: center;
+	width: 320px;
+    margin: 0 auto;
+    gap: 15px 0;
+}
+.player-info input {
+	width: -webkit-fill-available;
+}
+#pl_pic {
+	display: none;
 }
 
 .popover-body { /* 팝오버 스타일 (부트스트랩)*/

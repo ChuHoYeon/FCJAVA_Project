@@ -40,17 +40,33 @@
 	  <div class="modal-dialog modal-dialog-centered">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= team.getT_name() %></h1>
+	        <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= team.getT_name() %> 신청</h1>
 	      </div>
 	      <div class="modal-body">
-	        <form action="fileUpload.jsp" method="post" enctype="multipart/form-data">
+	        <form action="fileUpload.jsp" method="post" enctype="multipart/form-data" id="teamApplyForm">
 	        	<input type="hidden" name="t_num" value="<%= team.getT_num() %>" />
 	        	<input type="hidden" name="id" value="<%= sessionID %>" />
-	        	<div>사진</div>
-	        	<div>희망 등번호</div>
-	        	<div>키</div>
-	        	<div>몸무게</div>
-	        	<div>선수소개</div>
+	        	<div class="photo-area">
+	        		<div class="player-photo">
+	        			<img alt="선수 사진" src="png/son.jpg">
+	        		</div>
+	        		<div class="photo-change-label">
+		        		<label for="pl_pic">사진 변경</label>
+		        		<input type="file" id="pl_pic" name="pl_pic" accept="image/*"/>
+	        		</div>
+	        	</div>
+	        	<div class="player-info">
+	        		<label for="back_num">희망 등번호</label>
+	        		<input type="text" id="back_num" name="back_num"/>
+	        		<label for="height">키</label>
+	        		<input type="text" id="height" name="height"/>
+	        		<label for="weight">몸무게</label>
+	        		<input type="text" id="weight" name="weight"/>
+	        	</div>
+	        	<div>
+	        		<p>선수소개</p>
+	        		<textarea id="pl_memo" name="pl_memo"></textarea>
+	        	</div>
 	        </form>
 	      </div>
 	      <div class="modal-footer">
@@ -60,7 +76,7 @@
 	    </div>
 	  </div>
 	</div>
-	<!-- 팀 가입 Modal -->
+	<!-- 팀 가입 Modal end -->
 	<main>
 		<div class="teamArea">
 			<!-- side -->
@@ -107,6 +123,7 @@
 				<div class="team-tab">
 					<div class="tab tab-focus"><p>선수</p></div>
 					<div class="tab"><p>일정</p></div>
+					<div class="tab"><p>기록</p></div>
 					<div class="tab"><p>포메이션</p></div>
 					<div class="tab"><p>게시판</p></div>
 				</div>
@@ -162,12 +179,6 @@
 	<!-- bootstrap js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl);
-        });
-    });
     $(document).ready(function(){
     	//가입하기 버튼
         $("#team-apply").on("click", function() {
@@ -190,7 +201,5 @@
 		});
     });
 	</script>
-	
-	
 </body>
 </html>
