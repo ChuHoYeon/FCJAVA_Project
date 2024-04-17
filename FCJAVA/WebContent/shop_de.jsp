@@ -16,18 +16,18 @@
 %>
 
 <%
-    List<PrdDTO> prdList = (List<PrdDTO>) request.getAttribute("Prd");
-    String prdNum = request.getParameter("PrdNum");
-    PrdDTO realPrd = null;
+	List<PrdDTO> prdList = (List<PrdDTO>) request.getAttribute("Prd");
+	String prdNum = request.getParameter("PrdNum");
+	PrdDTO realPrd = null;
 
-    if (prdList != null && prdNum != null) {
-        for (PrdDTO prd : prdList) {
-            if (prdNum.equals(Integer.toString(prd.getPrd_no()))) {
-                realPrd = prd;
-                break; // 해당 상품을 찾았으면 반복문 종료
-            }
-        }
-    }
+	if (prdList != null && prdNum != null) {
+		for (PrdDTO prd : prdList) {
+			if (prdNum.equals(Integer.toString(prd.getPrd_no()))) {
+				realPrd = prd;
+				break; // 해당 상품을 찾았으면 반복문 종료
+			}
+		}
+	}
 %>
 
 
@@ -86,7 +86,8 @@
     $(document).ready(function(){
         //로그인
         var id = "<%=id%>";
-        var sessionID = "<%=sessionID%>";
+        var sessionID = "<%=sessionID%>
+	";
 						if ((id === 'null' && sessionID === 'null') | id === '') {
 							$(".join1 #loginNav")
 									.html(
@@ -175,7 +176,11 @@ $('.over').hover(function(){
 		<div class="sum_box">
 			<div class="image_box">
 				<div class="sh_de1 ma1">
-				<div> <a href="index.jsp">Home </a> > <a href="fcjava.prd?page=prdUniform">  유니폼  </a>> <%= realPrd.getPrd_name() %> </div> 
+					<div>
+						<a href="index.jsp">Home </a> > <a
+							href="fcjava.prd?page=prdUniform"> 유니폼 </a>>
+						<%=realPrd.getPrd_name()%>
+					</div>
 					<img class="ch1" src="png/de1.jpg" alt="">
 				</div>
 				<ul>
@@ -191,55 +196,67 @@ $('.over').hover(function(){
 				<div class="pr1">
 					<p><%=realPrd.getPrd_price()%></p>
 				</div>
-				<br/>
-				<br/>
+				<br /> <br />
 
-				<p><%=realPrd.getPrd_memo() %></p>
-				<br/>
+				<p><%=realPrd.getPrd_memo()%></p>
+				<br />
 				<p>스타일 번호: FZ3780-101</p>
-				<br/>
+				<br />
 			</div>
-			<form>		
-				
-				<input type="radio" id="opt1" name="sinsize" class="dinon"> 
-				<label for="opt1" class="labtn1"> 245  </label>
-				<input type="radio" id="opt2" name="sinsize" class="dinon"> 
-				<label for="opt2" class="labtn1"> 250  </label>
-				<input type="radio" id="opt3" name="sinsize" class="dinon"> 
-				<label for="opt3" class="labtn1"> 255  </label>
-				<input type="radio" id="opt4" name="sinsize" class="dinon"> 
-				<label for="opt4" class="labtn1"> 260  </label>
-				<input type="radio" id="opt5" name="sinsize" class="dinon"> 
-				<label for="opt5" class="labtn1"> 265  </label>
-				<input type="radio" id="opt6" name="sinsize" class="dinon"> 
-				<label for="opt6" class="labtn1"> 270  </label>
-				<input type="radio" id="opt7" name="sinsize" class="dinon"> 
-				<label for="opt7" class="labtn1"> 275  </label>
-				<input type="radio" id="opt8" name="sinsize" class="dinon"> 
-				<label for="opt8" class="labtn1"> 280  </label>
-				
-				<button class="btn_de1">즉시결제</button>
-			</form>
+			<div class="opt_box">
+				<form>
+
+					<input type="radio" id="opt1" name="sinsize" class="dinon">
+					<label for="opt1" class="labtn1"> 245 </label> <input type="radio"
+						id="opt2" name="sinsize" class="dinon"> <label for="opt2"
+						class="labtn1"> 250 </label> <input type="radio" id="opt3"
+						name="sinsize" class="dinon"> <label for="opt3"
+						class="labtn1"> 255 </label> <input type="radio" id="opt4"
+						name="sinsize" class="dinon"> <label for="opt4"
+						class="labtn1"> 260 </label> <input type="radio" id="opt5"
+						name="sinsize" class="dinon"> <label for="opt5"
+						class="labtn1"> 265 </label> <input type="radio" id="opt6"
+						name="sinsize" class="dinon"> <label for="opt6"
+						class="labtn1"> 270 </label> <input type="radio" id="opt7"
+						name="sinsize" class="dinon"> <label for="opt7"
+						class="labtn1"> 275 </label> <input type="radio" id="opt8"
+						name="sinsize" class="dinon"> <label for="opt8"
+						class="labtn1"> 280 </label>
+
+					<div>
+						<button class="btn_de1">즉시결제</button>
+					</div>
+				</form>
+			</div>
 		</div>
+
+		<div class="de_title2">세부정보</div>
+		<div class="sh_de1"> 
+		 <table border="1">
+		 <tr>
+		 <td>소재</td>
+		 <td>겉감 </td>
+		 </tr>
+		  </table>
 		</div>
 		<div class="de_title2">추천제품</div>
 		<div class="ct1">
 			<div class="swiper">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<img src="png/reco1.png" alt="">
+						<img src="png/reco1.png" alt="" width="500px">
 					</div>
 					<div class="swiper-slide">
-						<img src="png/reco2.png" alt="">
+						<img src="png/reco2.png" alt="" width="500px">
 					</div>
 					<div class="swiper-slide">
-						<img src="png/reco3.png" alt="">
+						<img src="png/reco3.png" alt="" width="500px">
 					</div>
 					<div class="swiper-slide">
-						<img src="png/reco4.png" alt="">
+						<img src="png/reco4.png" alt="" width="500px">
 					</div>
 					<div class="swiper-slide">
-						<img src="png/reco5.png" alt="">
+						<img src="png/reco5.png" alt="" width="500px">
 					</div>
 				</div>
 			</div>

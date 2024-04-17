@@ -1,4 +1,4 @@
-package com.fcjava.controller;
+package com.fcjava.action;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,9 +15,9 @@ import com.fcjava.model.GameDetail;
 import com.fcjava.model.GameResult;
 import com.fcjava.model.GameTeamSelect;
 
-public class GameControllDetail implements DBinterface {
-	static GameControllDetail gameControllDetail = new GameControllDetail();
-	public static GameControllDetail getGameControllDetail() {
+public class GameDetailAction implements DBinterface {
+	static GameDetailAction gameControllDetail = new GameDetailAction();
+	public static GameDetailAction getGameControllDetail() {
 		return gameControllDetail;
 	}
 

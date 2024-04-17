@@ -1,4 +1,4 @@
-package com.fcjava.controller;
+package com.fcjava.action;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ import org.json.simple.JSONObject;
 import com.fcjava.dto.GameDTO;
 import com.fcjava.model.GameSearch;
 
-public class GameControllSearch {
+public class GameSearchAction {
 
-	static GameControllSearch gameControllSearch = new GameControllSearch();
-	public static GameControllSearch getGameControllSearch() {
+	static GameSearchAction gameControllSearch = new GameSearchAction();
+	public static GameSearchAction getGameControllSearch() {
 		return gameControllSearch;
 	}
 	

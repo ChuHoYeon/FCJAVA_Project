@@ -1,6 +1,6 @@
 package fc_java;
 
-public class FreeBorder {
+public class FreeBorderDTO {
 	
 	private int number;
 	private String id;

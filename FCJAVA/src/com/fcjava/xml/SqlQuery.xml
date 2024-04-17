@@ -8,6 +8,13 @@
 	FROM fc_java.team_info
 	WHERE t_num = #{t_num};
 	</select>
+	<!-- $팀 상세 #가입한 선수목록 -->
+	<select id="selectPlayerList" resultType="com.fcjava.dto.PlayerDTO">
+	SELECT *
+	FROM fc_java.pl_info
+	WHERE t_num = #{t_num};
+	</select>
+	
 	<!-- $대회 목록 #모든 리스트 -->
 	<select id="allSelectGame" resultType="com.fcjava.dto.GameDTO">
 		SELECT * 
@@ -44,7 +51,7 @@
 	<!-- $대회 상세 #신청 -->
 	<insert id="applyGame" parameterType="com.fcjava.dto.GameApplyDTO">
 		INSERT INTO fc_java.game_apply 
-		VALUES(#{game_num},#{team_num},now());
+		VALUES(#{game_num},#{team_num},now(),default);
 	</insert>
 	<!-- $대회 상세 #신청 취소 -->
 	<delete id="applyCancelGame" parameterType="com.fcjava.dto.GameApplyDTO">

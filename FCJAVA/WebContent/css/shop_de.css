@@ -1,6 +1,6 @@
 .shop_de_section {
     width: 1280px;
-    height: 1680px;
+min-height : 1200px;
     margin: 0 auto;
 
 }
@@ -27,7 +27,6 @@
 
 .sum_box{
     width:1280px;
-    height: 650px;
 }
 
 .text_box {
@@ -36,6 +35,10 @@
 
 }
 
+.opt_box { 
+	width : 500px;
+	float : left;
+}
 .de_title {
     font-size: 24pt;
     line-height: 60px;
@@ -44,10 +47,9 @@
 
 .de_title2 {
     width: 1280px;
-    height: 50px;
     font-size: 20pt;
-    
-   margin: 0 auto;
+    float: left;
+   margin: 20px auto;
 }
 
 
@@ -58,9 +60,9 @@
 
 .btn_de1 {
 
-    margin-top: 40px;
-    margin-bottom: 40px;
-    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 450px;
     height: 40px;
     color: white;
     background-color: black;
@@ -68,9 +70,9 @@
 }
 
 .ct1 {
-    width: 2200px;
-    height: 1000px;
-    margin: 0 auto;
+    width: 1280px;
+    overflow: auto;
+    margin-bottom: 30px;
 }
 
 .pr1 {
@@ -89,6 +91,7 @@
 	border-style : solid; 
 	border-color : black;
 	background-color: white;
+	margin : 5px;
 	color: black ;
 	
 }

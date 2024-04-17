@@ -20,8 +20,8 @@ public class FreeBorderDB {
 		conn.close();
 	}
 	//자유게시판 - 전체
-	public ArrayList<FreeBorder> selectAllFreeBorder() throws Exception {
-		ArrayList<FreeBorder> freeBorderList = new ArrayList<>();
+	public ArrayList<FreeBorderDTO> selectAllFreeBorder() throws Exception {
+		ArrayList<FreeBorderDTO> freeBorderList = new ArrayList<>();
 		Connection conn = null;
 		Statement stmt = null;
 		String sql = "SELECT * FROM fc_java.freeborder ORDER BY number DESC;";
@@ -30,7 +30,7 @@ public class FreeBorderDB {
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				FreeBorder freeBorder = new FreeBorder();
+				FreeBorderDTO freeBorder = new FreeBorderDTO();
 				freeBorder.setNumber(rs.getInt("number"));
 				freeBorder.setId(rs.getString("id"));
 				freeBorder.setTitle(rs.getString("title"));
@@ -44,8 +44,8 @@ public class FreeBorderDB {
 		return freeBorderList;
 	}	
 	//자유게시판 - 검색
-	public ArrayList<FreeBorder> selectFreeBorder(String selectText, String searchText) throws Exception {
-		ArrayList<FreeBorder> freeBorderList = new ArrayList<>();
+	public ArrayList<FreeBorderDTO> selectFreeBorder(String selectText, String searchText) throws Exception {
+		ArrayList<FreeBorderDTO> freeBorderList = new ArrayList<>();
 		Connection conn = null;
 		Statement stmt = null;
 		String sql = "SELECT * FROM fc_java.freeborder WHERE "+selectText+" like '%"+searchText+"%'  ORDER BY number DESC;";
@@ -57,7 +57,7 @@ public class FreeBorderDB {
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				FreeBorder freeBorder = new FreeBorder();
+				FreeBorderDTO freeBorder = new FreeBorderDTO();
 				freeBorder.setNumber(rs.getInt("number"));
 				freeBorder.setId(rs.getString("id"));
 				freeBorder.setTitle(rs.getString("title"));
@@ -71,8 +71,8 @@ public class FreeBorderDB {
 		return freeBorderList;
 	}
 	//자유게시판 - 좋아요 전체
-	public ArrayList<FreeBorderLikes> selectAllFreeBorderLikes(String id) throws Exception {
-		ArrayList<FreeBorderLikes> freeBorderLikes = new ArrayList<>();
+	public ArrayList<FreeBorderLikesDTO> selectAllFreeBorderLikes(String id) throws Exception {
+		ArrayList<FreeBorderLikesDTO> freeBorderLikes = new ArrayList<>();
 		Connection conn = null;
 		Statement stmt = null;
 		String sql = "SELECT * FROM fc_java.freeborderlikes WHERE id='"+id+"';";
@@ -81,7 +81,7 @@ public class FreeBorderDB {
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				FreeBorderLikes freeBorder = new FreeBorderLikes();
+				FreeBorderLikesDTO freeBorder = new FreeBorderLikesDTO();
 				freeBorder.setId(rs.getString("id"));
 				freeBorder.setNumber(rs.getInt("number"));
 				freeBorderLikes.add(freeBorder);
@@ -124,10 +124,10 @@ public class FreeBorderDB {
 			}
 		}
 	//자유게시판 - 글 불러오기
-	public FreeBorder choiceFreeBorder(String number) throws Exception {
+	public FreeBorderDTO choiceFreeBorder(String number) throws Exception {
 		Connection conn = null;
 		Statement stmt = null;
-		FreeBorder freeBorder = new FreeBorder();
+		FreeBorderDTO freeBorder = new FreeBorderDTO();
 		String sql = "SELECT * FROM fc_java.freeborder WHERE number='"+number+"';";
 		try {
 			conn = startConnection();

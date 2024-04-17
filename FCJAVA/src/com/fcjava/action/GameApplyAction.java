@@ -1,4 +1,4 @@
-package com.fcjava.controller;
+package com.fcjava.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,10 +7,10 @@ import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.GameDTO;
 import com.fcjava.model.GameApply;
 
-public class GameControllApply implements DBinterface {
+public class GameApplyAction implements DBinterface {
 	
-	static GameControllApply gameControllApply = new GameControllApply();
-	public static GameControllApply getGameControllApply() {
+	static GameApplyAction gameControllApply = new GameApplyAction();
+	public static GameApplyAction getGameControllApply() {
 		return gameControllApply;
 	}
 

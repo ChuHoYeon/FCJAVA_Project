@@ -1,4 +1,4 @@
-package com.fcjava.controller;
+package com.fcjava.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.model.GameApplyCancel;
 
-public class GameControllApplyCancel implements DBinterface{
+public class GameApplyCancelAction implements DBinterface{
 
-	static GameControllApplyCancel gameControllApplyCancel = new GameControllApplyCancel();
-	public static GameControllApplyCancel getGameControllApplyCancel() {
+	static GameApplyCancelAction gameControllApplyCancel = new GameApplyCancelAction();
+	public static GameApplyCancelAction getGameControllApplyCancel() {
 		return gameControllApplyCancel;
 	}
 	
