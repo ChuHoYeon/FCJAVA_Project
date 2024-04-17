@@ -9,7 +9,7 @@
 
 
 .div0, .gpsbox {
-    width: 1000px;
+    width: 63%;
     margin: 20px auto;
     display: flex;
     justify-content: center;
@@ -88,7 +88,7 @@
 	overflow: hidden;
 }
 .container_box {
-	width: 78%; /* 66 */
+	width: 70%; /* 66 */
 	margin: auto;
 	border: 2px solid #9b9b9b;
 	
@@ -127,7 +127,7 @@
 
 }
 .mubox{
-	width: 903px;
+	width: 70%;
     margin: 0 auto;
     border: 2px solid #9b9b9b;
 	margin-top: 10px;
