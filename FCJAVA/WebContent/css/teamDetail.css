@@ -247,7 +247,7 @@
 
 .popover-body { /* 팝오버 스타일 (부트스트랩)*/
  	background-color: #424254;
-    color: #f7f7f9;
+    color: #f7f7f9 !important;
     border: 1px solid #9C9CAD;
     border-radius: 3px;
 }

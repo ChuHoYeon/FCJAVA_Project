@@ -1,5 +1,7 @@
 package com.fcjava.action;
 
+import java.io.PrintWriter;
+import java.net.URL;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,16 +23,21 @@ public class TeamDetailAction implements DBinterface{
 	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String teamNumber = request.getParameter("teamNumber");
+		String url = null;
 		
-		TeamDetail teamDetail = TeamDetail.getTeamDetail();
-		TeamDTO team = teamDetail.getTeam(teamNumber);
-		
-		TeamPlayersList teamPlayersList = TeamPlayersList.getTeamPlayersList();
-		List<PlayerDTO> playerList = teamPlayersList.getPlayerList(teamNumber);
-		
-		request.setAttribute("playerList", playerList);
-		request.setAttribute("team", team);
-		String url = "teamDetail.jsp";
+		if(teamNumber != null) {
+			TeamDetail teamDetail = TeamDetail.getTeamDetail();
+			TeamDTO team = teamDetail.getTeam(teamNumber);
+			
+			TeamPlayersList teamPlayersList = TeamPlayersList.getTeamPlayersList();
+			List<PlayerDTO> playerList = teamPlayersList.getPlayerList(teamNumber);
+			
+			request.setAttribute("playerList", playerList);
+			request.setAttribute("team", team);
+			url = "teamDetail.jsp";
+		} else {
+			url = "index.jsp";
+		}
 		return url;
 	}
 

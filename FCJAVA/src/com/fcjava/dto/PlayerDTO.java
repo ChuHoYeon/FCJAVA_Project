@@ -10,8 +10,8 @@ public class PlayerDTO {
 	private String pl_pic;
 	private String back_num;
 	private String pl_memo;
-	private double height;
-	private double weight;
+	private String height;
+	private String weight;
 	private Date pl_ap_date;
 	
 	public int getPl_num() {
@@ -50,16 +50,16 @@ public class PlayerDTO {
 	public void setPl_memo(String pl_memo) {
 		this.pl_memo = pl_memo;
 	}
-	public double getHeight() {
+	public String getHeight() {
 		return height;
 	}
-	public void setHeight(double height) {
+	public void setHeight(String height) {
 		this.height = height;
 	}
-	public double getWeight() {
+	public String getWeight() {
 		return weight;
 	}
-	public void setWeight(double weight) {
+	public void setWeight(String weight) {
 		this.weight = weight;
 	}
 	public Date getPl_ap_date() {
