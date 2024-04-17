@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.fcjava.dto.StadiumDTO" %>
+<%@ page import="com.fcjava.dto.StadiumDTO"%>
 <% StadiumDTO stadium =(StadiumDTO)request.getAttribute("stadium"); %>
+<% 
+String selectedTimes = request.getParameter("selectedTimes");
+String totalAmount = request.getParameter("totalAmount");
+%>
 <!DOCTYPE html>
 <html>
-<head> 
+<head>
 <meta charset="UTF-8">
 <!--구글 폰트 -->
 <link
@@ -55,14 +59,12 @@
 				<div class="lvbox">
 					<h2>이용금액</h2>
 					<div>
-						이용금액: <span id="totalAmount">금액</span>원
+						이용금액: <span id="totalAmount"><%= totalAmount %></span>원
 					</div>
 				</div>
 				<div class="tmbox">
 					<h2>이용 시간</h2>
-					<div>
-					이용 시간:
-					</div>
+					<div>이용 시간:이용 시간: <span id="selectedTimes"><%= selectedTimes %></span></div>
 				</div>
 				<div class="qabox">
 					<table class="tab">
@@ -81,7 +83,7 @@
 			<input type="hidden" name="selectedTimes" id="selectedTimes">
 			<input type="hidden" name="totalAmount" id="totalAmount">
 		</div>
-<!-- 			<div class="rule-part">
+		<!-- 			<div class="rule-part">
 					<input type="button" value="결제 하기" class="bt22">
 				</div> -->
 		<div class="mubox">
@@ -94,15 +96,26 @@
 			</section>
 		</div>
 	</div>
-	<div class="gpsbox"><h2>위치</h2>  
-        <div><img src="img/gps.PNG"></div>
+	<div class="gpsbox">
+		<h2>위치</h2>
+		<div id="map" style="width:500px;height:400px;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2ee0d8044ef493120fb264fa92c3bce6"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(37.515571, 127.072764),
+			level: 3
+		};
 
-</div>
+		var map = new kakao.maps.Map(container, options);
+	</script>
+
+	</div>
 	<button id="live-chat">예약하기</button>
 
 	<jsp:include page="footerPage.jsp" />
 
-	
+
 </body>
 </html>
 

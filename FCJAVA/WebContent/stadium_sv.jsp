@@ -82,6 +82,10 @@ $(function () {
 	});
 });
 
+//
+
+
+
 </script>
 <title></title>
 </head>
@@ -95,24 +99,24 @@ $(function () {
 		<form class="stm_teamsearch">
 			<div class="slabel">
 				<h4>지역</h4>
-				<input type="checkbox" id="ckb_Gyeonggi" value="Gyeonggi" /> <label
-					for="ckb_Gyeonggi" class="checkbox_set">경기도</label> <input
-					type="checkbox" id="ckb_Gangwon" value="Gangwon" /> <label
-					for="ckb_Gangwon" class="checkbox_set">강원도</label> <input
-					type="checkbox" id="ckb_Chungbuk" value="Chungbuk" /> <label
-					for="ckb_Chungbuk" class="checkbox_set">충청북도</label> <input
-					type="checkbox" id="ckb_Chungnam" value="Chungnam" /> <label
-					for="ckb_Chungnam" class="checkbox_set">충청남도</label> <input
-					type="checkbox" id="ckb_Jeollabuk" value="Jeollabuk" /> <label
-					for="ckb_Jeollabuk" class="checkbox_set">전라북도</label> <input
-					type="checkbox" id="ckb_Jeollanam" value="Jeollanam" /> <label
-					for="ckb_Jeollanam" class="checkbox_set">전라남도</label> <input
-					type="checkbox" id="ckb_Gyeongbuk" value="Gyeongbuk" /> <label
-					for="ckb_Gyeongbuk" class="checkbox_set">경상북도</label> <input
-					type="checkbox" id="ckb_Gyeongnam" value="Gyeongnam" /> <label
-					for="ckb_Gyeongnam" class="checkbox_set">경상남도</label> <input
-					type="checkbox" id="ckb_Jeju" value="Jeju" /> <label
-					for="ckb_Jeju" class="checkbox_set">제주도</label>
+				<input type="checkbox" id="ckb_Gyeonggi" value="Gyeonggi" /> 
+				<label for="ckb_Gyeonggi" class="checkbox_set">경기도</label> 
+				<input type="checkbox" id="ckb_Gangwon" value="Gangwon" />
+				 <label for="ckb_Gangwon" class="checkbox_set">강원도</label> 
+				 <input type="checkbox" id="ckb_Chungbuk" value="Chungbuk" /> 
+				 <label for="ckb_Chungbuk" class="checkbox_set">충청북도</label> 
+				 <input type="checkbox" id="ckb_Chungnam" value="Chungnam" />
+				  <label for="ckb_Chungnam" class="checkbox_set">충청남도</label> 
+				  <input type="checkbox" id="ckb_Jeollabuk" value="Jeollabuk" /> 
+					<label for="ckb_Jeollabuk" class="checkbox_set">전라북도</label> 
+					<input type="checkbox" id="ckb_Jeollanam" value="Jeollanam" />
+					 <label	for="ckb_Jeollanam" class="checkbox_set">전라남도</label> 
+					<input type="checkbox" id="ckb_Gyeongbuk" value="Gyeongbuk" />
+					 <label for="ckb_Gyeongbuk" class="checkbox_set">경상북도</label> 
+					<input type="checkbox" id="ckb_Gyeongnam" value="Gyeongnam" /> 
+					<label for="ckb_Gyeongnam" class="checkbox_set">경상남도</label> 
+					<input type="checkbox" id="ckb_Jeju" value="Jeju" /> 
+					<label for="ckb_Jeju" class="checkbox_set">제주도</label>
 			</div>
 			<div id="city2"></div>
 			<div class="slabel">
@@ -183,16 +187,16 @@ $(function () {
 				<form class="stm_teamsearch1" id="stm_teamsearch1-box-1"
 					action="stadium_booking.jsp" method="POST">
 					<div class="box-wrap">
-						<input type="checkbox" id="stm_btn6<%= i %>" name="" value="" class="checkbox_class" /> 
+						<input type="checkbox" id="stm_btn6<%= i %>" name="chkbox" value="1" class="checkbox_class" /> 
 						<label for="stm_btn6<%= i %>" id="custom_button_label" class="checkbox_label">06:00</label> 
 						
-						<input type="checkbox" id="stm_btn7<%= i %>" name="" value="custom_value" class="checkbox_class" />
+						<input type="checkbox" id="stm_btn7<%= i %>" name="chkbox" value="2" class="checkbox_class" />
 				    	 <label for="stm_btn7<%= i %>" id="custom_button_label"	class="checkbox_label">07:00</label>
 						  
-						 <input type="checkbox"	id="stm_btn8<%= i %>" name="" value="" class="checkbox_class" />
+						 <input type="checkbox"	id="stm_btn8<%= i %>" name="chkbox" value="3" class="checkbox_class" />
 						<label for="stm_btn8<%= i %>" id="custom_button_label" class="checkbox_label">08:00</label>
 						
-						 <input type="checkbox"	id="stm_btn9<%= i %>" name="" value="" class="checkbox_class" />
+						 <input type="checkbox"	id="stm_btn9<%= i %>" name="chkbox" value="4" class="checkbox_class" />
 						<label for="stm_btn9<%= i %>" id="custom_button_label" class="checkbox_label">09:00</label>
 						
 						 <input type="checkbox" id="stm_btn10<%= i %>" name="" value="" class="checkbox_class" />
