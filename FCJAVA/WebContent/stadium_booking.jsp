@@ -78,6 +78,8 @@
 					</table>
 				</div>
 			</div>
+			<input type="hidden" name="selectedTimes" id="selectedTimes">
+			<input type="hidden" name="totalAmount" id="totalAmount">
 		</div>
 <!-- 			<div class="rule-part">
 					<input type="button" value="결제 하기" class="bt22">

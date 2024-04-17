@@ -56,19 +56,30 @@ $(function () {
 		    return;
 		  }
 		  
-	/* 	  // 변경된 체크박스의 값을 checkboxValues에 업데이트
-		  var checkboxID = $(this).attr('id');
-		  var isChecked = $(this).prop('checked');
-		  var value = isChecked ? 30000 : 0; // 체크하면 30000, 아니면 0
-		  checkboxValues[checkboxID] = value;
 
-		  //금액 계산
-		  var total = Object.values(checkboxValues).reduce((a, b) => a + b, 0);
-		  
-		  // 금액을 화면에 표시
-		  $('.won h3').text(total.toLocaleString() + " 원"); */
 		});
-	
+	$(function () {
+	    $('.checkbox_class').change(function() {
+	        var selectedTimes = []; // 선택된 시간을 저장할 배열
+	        var totalAmount = 0; // 총 금액을 저장할 변수
+	        
+	     
+	        $('.checkbox_class:checked').each(function() {
+	            var time = $(this).next().text(); // 해당 체크박스의 레이블 텍스트(시간) 가져오기
+	            selectedTimes.push(time); // 선택된 시간 배열에 추가
+	            
+	            // 시간에 따른 금액 계산을 하여 총 금액
+	            totalAmount += 30000;
+	        });
+	        
+	        // 선택된 시간과 총 금액을 숨겨진 인풋 요소의 값으로 설정하여 다음 페이지로 전달
+	        $('#selectedTimes').val(selectedTimes.join(','));
+	        $('#totalAmount').val(totalAmount);
+	        
+	        // 선택된 시간과 총 금액
+	        $('.won h3').text(totalAmount.toLocaleString() + " 원");
+	    });
+	});
 });
 
 </script>
@@ -106,10 +117,9 @@ $(function () {
 			<div id="city2"></div>
 			<div class="slabel">
 				<h4>구장 이름</h4>
-				<input type="text" id="input_tname" /> <input type="button"
-					id="chkSearch" value="검색하기" /> <input type="reset" id="chkReset"
-					value="초기화" /> <label for="chkReset" id="resetIcon"
-					class="material-symbols-outlined"> refresh </label>
+				<input type="text" id="input_tname" /> <input type="button" id="chkSearch" value="검색하기" /> 
+				<input type="reset" id="chkReset"value="초기화" /> 
+				<label for="chkReset" id="resetIcon" class="material-symbols-outlined"> refresh </label>
 			</div>
 		</form>
 	</div>
