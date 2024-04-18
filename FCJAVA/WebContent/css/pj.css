@@ -112,14 +112,14 @@ background-color: brown;
 
 .mbox1{
     float: left;
-    width: 300px;
+    width: 260px;
     height: 200px;
     margin-left: 10px;
 
 
     }
 .stm_tiembox{
-    width: 500px;
+    width: 480px;
     height: 240px;
     float: left;
 
@@ -132,13 +132,10 @@ background-color: brown;
     margin: 2px;
 }
 .box-wrap {
-    width: 300px;
-    height: 40px;
-    display: flex;
-    flex-direction: row;
-    font-size: 14px;
-    margin-top: 2px;
-    line-height: 2;
+    width: 100%; /* Takes full width of the form */
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+    justify-content: space-between; /* Distributes space between checkboxes evenly */
+    padding: 10px 0; /* Adds padding above and below the checkbox row */
 }
 .box-wrap1 {
     display: flex;
@@ -179,13 +176,10 @@ background-color: brown;
     height: 310px;
 }
 
-.ord{
-    width: 300px;
-    height: 30px;
-    float: left;
-    padding: 12px;
-    margin-left: 210px;
-    margin-top: 10px;
+.ord {
+    height: 30px; /* Increased height for better spacing */
+    margin-left: 200px;
+    margin-bottom: 20px; /* Adds space below the date input */
 }
 
 .bt{
@@ -202,15 +196,14 @@ background-color: brown;
     float: left;
  
 }
-.won_box{
+.won_box {
     width: 150px;
-    height: 45px;
+    height: 40px;
     border: 2px solid gray;
-    padding: 2px 20px;
+    padding: 1px 12px;
     float: left;
-    margin-top: 175px;
+    margin-top: 170px;
 }
-
 .stm_jb{
     width: 20px;
     height: 20px;
@@ -234,16 +227,11 @@ background-color: brown;
     margin-right: 15px;
 }
 
-.stm_teamsearch1{
-    width: 655px;
-    margin: 88px auto 45px auto;
-    /* border: 1px solid rgb(209, 8, 8); */
-    /* padding: 40px 0px; */
-    border-radius: 9px; 
-}  
-/* .stm_teamsearch1 input[type="checkbox"] {
-    display: none;
-} */
+.stm_teamsearch1 {
+    width: 690px;
+    margin: 30px auto;
+
+}
 /* 이미지 슬라이드 버튼 색상 */ 
 .swiper-pagination-bullet-active {
     opacity: var(--swiper-pagination-bullet-opacity, 1);
@@ -256,7 +244,7 @@ background-color: brown;
     color: #fff;
 }
 
-input[type="button"] {
+input[type="submit"] {
     margin-left: 10px;
     margin-right: 10px;
     background-color: black;
@@ -277,3 +265,7 @@ input[type="button"] {
 .slabel > #chkSearch1:active {
     background-color: #b22222;
 }
+.slabel{
+	margin-top: 30px;ss
+}
+
