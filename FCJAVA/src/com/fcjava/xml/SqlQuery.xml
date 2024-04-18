@@ -14,23 +14,28 @@
 	</select>
 	<!-- $팀 상세 #가입한 선수목록 -->
 	<select id="selectPlayerList" resultType="com.fcjava.dto.PlayerDTO">
-	SELECT *
-	FROM fc_java.pl_info
-	WHERE t_num = #{t_num};
+	SELECT fc_java.pl_info.*,fc_java.mem_info.b_day,fc_java.mem_info.gender 
+	FROM fc_java.pl_info JOIN fc_java.mem_info ON fc_java.pl_info.id = fc_java.mem_info.id 
+	WHERE fc_java.pl_info.t_num = #{t_num};
 	</select>
 	<!-- $팀 상세 #팀 신청 -->
 	<insert id="insertPlayerApply" parameterType="com.fcjava.dto.PlayerDTO">
 	INSERT INTO fc_java.pl_info (t_num, id, pl_pic, back_num, pl_memo, height, weight)
-	VALUES (${t_num}, #{id}, #{pl_pic}, ${back_num}
+	VALUES (#{t_num}, #{id}
 	<choose>
-		<when test="pl_memo != null">,${pl_memo}</when>
+		<when test="pl_pic != null">,#{pl_pic}</when>
+		<otherwise>,null</otherwise>
+	</choose>
+	, #{back_num}
+	<choose>
+		<when test="pl_memo != null">,#{pl_memo}</when>
 		<otherwise>,null</otherwise>
 	</choose>
 	<choose>
-		<when test="height != null">,${height}</when>
+		<when test="height != null">,#{height}</when>
 		<otherwise>,null</otherwise>
 	</choose><choose>
-		<when test="weight != null">,${weight}</when>
+		<when test="weight != null">,#{weight}</when>
 		<otherwise>,null</otherwise>
 	</choose>
 	);

@@ -27,11 +27,9 @@ public class TeamApplyAction implements DBinterface {
 		Enumeration files = multi.getFileNames();//모든 파일의 정보를 읽어온다
 		
 		String file1 =(String)files.nextElement();
-		
 		String t_num = multi.getParameter("t_num");
 		String id = multi.getParameter("id");
 		String pl_pic = multi.getFilesystemName(file1);//실제 서버에 저장되는 파일명
-		if(pl_pic == null) {pl_pic = "png/son.png";};
 		String back_num = multi.getParameter("back_num");
 		String pl_memo = multi.getParameter("pl_memo");
 		String height = multi.getParameter("height");
@@ -39,8 +37,7 @@ public class TeamApplyAction implements DBinterface {
 		
 		TeamApply teamApply = TeamApply.getTeamApply();
 		teamApply.insertTeamApply(t_num, id, pl_pic, back_num, pl_memo, height, weight);
-		
-		System.out.println("성공 3");
+
 		url = "fcjava.team?page=detail&teamNumber="+t_num;
 		return url;
 	}

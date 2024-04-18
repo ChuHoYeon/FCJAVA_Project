@@ -93,7 +93,11 @@
     border-radius: 50%;
     border: 1px solid #ebebeb;
 }
-
+.stopApply p {
+	color: #086ded;
+    font-size: 10pt;
+    font-weight: bold;
+}
 .side-top {
     width: 100%;
     display: flex;
@@ -253,4 +257,16 @@
 }
 .popover {
 	--bs-popover-bg : #9C9CAD;
+}
+.chart-area {
+	display: flex;
+	justify-content: center;
+	gap: 50px;
+}
+.gender-chart, .age-chart {
+	width: 180px;
+	height: 180px;
+}
+.position-chart {
+	width: 360px;
 }

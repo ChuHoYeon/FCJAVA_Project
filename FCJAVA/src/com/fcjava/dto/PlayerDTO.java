@@ -9,10 +9,13 @@ public class PlayerDTO {
 	private String id;
 	private String pl_pic;
 	private String back_num;
+	private String position;
 	private String pl_memo;
 	private String height;
 	private String weight;
 	private Date pl_ap_date;
+	private String b_day;
+	private String gender;
 	
 	public int getPl_num() {
 		return pl_num;
@@ -44,6 +47,12 @@ public class PlayerDTO {
 	public void setBack_num(String back_num) {
 		this.back_num = back_num;
 	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
 	public String getPl_memo() {
 		return pl_memo;
 	}
@@ -68,4 +77,17 @@ public class PlayerDTO {
 	public void setPl_ap_date(Date pl_ap_date) {
 		this.pl_ap_date = pl_ap_date;
 	}
+	public String getB_day() {
+		return b_day;
+	}
+	public void setB_day(String b_day) {
+		this.b_day = b_day;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
 }
