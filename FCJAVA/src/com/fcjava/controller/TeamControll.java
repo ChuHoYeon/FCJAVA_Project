@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fcjava.action.TeamApplyAction;
+import com.fcjava.action.TeamApplyCheckAction;
 import com.fcjava.action.TeamDetailAction;
+import com.fcjava.action.TeamSecessionAction;
 import com.fcjava.controller.interfaces.DBinterface;
 
 public class TeamControll extends HttpServlet {
@@ -30,9 +33,32 @@ public class TeamControll extends HttpServlet {
 			
 			request.getRequestDispatcher(url).forward(request, response);
 		}
+		else if(pageNumber.equals("teamApplyCheck")) {
+			//팀 가입확인
+			TeamApplyCheckAction teamApplyCheckAction = TeamApplyCheckAction.getTeamApplyCheckAction();
+			try {
+				teamApplyCheckAction.goTeamApplyCheck(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
 		else if(pageNumber.equals("apply")) {
 			//팀 가입
-			connection = TeamDetailAction.getTeamDetailAction();
+			connection = TeamApplyAction.getTeamApplyAction();
+			try {
+				url = connection.DBconnection(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		else if(pageNumber.equals("secession")) {
+			//팀 탈퇴
+			connection = TeamSecessionAction.getTeamSecessionAction();
 			try {
 				url = connection.DBconnection(request, response);
 			} catch (Exception e) {

@@ -27,7 +27,7 @@
 				out.print("pw");
 			} else {				
 				List<TeamDTO> myTeamList = new ArrayList<>();
-				ResultSet myTeamrs = stmt.executeQuery("SELECT * FROM fc_java.team_info WHERE BINARY id='"+id+"';");
+				ResultSet myTeamrs = stmt.executeQuery("SELECT fc_java.team_info.* FROM fc_java.team_info JOIN fc_java.pl_info ON fc_java.team_info.t_num = fc_java.pl_info.t_num WHERE fc_java.pl_info.id = '"+id+"' order by fc_java.pl_info.pl_ap_date desc;");
 				while(myTeamrs.next()) {
 					TeamDTO team = new TeamDTO();
 					team.setT_num(myTeamrs.getInt("t_num"));
