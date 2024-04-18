@@ -94,9 +94,9 @@ $(function () {
 
 	<div class="stm_cont">
 		<div class="myteamlabel">구장 목록</div>
-		<a href="stadium_import1.jsp">구장 등록</a>
 		<div class="statbox"></div>
 		<form class="stm_teamsearch">
+		<a href="stadium_import1.jsp">구장 등록</a>
 			<div class="slabel">
 				<h4>지역</h4>
 				<input type="checkbox" id="ckb_Gyeonggi" value="Gyeonggi" /> 
@@ -178,14 +178,12 @@ $(function () {
 			</div>
 
 			<div class="stm_tiembox">
-				<div class="ord">
-					<form>
-						<input type='date' id='soccerDate1' />
-					</form>
-				</div>
 
 				<form class="stm_teamsearch1" id="stm_teamsearch1-box-1"
-					action="stadium_booking.jsp" method="POST">
+					action="fcjava.stadium1?page=3&sta_num=<%= stadium.getG_no() %>" method="POST">
+				<div class="ord">
+						<input type='date' name="date" id='soccerDate1' />
+				</div>
 					<div class="box-wrap">
 						<input type="checkbox" id="stm_btn6<%= i %>" name="chkbox" value="1" class="checkbox_class" /> 
 						<label for="stm_btn6<%= i %>" id="custom_button_label" class="checkbox_label">06:00</label> 
@@ -226,12 +224,12 @@ $(function () {
 
 					<input type="hidden" name="selectedTimes" id="selectedTimes">
 					<input type="hidden" name="totalAmount" id="totalAmount">
+					<div class="slabel">
+						<input type="submit" id="chkSearch1" value="예약하기" />
+					</div>
 				</form>
 
-				<div class="slabel">
-					<input type="button" id="chkSearch1" value="예약하기"
-						onclick="location.href='fcjava.stadium1?page=3&sta_num=<%= stadium.getG_no() %>&';" />
-				</div>
+			
 			</div>
 			<div class="won_box">
 				<div class="won">

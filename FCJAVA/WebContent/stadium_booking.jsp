@@ -5,6 +5,7 @@
 <% 
 String selectedTimes = request.getParameter("selectedTimes");
 String totalAmount = request.getParameter("totalAmount");
+String addr = stadium.getG_add();
 %>
 <!DOCTYPE html>
 <html>
@@ -59,12 +60,12 @@ String totalAmount = request.getParameter("totalAmount");
 				<div class="lvbox">
 					<h2>이용금액</h2>
 					<div>
-						이용금액: <span id="totalAmount"><%= totalAmount %></span>원
+						<%= totalAmount %> 원
 					</div>
 				</div>
 				<div class="tmbox">
 					<h2>이용 시간</h2>
-					<div>이용 시간:이용 시간: <span id="selectedTimes"><%= selectedTimes %></span></div>
+					<div class="tmbox1"> <%= selectedTimes %> </div>
 				</div>
 				<div class="qabox">
 					<table class="tab">
@@ -86,28 +87,59 @@ String totalAmount = request.getParameter("totalAmount");
 		<!-- 			<div class="rule-part">
 					<input type="button" value="결제 하기" class="bt22">
 				</div> -->
+			<div class="rulebox"><h2>이용 규칙</h2></div>	
 		<div class="mubox">
 			<section class="rules">
-				<h2>이용 규칙</h2>
-				<h3>꼭 지켜주세요</h3>
-				<h3>1.사용 종료 후 소등 및 구장문 잠금 필수입니다. 잠금 미흡하여 사고 발생 시, 책임을 물을 수있습니다.</h3>
-				<h3>2.절대 금연 구장입니다. 흡연 적발 시 과태료 부과 및 퇴장 조치되며 앞으로 구장 예약이 불가능합니다.</h3>
-				<h3>3.가져온 쓰레기는 반드시 쓰레기통에 버려주시고 경기가 끝난 후 뒷정리 꼭 부탁드립니다.</h3>
+				<h4>꼭 지켜주세요</h4>
+				<h5>1.사용 종료 후 소등 및 구장문 잠금 필수입니다. 잠금 미흡하여 사고 발생 시, 책임을 물을 수있습니다.</h5>
+				<h5>2.절대 금연 구장입니다. 흡연 적발 시 과태료 부과 및 퇴장 조치되며 앞으로 구장 예약이 불가능합니다.</h5>
+				<h5>3.가져온 쓰레기는 반드시 쓰레기통에 버려주시고 경기가 끝난 후 뒷정리 꼭 부탁드립니다.</h5>
 			</section>
 		</div>
 	</div>
+	<div class="gps1"><h2>위치</h2></div>
+	
 	<div class="gpsbox">
-		<h2>위치</h2>
-		<div id="map" style="width:500px;height:400px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2ee0d8044ef493120fb264fa92c3bce6"></script>
+		<div id="map" style="width:800px;height:500px;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2ee0d8044ef493120fb264fa92c3bce6&libraries=services"></script>
 	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(37.515571, 127.072764),
-			level: 3
-		};
+	const addr = '<%= addr %>';
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+	
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-		var map = new kakao.maps.Map(container, options);
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch(addr, function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+/*         var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        });
+        infowindow.open(map, marker);
+ */
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+}); 
 	</script>
 
 	</div>
