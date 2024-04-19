@@ -57,7 +57,7 @@
 		        	<input type="hidden" name="id" value="<%= sessionID %>" />
 		        	<div class="photo-area">
 		        		<div class="player-photo">
-		        			<img alt="선수 사진" src="png/son.jpg">
+		        			<img alt="선수 사진" src="png/default-profile.jpg">
 		        		</div>
 		        		<div class="photo-change-label">
 			        		<label for="pl_pic">사진 변경</label>
@@ -66,15 +66,22 @@
 		        	</div>
 		        	<div class="player-info">
 		        		<label for="back_num">희망 등번호</label>
-		        		<input type="text" id="back_num" name="back_num"/>
-		        		<label for="height">키(선택사항)</label>
-		        		<input type="text" id="height" name="height"/>
-		        		<label for="weight">몸무게(선택사항)</label>
-		        		<input type="text" id="weight" name="weight"/>
+		        		<input type="text" id="back_num" name="back_num" maxlength="3" placeholder="최대 숫자3글자"/>
+		        		<label for="position">희망 포지션</label>
+		        		<select name="position">
+		        			<option value="공격수">공격수</option>
+		        			<option value="미드필더">미드필더</option>
+		        			<option value="수비수">수비수</option>
+		        			<option value="골키퍼">골키퍼</option>
+		        		</select>
+		        		<label for="height">키</label>
+		        		<input type="text" id="height" name="height" maxlength="3" placeholder="선택사항"/>
+		        		<label for="weight">몸무게</label>
+		        		<input type="text" id="weight" name="weight" maxlength="3" placeholder="선택사항"/>
 		        	</div>
-		        	<div>
-		        		<p>선수소개(선택사항)</p>
-		        		<textarea id="pl_memo" name="pl_memo"></textarea>
+		        	<div class="player-intro">
+		        		<p>선수소개</p>
+		        		<textarea id="pl_memo" name="pl_memo" placeholder="선택사항" maxlength="50"></textarea>
 		        	</div>
 		        </div>
 		      </div>
@@ -170,7 +177,7 @@
 							String playerDate = p_year+"/"+p_month+"/"+p_date;
 	
 							String sFilePath = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
-							if(player.getPl_pic() == null) sFilePath="png/son.jpg";
+							if(player.getPl_pic() == null) sFilePath="png/default-profile.jpg";
 						%>
 							<li class="player">
 								<div class="player-name">
@@ -204,7 +211,41 @@
 						<h2>기록칸</h2>
 					</div>
 					<div class="tab-content formation-content">
-						<h2>포메이션칸</h2>
+						<div class="formation-box">
+							<div class="formation-slide">
+								<div class="team-formation-list">
+									<div class="savedformation">1</div>
+									<div class="savedformation">2</div>
+									<div class="savedformation">3</div>
+									<div class="savedformation">4</div>
+									<div class="savedformation">5</div>
+									<div class="savedformation">6</div>
+									<div class="savedformation">7</div>
+								</div>
+							</div>
+							<button class="back"><span class="material-symbols-outlined">arrow_back_ios</span></button>
+							<button class="next"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+						</div>
+						<div class="select-formation">
+							<div id="field" data-formation="433">
+								<div class="player-card" data-cardid="1"></div>
+								<div class="player-card" data-cardid="2"></div>
+								<div class="player-card" data-cardid="3"></div>
+								<div class="player-card" data-cardid="4"></div>
+								<div class="player-card" data-cardid="5"></div>
+								<div class="player-card" data-cardid="6"></div>
+								<div class="player-card" data-cardid="7"></div>
+								<div class="player-card" data-cardid="8"></div>
+								<div class="player-card" data-cardid="9"></div>
+								<div class="player-card" data-cardid="10"></div>
+								<div class="player-card" data-cardid="11"></div>
+							</div>
+							<div class="formation-info">
+								<div class="formation-players">
+									<h3>플레이어</h3>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="tab-content board-content">
 						<h2>게시판칸</h2>
@@ -247,40 +288,76 @@
        	const genderData = {
        		labels: ['남','여'],
        		datasets: [{
-       			label: ['남','여'],
        			data: genders,
-       			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)'],
+       			backgroundColor: ['rgba(54, 162, 235, 1)','rgba(255, 99, 132, 1)'],
        			hoverOffset: 4
        		}]
        	};
        	const ageData = {
        		labels: ['10대','20대','30대','40대','50대','60대 이상'],
        		datasets: [{
-       			label: ['나이'],
        			data: ages,
        			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(203, 170, 203, 1)','rgba(198, 219, 218, 1)'],
        			hoverOffset: 4
        		}]
        	};
-       	const positioData = {
+       	const positionData = {
        		labels: ['공격수','미드필더','수비수','골키퍼'],
        		datasets: [{
-       			label: ['포지션'],
        			data: positions,
        			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)'],
        		}]
        	};
        	const genderChart = new Chart(genderCt, {
        	  type: 'doughnut',
-       	  data: genderData
+       	  data: genderData,
+       	  options: {
+       		  borderWidth: 0
+       	  },
        	});
        	const agerChart = new Chart(ageCt, {
        	  type: 'doughnut',
-       	  data: ageData
+       	  data: ageData,
+       	  options: {
+       		  plugins: {
+       			  legend: {display: false},
+       			  title: {
+       				  display: true,
+       				  text: '선수 나이대'
+       			  }
+       		  },
+       		  borderWidth: 0
+       	  },
+       	  borderJoinStyle: 'round'
        	});
        	const positionChart = new Chart(positionCt, {
        	  type: 'bar',
-       	  data: positioData
+       	  data: positionData,
+       	  options: {
+       		  plugins: {
+       			  legend: {display: false},
+       			  title: {
+       				  display: true,
+       				  text: '선호 포지션'
+       			  }
+       		  },
+       		  scales: {
+       			  x: {
+       				  grid: {
+       					  display: false
+       				  }
+       			  },
+       			  y: {
+       				  grid: {
+       					  display: false
+       				  },
+       				  min: 0,
+       				  ticks: {
+       					  stepSize: 1
+       				  }
+       			  }
+       		  }
+       	  }
        	});
        	
     	//가입하기 버튼
@@ -292,7 +369,6 @@
         				url : 'fcjava.team?page=teamApplyCheck',
            				data: {id : sessionID},
            				success : function(result) {
-           					console.log(result);
            					if(result.indexOf("OK") != -1){
            	        			$("#staticBackdrop").modal('show');
            					} else {
@@ -324,23 +400,6 @@
 			$("input[name='height']").val('');
 			$("input[name='weight']").val('');
 			$("textarea[name='pl_memo']").val('');
-		});
-
-		$("#applygoing").on("submit", function(event) {
-			let check = false;
-			const back_num = $("input[name='back_num']").val();
-			
-			if(back_num == '') {
-				alert("희망 등번호를 입력해주세요");
-				check = false
-			} else {
-				alert("가입되었습니다.");
-				check = true
-			}
-			
-			if(!check) {
-				event.preventDefault(); // 폼 제출 중단
-			}
 		});
     });
 	</script>

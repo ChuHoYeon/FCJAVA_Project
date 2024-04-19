@@ -56,7 +56,14 @@
 	background-color: #b22222;
 	color: white;
 }
-
+.player-intro p {
+	margin: 0;
+}
+#pl_memo {
+	width: 400px;
+	resize: none;
+	height: 90px;
+}
 .right-info {
 	width: 80%;
     border: 1px solid #ebebeb;
@@ -80,7 +87,8 @@
 #teamApplyForm {
 	display: flex;
 	flex-direction: column;
-	gap: 25px;
+	gap: 20px;
+	align-items: center;
 }
 .player-photo {
 	width: 150px;
@@ -92,6 +100,9 @@
     height: inherit;
     border-radius: 50%;
     border: 1px solid #ebebeb;
+}
+select[name="position"] {
+	width: -webkit-fill-available;
 }
 .stopApply p {
 	color: #086ded;
@@ -238,7 +249,7 @@
 	display: grid;
 	grid-template-columns: 50% 50%;
 	justify-items: center;
-	width: 320px;
+	width: 400px;
     margin: 0 auto;
     gap: 15px 0;
 }
@@ -262,6 +273,7 @@
 	display: flex;
 	justify-content: center;
 	gap: 50px;
+	padding: 10px 0;
 }
 .gender-chart, .age-chart {
 	width: 180px;
@@ -269,4 +281,67 @@
 }
 .position-chart {
 	width: 360px;
+}
+.formation-box {
+	width: -webkit-fill-available;
+	height: 100px;
+	margin-bottom: 10px;
+}
+.formation-slide {
+	height: -webkit-fill-available;
+	width: 890px;
+	overflow: hidden;
+	margin-left: 24px;
+}
+.team-formation-list {
+	height: 100px;
+	width: 300vw;
+}
+.savedformation {
+	border: 1px solid white;
+	width: 178px;
+	height: 100px;
+	float: left;
+	background-color: blue;
+	color: white;
+}
+
+.select-formation {
+	display: flex;
+}
+.back {
+	position: relative;
+	bottom: 65px;
+    width: 25px;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+}
+.next {
+	position: relative;
+	bottom: 65px;
+	left: 886px;
+	width: 25px;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+}
+.back span, .next span {
+	font-size: 25pt;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+}
+#field {
+	width: 580px;
+	height: 700px;
+	position: relative;
+	background: url("../png/pog.png");
+    background-size: 580px 700px;
+}
+.player-card {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: black;
+	position: absolute;
 }
