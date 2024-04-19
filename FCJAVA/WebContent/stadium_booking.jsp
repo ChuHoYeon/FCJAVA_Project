@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.fcjava.dto.StadiumDTO"%>
-<% StadiumDTO stadium =(StadiumDTO)request.getAttribute("stadium"); %>
-<% 
-String selectedTimes = request.getParameter("selectedTimes");
-String totalAmount = request.getParameter("totalAmount");
-String addr = stadium.getG_add();
+<%
+	StadiumDTO stadium = (StadiumDTO) request.getAttribute("stadium");
+%>
+ <%
+	String selectedTimes = request.getParameter("selectedTimes");
+	String totalAmount = request.getParameter("totalAmount");
+	String addr = stadium.getG_add();
 %>
 <!DOCTYPE html>
 <html>
@@ -21,8 +23,8 @@ String addr = stadium.getG_add();
 <!--jQuery url-->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
 <link rel="stylesheet" href="./css/stadium_booking.css">
+<link rel="stylesheet" href="./css/stadium_booking1.css">
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -30,73 +32,54 @@ String addr = stadium.getG_add();
 
 </head>
 <body>
-	<!-- 헤더 -->
-	<jsp:include page="headerPage.jsp" />
-
-	<div class="container">
-		<section class="soccer-field">
-			<h2><%= stadium.getG_name() %></h2>
-			<div class="div0">
-				<div class="swiper">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="img/rm.jpg" width="900">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/rm1.JPG" alt="이미지 준비중">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/rm1.JPG" alt="이미지 준비중">
-						</div>
-					</div>
-				</div>
+	<main class="booking_Main">
+		<div class="booking_top">
+			<div class="top-title">
+				<h3> <%= stadium.getG_name() %> </h3>
 			</div>
-
-		</section>
-
-
-		<div class="container_box">
-			<div class="rules-flex-container">
-				<div class="lvbox">
-					<h2>이용금액</h2>
-					<div>
-						<%= totalAmount %> 원
-					</div>
-				</div>
-				<div class="tmbox">
-					<h2>이용 시간</h2>
-					<div class="tmbox1"> <%= selectedTimes %> </div>
-				</div>
-				<div class="qabox">
-					<table class="tab">
-						<h2>구장 시설</h2>
-						<tr>
-							<th><img src="png/iparking.png"> 무료 주차</th>
-							<th><img src="img/maximize.png"> 구장 크기: 110X55M</th>
-						</tr>
-						<tr>
-							<th><img src="png/toilet.png">개방 화장실</th>
-							<th><img src="png/ball.png">축구공 대여 O</th>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<input type="hidden" name="selectedTimes" id="selectedTimes">
-			<input type="hidden" name="totalAmount" id="totalAmount">
 		</div>
-		<!-- 			<div class="rule-part">
-					<input type="button" value="결제 하기" class="bt22">
-				</div> -->
-			<div class="rulebox"><h2>이용 규칙</h2></div>	
-		<div class="mubox">
-			<section class="rules">
-				<h4>꼭 지켜주세요</h4>
+		<div class="booking_content">
+			<section class="gameMain_area">
+				<div class="div0">
+					<div class="swiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="img/rm.jpg" width="870">
+							</div>
+							<div class="swiper-slide">
+								<img src="img/rm1.JPG" alt="이미지 준비중">
+							</div>
+							<div class="swiper-slide">
+								<img src="img/rm1.JPG" alt="이미지 준비중">
+							</div>
+						</div>
+					</div>
+				</div>
+				<h4>구장 정보</h4>
+				<div class="main_bottom">222</div>
+				<div class="main_bottom1">
+				<h4>주의 사항</h4>	
 				<h5>1.사용 종료 후 소등 및 구장문 잠금 필수입니다. 잠금 미흡하여 사고 발생 시, 책임을 물을 수있습니다.</h5>
 				<h5>2.절대 금연 구장입니다. 흡연 적발 시 과태료 부과 및 퇴장 조치되며 앞으로 구장 예약이 불가능합니다.</h5>
-				<h5>3.가져온 쓰레기는 반드시 쓰레기통에 버려주시고 경기가 끝난 후 뒷정리 꼭 부탁드립니다.</h5>
+				<h5>3.가져온 쓰레기는 반드시 쓰레기통에 버려주시고 경기가 끝난 후 뒷정리 꼭 부탁드립니다.</h5></div>
+				<!-- <div class="no-apply"></div> -->
+
 			</section>
+			<aside class="booking_area">
+				<div class="apply_content">
+					<div class="booking_info">
+						<span class="booking_label">이용 금액</span>
+						<div class="booking_data">	 <%= totalAmount %> 원</div>
+						<span class="booking_label">이용 시간</span>
+						<div class="booking_data"> <%= selectedTimes %></div>
+					</div>
+				</div>
+				<div class="apply_btn_area">
+					<button type="button" class="apply_btn_area">예약 확정</button>
+				</div>
+
+			</aside>
 		</div>
-	</div>
 	<div class="gps1"><h2>위치</h2></div>
 	
 	<div class="gpsbox">

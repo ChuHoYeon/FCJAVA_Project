@@ -1,0 +1,126 @@
+.booking_Main{
+	min-height: 856px;
+}
+booking_top{
+	padding: 40px 0 0 0;
+}
+.top-title {
+    width: 1280px;
+    margin: 0 auto;
+    border-bottom: 2px solid #444;
+    display: flex;
+    gap: 12px;
+}
+.booking_content {
+    width: 1280px;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.gameMain_area {
+    width: calc(100% - 192px);
+}
+/* 슬라이드 */
+.div0, .gpsbox {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.swiper{
+    float: left;
+    width: 870px;
+    margin-left: 15px;
+    /* background-color: red; */
+    top: 20px;
+}
+
+        .rules-flex-container {
+            display: flex; 
+            /* justify-content: space-between;  */
+            padding: 15px;
+            background-color: #fff; 
+            margin-top: 15px;
+        }
+        
+        .rule-part {
+            flex: 1; 
+            margin: 0 10px; 
+        }
+
+      
+        .rule-part .tab {
+            width: 100%; 
+            table-layout: fixed; 
+        }
+/* 슬라이드 끝 */
+
+
+.main_bottom {
+    height: 65px;
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    padding: 10px 6px;
+}
+.main_bottom1 {
+    height: 200px;
+    margin-top: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    padding: 10px 6px;
+}
+.no-apply {
+    text-align: center;
+    height: 345px;
+    line-height: 345px;
+}
+.gameMain_area h4 {
+    margin: 25px 0;
+}
+
+/* 예약 */
+.booking_area {
+    width: 384px;
+    height: 100%;
+    position: sticky;
+    top: 70px;
+}
+
+.apply_content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.booking_info {
+    display: grid;
+    grid-template-columns: 80px auto;
+    grid-template-rows: repeat(5, minmax(0px, auto));
+    align-items: center;
+    gap: 16px 13px;
+    background: hsla(225, 5%, 46%, .05);
+    border-radius: 12px;
+    padding: 14px 12px 14px 20px;
+}
+  .booking_info .booking_label {
+    text-align: center;
+    font-weight: bold;
+}
+
+.booking_info .booking_data {
+    font-size: 13pt;
+}
+
+.apply_btn {
+    width: -webkit-fill-available;
+    border: none;
+    padding: 0 28px;
+    color: #fff;
+    background-color: #444;
+    border-radius: 10px;
+    height: 48px;
+    cursor: pointer;
+}
+
