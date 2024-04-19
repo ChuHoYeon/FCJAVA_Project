@@ -22,41 +22,7 @@ booking_top{
 .gameMain_area {
     width: calc(100% - 192px);
 }
-/* 슬라이드 */
-.div0, .gpsbox {
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
 
-.swiper{
-    float: left;
-    width: 870px;
-    margin-left: 15px;
-    /* background-color: red; */
-    top: 20px;
-}
-
-        .rules-flex-container {
-            display: flex; 
-            /* justify-content: space-between;  */
-            padding: 15px;
-            background-color: #fff; 
-            margin-top: 15px;
-        }
-        
-        .rule-part {
-            flex: 1; 
-            margin: 0 10px; 
-        }
-
-      
-        .rule-part .tab {
-            width: 100%; 
-            table-layout: fixed; 
-        }
-/* 슬라이드 끝 */
 
 
 .main_bottom {
