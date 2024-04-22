@@ -188,7 +188,7 @@ select[name="position"] {
 	height: 32px; 
 	margin-right: 8px;
 }
-.player .player-name .player-img img {
+.player-img img {
 	width: 32px;
 	height: 32px;
 	border: 1px solid #ebebeb;
@@ -286,6 +286,7 @@ select[name="position"] {
 	width: -webkit-fill-available;
 	height: 100px;
 	margin-bottom: 10px;
+	position: relative;
 }
 .formation-slide {
 	height: -webkit-fill-available;
@@ -302,25 +303,40 @@ select[name="position"] {
 	width: 178px;
 	height: 100px;
 	float: left;
-	background-color: blue;
-	color: white;
+	background-color: #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
-
+.creatFormation {
+	border: 1px solid white;
+	width: 178px;
+	height: 100px;
+	float: left;
+	background-color: #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 .select-formation {
 	display: flex;
 }
 .back {
-	position: relative;
-	bottom: 65px;
+	position: absolute;
+	top: 30px;
     width: 25px;
     height: 32px;
     background-color: transparent;
     border: none;
 }
 .next {
-	position: relative;
-	bottom: 65px;
-	left: 886px;
+	position: absolute;
+	top: 30px;
+    right: 0px;
 	width: 25px;
     height: 32px;
     background-color: transparent;
@@ -332,16 +348,38 @@ select[name="position"] {
     height: -webkit-fill-available;
 }
 #field {
-	width: 580px;
-	height: 700px;
+	width: 645px;
+	height: 770px;
 	position: relative;
 	background: url("../png/pog.png");
-    background-size: 580px 700px;
+    background-size: 645px 770px;
 }
 .player-card {
-	width: 50px;
-	height: 50px;
+	width: 62px;
+	height: 62px;
 	border-radius: 50%;
-	background-color: black;
+	background-color: gray;
 	position: absolute;
+}
+.formation-info {
+	background-color: #F2F2F2;
+	width: 294px;
+}
+.formation-players {
+	display: flex;
+	padding: 10px 8px;
+    align-items: center;
+    border-bottom: 1px solid;
+}
+.for-player-img img {
+	width: 49px;
+	height: 49px;
+	border: 1px solid #ebebeb;
+	border-radius: 50%;
+}
+.formationTitle {
+	font-size: 18pt;
+}
+.showFor {
+	border: 1px solid;
 }

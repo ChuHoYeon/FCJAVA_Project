@@ -45,6 +45,12 @@
 	DELETE FROM fc_java.pl_info
 	WHERE t_num=#{t_num} and id=#{id};
 	</delete>
+	<!-- $팀 상세 #포메이션 정보 -->
+	<select id="selectFormations" resultType="com.fcjava.dto.TeamFormationDTO">
+	SELECT * 
+	FROM fc_java.t_formation 
+	WHERE t_num = #{t_num};
+	</select>
 	
 	<!-- $대회 목록 #모든 리스트 -->
 	<select id="allSelectGame" resultType="com.fcjava.dto.GameDTO">
