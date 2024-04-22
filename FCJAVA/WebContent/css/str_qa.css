@@ -82,7 +82,45 @@ margin: 0 auto;
     height: 30px; 
     font-size: 16px; 
 }
+.qa_top{
+	width: 100%;
+    margin: auto;
+    display: block;
+    background-color: #e6e6e6;
+}
+.text_qa1{
+	padding: 32px 0px;
+    text-align: center;
+    font-size: 24pt;
+    font-weight: bold;
+}
+.text_qa2{
+		margin-top : 20pt;
+	text-align: center;
+	font-size: 10pt;
+}
 
-
-
+.qa_box1 {
+    width: 500px;
+    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 310px;
+    align-items: center;
+    border-radius: 10px 10px 10px 10px;
+    border: 2px solid #333333; /* 테두리 추가 */
+   	padding: 10px;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.s_box_qa {
+    width: 1280px;
+    /* min-height: 1430px; */
+    margin: auto;
+    overflow: auto;
+}
 

@@ -20,11 +20,11 @@ var today = new Date().toISOString().slice(0, 10);
 
     //id로 오늘 날짜 설정
     document.getElementById('soccerDate1').value = today;
-    document.getElementById('soccerDate2').value = today;
-    document.getElementById('soccerDate3').value = today;
+    /*document.getElementById('soccerDate2').value = today;*/
+/*    document.getElementById('soccerDate3').value = today;
     document.getElementById('soccerDate4').value = today;
     document.getElementById('soccerDate5').value = today;
-
+*/
 
 
 
@@ -58,7 +58,7 @@ $(function () {
 		  
 		  // 4개 이상이 선택된 경우 경고창 표시
 		  if (checkedCount >= 4) {
-		    alert("최대 이용시간은 3");
+		    alert("최대 이용시간은 3시간입니다.");
 		    $(this).prop('checked', false); 
 		    return;
 		  }
