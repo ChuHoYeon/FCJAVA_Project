@@ -1,3 +1,7 @@
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="org.json.simple.JSONValue"%>
+<%@page import="org.json.simple.parser.JSONParser"%>
+<%@page import="org.json.simple.JSONObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.fcjava.dto.TeamDTO" %>
@@ -29,6 +33,26 @@
 	String formationName = "";
 	boolean firstFormation = true;
 	
+	JSONArray jsonArray = new JSONArray();
+	for (TeamFormationDTO formation : teamFormations) {
+	    JSONObject jsonFormation = new JSONObject();
+	    jsonFormation.put("formation", formation.getFormation());
+	    jsonFormation.put("formation_name", formation.getFormation_name());
+	    jsonFormation.put("position_num", formation.getPosition_num());
+	    jsonFormation.put("player_id", formation.getPlayer_id());
+	    for(PlayerDTO player : playerList) {
+
+	    	if(player.getId().equals(formation.getPlayer_id())) { 
+	    		if(player.getPl_pic() !=null){
+	    			jsonFormation.put("player_pic", "/FCJAVA/png/playerPhoto/"+player.getPl_pic());break;
+    			}else{
+    				jsonFormation.put("player_pic", "png/default-profile.jpg");
+   				}
+    		} else {jsonFormation.put("player_pic", "png/default-profile.jpg");}
+	    }
+	    jsonArray.add(jsonFormation);
+	}
+	String teamFormationsJson = jsonArray.toJSONString();
 %>
 <!DOCTYPE html>
 <html>
@@ -103,7 +127,6 @@
 	<!-- 팀 가입 Modal end -->
 	<main>
 		<div class="teamArea">
-			<!-- side -->
 			<div class="left-teamInfo">
 				<div class="side-top">
 					<div class="side-player">
@@ -148,8 +171,8 @@
 				%>
 				</div>
 				<div class="stopApply"></div>
-			</div> <!-- class="left-teamInfo" -->
-			<!-- main -->
+			</div><!-- class="left-teamInfo" -->
+			<!-- --------------------------- -->
 			<div class="right-info">
 				<div class="team-tab">
 					<div class="tab tab-focus"><p>선수</p></div>
@@ -157,14 +180,15 @@
 					<div class="tab"><p>기록</p></div>
 					<div class="tab"><p>포메이션</p></div>
 					<div class="tab"><p>게시판</p></div>
-				</div>
+				</div><!-- 탭 -->
+				
 				<div class="team-tab-info">
 					<div class="tab-content player-content">
 						<div class="chart-area">
 							<div class="gender-chart"><canvas id="genderChart" ></canvas></div>
 							<div class="age-chart"><canvas id="ageChart"></canvas></div>
 							<div class="position-chart"><canvas id="positionChart"></canvas></div>
-						</div>
+						</div><!-- 선수 차트 -->
 						<div class="player-number">
 							<label>팀 선수 수 <strong><%= playerList.size() %></strong> 명</label>
 						</div>
@@ -210,69 +234,108 @@
 							</li>
 						<% } %>
 						</ul>
-					</div>
+					</div><!-- 선수 -->
+					
 					<div class="tab-content schedule-content">
 						<h2>일정칸</h2>
-					</div>
+					</div><!-- 일정 -->
+					
 					<div class="tab-content record-content">
 						<h2>기록칸</h2>
-					</div>
+					</div><!-- 기록 -->
+					
 					<div class="tab-content formation-content">
-						<div class="formation-box">
-							<div class="formation-slide">
-								<div class="team-formation-list">
-								<% for(TeamFormationDTO formation : teamFormations) { 
-									if(!formationName.equals(formation.getFormation_name()) && !formationChk.equals(formation.getFormation()) ) {
-										formationName = formation.getFormation_name();
-										formationChk = formation.getFormation();
-										if(firstFormation){%>
-									<div class="savedformation showFor" data-formation="<%=formation.getFormation() %>">
-									<%}else{ %>
-									<div class="savedformation" data-formation="<%=formation.getFormation() %>">
+						<div class="showFormation">
+							<div class="formation-box">
+								<div class="formation-slide">
+									<div class="team-formation-list" data-formationdata='<%=teamFormationsJson%>'>
+									<% for(TeamFormationDTO formation : teamFormations) { 
+										if(!formationName.equals(formation.getFormation_name()) && !formationChk.equals(formation.getFormation()) ) {
+											formationName = formation.getFormation_name();
+											formationChk = formation.getFormation();
+											if(firstFormation){%>
+										<div class="savedformation showFor" data-formation="<%=formation.getFormation() %>" data-formationName="<%=formation.getFormation_name()%>">
+										<%}else{ %>
+										<div class="savedformation" data-formation="<%=formation.getFormation() %>" data-formationName="<%=formation.getFormation_name()%>">
+										<%} %>
+											<div class="foramtionName"><%=formation.getFormation() %></div>
+											<div class="formationTitle"><%=formation.getFormation_name() %></div>
+										</div>
+									<% firstFormation = false;}} %>
+									<% if(team.getId().equals(sessionID)){ %>
+										<div class="createFormationBtn">
+											<div>새 포메이션</div>
+											<div><span class="material-symbols-outlined">add</span></div>
+										</div>
 									<%} %>
-										<div class="foramtionName"><%=formation.getFormation() %></div>
-										<div class="formationTitle"><%=formation.getFormation_name() %></div>
-									</div>
-								<% firstFormation = false;}} %>
-									<div class="creatFormation">
-										<div>새 포메이션</div>
-										<div><span class="material-symbols-outlined">add</span></div>
 									</div>
 								</div>
+								<button class="back"><span class="material-symbols-outlined">arrow_back_ios</span></button>
+								<button class="next"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
 							</div>
-							<button class="back"><span class="material-symbols-outlined">arrow_back_ios</span></button>
-							<button class="next"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
-						</div>
-						<div class="select-formation">
-							<div id="field">
-								<div class="player-card" data-cardid="1"></div>
-								<div class="player-card" data-cardid="2"></div>
-								<div class="player-card" data-cardid="3"></div>
-								<div class="player-card" data-cardid="4"></div>
-								<div class="player-card" data-cardid="5"></div>
-								<div class="player-card" data-cardid="6"></div>
-								<div class="player-card" data-cardid="7"></div>
-								<div class="player-card" data-cardid="8"></div>
-								<div class="player-card" data-cardid="9"></div>
-								<div class="player-card" data-cardid="10"></div>
-								<div class="player-card" data-cardid="11"></div>
-							</div>
-							<div class="formation-info">
-							<% for(int i=0; i<11; i++){ %>
-								<div class="formation-players">
-									<div class="for-player-img"><img alt="선수사진" src="png/son.jpg"></div>
-									<div>이름</div>
+							<div class="select-formation">
+								<div class="field">
+									<div class="player-card showPlayer" data-cardid="0"></div>
+									<div class="player-card showPlayer" data-cardid="1"></div>
+									<div class="player-card showPlayer" data-cardid="2"></div>
+									<div class="player-card showPlayer" data-cardid="3"></div>
+									<div class="player-card showPlayer" data-cardid="4"></div>
+									<div class="player-card showPlayer" data-cardid="5"></div>
+									<div class="player-card showPlayer" data-cardid="6"></div>
+									<div class="player-card showPlayer" data-cardid="7"></div>
+									<div class="player-card showPlayer" data-cardid="8"></div>
+									<div class="player-card showPlayer" data-cardid="9"></div>
+									<div class="player-card showPlayer" data-cardid="10"></div>
 								</div>
-							<% } %>
+								<div class="formation-info">
+								</div>
 							</div>
-						</div> <!-- class="select-formation" -->
-					</div>
+						</div><!-- class="showFormation" -->
+						<div class="createFormation">
+							<div>
+								<select id="selectFormation">
+									<option>3-1-4-2</option>
+									<option>4-1-4-1</option>
+									<option>4-4-2</option>
+								</select>
+								<input type="text" />
+								<button class="cancleCreateFormation"><span class="material-symbols-outlined">undo</span></button>
+								<button class="saveFormation"><span class="material-symbols-outlined">save</span></button>
+							</div>
+							<div class="select-formation">
+								<div class="field">
+									<div class="player-card createPlayer" data-cardid="0"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="1"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="2"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="3"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="4"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="5"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="6"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="7"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="8"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="9"><img><div class="forPlaterName"></div></div>
+									<div class="player-card createPlayer" data-cardid="10"><img><div class="forPlaterName"></div></div>
+								</div>
+								<div class="selectPlayers">
+								<% for(PlayerDTO player:playerList){ 
+									String sFilePath = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
+									if(player.getPl_pic() == null) sFilePath="png/default-profile.jpg";%>
+									<div class="formation-players">
+										<div class="for-player-img"><img alt="선수사진" src="<%=sFilePath %>" /></div>
+										<div><%=player.getId() %></div>
+									</div>
+								<%} %>
+								</div>
+							</div>
+						</div><!-- class="createFormation" -->
+					</div><!-- 포메이션 -->
 					<div class="tab-content board-content">
 						<h2>게시판칸</h2>
-					</div>
-				</div> <!-- class="team-tab-info" -->
-			</div>
-		</div>
+					</div><!-- 게시판-->
+					
+				</div><!-- class="team-tab-info" -->
+			</div><!-- class="right-info" -->
+		</div><!-- class="teamArea" -->
 	</main>
 
 	<!-- 푸터 -->
@@ -404,15 +467,7 @@
     			}
     		}
 		});
-    	//신청 취소버튼
-    	$("#staticBackdrop").on('hidden.bs.modal', function() {
-			$(".player-photo").html('<img alt="선수 사진" src="png/son.jpg">');
-			$("input[name='pl_pic']").val('');
-			$("input[name='back_num']").val('');
-			$("input[name='height']").val('');
-			$("input[name='weight']").val('');
-			$("textarea[name='pl_memo']").val('');
-		});
+    	
     });
 	</script>
 </body>

@@ -310,7 +310,7 @@ select[name="position"] {
     justify-content: center;
     cursor: pointer;
 }
-.creatFormation {
+.createFormationBtn {
 	border: 1px solid white;
 	width: 178px;
 	height: 100px;
@@ -347,7 +347,7 @@ select[name="position"] {
     width: -webkit-fill-available;
     height: -webkit-fill-available;
 }
-#field {
+.field {
 	width: 645px;
 	height: 770px;
 	position: relative;
@@ -355,13 +355,24 @@ select[name="position"] {
     background-size: 645px 770px;
 }
 .player-card {
+	border-radius: 50%;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.player-card img {
 	width: 62px;
 	height: 62px;
 	border-radius: 50%;
-	background-color: gray;
-	position: absolute;
+    background-color: #ebebeb;
 }
 .formation-info {
+	background-color: #F2F2F2;
+	width: 294px;
+}
+.selectPlayers {
 	background-color: #F2F2F2;
 	width: 294px;
 }
@@ -370,6 +381,9 @@ select[name="position"] {
 	padding: 10px 8px;
     align-items: center;
     border-bottom: 1px solid;
+}
+.for-player-img {
+	margin-right: 10px;
 }
 .for-player-img img {
 	width: 49px;
@@ -381,5 +395,13 @@ select[name="position"] {
 	font-size: 18pt;
 }
 .showFor {
-	border: 1px solid;
+	background-color: #424254;
+	color: white;
+}
+.forPlaterName {
+	width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-weight: bold;
 }
