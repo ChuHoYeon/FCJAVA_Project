@@ -52,7 +52,7 @@
 							<div class="swiper-slide">
 								<img src="img/rm1.JPG" alt="이미지 준비중">
 							</div>
-						</div>
+						</div>  
 					</div>
 				</div>
 				<h4>구장 정보</h4>

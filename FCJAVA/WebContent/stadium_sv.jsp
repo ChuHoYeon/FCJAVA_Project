@@ -175,7 +175,7 @@
 				</form>
 
 			
-			</div>
+			</div>  
 			<div class="won_box">
 				<div class="won">
 					<h3></h3>
