@@ -17,76 +17,21 @@
 <!--  -->
 
 <!--jQuery UI url-->
-<link rel="stylesheet" type="text/css" href="js/jquery-ui-1.13.2/jquery-ui.min.css" />
-<script type="text/javascript" src="js/jquery-ui-1.13.2/jquery-ui.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.13.2/jquery-ui.min.css" /> -->
+<!-- <script type="text/javascript" src="js/jquery-ui-1.13.2/jquery-ui.min.js"></script> -->
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-<script src="js/teamlist.js"></script>
-
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"  
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 <link rel="stylesheet" type="text/css" href="css/teamlist.css">
 <!-- stadium -->
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" /><!-- 슬라이드 -->
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script><!-- 슬라이드 -->
 <link rel="stylesheet" href="./css/pj.css">
 <!-- <link href="css/btn.css"rel= "stylesheet"type="text/css"> -->
-<script defer src="./js/teamlist.js"></script>
+<script defer src="./js/stadium_pj.js"></script>
 <script defer src="./js/pj.js"></script>
 <link rel="stylesheet" type="text/css" href="css/checkbox.css">
-	<script>
-$(function () {
-	
-	$('.checkbox_class').change(function() {
-		 
-		  var checkedCount = 0;
-		  
-		 
-		  $('.checkbox_class').each(function() {
-		    if ($(this).prop('checked')) {
-		      checkedCount++;
-		    }
-		  });
-		  
-		  // 4개 이상이 선택된 경우 경고창 표시
-		  if (checkedCount >= 4) {
-		    alert("최대 이용시간은 3");
-		    $(this).prop('checked', false); 
-		    return;
-		  }
-		  
 
-		});
-	$(function () {
-	    $('.checkbox_class').change(function() {
-	        var selectedTimes = []; // 선택된 시간을 저장할 배열
-	        var totalAmount = 0; // 총 금액을 저장할 변수
-	        
-	     
-	        $('.checkbox_class:checked').each(function() {
-	            var time = $(this).next().text(); // 해당 체크박스의 레이블 텍스트(시간) 가져오기
-	            selectedTimes.push(time); // 선택된 시간 배열에 추가
-	            
-	            // 시간에 따른 금액 계산을 하여 총 금액
-	            totalAmount += 30000;
-	        });
-	        
-	        // 선택된 시간과 총 금액을 숨겨진 인풋 요소의 값으로 설정하여 다음 페이지로 전달
-	        $('#selectedTimes').val(selectedTimes.join(','));
-	        $('#totalAmount').val(totalAmount);
-	        
-	        // 선택된 시간과 총 금액
-	        $('.won h3').text(totalAmount.toLocaleString() + " 원");
-	    });
-	});
-});
-
-//
-
-
-
-</script>
 <title></title>
 </head>
 <body>
@@ -230,7 +175,7 @@ $(function () {
 				</form>
 
 			
-			</div>
+			</div>  
 			<div class="won_box">
 				<div class="won">
 					<h3></h3>

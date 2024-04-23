@@ -52,11 +52,19 @@
 							<div class="swiper-slide">
 								<img src="img/rm1.JPG" alt="이미지 준비중">
 							</div>
-						</div>
+						</div>  
 					</div>
 				</div>
 				<h4>구장 정보</h4>
-				<div class="main_bottom">222</div>
+				<div class="main_bottom"><table>
+						<tr>
+							<th><img src="png/parking.png" width="50px;"> 무료 주차</th>
+							<th><img src="png/size.png"width="50px;">구장 크기: 110X55M</th>
+							<th><img src="png/restrooms.png"width="50px;">개방 화장실</th>
+							<th><img src="png/football.png"width="50px;">축구공 대여 O</th>
+						</tr>
+					</table>
+				</div>
 				<div class="main_bottom1">
 				<h4>주의 사항</h4>	
 				<h5>1.사용 종료 후 소등 및 구장문 잠금 필수입니다. 잠금 미흡하여 사고 발생 시, 책임을 물을 수있습니다.</h5>
@@ -118,12 +126,20 @@
 					</div>
 				</div>
 				<div class="apply_btn_area">
-					<button type="button" class="apply_btn_area">예약 확정</button>
+					<button type="button" class="apply_btn" onclick="confirmReservation()">예약 확정</button>
 				</div>
 
 			</aside>
 		</div>
-	
+	 <script>
+        function confirmReservation() {
+            if (confirm('예약을 확정하시겠습니까?')) {
+                alert('예약이 확정되었습니다.');
+            } else {
+                alert('예약이 취소되었습니다.');
+            }
+        }
+    </script>
 	
 
 
