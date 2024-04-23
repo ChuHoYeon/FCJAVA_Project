@@ -31,12 +31,13 @@ public class TeamApplyAction implements DBinterface {
 		String id = multi.getParameter("id");
 		String pl_pic = multi.getFilesystemName(file1);//실제 서버에 저장되는 파일명
 		String back_num = multi.getParameter("back_num");
+		String position = multi.getParameter("position");
 		String pl_memo = multi.getParameter("pl_memo");
 		String height = multi.getParameter("height");
 		String weight = multi.getParameter("weight");
 		
 		TeamApply teamApply = TeamApply.getTeamApply();
-		teamApply.insertTeamApply(t_num, id, pl_pic, back_num, pl_memo, height, weight);
+		teamApply.insertTeamApply(t_num, id, pl_pic, back_num, position, pl_memo, height, weight);
 
 		url = "fcjava.team?page=detail&teamNumber="+t_num;
 		return url;

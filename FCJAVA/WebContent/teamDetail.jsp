@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.fcjava.dto.TeamDTO" %>
 <%@ page import="com.fcjava.dto.PlayerDTO" %>
+<%@ page import="com.fcjava.dto.TeamFormationDTO" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Arrays" %>
@@ -9,6 +10,7 @@
 	String sessionID = (String)session.getAttribute("ID");
 	TeamDTO team = (TeamDTO) request.getAttribute("team");
 	List<PlayerDTO> playerList = (List<PlayerDTO>) request.getAttribute("playerList");
+	List<TeamFormationDTO> teamFormations = (List<TeamFormationDTO>) request.getAttribute("teamFormations");
 	
 	int year = team.getT_c_day().getYear()+1900;
 	int month = team.getT_c_day().getMonth()+1;
@@ -22,6 +24,11 @@
 	String savePath = "/png/playerPhoto";
 	ServletContext context = getServletContext();
 	String sRealPath = context.getRealPath(savePath);
+
+	String formationChk = "";
+	String formationName = "";
+	boolean firstFormation = true;
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -57,7 +64,7 @@
 		        	<input type="hidden" name="id" value="<%= sessionID %>" />
 		        	<div class="photo-area">
 		        		<div class="player-photo">
-		        			<img alt="선수 사진" src="png/son.jpg">
+		        			<img alt="선수 사진" src="png/default-profile.jpg">
 		        		</div>
 		        		<div class="photo-change-label">
 			        		<label for="pl_pic">사진 변경</label>
@@ -66,15 +73,22 @@
 		        	</div>
 		        	<div class="player-info">
 		        		<label for="back_num">희망 등번호</label>
-		        		<input type="text" id="back_num" name="back_num"/>
-		        		<label for="height">키(선택사항)</label>
-		        		<input type="text" id="height" name="height"/>
-		        		<label for="weight">몸무게(선택사항)</label>
-		        		<input type="text" id="weight" name="weight"/>
+		        		<input type="text" id="back_num" name="back_num" maxlength="3" placeholder="최대 숫자3글자"/>
+		        		<label for="position">희망 포지션</label>
+		        		<select name="position">
+		        			<option value="공격수">공격수</option>
+		        			<option value="미드필더">미드필더</option>
+		        			<option value="수비수">수비수</option>
+		        			<option value="골키퍼">골키퍼</option>
+		        		</select>
+		        		<label for="height">키</label>
+		        		<input type="text" id="height" name="height" maxlength="3" placeholder="선택사항"/>
+		        		<label for="weight">몸무게</label>
+		        		<input type="text" id="weight" name="weight" maxlength="3" placeholder="선택사항"/>
 		        	</div>
-		        	<div>
-		        		<p>선수소개(선택사항)</p>
-		        		<textarea id="pl_memo" name="pl_memo"></textarea>
+		        	<div class="player-intro">
+		        		<p>선수소개</p>
+		        		<textarea id="pl_memo" name="pl_memo" placeholder="선택사항" maxlength="50"></textarea>
 		        	</div>
 		        </div>
 		      </div>
@@ -170,7 +184,7 @@
 							String playerDate = p_year+"/"+p_month+"/"+p_date;
 	
 							String sFilePath = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
-							if(player.getPl_pic() == null) sFilePath="png/son.jpg";
+							if(player.getPl_pic() == null) sFilePath="png/default-profile.jpg";
 						%>
 							<li class="player">
 								<div class="player-name">
@@ -204,7 +218,54 @@
 						<h2>기록칸</h2>
 					</div>
 					<div class="tab-content formation-content">
-						<h2>포메이션칸</h2>
+						<div class="formation-box">
+							<div class="formation-slide">
+								<div class="team-formation-list">
+								<% for(TeamFormationDTO formation : teamFormations) { 
+									if(!formationName.equals(formation.getFormation_name()) && !formationChk.equals(formation.getFormation()) ) {
+										formationName = formation.getFormation_name();
+										formationChk = formation.getFormation();
+										if(firstFormation){%>
+									<div class="savedformation showFor" data-formation="<%=formation.getFormation() %>">
+									<%}else{ %>
+									<div class="savedformation" data-formation="<%=formation.getFormation() %>">
+									<%} %>
+										<div class="foramtionName"><%=formation.getFormation() %></div>
+										<div class="formationTitle"><%=formation.getFormation_name() %></div>
+									</div>
+								<% firstFormation = false;}} %>
+									<div class="creatFormation">
+										<div>새 포메이션</div>
+										<div><span class="material-symbols-outlined">add</span></div>
+									</div>
+								</div>
+							</div>
+							<button class="back"><span class="material-symbols-outlined">arrow_back_ios</span></button>
+							<button class="next"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+						</div>
+						<div class="select-formation">
+							<div id="field">
+								<div class="player-card" data-cardid="1"></div>
+								<div class="player-card" data-cardid="2"></div>
+								<div class="player-card" data-cardid="3"></div>
+								<div class="player-card" data-cardid="4"></div>
+								<div class="player-card" data-cardid="5"></div>
+								<div class="player-card" data-cardid="6"></div>
+								<div class="player-card" data-cardid="7"></div>
+								<div class="player-card" data-cardid="8"></div>
+								<div class="player-card" data-cardid="9"></div>
+								<div class="player-card" data-cardid="10"></div>
+								<div class="player-card" data-cardid="11"></div>
+							</div>
+							<div class="formation-info">
+							<% for(int i=0; i<11; i++){ %>
+								<div class="formation-players">
+									<div class="for-player-img"><img alt="선수사진" src="png/son.jpg"></div>
+									<div>이름</div>
+								</div>
+							<% } %>
+							</div>
+						</div> <!-- class="select-formation" -->
 					</div>
 					<div class="tab-content board-content">
 						<h2>게시판칸</h2>
@@ -221,11 +282,12 @@
 	<script src="js/teamDetail.js"></script>
 	<!-- bootstrap js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- chart.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 	
 	<script>
     $(document).ready(function(){
-       	const sessionID = <%= sessionID %>;//로그인한 아이디
+       	const sessionID = '<%= sessionID %>';//로그인한 아이디
        	const t_num = "<%= team.getT_num() %>"; //팀 번호
        	const teamName = "<%= team.getT_name() %>"; //팀 이름
        	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
@@ -233,54 +295,81 @@
        	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
        	const ages = JSON.parse('<%= Arrays.toString(ages) %>');
        	const positions = JSON.parse('<%= Arrays.toString(positions) %>');
+       	const genderCt = $('#genderChart');
+       	const ageCt = $('#ageChart');
+       	const positionCt = $('#positionChart');
        	
-       	
+       	//가입인원 max시 가입버튼 비활성화
        	if(nowCount >= maxCount) {
        		$(".applyleaveBtn").prop('disabled', true);
        		$(".applyleaveBtn").css('cursor', 'auto');
        		$(".stopApply").html("<p>더이상 가입할 수 없습니다.</p>");
        	}
+       	
        	//성별 차트
-       	const genderCt = $('#genderChart');
-       	const ageCt = $('#ageChart');
-       	const positionCt = $('#positionChart');
        	const genderData = {
        		labels: ['남','여'],
        		datasets: [{
-       			label: ['남','여'],
        			data: genders,
-       			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)'],
+       			backgroundColor: ['rgba(54, 162, 235, 1)','rgba(255, 99, 132, 1)'],
        			hoverOffset: 4
        		}]
        	};
+       	const genderChart = new Chart(genderCt, {
+       	  type: 'doughnut',
+       	  data: genderData,
+       	  options: {
+       		  borderWidth: 0
+       	  },
+       	});
+       	//나이 차트
        	const ageData = {
        		labels: ['10대','20대','30대','40대','50대','60대 이상'],
        		datasets: [{
-       			label: ['나이'],
        			data: ages,
        			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(203, 170, 203, 1)','rgba(198, 219, 218, 1)'],
        			hoverOffset: 4
        		}]
        	};
-       	const positioData = {
+       	const ageChart = new Chart(ageCt, {
+       	  type: 'doughnut',
+       	  data: ageData,
+       	  options: {
+       		  plugins: {
+       			  legend: {display: false},
+       			  title: {
+       				  display: true,
+       				  text: '선수 나이대'
+       			  }
+       		  },
+       		  borderWidth: 0
+       	  },
+       	  borderJoinStyle: 'round'
+       	});
+       	//포지션 차트
+       	const positionData = {
        		labels: ['공격수','미드필더','수비수','골키퍼'],
        		datasets: [{
-       			label: ['포지션'],
        			data: positions,
        			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)'],
        		}]
        	};
-       	const genderChart = new Chart(genderCt, {
-       	  type: 'doughnut',
-       	  data: genderData
-       	});
-       	const agerChart = new Chart(ageCt, {
-       	  type: 'doughnut',
-       	  data: ageData
-       	});
        	const positionChart = new Chart(positionCt, {
        	  type: 'bar',
-       	  data: positioData
+       	  data: positionData,
+       	  options: {
+       		  plugins: {
+       			  legend: {display: false},
+       			  title: {
+       				  display: true,
+       				  text: '선호 포지션'
+       			  }
+       		  },
+       		  scales: {
+       			  x: { grid: {display: false} },
+       			  y: { grid: {display: false}, min: 0, ticks: {stepSize: 1} }
+       		  }
+       	  }
        	});
        	
     	//가입하기 버튼
@@ -292,7 +381,6 @@
         				url : 'fcjava.team?page=teamApplyCheck',
            				data: {id : sessionID},
            				success : function(result) {
-           					console.log(result);
            					if(result.indexOf("OK") != -1){
            	        			$("#staticBackdrop").modal('show');
            					} else {
@@ -324,23 +412,6 @@
 			$("input[name='height']").val('');
 			$("input[name='weight']").val('');
 			$("textarea[name='pl_memo']").val('');
-		});
-
-		$("#applygoing").on("submit", function(event) {
-			let check = false;
-			const back_num = $("input[name='back_num']").val();
-			
-			if(back_num == '') {
-				alert("희망 등번호를 입력해주세요");
-				check = false
-			} else {
-				alert("가입되었습니다.");
-				check = true
-			}
-			
-			if(!check) {
-				event.preventDefault(); // 폼 제출 중단
-			}
 		});
     });
 	</script>
