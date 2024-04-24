@@ -41,7 +41,9 @@
 		<div class="myteamlabel">구장 목록</div>
 		<div class="statbox"></div>
 		<form class="stm_teamsearch">
-		<a href="stadium_import1.jsp">구장 등록</a>
+		<div>
+		<a href="stadium_import1.jsp"><input type="button" id="chkSearch" value="구장등록" /></a>
+		</div>
 			<div class="slabel">
 				<h4>지역</h4>
 				<input type="checkbox" id="ckb_Gyeonggi" value="Gyeonggi" /> 
@@ -66,7 +68,8 @@
 			<div id="city2"></div>
 			<div class="slabel">
 				<h4>구장 이름</h4>
-				<input type="text" id="input_tname" /> <input type="button" id="chkSearch" value="검색하기" /> 
+				<input type="text" id="input_tname" />
+				<input type="button" id="chkSearch" value="검색하기" /> 
 				<input type="reset" id="chkReset"value="초기화" /> 
 				<label for="chkReset" id="resetIcon" class="material-symbols-outlined"> refresh </label>
 			</div>
@@ -78,8 +81,11 @@
 		<%
       	List<StadiumDTO> stadiumList = (List<StadiumDTO>)request.getAttribute("stadiums");
         if (stadiumList != null) {
-            for (StadiumDTO stadium : stadiumList) {
+        	int a = 0;
             int i = 0;
+            for (StadiumDTO stadium : stadiumList) {
+            a++;
+
             %>
 		<li class="infor">
 			<div class="swiper">
@@ -130,41 +136,42 @@
 						<input type='date' name="date" id='soccerDate1' />
 				</div>
 					<div class="box-wrap">
-						<input type="checkbox" id="stm_btn6<%= i %>" name="chkbox" value="1" class="checkbox_class" /> 
-						<label for="stm_btn6<%= i %>" id="custom_button_label" class="checkbox_label">06:00</label> 
-						
-						<input type="checkbox" id="stm_btn7<%= i %>" name="chkbox" value="2" class="checkbox_class" />
-				    	 <label for="stm_btn7<%= i %>" id="custom_button_label"	class="checkbox_label">07:00</label>
-						  
-						 <input type="checkbox"	id="stm_btn8<%= i %>" name="chkbox" value="3" class="checkbox_class" />
-						<label for="stm_btn8<%= i %>" id="custom_button_label" class="checkbox_label">08:00</label>
-						
-						 <input type="checkbox"	id="stm_btn9<%= i %>" name="chkbox" value="4" class="checkbox_class" />
-						<label for="stm_btn9<%= i %>" id="custom_button_label" class="checkbox_label">09:00</label>
-						
-						 <input type="checkbox" id="stm_btn10<%= i %>" name="" value="" class="checkbox_class" />
-						<label for="stm_btn10<%= i %>" id="custom_button_label" class="checkbox_label">10:00</label>
-						
-						 <input type="checkbox"	id="stm_btn11<%= i %>" name="" value="" class="checkbox_class" />
-						<label for="stm_btn11<%= i %>" id="custom_button_label"class="checkbox_label">11:00</label>
+						<input type="checkbox" id="stm_btn6<%= a %>" name="chkbox" value="1" class="checkbox_class" />
 						 
-						<input type="checkbox"	id="stm_btn18<%= i %>" name="" value="" class="checkbox_class" />
-						<label for="stm_btn18<%= i %>" id="custom_button_label" class="checkbox_label">18:00</label> 
+						<label for="stm_btn6<%= a %>" id="custom_button_label" class="checkbox_label">06:00</label>
 						
-						<input type="checkbox" id="stm_btn19<%= i %>" name="" value="" class="checkbox_class" />
-						<label for="stm_btn19<%= i %>" id="custom_button_label"class="checkbox_label">19:00</label> 
+						<input type="checkbox" id="stm_btn7<%= a %>" name="chkbox" value="2" class="checkbox_class"/>
+				    	 <label for="stm_btn7<%= a %>" id="custom_button_label"	class="checkbox_label">07:00</label>
+						  
+						 <input type="checkbox"	id="stm_btn8<%= a %>" name="chkbox" value="3" class="checkbox_class" />
+						<label for="stm_btn8<%= a %>" id="custom_button_label" class="checkbox_label">08:00</label>
 						
-						<input type="checkbox"	id="stm_btn20<%= i %>" name="" value="" class="checkbox_class" />
-						<label for="stm_btn20<%= i %>" id="custom_button_label"	class="checkbox_label">20:00</label>
+						 <input type="checkbox"	id="stm_btn9<%= a %>" name="chkbox" value="4" class="checkbox_class" />
+						<label for="stm_btn9<%= a %>" id="custom_button_label" class="checkbox_label">09:00</label>
 						
-						 <input type="checkbox" id="stm_btn21<%= i %>" name="" value="" class="checkbox_class" />
-						<label for="stm_btn21<%= i %>" id="custom_button_label"	class="checkbox_label">21:00</label> 
+						 <input type="checkbox" id="stm_btn10<%= a %>" name="" value="" class="checkbox_class" />
+						<label for="stm_btn10<%= a %>" id="custom_button_label" class="checkbox_label">10:00</label>
 						
-						<input type="checkbox"	id="stm_btn22<%= i %>" name="" value="" class="checkbox_class" />
-						<label for="stm_btn22<%= i %>" id="custom_button_label" class="checkbox_label">22:00</label> 
+						 <input type="checkbox"	id="stm_btn11<%= a %>" name="" value="" class="checkbox_class" />
+						<label for="stm_btn11<%= a %>" id="custom_button_label"class="checkbox_label">11:00</label>
+						 
+						<input type="checkbox"	id="stm_btn18<%= a %>" name="" value="" class="checkbox_class" />
+						<label for="stm_btn18<%= a %>" id="custom_button_label" class="checkbox_label">18:00</label> 
 						
-						<input type="checkbox"id="stm_btn23<%= i %>" name="" value="" class="checkbox_class" />
-						<label for="stm_btn23<%= i %>" id="custom_button_label"class="checkbox_label">23:00</label>
+						<input type="checkbox" id="stm_btn19<%= a %>" name="" value="" class="checkbox_class" />
+						<label for="stm_btn19<%= a %>" id="custom_button_label"class="checkbox_label">19:00</label> 
+						
+						<input type="checkbox"	id="stm_btn20<%= a %>" name="" value="" class="checkbox_class" />
+						<label for="stm_btn20<%= a %>" id="custom_button_label"	class="checkbox_label">20:00</label>
+						
+						 <input type="checkbox" id="stm_btn21<%= a %>" name="" value="" class="checkbox_class" />
+						<label for="stm_btn21<%= a %>" id="custom_button_label"	class="checkbox_label">21:00</label> 
+						
+						<input type="checkbox"	id="stm_btn22<%= a %>" name="" value="" class="checkbox_class" />
+						<label for="stm_btn22<%= a %>" id="custom_button_label" class="checkbox_label">22:00</label> 
+						
+						<input type="checkbox"id="stm_btn23<%= a %>" name="" value="" class="checkbox_class" />
+						<label for="stm_btn23<%= a %>" id="custom_button_label"class="checkbox_label">23:00</label>
 					</div>
 
 					<input type="hidden" name="selectedTimes" id="selectedTimes">
@@ -187,8 +194,10 @@
 				i++;
           }}%>
 	</ul>
+	
 
 	<jsp:include page="footerPage.jsp" />
 
 </body>
+
 </html>

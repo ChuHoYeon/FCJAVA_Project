@@ -43,7 +43,7 @@ public class Stadium_Controll extends HttpServlet {
 		else if (pageNumber.equals("3")) {
 			//구장 상세 -booking
 			System.out.println("3번 성공");
-			connection = Stadium_Nextboo.getstadium();//
+			connection = Stadium_Nextboo.getstadium();
 			try {
 				url = connection.DBconnection(request, response);
 			} catch (Exception e) {
@@ -53,4 +53,5 @@ public class Stadium_Controll extends HttpServlet {
 			request.getRequestDispatcher(url).forward(request, response);
 		}
 	}
+	
 }

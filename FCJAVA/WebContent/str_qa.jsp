@@ -70,8 +70,8 @@
 		ArrayList<qa> bob = user.woob1();
 	%>
 
-     <div class='str_qa_box'>  
-     	<div class='image-container'>  
+     <div class='str_qa_box'>
+     	<div class='image-container'>
 		<%
 		for(qa data : bob) {
 			data.gettitle();
