@@ -1,3 +1,5 @@
+let $createPlayerImgSrc = null;
+let $createPlayerName = null;
 //선수 소개 팝오버
 document.addEventListener('DOMContentLoaded', function() {
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -224,11 +226,93 @@ $(document).ready(function(){
 			});
 		}
 	}
+	//포메이션 변경시 배치이동
 	$('#selectFormation').on('change', function() {
 		selectFormation($(this).val());
 	});
+	//뒤로가기,취소버튼
 	$('.cancleCreateFormation').on('click', function() {
-		$('.showFormation').show();
-		$('.createFormation').hide();
+		let isCancle = confirm('저장을 취소하시겠습니까?');
+		if(isCancle){
+			$('.showFormation').show();
+			$('.createFormation').hide();
+			$('.createPlayer').each(function() {
+				$(this).find('img').attr('src','png/add.svg');
+				$(this).find('.forPlaterName').text('');
+			});
+			$('.selectPlayers .formation-players').each(function() {
+				$(this).removeClass('selectedPlayer');
+			});
+		}
 	});
+	//포메이션 저장
+	$('#inFormation').on('submit', function() {
+		let formationSaveKey = true;
+		if($('input[name="formation_name"]').val() == null || $('input[name="formation_name"]').val() == ''){
+			alert('포메이션이름을 입력해 주세요');
+			return false;
+		}
+		$('.createPlayer').each(function() {
+			if($(this).find('input[name="player_id"]').val() == '') {
+				formationSaveKey = false;
+				alert('전부 채워주세요');
+				return false;
+			}
+		});
+		if(formationSaveKey) {
+			alert('포메이션을 저장했습니다.');
+			return true;
+		}else {
+			return false;
+		}
+	})
+	let $player_id = null;
+	$('.createPlayer').on('click', function() {
+		$createPlayerImgSrc = $(this).find('img');
+        $createPlayerName = $(this).find('.forPlaterName');
+        $player_id = $(this).find('input[name="player_id"]');
+        $('.createPlayer').find('img').removeClass('focus-player');
+        $(this).find('img').addClass('focus-player');
+	});
+	$('.selectPlayers .formation-players').on('click', function(event) {
+		if($createPlayerImgSrc != null && $createPlayerName != null) {
+			let selectPlayerImgSrc = $(this).find('.for-player-img img').attr('src');
+			let selectPlayerName = $(this).find('.for-player-name').text();
+			let check = true;
+			$('.createPlayer').each(function() {
+				if($(this).find('.forPlaterName').text() == selectPlayerName) {
+					check = false;
+					return false;
+				}
+			});
+			if (check) {
+				$createPlayerImgSrc.attr('src', selectPlayerImgSrc);
+				$createPlayerName.text(selectPlayerName);
+				$player_id.val(selectPlayerName);
+				$('.createPlayer').find('img').removeClass('focus-player');
+				isSelectedPlayer();
+			}
+		}
+	});
+});
+function isSelectedPlayer() {
+	$('.selectPlayers .formation-players').removeClass('selectedPlayer');
+	
+	$('.selectPlayers .formation-players').each(function() {
+		let isSelectedPlayerName = $(this).find('.for-player-name').text();
+		let isSelectedPlayer = $(this);
+		$('.createPlayer').each(function() {
+			if($(this).find('.forPlaterName').text() == isSelectedPlayerName) {
+				isSelectedPlayer.addClass('selectedPlayer');
+			}
+		});
+	});
+}
+$(document).on('click', function(event) {
+    // 클릭된 요소가 .createPlayer 또는 .formation-players 요소가 아닌 경우
+    if (!$(event.target).closest('.createPlayer').length && !$(event.target).closest('.formation-players').length) {
+        $createPlayerImgSrc = null;
+        $createPlayerName = null;
+        $('.createPlayer').find('img').removeClass('focus-player');
+    }
 });

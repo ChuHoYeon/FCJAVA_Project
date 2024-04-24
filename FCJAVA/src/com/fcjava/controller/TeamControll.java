@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fcjava.action.TeamApplyAction;
 import com.fcjava.action.TeamApplyCheckAction;
+import com.fcjava.action.TeamCreateFormation;
 import com.fcjava.action.TeamDetailAction;
 import com.fcjava.action.TeamSecessionAction;
 import com.fcjava.controller.interfaces.DBinterface;
@@ -59,6 +60,18 @@ public class TeamControll extends HttpServlet {
 		else if(pageNumber.equals("secession")) {
 			//팀 탈퇴
 			connection = TeamSecessionAction.getTeamSecessionAction();
+			try {
+				url = connection.DBconnection(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		else if(pageNumber.equals("createFormation")) {
+			//포메이션 생성
+			connection = TeamCreateFormation.getTeamCreateFormation();
 			try {
 				url = connection.DBconnection(request, response);
 			} catch (Exception e) {

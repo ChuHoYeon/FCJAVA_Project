@@ -375,12 +375,21 @@ select[name="position"] {
 .selectPlayers {
 	background-color: #F2F2F2;
 	width: 294px;
+	height: 770px;
+    overflow: auto;
+}
+.selectPlayers .formation-players {
+	cursor: pointer;
 }
 .formation-players {
 	display: flex;
 	padding: 10px 8px;
     align-items: center;
     border-bottom: 1px solid;
+    background-color: #F2F2F2;
+}
+.formation-players:last-of-type {
+	border: none;
 }
 .for-player-img {
 	margin-right: 10px;
@@ -404,4 +413,13 @@ select[name="position"] {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	font-weight: bold;
+}
+.createPlayer {
+	cursor: pointer;
+}
+.focus-player {
+	border: 2px solid red;
+}
+.selectedPlayer {
+    filter: brightness(0.5);
 }

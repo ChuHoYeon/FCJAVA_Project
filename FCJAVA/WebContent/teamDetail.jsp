@@ -1,9 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="org.json.simple.JSONArray"%>
-<%@page import="org.json.simple.JSONValue"%>
-<%@page import="org.json.simple.parser.JSONParser"%>
 <%@page import="org.json.simple.JSONObject"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ page import="com.fcjava.dto.TeamDTO" %>
 <%@ page import="com.fcjava.dto.PlayerDTO" %>
 <%@ page import="com.fcjava.dto.TeamFormationDTO" %>
@@ -41,7 +38,6 @@
 	    jsonFormation.put("position_num", formation.getPosition_num());
 	    jsonFormation.put("player_id", formation.getPlayer_id());
 	    for(PlayerDTO player : playerList) {
-
 	    	if(player.getId().equals(formation.getPlayer_id())) { 
 	    		if(player.getPl_pic() !=null){
 	    			jsonFormation.put("player_pic", "/FCJAVA/png/playerPhoto/"+player.getPl_pic());break;
@@ -292,41 +288,88 @@
 							</div>
 						</div><!-- class="showFormation" -->
 						<div class="createFormation">
-							<div>
-								<select id="selectFormation">
-									<option>3-1-4-2</option>
-									<option>4-1-4-1</option>
-									<option>4-4-2</option>
-								</select>
-								<input type="text" />
-								<button class="cancleCreateFormation"><span class="material-symbols-outlined">undo</span></button>
-								<button class="saveFormation"><span class="material-symbols-outlined">save</span></button>
-							</div>
-							<div class="select-formation">
-								<div class="field">
-									<div class="player-card createPlayer" data-cardid="0"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="1"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="2"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="3"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="4"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="5"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="6"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="7"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="8"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="9"><img><div class="forPlaterName"></div></div>
-									<div class="player-card createPlayer" data-cardid="10"><img><div class="forPlaterName"></div></div>
+							<form id="inFormation" action="fcjava.team?page=createFormation" method="post">
+								<input type="hidden" name="t_num" value="<%=team.getT_num() %>"/>
+								<div>
+									<select id="selectFormation" name="formation">
+										<option>3-1-4-2</option>
+										<option>4-1-4-1</option>
+										<option>4-4-2</option>
+									</select>
+									<input type="text" name="formation_name"/>
+									<button type="button" class="cancleCreateFormation"><span class="material-symbols-outlined">undo</span></button>
+									<button type="submit" class="saveFormation"><span class="material-symbols-outlined">save</span></button>
 								</div>
-								<div class="selectPlayers">
-								<% for(PlayerDTO player:playerList){ 
-									String sFilePath = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
-									if(player.getPl_pic() == null) sFilePath="png/default-profile.jpg";%>
-									<div class="formation-players">
-										<div class="for-player-img"><img alt="선수사진" src="<%=sFilePath %>" /></div>
-										<div><%=player.getId() %></div>
+								<div class="select-formation">
+									<div class="field">
+										<div class="player-card createPlayer" data-cardid="0">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id" />
+										</div>
+										<div class="player-card createPlayer" data-cardid="1">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id" />
+										</div>
+										<div class="player-card createPlayer" data-cardid="2">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id"/>
+										</div>
+										<div class="player-card createPlayer" data-cardid="3">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id"/>
+										</div>
+										<div class="player-card createPlayer" data-cardid="4">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id"/>
+										</div>
+										<div class="player-card createPlayer" data-cardid="5">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id"/>
+										</div>
+										<div class="player-card createPlayer" data-cardid="6">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id"/>
+										</div>
+										<div class="player-card createPlayer" data-cardid="7">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id"/>
+										</div>
+										<div class="player-card createPlayer" data-cardid="8">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id"/>
+										</div>
+										<div class="player-card createPlayer" data-cardid="9">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id"/>
+										</div>
+										<div class="player-card createPlayer" data-cardid="10">
+											<img src="png/add.svg" />
+											<div class="forPlaterName"></div>
+											<input type="hidden" name="player_id"/>
+										</div>
 									</div>
-								<%} %>
+									<div class="selectPlayers">
+									<% for(PlayerDTO player:playerList){ 
+										String sFilePath = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
+										if(player.getPl_pic() == null) sFilePath="png/default-profile.jpg";%>
+										<div class="formation-players">
+											<div class="for-player-img"><img alt="선수사진" src="<%=sFilePath %>" /></div>
+											<div class="for-player-name"><%=player.getId() %></div>
+										</div>
+									<%} %>
+									</div>
 								</div>
-							</div>
+							</form>
 						</div><!-- class="createFormation" -->
 					</div><!-- 포메이션 -->
 					<div class="tab-content board-content">
@@ -439,7 +482,7 @@
         $("#team-apply").on("click", function() {
         	let alrim = confirm("["+teamName+"]팀에 가입 하시겠습니까?");
         	if(alrim) {
-        		if(sessionID != null) {
+        		if(sessionID != 'null') {
         			$.ajax({
         				url : 'fcjava.team?page=teamApplyCheck',
            				data: {id : sessionID},
