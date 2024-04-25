@@ -17,6 +17,7 @@ public class TeamApplyCheckAction {
 		String id = request.getParameter("id");
 		TeamApplyCheck teamApplyCheck=TeamApplyCheck.getTeamApplyCheck();
 		int count = teamApplyCheck.applyTeamCount(id);
+		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		if(count >= 3){

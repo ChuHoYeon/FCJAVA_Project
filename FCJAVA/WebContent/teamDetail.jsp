@@ -290,73 +290,29 @@
 						<div class="createFormation">
 							<form id="inFormation" action="fcjava.team?page=createFormation" method="post">
 								<input type="hidden" name="t_num" value="<%=team.getT_num() %>"/>
-								<div>
-									<select id="selectFormation" name="formation">
-										<option>3-1-4-2</option>
-										<option>4-1-4-1</option>
-										<option>4-4-2</option>
-									</select>
-									<input type="text" name="formation_name"/>
-									<button type="button" class="cancleCreateFormation"><span class="material-symbols-outlined">undo</span></button>
-									<button type="submit" class="saveFormation"><span class="material-symbols-outlined">save</span></button>
+								<div class="formationInput">
+									<div class="input-group input-group-sm">
+										<select id="selectFormation" name="formation" class="form-select">
+											<option>3-1-4-2</option>
+											<option>4-1-4-1</option>
+											<option>4-4-2</option>
+										</select>
+										<input type="text" name="formation_name" class="form-control" placeholder="새 포메이션 이름"/>
+										<button type="button" class="cancleCreateFormation btn btn-outline-secondary"><span class="material-symbols-outlined">undo</span></button>
+										<button type="submit" class="saveFormation btn btn-outline-secondary"><span class="material-symbols-outlined">save</span></button>
+									</div>
 								</div>
 								<div class="select-formation">
 									<div class="field">
-										<div class="player-card createPlayer" data-cardid="0">
-											<img src="png/add.svg" />
+									<% for (int i=0; i<11; i++) { %>
+										<div class="player-card createPlayer" data-cardid="<%=i%>">
+											<div class="img-box">
+												<img src="png/uniform.png" />
+											</div>
 											<div class="forPlaterName"></div>
 											<input type="hidden" name="player_id" />
 										</div>
-										<div class="player-card createPlayer" data-cardid="1">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id" />
-										</div>
-										<div class="player-card createPlayer" data-cardid="2">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id"/>
-										</div>
-										<div class="player-card createPlayer" data-cardid="3">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id"/>
-										</div>
-										<div class="player-card createPlayer" data-cardid="4">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id"/>
-										</div>
-										<div class="player-card createPlayer" data-cardid="5">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id"/>
-										</div>
-										<div class="player-card createPlayer" data-cardid="6">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id"/>
-										</div>
-										<div class="player-card createPlayer" data-cardid="7">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id"/>
-										</div>
-										<div class="player-card createPlayer" data-cardid="8">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id"/>
-										</div>
-										<div class="player-card createPlayer" data-cardid="9">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id"/>
-										</div>
-										<div class="player-card createPlayer" data-cardid="10">
-											<img src="png/add.svg" />
-											<div class="forPlaterName"></div>
-											<input type="hidden" name="player_id"/>
-										</div>
+									<% } %>
 									</div>
 									<div class="selectPlayers">
 									<% for(PlayerDTO player:playerList){ 

@@ -366,7 +366,6 @@ select[name="position"] {
 	width: 62px;
 	height: 62px;
 	border-radius: 50%;
-    background-color: #ebebeb;
 }
 .formation-info {
 	background-color: #F2F2F2;
@@ -418,8 +417,29 @@ select[name="position"] {
 	cursor: pointer;
 }
 .focus-player {
-	border: 2px solid red;
+	border: 7px solid #ffc107;
 }
 .selectedPlayer {
     filter: brightness(0.5);
+}
+.formationInput {
+	width: 500px;
+	margin: 0 0 16px auto;
+}
+#selectFormation {
+	padding-right: 8px;
+}
+.formationInput input[name="formation_name"] {
+	width: 40%;
+}
+.input-group>.form-control:focus,.input-group>.form-select:focus {
+	box-shadow: none;
+	border-color: #6C757D;
+}
+.img-box {
+	height: 75px;
+	width: 75px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,6 +1,7 @@
 package com.fcjava.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ public class TeamControll extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String pageNumber = request.getParameter("page");
 		DBinterface connection;
-		String url = "";
+		String url = null;
 		
 		if(pageNumber.equals("detail")) {
 			//팀 상세
@@ -31,8 +32,6 @@ public class TeamControll extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			request.getRequestDispatcher(url).forward(request, response);
 		}
 		else if(pageNumber.equals("teamApplyCheck")) {
 			//팀 가입확인
@@ -43,7 +42,6 @@ public class TeamControll extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
 		else if(pageNumber.equals("apply")) {
 			//팀 가입
@@ -54,8 +52,6 @@ public class TeamControll extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			request.getRequestDispatcher(url).forward(request, response);
 		}
 		else if(pageNumber.equals("secession")) {
 			//팀 탈퇴
@@ -66,8 +62,6 @@ public class TeamControll extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			request.getRequestDispatcher(url).forward(request, response);
 		}
 		else if(pageNumber.equals("createFormation")) {
 			//포메이션 생성
@@ -78,8 +72,10 @@ public class TeamControll extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			request.getRequestDispatcher(url).forward(request, response);
+		}
+		
+		if(url != null) {
+			request.getRequestDispatcher(url).forward(request, response);				
 		}
 	}
 	

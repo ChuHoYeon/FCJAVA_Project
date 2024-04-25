@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: "Noto Sans KR", sans-serif;
+    box-sizing: content-box;
 }
 a {
 	text-decoration: none;
@@ -189,6 +190,7 @@ li {
     border-top: 1px solid #9b9b9b;
     background-color: #333;
    	color: white;
+   	width: 1280px;
 }
 
 .foot1 {

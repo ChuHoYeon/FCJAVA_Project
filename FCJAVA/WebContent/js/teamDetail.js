@@ -236,6 +236,7 @@ $(document).ready(function(){
 		if(isCancle){
 			$('.showFormation').show();
 			$('.createFormation').hide();
+			$('input[name="formation_name"]').val()
 			$('.createPlayer').each(function() {
 				$(this).find('img').attr('src','png/add.svg');
 				$(this).find('.forPlaterName').text('');
@@ -243,13 +244,14 @@ $(document).ready(function(){
 			$('.selectPlayers .formation-players').each(function() {
 				$(this).removeClass('selectedPlayer');
 			});
+			$("#selectFormation").prop("selectedIndex", 0);
 		}
 	});
 	//포메이션 저장
 	$('#inFormation').on('submit', function() {
 		let formationSaveKey = true;
 		if($('input[name="formation_name"]').val() == null || $('input[name="formation_name"]').val() == ''){
-			alert('포메이션이름을 입력해 주세요');
+			alert('포메이션이름을 작성해 주세요');
 			return false;
 		}
 		$('.createPlayer').each(function() {
@@ -260,7 +262,6 @@ $(document).ready(function(){
 			}
 		});
 		if(formationSaveKey) {
-			alert('포메이션을 저장했습니다.');
 			return true;
 		}else {
 			return false;
@@ -279,18 +280,24 @@ $(document).ready(function(){
 			let selectPlayerImgSrc = $(this).find('.for-player-img img').attr('src');
 			let selectPlayerName = $(this).find('.for-player-name').text();
 			let check = true;
-			$('.createPlayer').each(function() {
-				if($(this).find('.forPlaterName').text() == selectPlayerName) {
-					check = false;
-					return false;
-				}
-			});
-			if (check) {
+			if($createPlayerName.text() == selectPlayerName) {
+				check = false;
+			}
+			if(check){
+				$('.createPlayer').each(function() {
+					if($(this).find('.forPlaterName').text() == selectPlayerName) {
+						$(this).find('.forPlaterName').text('');
+						$(this).find('img').attr('src', "png/uniform.png");
+					}
+				});
 				$createPlayerImgSrc.attr('src', selectPlayerImgSrc);
 				$createPlayerName.text(selectPlayerName);
 				$player_id.val(selectPlayerName);
 				$('.createPlayer').find('img').removeClass('focus-player');
 				isSelectedPlayer();
+				$createPlayerImgSrc = null;
+				$createPlayerName = null;
+				
 			}
 		}
 	});
