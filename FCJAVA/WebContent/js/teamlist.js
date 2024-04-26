@@ -353,6 +353,7 @@ $(function () {
             }
         });
         console.log(teamName + teamFilter);
+        console.log(teamList);
     });
 
     //팀 마우스오버

@@ -6,7 +6,13 @@
 	<select id="countTeam" resultType="java.lang.Integer">
 	SELECT COUNT(*) FROM fc_java.pl_info WHERE id = #{id};
 	</select>
-	<!-- #팀 정보 -->
+	<!-- #팀 리스트 -->
+	<select id="selectTeamList" resultType="com.fcjava.dto.TeamDTO">
+	SELECT * 
+	FROM fc_java.team_info 
+	ORDER BY t_c_day DESC;
+	</select>
+	<!-- #팀 상세정보 -->
 	<select id="selectTeam" resultType="com.fcjava.dto.TeamDTO">
 	SELECT *
 	FROM fc_java.team_info

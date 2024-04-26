@@ -236,9 +236,10 @@ $(document).ready(function(){
 		if(isCancle){
 			$('.showFormation').show();
 			$('.createFormation').hide();
-			$('input[name="formation_name"]').val()
+			$('input[name="formation_name"]').val();
+			$('input[name="player_id"]').val('');
 			$('.createPlayer').each(function() {
-				$(this).find('img').attr('src','png/add.svg');
+				$(this).find('img').attr('src',"png/default-profile.jpg");
 				$(this).find('.forPlaterName').text('');
 			});
 			$('.selectPlayers .formation-players').each(function() {
@@ -287,10 +288,12 @@ $(document).ready(function(){
 				$('.createPlayer').each(function() {
 					if($(this).find('.forPlaterName').text() == selectPlayerName) {
 						$(this).find('.forPlaterName').text('');
-						$(this).find('img').attr('src', "png/uniform.png");
+						//$(this).find('img').attr('src', "png/uniform.png");
+						$(this).find('img').attr('src', "png/default-profile.jpg");
 					}
 				});
-				$createPlayerImgSrc.attr('src', selectPlayerImgSrc);
+				//$createPlayerImgSrc.attr('src', selectPlayerImgSrc);
+				$createPlayerImgSrc.attr('src', "png/uniform.png");
 				$createPlayerName.text(selectPlayerName);
 				$player_id.val(selectPlayerName);
 				$('.createPlayer').find('img').removeClass('focus-player');

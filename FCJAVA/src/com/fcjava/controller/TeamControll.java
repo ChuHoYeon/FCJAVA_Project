@@ -12,6 +12,7 @@ import com.fcjava.action.TeamApplyAction;
 import com.fcjava.action.TeamApplyCheckAction;
 import com.fcjava.action.TeamCreateFormation;
 import com.fcjava.action.TeamDetailAction;
+import com.fcjava.action.TeamListAction;
 import com.fcjava.action.TeamSecessionAction;
 import com.fcjava.controller.interfaces.DBinterface;
 
@@ -23,7 +24,17 @@ public class TeamControll extends HttpServlet {
 		DBinterface connection;
 		String url = null;
 		
-		if(pageNumber.equals("detail")) {
+		if(pageNumber.equals("list")) {
+			//팀 상세
+			connection = TeamListAction.getTeamListAction();
+			try {
+				url = connection.DBconnection(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(pageNumber.equals("detail")) {
 			//팀 상세
 			connection = TeamDetailAction.getTeamDetailAction();
 			try {

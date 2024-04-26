@@ -1,7 +1,6 @@
 package fc_java;
 
 public class Team {
-	private int number;
 	public int getNumber() {
 		return number;
 	}
@@ -74,6 +73,7 @@ public class Team {
 	public void setAge(String age) {
 		this.age = age;
 	}
+	private int number;
 	private String id;
 	private String name;
 	private String logo;

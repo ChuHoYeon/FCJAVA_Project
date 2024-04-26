@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<jsp:useBean id="db" class="fc_java.TeamDB"></jsp:useBean>
-<%@ page import="fc_java.Team"%>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.fcjava.dto.TeamDTO"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.google.gson.Gson" %>
 <%
-	ArrayList<Team> team = db.selectAllTeam();
-	int totalTeam = team.size();
+	List<TeamDTO> teamList = (List<TeamDTO>) request.getAttribute("teamList");
+	int totalTeam = teamList.size();
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	String jsonTeam = new Gson().toJson(teamList);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -26,6 +29,9 @@
     <script src="js/teamlist.js"></script>
     <link rel="stylesheet" type="text/css" href="css/teamlist.css">
 </head>
+<script>
+	let teamList = <%= jsonTeam%>;
+</script>
 <body>
     <!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
@@ -90,7 +96,7 @@
                 <div class="slabel">
                     <h4>팀이름</h4>
                     <input type="search" name="teamName" id="input_tname" placeholder="팀 이름을 입력해주세요."/>
-                    <input type="submit" id="chkSearch" value="검색하기" />
+                    <input type="button" id="chkSearch" value="검색하기" />
                     <input type="reset" id="chkReset" value="초기화" />
                     <label for="chkReset" id="resetIcon" class="material-symbols-outlined">
                         refresh
@@ -99,28 +105,29 @@
             </form> <!-- 검색구간-->
             <ul id="teamlists">
             <%
-            	for(Team teams : team) {
+            	for(TeamDTO team : teamList) {
+           		String formatDate = dateFormat.format(team.getT_c_day());
             %>
             	<li>
-	                <div class="team teamMl" data-bs-toggle="modal" data-bs-target='#Modal<%= teams.getNumber()%>'>
+	                <div class="team teamMl" data-bs-toggle="modal" data-bs-target='#Modal<%= team.getT_num()%>'>
 	                    <div class="teamlogo">
 	                        <img src="png/defaultLogo.png"/>
 	                    </div>
 	                    <div class="teamTitle">
-	                        <h2><%= teams.getName()%></h2>
+	                        <h2><%= team.getT_name()%></h2>
 	                    </div>
 	                    <div class="teamin">
 	                        <div class="teaminLeft1">
-	                            <p>연고지 : <%= teams.getCity() %></p>
-	                            <p>팀 실력 : <%= teams.getSkill() %></p>
+	                            <p>연고지 : <%= team.getHom_city() %></p>
+	                            <p>팀 실력 : <%= team.getT_skill() %></p>
 	                        </div>
 	                        <div class="teaminLeft2">
-	                            <p>활동요일 : <%= teams.getTime() %></p>
-	                            <p>생성일 : <%= teams.getCday() %></p>
+	                            <p>활동요일 : <%= team.getWeek_time() %></p>
+	                            <p>생성일 : <%= formatDate %></p>
 	                        </div>
 	                    </div>
 	                </div>
-	                <div class="modal fade" id='Modal<%= teams.getNumber() %>' tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+	                <div class="modal fade" id='Modal<%= team.getT_num() %>' tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
 		                <div class="modal-dialog modal-dialog-centered">
 		                    <div class="modal-content">
 		                        <div class="modal-body">
@@ -128,16 +135,16 @@
 			                                <img src="png/defaultLogo.png"/>
 			                            </div>
 			                            <div class="pop-info">
-			                                <h1 class="modal-title fs-5" id="ModalLabel"><%= teams.getName()%></h1>
-							                <p>연고지 : <%= teams.getCity() %></p>
-							                <p>팀 실력 : <%= teams.getSkill() %></p>
-							                <p>활동요일 : <%= teams.getTime() %></p>
-							               	<p>생성일 : <%= teams.getCday() %></p>
+			                                <h1 class="modal-title fs-5" id="ModalLabel"><%= team.getT_name()%></h1>
+							                <p>연고지 : <%= team.getHom_city() %></p>
+							                <p>팀 실력 : <%= team.getT_skill() %></p>
+							                <p>활동요일 : <%= team.getWeek_time() %></p>
+							               	<p>생성일 : <%= formatDate %></p>
 			                            </div>
 		                        </div>
 		                        <div class="modal-footer">
 		                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-		                            <a href="fcjava.team?page=detail&teamNumber=<%=teams.getNumber()%>" class="btn btn-danger" role="button">팀 이동</a>
+		                            <a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num()%>" class="btn btn-danger" role="button">팀 이동</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -153,6 +160,7 @@
             </div>
         </div>
     </section>
+    
     <!--위로가기-->
     <div id="headerUp">
         <a href="#">

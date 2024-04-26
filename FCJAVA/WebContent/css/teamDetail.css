@@ -366,6 +366,7 @@ select[name="position"] {
 	width: 62px;
 	height: 62px;
 	border-radius: 50%;
+    box-sizing: content-box;
 }
 .formation-info {
 	background-color: #F2F2F2;
@@ -412,6 +413,10 @@ select[name="position"] {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	font-weight: bold;
+	font-size: 10pt;
+    background-color: #424254;
+    color: white;
+    border-radius: 3px;
 }
 .createPlayer {
 	cursor: pointer;
@@ -424,7 +429,7 @@ select[name="position"] {
 }
 .formationInput {
 	width: 500px;
-	margin: 0 0 16px auto;
+	margin: 0 auto 16px auto;
 }
 #selectFormation {
 	padding-right: 8px;

@@ -245,8 +245,8 @@
 							<div class="formation-box">
 								<div class="formation-slide">
 									<div class="team-formation-list" data-formationdata='<%=teamFormationsJson%>'>
-									<% for(TeamFormationDTO formation : teamFormations) { 
-										if(!formationName.equals(formation.getFormation_name()) && !formationChk.equals(formation.getFormation()) ) {
+									<% for(TeamFormationDTO formation : teamFormations) {
+										if(!formationName.equals(formation.getFormation_name())) {
 											formationName = formation.getFormation_name();
 											formationChk = formation.getFormation();
 											if(firstFormation){%>
@@ -256,7 +256,7 @@
 										<%} %>
 											<div class="foramtionName"><%=formation.getFormation() %></div>
 											<div class="formationTitle"><%=formation.getFormation_name() %></div>
-										</div>
+										</div>	
 									<% firstFormation = false;}} %>
 									<% if(team.getId().equals(sessionID)){ %>
 										<div class="createFormationBtn">
@@ -307,7 +307,8 @@
 									<% for (int i=0; i<11; i++) { %>
 										<div class="player-card createPlayer" data-cardid="<%=i%>">
 											<div class="img-box">
-												<img src="png/uniform.png" />
+												<!-- <img src="png/uniform.png" /> -->
+												<img src="png/default-profile.jpg" />
 											</div>
 											<div class="forPlaterName"></div>
 											<input type="hidden" name="player_id" />

@@ -34,7 +34,7 @@ CREATE TABLE `freeborderlikes` (
 
 LOCK TABLES `freeborderlikes` WRITE;
 /*!40000 ALTER TABLE `freeborderlikes` DISABLE KEYS */;
-INSERT INTO `freeborderlikes` VALUES ('1234',21),('1234',10),('1234',23),('1234',27),('1234',20),('12345',13),('12345',14),('12345',20),('12345',28),('12345',29),('1234',32);
+INSERT INTO `freeborderlikes` VALUES ('1234',21),('1234',10),('1234',23),('1234',27),('1234',20),('12345',13),('12345',14),('12345',20),('12345',28),('12345',29),('1234',32),('1',33);
 /*!40000 ALTER TABLE `freeborderlikes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +47,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-05 18:23:07
+-- Dump completed on 2024-04-26 18:23:39

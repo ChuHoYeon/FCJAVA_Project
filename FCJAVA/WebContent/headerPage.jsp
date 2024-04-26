@@ -6,7 +6,7 @@
 	String id = request.getParameter("id");
 	String sessionID = (String) session.getAttribute("ID");
 	List<TeamDTO> myTeamList = (List<TeamDTO>) session.getAttribute("MyTeamList");
-	
+
 	if (id != null){
 	    session.setAttribute("ID",id);
 	    sessionID = (String) session.getAttribute("ID");
@@ -101,7 +101,7 @@
             </div>
             <a href="index.jsp" class="logo">FC JAVA</a>
             <ul id="headerNav">
-                <a href="teamlist.jsp">
+                <a href="fcjava.team?page=list">
                     <li>팀 </li>
                 </a>
                 <a href="fcjava.game?page=gameList">
@@ -122,7 +122,7 @@
             <div class="layerInner">
                 <ul>
                     <li><img src="png/navimg0.webp" class="navImg"></li>
-                    <li><a href="teamlist.jsp">팀목록</a></li>
+                    <li><a href="fcjava.team?page=list">팀목록</a></li>
                 </ul>
                 <ul>
                     <li><img src="png/navimg1.webp" class="navImg"></li>
