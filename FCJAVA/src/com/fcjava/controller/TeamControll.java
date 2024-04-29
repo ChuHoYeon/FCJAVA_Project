@@ -13,6 +13,7 @@ import com.fcjava.action.TeamApplyCheckAction;
 import com.fcjava.action.TeamCreateFormation;
 import com.fcjava.action.TeamDetailAction;
 import com.fcjava.action.TeamListAction;
+import com.fcjava.action.TeamSearchAction;
 import com.fcjava.action.TeamSecessionAction;
 import com.fcjava.controller.interfaces.DBinterface;
 
@@ -29,6 +30,16 @@ public class TeamControll extends HttpServlet {
 			connection = TeamListAction.getTeamListAction();
 			try {
 				url = connection.DBconnection(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(pageNumber.equals("teamSearch")) {
+			//팀 검색
+			TeamSearchAction teamSearchAction = TeamSearchAction.getTeamSearchAction();
+			try {
+				teamSearchAction.getTeamSearchList(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

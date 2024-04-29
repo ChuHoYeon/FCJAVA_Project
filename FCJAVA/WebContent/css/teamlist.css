@@ -116,20 +116,7 @@ input[type="checkbox"]:checked + .checkbox_set {
     display: inline-block;
     border-radius: 9px;
     background-color: white;
-}
-
-.teamMl {
-    margin-left: 22px;
     cursor: pointer;
-}
-
-#teamlists li:last-child {
-    margin-bottom: 50px;
-}
-
-#teamlists li {
-    margin-bottom: 30px;
-    height: 182px;
 }
 
 .teamlogo {
@@ -205,11 +192,14 @@ input[type="checkbox"]:checked + .checkbox_set {
 }
 
 #teamlists {
-    margin: 0;
+    width: 1220px;
+    margin: 0 auto 50px auto;
     padding: 0;
     list-style: none;
-    display: grid;
-    grid-template-columns: 640px 640px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 0px;
 }
 
 #headerUp {
@@ -248,4 +238,10 @@ input[type="checkbox"]:checked + .checkbox_set {
 }
 .pop-info p:first-of-type {
 	margin-top: 5px;
+}
+.notResult {
+    width: 1220px;
+    height: 180px;
+    line-height: 180px;
+    text-align: center;
 }

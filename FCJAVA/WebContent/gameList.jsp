@@ -95,7 +95,7 @@
 								<img src="https://cdn.life-sports.kr/news/photo/202401/2333_2856_3017.jpg"/>
 							</div>
 							<div class="card-title">
-								<article>
+								<article class="gameDate">
 									<p class="m"><%= startDate.getMonth()+1 %>월</p>
 									<p class="d"><%= startDate.getDate() %></p>
 								</article>
@@ -181,7 +181,7 @@
 	                			state = "<span class='status end-status'>종료</span>";
 	                		}
 	                		let str = "<li><a href='fcjava.game?page=2&game_num="+data[i].num+"' class='game-card'><div class='card-thumb'><div class='game-status'>"+state+"</div>";
-	                		let str1 = "<img src='https://cdn.life-sports.kr/news/photo/202401/2333_2856_3017.jpg'/></div><div class='card-title'><article><p class='m'> "+month+"월</p><p class='d'> "+day+" </p></article><div class='title-holder'><h3>"+data[i].name+"</h3>";
+	                		let str1 = "<img src='https://cdn.life-sports.kr/news/photo/202401/2333_2856_3017.jpg'/></div><div class='card-title'><article class='gameDate'><p class='m'> "+month+"월</p><p class='d'> "+day+" </p></article><div class='title-holder'><h3>"+data[i].name+"</h3>";
 	                		let str2 = "<p> "+hours+":"+minutes+"  •  "+data[i].place+"  • "+data[i].type+"강</p></div></div></a></li>";
 	                		
 	                		$(".conten-area").append(str+str1+str2);

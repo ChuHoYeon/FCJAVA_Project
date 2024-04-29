@@ -4,13 +4,40 @@
 <mapper namespace="user">
 	<!-- #소속된 팀 개수 -->
 	<select id="countTeam" resultType="java.lang.Integer">
-	SELECT COUNT(*) FROM fc_java.pl_info WHERE id = #{id};
+	SELECT COUNT(*) 
+	FROM fc_java.pl_info 
+	WHERE id = #{id};
 	</select>
 	<!-- #팀 리스트 -->
 	<select id="selectTeamList" resultType="com.fcjava.dto.TeamDTO">
 	SELECT * 
-	FROM fc_java.team_info 
+	FROM fc_java.team_info
 	ORDER BY t_c_day DESC;
+	</select>
+	<!-- #팀 검색 -->
+	<select id="searchTeamList" parameterType="java.util.Map" resultType="com.fcjava.dto.TeamDTO">
+	SELECT *
+    FROM fc_java.team_info
+    WHERE 1=1
+    <if test="t_name != null and t_name != ''">
+        AND t_name LIKE '%${t_name}%'
+    </if>
+    <if test="hom_city != null">
+        AND hom_city IN
+        <foreach item="city" collection="hom_city" open="(" separator="," close=")">
+            #{city}
+        </foreach>
+    </if>
+    <if test="week_time != null">
+	    AND week_time REGEXP #{week_time}
+	</if>
+    <if test="t_skill != null">
+        AND t_skill IN
+        <foreach item="skill" collection="t_skill" open="(" separator="," close=")">
+            #{skill}
+        </foreach>
+    </if>
+    ORDER BY t_c_day DESC;
 	</select>
 	<!-- #팀 상세정보 -->
 	<select id="selectTeam" resultType="com.fcjava.dto.TeamDTO">

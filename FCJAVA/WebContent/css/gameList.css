@@ -84,7 +84,7 @@ input::-webkit-search-results-decoration{
 	border-bottom-left-radius: 16px;
 	border-bottom-right-radius: 16px;
 }
-.card-title > article {
+.card-title > .gameDate {
 	position: absolute;
 	background-color: #fff;
 	top: 16px;
@@ -98,11 +98,12 @@ input::-webkit-search-results-decoration{
     border-radius: 8px;
     text-align: center;
 }
-.card-title > article > .m {
+.card-title > .gameDate > .m {
 	font-size: 14px;
 	font-weight: 700;
+	margin: 0;
 }
-.card-title > article > .d {
+.card-title > .gameDate > .d {
     font-size: 26px;
     line-height: 26px;
     font-weight: 700;

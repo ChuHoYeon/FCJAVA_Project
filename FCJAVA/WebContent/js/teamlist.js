@@ -1,359 +1,239 @@
 $(function () {
-    var team = [
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-        {
-            teamName: "FC JAVA",
-            city: "경기도",
-            week: "월수금",
-            skill: "세미프로",
-            date: "2024-02-23",
-            img: "png/teamlogo0.png",
-            teamIntro: "high simple clothes court instance ten common dream purpose invented immediately beside wheel she primitive anyway mental mass forty fat water nuts conversation without",
-        },
-    ];
-    var showTeam = 10;
+    let showTeam = 10;
     //처음 팀 불러오기
-//    for (var i = 0; (i < showTeam) & (i < team.length); i++) {
-//        $("#teamlists").append(
-//            /*html*/
-//            `<li>
-//                <div class="team" data-bs-toggle="modal" data-bs-target='#Modal${i}'>
-//                    <div class="teamlogo">
-//                        <img src="${team[i].img}"/>
-//                    </div>
-//                    <div class="teamTitle">
-//                        <h2>${team[i].teamName}</h2>
-//                    </div>
-//                    <div class="teamin">
-//                        <div class="teaminLeft1">
-//                            <p>연고지 : ${team[i].city}</p>
-//                            <p>팀 실력 : ${team[i].skill}</p>
-//                        </div>
-//                        <div class="teaminLeft2">
-//                            <p>활동요일 : ${team[i].week}</p>
-//                            <p>생성일 : ${team[i].date}</p>
-//                        </div>
-//                    </div>
-//                </div>
-//            </li>`
-//        );
-//        $("body").append(
-//            /*html*/
-//            `<div class="modal fade" id='Modal${i}' tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-//                <div class="modal-dialog modal-dialog-centered">
-//                    <div class="modal-content">
-//                        <div class="modal-body">
-//                            <div class="pop-logo">
-//                                <img src="${team[i].img}"/>
-//                            </div>
-//                            <div class="pop-info">
-//                                <h1 class="modal-title fs-5" id="ModalLabel">${team[i].teamName}</h1>
-//                                연고지 : ${team[i].city}<br>
-//                                팀 실력 : ${team[i].skill}<br>
-//                                활동요일 : ${team[i].week}<br>
-//                                생성일 : ${team[i].date}
-//                            </div>
-//                        </div>
-//                        <div class="modal-footer">
-//                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-//                            <a href="teaminfo.html" class="btn btn-danger" role="button">팀 이동</a>
-//                        </div>
-//                    </div>
-//                </div>
-//            </div>`
-//        );
-//    }
+    for (let i = 0; (i < showTeam) & (i < teamList.length); i++) {
+    	let dateObj = new Date(teamList[i].t_c_day);
+    	let year = dateObj.getFullYear();
+    	let month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+    	let day = ("0" + dateObj.getDate()).slice(-2);
+    	let formattedDate = year + "-" + month + "-" + day;
+    	
+        $("#teamlists").append(
+            /*html*/
+            `
+            <li>
+        		<div class="team" data-bs-toggle="modal" data-bs-target='#Modal${teamList[i].t_num}'>
+                    <div class="teamlogo">
+                        <img src="png/defaultLogo.png"/>
+                    </div>
+                    <div class="teamTitle">
+                        <h2>${teamList[i].t_name}</h2>
+                    </div>
+                    <div class="teamin">
+                        <div class="teaminLeft1">
+                            <p>연고지 : ${teamList[i].hom_city}</p>
+                            <p>팀 실력 : ${teamList[i].t_skill}</p>
+                        </div>
+                        <div class="teaminLeft2">
+                            <p>활동요일 : ${teamList[i].week_time}</p>
+                            <p>생성일 : ${formattedDate}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id='Modal${teamList[i].t_num}' tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+			        <div class="modal-dialog modal-dialog-centered">
+			            <div class="modal-content">
+			                <div class="modal-body">
+		                       <div class="pop-logo">
+		                            <img src="png/defaultLogo.png"/>
+		                        </div>
+		                        <div class="pop-info">
+		                            <h1 class="modal-title fs-5" id="ModalLabel">${teamList[i].t_name}</h1>
+					                <p>연고지 : ${teamList[i].hom_city}</p>
+					                <p>팀 실력 : ${teamList[i].t_skill}</p>
+					                <p>활동요일 : ${teamList[i].week_time}</p>
+					               	<p>생성일 : ${formattedDate}</p>
+		                        </div>
+			                </div>
+			                <div class="modal-footer">
+			                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+			                    <a href="fcjava.team?page=detail&teamNumber=${teamList[i].t_num}" class="btn btn-danger" role="button">팀 이동</a>
+			                </div>
+			            </div>
+	        		</div>
+			   </div>
+            </li>
+            `
+        );
+    }
     //팀개수 10미만이면 더보기 숨김
-    if (team.length <= 10) {
+    if (teamList.length <= 10) {
         $(".plusbtn").hide();
     } else {
         $(".plusbtn").show();
     }
     //더보기 누르면 10개씩 추가
     $("#team-more").click(function () {
-        for (var i = showTeam; (i < showTeam + 10) & (i < team.length); i++) {
+        for (let i = showTeam; (i < showTeam + 10) & (i < teamList.length); i++) {
+        	let dateObj = new Date(teamList[i].t_c_day);
+        	let year = dateObj.getFullYear();
+        	let month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+        	let day = ("0" + dateObj.getDate()).slice(-2);
+        	let formattedDate = year + "-" + month + "-" + day;
             $("#teamlists").append(
                 /*html*/
-                `<li>
-                    <div class="team teamMl" data-bs-toggle="modal" data-bs-target='#Modal${i}'>
-                        <div class="teamlogo">
-                            <img src="${team[i].img}"/>
-                        </div>
-                        <div class="teamTitle">
-                            <h2>${team[i].teamName}</h2>
-                        </div>
-                        <div class="teamin">
-                            <div class="teaminLeft1">
-                                <p>연고지 : ${team[i].city}</p>
-                                <p>팀 실력 : ${team[i].skill}</p>
-                            </div>
-                            <div class="teaminLeft2">
-                                <p>활동요일 : ${team[i].week}</p>
-                                <p>생성일 : ${team[i].date}</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>`
-            );
-            $("body").append(
-                /*html*/
-                `<div class="modal fade" id='Modal${i}' tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="pop-logo">
-                                <img src="${team[i].img}"/>
-                            </div>
-                            <div class="pop-info">
-                                <h1 class="modal-title fs-5" id="ModalLabel">${team[i].teamName}</h1>
-                                연고지 : ${team[i].city}<br>
-                                팀 실력 : ${team[i].skill}<br>
-                                활동요일 : ${team[i].week}<br>
-                                생성일 : ${team[i].date}
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                            <a href="teaminfo.html" class="btn btn-danger" role="button">팀 이동</a>
-                        </div>
-                    </div>
-                </div>
-            </div>`
+                `
+                <li>
+	        		<div class="team" data-bs-toggle="modal" data-bs-target='#Modal${teamList[i].t_num}'>
+	                    <div class="teamlogo">
+	                        <img src="png/defaultLogo.png"/>
+	                    </div>
+	                    <div class="teamTitle">
+	                        <h2>${teamList[i].t_name}</h2>
+	                    </div>
+	                    <div class="teamin">
+	                        <div class="teaminLeft1">
+	                            <p>연고지 : ${teamList[i].hom_city}</p>
+	                            <p>팀 실력 : ${teamList[i].t_skill}</p>
+	                        </div>
+	                        <div class="teaminLeft2">
+	                            <p>활동요일 : ${teamList[i].week_time}</p>
+	                            <p>생성일 : ${formattedDate}</p>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="modal fade" id='Modal${teamList[i].t_num}' tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+			        <div class="modal-dialog modal-dialog-centered">
+			            <div class="modal-content">
+			                <div class="modal-body">
+		                       <div class="pop-logo">
+		                            <img src="png/defaultLogo.png"/>
+		                        </div>
+		                        <div class="pop-info">
+		                            <h1 class="modal-title fs-5" id="ModalLabel">${teamList[i].t_name}</h1>
+					                <p>연고지 : ${teamList[i].hom_city}</p>
+					                <p>팀 실력 : ${teamList[i].t_skill}</p>
+					                <p>활동요일 : ${teamList[i].week_time}</p>
+					               	<p>생성일 : ${formattedDate}</p>
+		                        </div>
+			                </div>
+			                <div class="modal-footer">
+			                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+			                    <a href="fcjava.team?page=detail&teamNumber=${teamList[i].t_num}" class="btn btn-danger" role="button">팀 이동</a>
+			                </div>
+			            </div>
+	        		</div>
+			    </div>
+	            </li>
+                `
             );
             //마지막팀에서 더보기버튼 숨기기
-            if (i == team.length - 1) {
+            if (i == teamList.length - 1) {
                 $(".plusbtn").hide();
             }
         }
         showTeam += 10; // 보이는 팀 개수 업데이트
     });
-
-    //검색
-    $("#chkSearch").click(function () {
-        var teamFilter = [];
-        let teamName = $("#input_tname").val();
-        $("input[type=checkbox]").each(function () {
-            if ($(this).is(":checked") == true) {
-                teamFilter += $(this).val();
-            }
+	function searchTeam() {
+		let selectedRegions = [];
+    	let selectedDays = [];
+    	let selectedSkill = [];
+    	let teamName = $("#input_tname").val();
+        $('input[name="city"]:checked').each(function() {
+            selectedRegions.push($(this).val());
         });
-        console.log(teamName + teamFilter);
-        console.log(teamList);
+        $('input[name="week"]:checked').each(function() {
+            selectedDays.push($(this).val());
+        });
+        $('input[name="skill"]:checked').each(function() {
+        	selectedSkill.push($(this).val());
+        });
+        $.ajax({
+        	url: 'fcjava.team?page=teamSearch',
+        	data: {
+        		hom_city: selectedRegions,
+        		week_time: selectedDays,
+        		t_skill: selectedSkill,
+                t_name: teamName
+        	},
+        	success: function(result) {
+        		console.log('ajax성공! = ' + result.length);
+        		$("#teamlists").empty();
+        		showTeam = 10;
+        		teamList = result;
+        		if (teamList.length <= 10) {
+        			$(".plusbtn").hide();
+        		} else {
+        			$(".plusbtn").show();
+        		}
+        		if (result && result.length > 0) {
+        			for (let i = 0; (i < showTeam) & (i < teamList.length); i++) {
+        		    	let dateObj = new Date(teamList[i].t_c_day);
+        		    	let year = dateObj.getFullYear();
+        		    	let month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+        		    	let day = ("0" + dateObj.getDate()).slice(-2);
+        		    	let formattedDate = year + "-" + month + "-" + day;
+        		    	
+        		        $("#teamlists").append(
+        		            /*html*/
+        		            `
+        		            <li>
+        		        		<div class="team" data-bs-toggle="modal" data-bs-target='#Modal${teamList[i].t_num}'>
+        		                    <div class="teamlogo">
+        		                        <img src="png/defaultLogo.png"/>
+        		                    </div>
+        		                    <div class="teamTitle">
+        		                        <h2>${teamList[i].t_name}</h2>
+        		                    </div>
+        		                    <div class="teamin">
+        		                        <div class="teaminLeft1">
+        		                            <p>연고지 : ${teamList[i].hom_city}</p>
+        		                            <p>팀 실력 : ${teamList[i].t_skill}</p>
+        		                        </div>
+        		                        <div class="teaminLeft2">
+        		                            <p>활동요일 : ${teamList[i].week_time}</p>
+        		                            <p>생성일 : ${formattedDate}</p>
+        		                        </div>
+        		                    </div>
+        		                </div>
+        		                <div class="modal fade" id='Modal${teamList[i].t_num}' tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        					        <div class="modal-dialog modal-dialog-centered">
+        					            <div class="modal-content">
+        					                <div class="modal-body">
+        				                       <div class="pop-logo">
+        				                            <img src="png/defaultLogo.png"/>
+        				                        </div>
+        				                        <div class="pop-info">
+        				                            <h1 class="modal-title fs-5" id="ModalLabel">${teamList[i].t_name}</h1>
+        							                <p>연고지 : ${teamList[i].hom_city}</p>
+        							                <p>팀 실력 : ${teamList[i].t_skill}</p>
+        							                <p>활동요일 : ${teamList[i].week_time}</p>
+        							               	<p>생성일 : ${formattedDate}</p>
+        				                        </div>
+        					                </div>
+        					                <div class="modal-footer">
+        					                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        					                    <a href="fcjava.team?page=detail&teamNumber=${teamList[i].t_num}" class="btn btn-danger" role="button">팀 이동</a>
+        					                </div>
+        					            </div>
+        			        		</div>
+        					   </div>
+        		            </li>
+        		            `
+        		        );
+        		    };
+                } else {
+                    console.log('결과값이 없습니다.');
+                    $("#teamlists").append(
+            		/*html*/
+		            `
+		            <li>
+                    	<div class="notResult">찾으시는 팀이 없습니다.</div>
+		            </li>
+		            `
+            		);
+                };
+            },
+        });
+	}
+    //검색버튼
+    $("#chkSearch").click(function () {
+    	searchTeam();
+    });
+    //초기화버튼
+    $("#chkReset").click(function(){
+        $('input[type=checkbox]').prop('checked', false);
+        $('#input_tname').val('');
     });
 
     //팀 마우스오버

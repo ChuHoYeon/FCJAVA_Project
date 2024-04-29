@@ -39,10 +39,10 @@
     <section>
         <div class="cont">
             <div class="myteamlabel">팀 목록</div>
-            <form class="teamsearch">
+            <div class="teamsearch">
                 <div class="slabel">
                     <h4>연고지</h4>
-                    <input type="checkbox" name="" id="ckb_Gyeonggi" value="경기도" />
+                    <input type="checkbox" name="city" id="ckb_Gyeonggi" value="경기도" />
                     <label for="ckb_Gyeonggi" class="checkbox_set">경기도</label>
                     <input type="checkbox" name="city" id="ckb_Gangwon" value="강원도" />
                     <label for="ckb_Gangwon" class="checkbox_set">강원도</label>
@@ -82,34 +82,34 @@
                 </div>
                 <div class="slabel">
                     <h4>팀실력</h4>
-                    <input type="checkbox" id="ckb_noob" value="뉴비" />
+                    <input type="checkbox" name="skill" id="ckb_noob" value="뉴비" />
                     <label for="ckb_noob" class="checkbox_set">뉴비</label>
-                    <input type="checkbox" id="ckb_beginner" value="비기너" />
+                    <input type="checkbox" name="skill" id="ckb_beginner" value="비기너" />
                     <label for="ckb_beginner" class="checkbox_set">비기너</label>
-                    <input type="checkbox" id="ckb_amateur" value="아마추어" />
+                    <input type="checkbox" name="skill" id="ckb_amateur" value="아마추어" />
                     <label for="ckb_amateur" class="checkbox_set">아마추어</label>
-                    <input type="checkbox" id="ckb_semipro" value="세미프로" />
+                    <input type="checkbox" name="skill" id="ckb_semipro" value="세미프로" />
                     <label for="ckb_semipro" class="checkbox_set">세미프로</label>
-                    <input type="checkbox" id="ckb_pro" value="프로" />
+                    <input type="checkbox" name="skill" id="ckb_pro" value="프로" />
                     <label for="ckb_pro" class="checkbox_set">프로</label>
                 </div>
                 <div class="slabel">
                     <h4>팀이름</h4>
                     <input type="search" name="teamName" id="input_tname" placeholder="팀 이름을 입력해주세요."/>
                     <input type="button" id="chkSearch" value="검색하기" />
-                    <input type="reset" id="chkReset" value="초기화" />
+                    <input type="button" id="chkReset" value="초기화" />
                     <label for="chkReset" id="resetIcon" class="material-symbols-outlined">
                         refresh
                     </label>
                 </div>
-            </form> <!-- 검색구간-->
+            </div> <!-- 검색구간-->
             <ul id="teamlists">
-            <%
+            <%-- <%
             	for(TeamDTO team : teamList) {
            		String formatDate = dateFormat.format(team.getT_c_day());
             %>
             	<li>
-	                <div class="team teamMl" data-bs-toggle="modal" data-bs-target='#Modal<%= team.getT_num()%>'>
+	                <div class="team" data-bs-toggle="modal" data-bs-target='#Modal<%= team.getT_num()%>'>
 	                    <div class="teamlogo">
 	                        <img src="png/defaultLogo.png"/>
 	                    </div>
@@ -153,7 +153,7 @@
 	            
        	    <%
             	}
-            %>
+            %> --%>
             </ul><!-- 팀 리스트 -->
             <div class="plusbtn">
                 <button type="button" id="team-more">더보기</button>
