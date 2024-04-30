@@ -116,7 +116,8 @@
 
 	</div>
 			</section>
-			<form action="" class="booking_area">
+			<form action="fcjava.stadium1" class="booking_area">
+				<input type="hidden" name="page" value="4" />
 				<input type="hidden" name="t_num" value="26" />
 				<input type="hidden" name="b_ground_no" value="<%=stadium.getG_no() %>" />
 				<div class="apply_content">
@@ -137,7 +138,7 @@
 					 </div>
 				</div>
 				<div class="apply_btn_area">
-					<button type="button" class="apply_btn" onclick="confirmReservation()">예약 확정</button>
+					<button type="submit" class="apply_btn" onclick="confirmReservation()">예약 확정</button>
 				</div>
 
 			</form>

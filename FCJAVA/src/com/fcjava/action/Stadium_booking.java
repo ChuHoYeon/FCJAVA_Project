@@ -24,12 +24,10 @@ public class Stadium_booking implements DBinterface {
 		String b_time = request.getParameter("b_time");
 		int b_vs_team = Integer.parseInt(request.getParameter("ck_vs"));
 		
-
-		
 		BookingStadium bk1 = BookingStadium.getBookingStadium();
 		bk1.booking1(b_ground_no, b_team_no,b_vs_team,b_won,b_date,b_time);
 		
-		return "fcjava.team?page=detail&teamNumber=26";  
+		return "fcjava.team?page=detail&teamNumber="+b_team_no;  
 	}	
 	
 	

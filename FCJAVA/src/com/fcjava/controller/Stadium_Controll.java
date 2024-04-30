@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fcjava.action.Stadium_ControllApply;
 import com.fcjava.action.Stadium_Nextboo;
+import com.fcjava.action.Stadium_booking;
 import com.fcjava.action.Stadium_over;
 import com.fcjava.controller.interfaces.DBinterface;
 
@@ -47,6 +48,18 @@ public class Stadium_Controll extends HttpServlet {
 			//구장 상세 -booking
 			System.out.println("3번 성공");
 			connection = Stadium_Nextboo.getstadium();
+			try {
+				url = connection.DBconnection(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		else if (pageNumber.equals("4")) {
+			//구장 상세 -booking
+			System.out.println("4번 성공");
+			connection = Stadium_booking.getStadium_booking();
 			try {
 				url = connection.DBconnection(request, response);
 			} catch (Exception e) {

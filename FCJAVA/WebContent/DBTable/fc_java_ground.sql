@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: fc_java
 -- ------------------------------------------------------
--- Server version	5.7.44-log
+-- Server version	8.0.36
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +27,7 @@ CREATE TABLE `ground` (
   `gmem_id` varchar(20) NOT NULL,
   `g_add` varchar(250) NOT NULL,
   `g_name` varchar(20) NOT NULL,
-  `g_type` int(11) NOT NULL,
+  `g_type` int NOT NULL,
   `g_photo` varchar(250) NOT NULL,
   `g_memo` text NOT NULL,
   `g_com_name` varchar(50) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `ground` (
   PRIMARY KEY (`g_no`),
   KEY `gmem_id_idx` (`gmem_id`),
   CONSTRAINT `gmem_id` FOREIGN KEY (`gmem_id`) REFERENCES `g_mem_info` (`gmem_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-05 18:23:09
+-- Dump completed on 2024-04-30 11:36:53

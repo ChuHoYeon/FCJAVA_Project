@@ -28,9 +28,6 @@ public class BookingStadium {
 	        goboo.setB_date(b_date);
 	        goboo.setB_time(b_time);
 	        
-	        System.out.println();
-
-	        
 	        SqlSession session = sql.openSession();
 	        session.insert("booking",goboo);
 	        session.commit();
