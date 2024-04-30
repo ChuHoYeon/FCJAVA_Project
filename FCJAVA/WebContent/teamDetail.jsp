@@ -201,7 +201,7 @@
 							int p_year = player.getPl_ap_date().getYear()+1900;
 							int p_month = player.getPl_ap_date().getMonth()+1;
 							int p_date = player.getPl_ap_date().getDate();
-							String playerDate = p_year+"/"+p_month+"/"+p_date;
+							String playerDate = p_year+"-"+p_month+"-"+p_date;
 	
 							String sFilePath = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
 							if(player.getPl_pic() == null) sFilePath="png/default-profile.jpg";

@@ -8,7 +8,7 @@ public class FreeBorderDB {
 	//DB 시작
 	Connection startConnection() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java", "root", "1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java?characterEncoding=utf8", "root", "1234");
 		if (conn == null) {
 			throw new Exception("데이터베이스에 연결할 수 없습니다.<br>");
 		}
