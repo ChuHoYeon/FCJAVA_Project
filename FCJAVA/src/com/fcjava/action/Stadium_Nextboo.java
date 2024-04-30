@@ -1,4 +1,4 @@
-package com.fcjava.controller;
+package com.fcjava.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +13,9 @@ public class Stadium_Nextboo implements DBinterface{
 		return sta_nextboo;
 		
 	} 
-
+//
 	@Override
+	//booking.jsp
 	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String str_num=request.getParameter("sta_num");

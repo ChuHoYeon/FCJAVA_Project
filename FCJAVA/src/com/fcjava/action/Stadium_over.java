@@ -1,4 +1,4 @@
-	package com.fcjava.controller;
+	package com.fcjava.action;
 	
 	import java.util.List;
 	
@@ -16,6 +16,7 @@
 		}
 		
 		@Override
+		//구장 예약 
 		public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			// TODO Auto-generated method stub
 			// 구장 리스트

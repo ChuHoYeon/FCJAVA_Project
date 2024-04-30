@@ -116,20 +116,31 @@
 
 	</div>
 			</section>
-			<aside class="booking_area">
+			<form action="" class="booking_area">
+				<input type="hidden" name="t_num" value="26" />
+				<input type="hidden" name="b_ground_no" value="<%=stadium.getG_no() %>" />
 				<div class="apply_content">
 					<div class="booking_info">
 						<span class="booking_label">이용 금액</span>
 						<div class="booking_data">	 <%= totalAmount %> 원</div>
+						<input type="hidden" name="b_won" value="<%= totalAmount %>" />
+						<span class="booking_label">이용 날짜</span>
+    					<div class="booking_data"> <%= request.getParameter("date") %> </div>
+    					<input type="hidden" name="b_date" value="<%= request.getParameter("date") %>" />
 						<span class="booking_label">이용 시간</span>
 						<div class="booking_data"> <%= selectedTimes %></div>
+						<input type="hidden" name="b_time" value="<%= selectedTimes %>" />
 					</div>
+					<div id="radioButtons">
+					 <input type="radio" name="ck_vs" value="1" class="radio-button"onclick="selectButton(this)"> 친선경기 O</button>
+					 <input type="radio" name="ck_vs" value="0" class="radio-button"onclick="selectButton(this)"> 친선경기 X</button>
+					 </div>
 				</div>
 				<div class="apply_btn_area">
 					<button type="button" class="apply_btn" onclick="confirmReservation()">예약 확정</button>
 				</div>
 
-			</aside>
+			</form>
 		</div>
 	 <script>
         function confirmReservation() {

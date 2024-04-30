@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fcjava.action.Stadium_ControllApply;
+import com.fcjava.action.Stadium_Nextboo;
+import com.fcjava.action.Stadium_over;
 import com.fcjava.controller.interfaces.DBinterface;
 
 public class Stadium_Controll extends HttpServlet {

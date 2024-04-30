@@ -133,7 +133,7 @@
 				<form class="stm_teamsearch1" id="stm_teamsearch1-box-1"
 					action="fcjava.stadium1?page=3&sta_num=<%= stadium.getG_no() %>" method="POST">
 				<div class="ord">
-						<input type='date' name="date" id='soccerDate1' />
+						<input type='date' name="date" id='soccerDate1' /> <!-- required -->
 				</div>
 					<div class="box-wrap">
 						<input type="checkbox" id="stm_btn6<%= a %>" name="chkbox" value="1" class="checkbox_class" />
@@ -178,16 +178,18 @@
 					<input type="hidden" name="totalAmount" id="totalAmount">
 					<div class="slabel">
 						<input type="submit" id="chkSearch1" value="예약하기" />
+							<div class="won_box" >
+				<div class="won" id="wonid<%= a %>" >
+					<h3></h3>
+				</div>
+			</div>
 					</div>
+
 				</form>
 
 			
 			</div>  
-			<div class="won_box">
-				<div class="won">
-					<h3></h3>
-				</div>
-			</div>
+		
 		</li>
 
 		<% 

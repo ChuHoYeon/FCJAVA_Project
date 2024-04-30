@@ -1,4 +1,4 @@
-package com.fcjava.controller;
+package com.fcjava.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +16,7 @@ public class Stadium_ControllApply  implements DBinterface{
 	@Override
 	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		//구장 등록
+		//구장 등록 컨트롤러 - stadium_import
 		StadiumCreate sta = StadiumCreate.getcreateStadium();
 		String g_no = request.getParameter("no");
 		String gmem_id = request.getParameter("id");

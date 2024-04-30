@@ -46,6 +46,9 @@ $(function () {
         var form = $(this); // 현재 폼
         var checkboxes = form.find('.checkbox_class'); // 현재 폼 내의 체크박스
         var amountDisplay = form.find('.won h3'); // 금액을 표시할 위치
+        var times = form.find('input[name="selectedTimes"]'); // 금액을 표시할 위치
+        var amount = form.find('input[name="totalAmount"]'); // 금액을 표시할 위치
+        var wonId = amountDisplay.parent().attr('id'); // 동적 생성된 ID 캡처
 
         checkboxes.change(function() {
             var selectedTimes = [];
@@ -60,26 +63,36 @@ $(function () {
                     totalAmount += 30000; // 시간당 금액은 여기에서 조정
                 }
             });
-            $('#selectedTimes').val(selectedTimes.join(',')); // 예약시간을 다음 페이로 가져가기 
-            
+
             // 선택한 체크박스가 3개를 초과하면 경고를 표시하고 선택을 취소
             if (checkedCount > 3) {
                 alert("최대 이용시간은 3시간입니다.");
                 $(this).prop('checked', false);
-                return;
+                checkedCount--; // 선택 취소 후 개수 감소
+                return false; // each 함수 중단
             }
 
             if (totalAmount === 0) {
-            $('#totalAmount').val(0);
-	            $('.won h3').text("");
-	        } else {
-	            $('#totalAmount').val(totalAmount);
-	            // 선택된 시간과 총 금액
-            $('.won h3').text(totalAmount.toLocaleString() + " 원");
-	        }
+                $('#' + wonId + ' h3').text(""); // 동적 ID 사용하여 접근
+                $('#totalAmount').val(0);
+            } else {
+                $('#' + wonId + ' h3').text(totalAmount.toLocaleString() + " 원"); // 동적 ID 사용하여 접근
+                amount.val(totalAmount);
+                times.val(selectedTimes.join(',')); // 예약시간을 다음 페이지로 가져가기
+            }
         });
     });
 });
+function selectButton(selectedButton) {
+	  // 모든 버튼의 'active' 클래스 제거
+	  document.querySelectorAll('.radio-button').forEach(button => {
+	    button.classList.remove('active');
+	  });
+
+	  // 선택된 버튼에만 'active' 클래스 추가
+	  selectedButton.classList.add('active');
+	}
+
 
 
 
