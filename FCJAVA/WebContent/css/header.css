@@ -43,6 +43,7 @@ a {
     height: 60px;
 	border: 1px solid #ebebeb;
 	border-radius: 50%;
+	object-fit: cover;
 }
 .header-team-name {
 	font-size: 16pt;

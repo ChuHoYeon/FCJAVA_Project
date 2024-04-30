@@ -6,7 +6,8 @@
 	String id = request.getParameter("id");
 	String sessionID = (String) session.getAttribute("ID");
 	List<TeamDTO> myTeamList = (List<TeamDTO>) session.getAttribute("MyTeamList");
-
+	//System.out.println(sessionID);
+	//System.out.println(myTeamList.size());
 	if (id != null){
 	    session.setAttribute("ID",id);
 	    sessionID = (String) session.getAttribute("ID");

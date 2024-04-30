@@ -11,7 +11,7 @@ $(document).ready(function(){
 	const formationdata = $(".team-formation-list").data("formationdata");
 	//신청 취소버튼
 	$("#staticBackdrop").on('hidden.bs.modal', function() {
-		$(".player-photo").html('<img alt="선수 사진" src="png/son.jpg">');
+		$(".player-photo").html('<img alt="선수 사진" src="png/default-profile.jpg">');
 		$("input[name='pl_pic']").val('');
 		$("input[name='back_num']").val('');
 		$("input[name='height']").val('');
@@ -137,7 +137,9 @@ $(document).ready(function(){
 	let matchingData = formationdata.filter(function(item) {
         return item.formation == $dataFormation && item.formation_name == $dataFormationname;
     });
-	showFormation(matchingData);
+	if(matchingData.length > 0) {
+		showFormation(matchingData);
+	}
 	
     //포메이션 보기
 	function showFormation(matchingData) {

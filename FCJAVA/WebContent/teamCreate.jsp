@@ -12,7 +12,7 @@
 	<!--jQuery url-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	
-	<link rel="stylesheet" href="css/teamcreate.css"/>
+	<link rel="stylesheet" href="css/teamCreate.css"/>
 	<script type="text/javascript" src="js/teamcreate.js"></script>
 </head>
 
@@ -20,7 +20,7 @@
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
 	<div>
-		<form action="teamCreating.jsp" class="create-area" onsubmit="return teamCreating()">
+		<form action="teamCreating.jsp" class="create-area" onsubmit="return teamCreating()" method="post" enctype="multipart/form-data">
 			<h1 class="tcreateTitle">팀 만들기</h1>
 			<div class="infoLine">
 				<div class="logoBox">
@@ -28,7 +28,7 @@
 						<img src="png/defaultLogo.png"/>
 					</div>
 					<label for="logoImgPlue">로고 변경</label>
-					<input type="file" accept="image/*" name="teamLogo" id="logoImgPlue" onchange="logoChange(this)"/>
+					<input type="file" accept="image/*" name="teamLogo" id="logoImgPlue"/>
 				</div>
 			</div>
 			<div class="infoLine">
@@ -110,7 +110,40 @@
 			</div>
 			<div class="infoLine">
 				<label class="menuLabel">최대 가입인원</label>
-				<input type="number" name="maxNum" class="textInput" min="1" max="99" placeholder="최대 99명" oninput="check(this)" />
+				<input type="number" name="maxNum" class="textInput" min="1" max="99" placeholder="최대 99명" />
+			</div>
+			<h1 class="palyerTitle">선수 정보</h1>
+			<div class="playerCard">
+				<div id="teamApplyForm">
+		        	<div class="photo-area">
+		        		<div class="player-photo">
+		        			<img alt="선수 사진" src="png/default-profile.jpg">
+		        		</div>
+		        		<div class="photo-change-label">
+			        		<label for="pl_pic">사진 변경</label>
+			        		<input type="file" id="pl_pic" name="pl_pic" accept="image/*" />
+		        		</div>
+		        	</div>
+		        	<div class="player-info">
+		        		<label for="back_num">희망 등번호</label>
+		        		<input type="text" id="back_num" name="back_num" maxlength="3" placeholder="최대 숫자3글자"/>
+		        		<label for="position">희망 포지션</label>
+		        		<select name="position">
+		        			<option value="공격수">공격수</option>
+		        			<option value="미드필더">미드필더</option>
+		        			<option value="수비수">수비수</option>
+		        			<option value="골키퍼">골키퍼</option>
+		        		</select>
+		        		<label for="height">키</label>
+		        		<input type="text" id="height" name="height" maxlength="3" placeholder="선택사항"/>
+		        		<label for="weight">몸무게</label>
+		        		<input type="text" id="weight" name="weight" maxlength="3" placeholder="선택사항"/>
+		        	</div>
+		        	<div class="player-intro">
+		        		<p>선수소개</p>
+		        		<textarea id="pl_memo" name="pl_memo" placeholder="선택사항" maxlength="50"></textarea>
+		        	</div>
+		        </div>
 			</div>
 			<div class="bottomLine infoLine">
 				<input type="submit"  class="createBtn" value="팀 만들기"/>

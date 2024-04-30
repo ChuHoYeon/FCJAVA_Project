@@ -173,9 +173,11 @@
 	                		let state = "";
 	                		if(currentTime < substDate) {
 	                			state = "<span class='status'>접수예정</span>";
+	                		} else if (currentTime > subfnDate && currentTime < startDate || (currentTime > substDate && currentTime < subfnDate)) {
+	                			state = "<span class='status end-status'>접수마감</span>";
 	                		} else if (currentTime > substDate && currentTime < subfnDate) {
 	                			state = "<span class='status'>접수중</span>";
-	                		} else if (currentTime > subfnDate && currentTime < finalDate) {
+	                		} else if (currentTime > startDate && currentTime < finalDate) {
 	                			state = "<span class='status start-status'>진행중</span>";
 	                		} else if (currentTime > finalDate) {
 	                			state = "<span class='status end-status'>종료</span>";

@@ -30,6 +30,7 @@
 	String formationName = "";
 	boolean firstFormation = true;
 	
+	//포메이션없을때 조건문
 	JSONArray jsonArray = new JSONArray();
 	for (TeamFormationDTO formation : teamFormations) {
 	    JSONObject jsonFormation = new JSONObject();
@@ -130,7 +131,13 @@
 						<span><%=playerList.size() %>/<%=team.getMax_p_num() %></span>
 					</div>
 				</div>
-				<div class="team-img"><img src="png/teamlogo3.png"/></div>
+				<div class="team-img">
+				<% if(team.getT_logo() != null){ %>
+					<img src="/FCJAVA/png/playerPhoto/<%=team.getT_logo()%>"/>
+				<% }else{ %>
+					<img src="png/defaultLogo.png"/>
+				<% } %>
+				</div>
 				<div class="team-info">
 					<h2><%= team.getT_name() %></h2>
 					<label>#<%= team.getHom_city() %></label>

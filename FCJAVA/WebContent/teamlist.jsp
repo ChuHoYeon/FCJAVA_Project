@@ -104,56 +104,6 @@
                 </div>
             </div> <!-- 검색구간-->
             <ul id="teamlists">
-            <%-- <%
-            	for(TeamDTO team : teamList) {
-           		String formatDate = dateFormat.format(team.getT_c_day());
-            %>
-            	<li>
-	                <div class="team" data-bs-toggle="modal" data-bs-target='#Modal<%= team.getT_num()%>'>
-	                    <div class="teamlogo">
-	                        <img src="png/defaultLogo.png"/>
-	                    </div>
-	                    <div class="teamTitle">
-	                        <h2><%= team.getT_name()%></h2>
-	                    </div>
-	                    <div class="teamin">
-	                        <div class="teaminLeft1">
-	                            <p>연고지 : <%= team.getHom_city() %></p>
-	                            <p>팀 실력 : <%= team.getT_skill() %></p>
-	                        </div>
-	                        <div class="teaminLeft2">
-	                            <p>활동요일 : <%= team.getWeek_time() %></p>
-	                            <p>생성일 : <%= formatDate %></p>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="modal fade" id='Modal<%= team.getT_num() %>' tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-		                <div class="modal-dialog modal-dialog-centered">
-		                    <div class="modal-content">
-		                        <div class="modal-body">
-			                           <div class="pop-logo">
-			                                <img src="png/defaultLogo.png"/>
-			                            </div>
-			                            <div class="pop-info">
-			                                <h1 class="modal-title fs-5" id="ModalLabel"><%= team.getT_name()%></h1>
-							                <p>연고지 : <%= team.getHom_city() %></p>
-							                <p>팀 실력 : <%= team.getT_skill() %></p>
-							                <p>활동요일 : <%= team.getWeek_time() %></p>
-							               	<p>생성일 : <%= formatDate %></p>
-			                            </div>
-		                        </div>
-		                        <div class="modal-footer">
-		                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-		                            <a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num()%>" class="btn btn-danger" role="button">팀 이동</a>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-	            </li>
-	            
-       	    <%
-            	}
-            %> --%>
             </ul><!-- 팀 리스트 -->
             <div class="plusbtn">
                 <button type="button" id="team-more">더보기</button>
