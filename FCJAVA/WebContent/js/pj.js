@@ -41,14 +41,14 @@ var checkboxValues = {
 
 
 $(function () {
-    // 모든 예약 폼에 대해 이 함수를 실행합니다.
+    // 'stm_teamsearch1' 클래스를 가진 각 폼에 대해 반복
     $('.stm_teamsearch1').each(function() {
         var form = $(this); // 현재 폼
-        var checkboxes = form.find('.checkbox_class'); // 현재 폼 내의 체크박스
+        var checkboxes = form.find('.checkbox_class'); // 폼 내의 체크박스
         var amountDisplay = form.find('.won h3'); // 금액을 표시할 위치
-        var times = form.find('input[name="selectedTimes"]'); // 금액을 표시할 위치
-        var amount = form.find('input[name="totalAmount"]'); // 금액을 표시할 위치
-        var wonId = amountDisplay.parent().attr('id'); // 동적 생성된 ID 캡처
+        var times = form.find('input[name="selectedTimes"]'); // 선택한 시간을 표시할 위치
+        var amount = form.find('input[name="totalAmount"]'); // 총 금액을 표시할 위치
+        var wonId = amountDisplay.parent().attr('id'); // 동적으로 생성된 ID 캡처
 
         checkboxes.change(function() {
             var selectedTimes = [];
@@ -74,7 +74,7 @@ $(function () {
 
             if (totalAmount === 0) {
                 $('#' + wonId + ' h3').text(""); // 동적 ID 사용하여 접근
-                $('#totalAmount').val(0);
+                $('#totalAmount' + wonId).val(0);
             } else {
                 $('#' + wonId + ' h3').text(totalAmount.toLocaleString() + " 원"); // 동적 ID 사용하여 접근
                 amount.val(totalAmount);
@@ -82,16 +82,29 @@ $(function () {
             }
         });
     });
-});
-function selectButton(selectedButton) {
-	  // 모든 버튼의 'active' 클래스 제거
-	  document.querySelectorAll('.radio-button').forEach(button => {
-	    button.classList.remove('active');
-	  });
+   
+    $('form').submit(function() {
+        var form = $(this);
+        var amountText = form.find('.won h3').text().trim(); // 금액 표시 부분의 텍스트 가져오기
+        var amount = parseInt(amountText.replace(/\D/g, '')); // 텍스트에서 숫자 추출하기
+        var date = form.find('#soccerDate1').val(); // 선택한 날짜 가져오기
 
-	  // 선택된 버튼에만 'active' 클래스 추가
-	  selectedButton.classList.add('active');
-	}
+        // 금액이 없는 경우
+        if (amount === 0 || isNaN(amount)) {
+            alert('예약할 시간을 선택하세요.');
+            return false; // 제출을 중지합니다.
+        }
+
+        // 날짜가 선택되지 않은 경우
+        if (date === '') {
+            alert('예약할 날짜를 선택하세요.');
+            return false; // 제출을 중지합니다.
+        }
+    });
+
+});
+
+
 
 
 

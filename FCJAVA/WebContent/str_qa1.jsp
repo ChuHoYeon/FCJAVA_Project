@@ -39,10 +39,10 @@
         <tr><td><input type="text" placeholder="제목을 입력하세요" name="title"></td></tr>
         <tr><td class="header">내용</td></tr>
         <tr><td><textarea placeholder="내용을 입력하세요" name="detail"></textarea></td></tr>
+        <tr><td><label>구장 사진</label><br><input type="file" name="img"></td></tr>
         <tr><td><input type="submit" value="등록" onclick="alert('작성 완료!')"></td></tr>
     </table>
     </form>
-
 
 
 
