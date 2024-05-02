@@ -25,6 +25,7 @@
     border-radius: 50%;
     width: 150px;
     height: 150px;
+    object-fit: cover;
 }
 .team-info {
 	width: 100%;
@@ -100,6 +101,7 @@
     height: inherit;
     border-radius: 50%;
     border: 1px solid #ebebeb;
+    object-fit: cover;
 }
 select[name="position"] {
 	width: -webkit-fill-available;
@@ -193,12 +195,14 @@ select[name="position"] {
 	height: 32px;
 	border: 1px solid #ebebeb;
 	border-radius: 50%;
+	object-fit: cover;
 }
 .player .player-name .player-captain {
 	margin-left: 5px;
 }
 .player .player-name .player-captain img {
 	width: 25px;
+	object-fit: cover;
 }
 .player .player-backnum {
 	text-align: center;
@@ -367,6 +371,7 @@ select[name="position"] {
 	height: 62px;
 	border-radius: 50%;
     box-sizing: content-box;
+    object-fit: cover;
 }
 .formation-info {
 	background-color: #F2F2F2;
@@ -399,6 +404,7 @@ select[name="position"] {
 	height: 49px;
 	border: 1px solid #ebebeb;
 	border-radius: 50%;
+	object-fit: cover;
 }
 .formationTitle {
 	font-size: 18pt;

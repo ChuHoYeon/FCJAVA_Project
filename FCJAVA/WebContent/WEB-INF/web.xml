@@ -43,4 +43,13 @@
         <servlet-name>stadium</servlet-name>
         <url-pattern>*.stadium1</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>index</servlet-name>
+        <servlet-class>com.fcjava.controller.IndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
+        <url-pattern>*.index</url-pattern>
+    </servlet-mapping>
 </web-app> 

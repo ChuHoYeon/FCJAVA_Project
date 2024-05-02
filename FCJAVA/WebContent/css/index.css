@@ -1,259 +1,142 @@
-
-a {
-    text-decoration-line: none;
-    color : rgb(0, 0, 0);
+.indexSection {
+	width: 1280px;
+	margin: 0 auto;
 }
-
-
-.bo1{
-    border: 1px solid rgb(0,0,0);
+.mainb > div {
+	height: 400px;
 }
-
-.mysection{
-    width: 1280px;
-    height: 900px;
-    margin: 20px auto;
-    
+.contentBox {
+	margin-bottom: 40px;
 }
-
-.my_box_g{
-    width : 1200px; 
-    height: 250px;
-    margin: 0 auto;
+.contentBox:nth-of-type(2) {
+	display: flex;
 }
-.my_box{
-    width:  300px;
-    height: 200px;
-    background-color: black;
-    margin-left:0 ;
-    margin-right: 10px;
-    background-image: url(../png/board.png);
-    background-size: 300px 200px;
+.aashow {
+	width: 640px;
+	display: flex;
 }
-
-section{
-        width : 1280px;
-        margin :0 auto;
-        
-    }
-
-    .mainb{
-        width: 100%;
-      
-    }
-
-    .swiper {
-        width: 100%;
-        
-      }
-      
-    .title_f{
-        width : 1280px;
-        height:30px;
-    }
-
-    .title_h{
-        width : 640px;
-        height: 30px;
-        font-size: 16pt;
-
-    }
-
-    .gr1{
-        width : 1200px;
-        height : 260px;
-        margin: 20px;
-        
-    }
-
-    .pl1{ 
-    width : 548px;
-    height: 283px;
-    margin-left : 40px; 
-    margin-top : 20px;
-    margin-right: 40px;
-    margin-bottom: 20px; 
-    
-    }
-
-    .playrank_back{
-        width : 548px;
-        height: 283px;
-    }
-
-    .playpic{ 
-        width : 283px;
-        height: 283px;
-        background-color: aqua;
-           }
-    .playtext{
-        width :200px ; 
-        height : 255px;
-        margin-left:20px;
-        }
-    
-
-
-    .pl2{ 
-        width : 548px;
-        height: 283px;
-        margin: 20px;
-    
-        }
-
-.group1 {
-    width:1280px;
-    height: 30px;
-    margin :10px auto;
-    
+.aashow img {
+	height: 100%;
+	object-fit: cover;
 }
-
-.group2 {
-    width:1280px;
-    height: 340px;
-    margin :10px auto;
-    
+.teamShow {
+	width: 640px;
 }
-
-
-.group3 {
-    width:1280px;
-    height: 400px;
-    margin :0 auto;
-    
+.teamShow img {
+	width: 100%;
 }
-
-.c_title{
-    width: 450px; 
-    text-align: left;
+.iGroundBox {
+    display: flex;
+	border: 1px solid;
+	background-color: rgb(235, 230, 230);
+    padding: 30px;
 }
-
-
-section li {
-list-style: none;
-float:left;
-margin :0 auto;
-
+.tm_box {
+	width: 50px;
+	height: 30px;
+	margin: 1px;
+	background-color: #ffffff;
+	border: 1px solid red;
+	display: inline-block;
 }
-ul{
-    margin : 0;
-    padding : 0;
+.time_box {
+	border: 1px solid red;
+    background-color: white;
+    display: inline-block;
+    padding: 4px;
 }
-
-.ri1 { 
-    float : right;   
-    margin-right :50px;
-    color: rgb(12, 92, 92);
-    text-decoration-line: none;
+.reserBtn {
+	background-color: black;
+	color: white;
+	padding: 16px 21px;
 }
-
-
-.left1{
-    float : left;  
+.team-tab {
+	display: flex;
 }
-
-.width300{
-    width: 300px;
-    float: left;
-    margin-top: 30px;
-    margin-left: 20px;
-
+.team-tab .tab {
+	cursor: pointer;
+	padding: 9px 45px;
+	font-weight: 600;
+    color: black;
+    background: #76DC90;
+    border-right: 1px solid #67c07c;
+    border-top: 1px solid #67c07c;
+    text-align: center;
 }
+.team-tab .tab:nth-child(1) {flex-grow: 1;}
+.team-tab .tab:nth-child(2) {flex-grow: 1;}
+.team-tab .tab:nth-child(3) {flex-grow: 1;}
+.team-tab .tab:nth-child(4) {flex-grow: 1;}
+.team-tab .tab:nth-child(5) {flex-grow: 1;}
 
-.sum1{
-    width: 1200px;
-    height: 260px;
-    /* margin-left: 10px; */
-    background-color: rgb(235, 230, 230);}
-
-
-    .infor{
-        width: 1150px;
-        height: 260px;
-    }
-
-
-    .mbox1{
-        float: left;
-        width: 300px;
-        height: 200px;
-        /* margin: 20px; */
-        margin-left: 20px;
-        margin-top: 20px;
-            /* background-color: red; */
-        }
-
-        .ord{
-            width: 500px;
-            height: 50px;
-            margin-top: 30px;
-            
-            
-        }
-    
-        .box-warp12{
-            width:510px;
-            height: 200px;
-            float: left;
-        }
-
-
-
-        .box-wrap {
-            width: 500px;
-            height: 30px;
-            font-size: 14px;
-            
-        }
-
-        .box-wrap1 {
-            
-            width: 500px;
-            height: 30px;
-            
-            
-            font-size: 14px;
-            
-        
-        }
-
-        .tm_box{
-            /* width: 1000px;
-            height:30px; */
-            width: 50px;
-            height: 30px;
-            margin: 1px;
-            background-color: #ffffff;
-            border: 1px solid red;
-            float: left;
-        }
-
-        .box_si{
-            box-sizing: border-box;
-            margin: 2px;
-        }
-
-
-        .bt{
-            /* width: 100px;
-            height: 10px; */
-            /* float: left; */
-            width: 100px;
-            height: 20px;
-            margin-left: 90px;
-            margin-top: 10px;
-        }
-
-
-        .btn-two {
-            color: rgb(243, 243, 243); 
-            padding: 15px 25px;
-            display: inline-block;
-            border: 1px solid rgba(0,0,0,0.21);
-            border-bottom-color: rgba(0,0,0,0.34);
-            text-shadow:0 1px 0 rgba(0,0,0,0.15);
-            box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
-                        0 2px 0 -1px rgba(0,0,0,0.13), 
-                        0 3px 0 -1px rgba(0,0,0,0.08), 
-                        0 3px 13px -1px rgba(0,0,0,0.21);
-          }
+.team-tab .tab:first-child {
+	border-left: 1px solid #67c07c;
+}
+.team-tab .tab-focus {
+	color: white;
+    background-color: #44435B;
+}
+#standings {
+    height: 316px;
+    overflow: auto;
+}
+#standings::-webkit-scrollbar {
+	width: 10px;
+	background: #e6e6e9;
+}
+#standings::-webkit-scrollbar-thumb {
+	background-color: #44435B;
+}
+.leagueSubLabel {
+	display: flex;
+	border-bottom: 1px solid;
+    padding: 8px 35px 8px 25px;
+    text-align: center;
+}
+.leagueSubLabel .leagueLabelItem {
+	width: 140px;
+}
+.leagueSubLabel .leagueLabelItem:nth-child(2) {
+	width: 100%;
+	text-align: left;
+}
+.clubLine {
+	display: flex;
+	align-items: center;
+    border-bottom: 1px solid;
+    padding: 3px 25px;
+    font-size: 10pt;
+}
+.clubLine .clubItem {
+    text-align: center;
+    font-weight: bold;
+}
+.clubLine .clubItem {
+	width: 140px;
+}
+.clubLine .clubItem:nth-child(2) {
+	width: 100%;
+}
+.clubName {
+	display: flex;
+    align-items: center;
+}
+.prdList {
+	display: flex;
+	justify-content: space-between;
+}
+.prdList li img {
+	width: 300px;
+	height: 300px;
+}
+.crestBox {
+	margin-right: 12px
+}
+.crestBox img {
+	width: 30px;
+	height: 30px;
+	object-fit: cover;
+}
+.title_h {
+	font-size: 16pt;
+}
