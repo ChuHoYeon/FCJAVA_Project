@@ -88,13 +88,13 @@
 			<div class="swiper">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<img src="img/rm.jpg" width="300">
+						<img src="img/ground_1_<%=stadium.getG_no() %>.jpg" width="300" height="170">
 					</div>
 					<div class="swiper-slide">
 						<img src="img/rm2.jpg" width="300">
 					</div>
 					<div class="swiper-slide">
-						<img src="img/rm1.JPG" width="300">
+						<img src="img/rm1.jpg" width="300">
 					</div>
 				</div>
 
@@ -115,12 +115,12 @@
 					<p>
 					<li class="pp"><div class="stm_jb">
 							<img src="img/maximize.png">
-						</div>: 구장 크기 <%= stadium.getG_size() %></li>
+						</div>: 구장 크기 <%= stadium.getG_size() %></li>	
 					</p>
 					<p>
 					<li class="pp"><div class="stm_jb">
 							<img src="img/map.png">
-						</div> :<%= stadium.getG_add() %></li>
+						</div> : <%= stadium.getG_add() %></li>
 					</p>
 				</ul>
 			</div>

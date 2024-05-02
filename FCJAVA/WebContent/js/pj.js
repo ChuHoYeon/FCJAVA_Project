@@ -16,10 +16,10 @@ new Swiper('.swiper', {
   // }
 })
 //달력
-var today = new Date().toISOString().slice(0, 10);
-
-    //id로 오늘 날짜 설정
+document.addEventListener('DOMContentLoaded', function() {
+    var today = new Date().toISOString().slice(0, 10);
     document.getElementById('soccerDate1').value = today;
+});
 
 
 

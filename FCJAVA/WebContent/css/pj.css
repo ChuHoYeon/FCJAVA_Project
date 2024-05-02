@@ -200,7 +200,7 @@ background-color: brown;
 .won_box {
     width: 150px;
     height: 40px;
-    border: 2px solid gray;
+   /*  border: 2px solid gray; */
     padding: 1px 12px;
     float: right;
     margin-right: 20px;
@@ -269,5 +269,20 @@ input[type="submit"] {
 }
 .slabel{
 	margin-top: 30px;ss
+}
+/*  */
+.stm_jb img {
+    width: 22px; /* 아이콘 크기 */
+    height: 22px; /* 아이콘 크기 */
+}
+
+.stm_jb {
+    display: inline-block;
+    vertical-align: middle; /* 아이콘과 텍스트를 수직으로 정렬 */
+    margin-right: 8px;
+}
+
+.pp {
+    line-height: 31px; /* 텍스트 줄 간격을 아이콘 크기와 맞춤 */
 }
 

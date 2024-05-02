@@ -6,7 +6,7 @@
 <html lang="ko">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/index.css" type="text/css">
+        <!-- <link rel="stylesheet" href="css/index.css" type="text/css"> -->
         <link rel="stylesheet" href="css/shop_main.css" type="text/css">
     
         <!-- <link rel="stylesheet" href="css/main.css" type="text/css"> -->
@@ -81,8 +81,8 @@
 	     </div>
      </div>
      
+	</section>
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
-	</section>
 </body>
 </html>

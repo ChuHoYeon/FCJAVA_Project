@@ -116,7 +116,8 @@
 
 	</div>
 			</section>
-			<form action="fcjava.stadium1" class="booking_area">
+			<!-- <form action="fcjava.stadium1" class="booking_area"> -->
+			<form action="fcjava.stadium1" class="booking_area" onsubmit="return confirmReservation()">
 				<input type="hidden" name="page" value="4" />
 				<input type="hidden" name="t_num" value="26" />
 				<input type="hidden" name="b_ground_no" value="<%=stadium.getG_no() %>" />
@@ -138,20 +139,29 @@
 					 </div>
 				</div>
 				<div class="apply_btn_area">
-					<button type="submit" class="apply_btn" onclick="confirmReservation()">예약 확정</button>
+					<button type="submit" class="apply_btn">예약 확정</button>
 				</div>
 
 			</form>
 		</div>
-	 <script>
-        function confirmReservation() {
+	<script>
+    function confirmReservation() {
+        var isChecked = document.querySelector('input[name="ck_vs"]:checked');
+
+        if (isChecked === null) {
+            alert('친선경기 여부를 선택해주세요.');
+            return false; 
+        } else {
             if (confirm('예약을 확정하시겠습니까?')) {
                 alert('예약이 확정되었습니다.');
+                return true; 	
             } else {
                 alert('예약이 취소되었습니다.');
+                return false; 
             }
         }
-    </script>
+    }
+</script>
 	
 
 
