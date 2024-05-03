@@ -44,7 +44,7 @@
 					<div class="swiper">
 						<div class="swiper-wrapper">
 							<div class="swiper-slide">
-								<img src="img/rm.jpg" width="870">
+								<img src="img/ground_1_<%=stadium.getG_no() %>.jpg" width="900">
 							</div>
 							<div class="swiper-slide">
 								<img src="img/rm1.JPG" alt="이미지 준비중">
@@ -134,9 +134,13 @@
 						<input type="hidden" name="b_time" value="<%= selectedTimes %>" />
 					</div>
 					<div id="radioButtons">
-					 <input type="radio" name="ck_vs" value="1" class="radio-button"onclick="selectButton(this)"> 친선경기 O</button>
-					 <input type="radio" name="ck_vs" value="0" class="radio-button"onclick="selectButton(this)"> 친선경기 X</button>
-					 </div>
+						<input type="radio" name="ck_vs" id="ck_yes" value="1"class="radio-button" onclick="selectButton(this)"> 
+						<label for="ck_yes">친선경기 O</label>
+							 <input type="radio" name="ck_vs" id="ck_no" value="0" class="radio-button"onclick="selectButton(this)"> 
+							 <label for="ck_no">친선경기X</label>
+					</div>
+
+
 				</div>
 				<div class="apply_btn_area">
 					<button type="submit" class="apply_btn">예약 확정</button>
@@ -166,9 +170,10 @@
 
 
 
-	<jsp:include page="footerPage.jsp" />
+	
 
 </main>
+<jsp:include page="footerPage.jsp" />
 </body>
 </html>
 

@@ -105,7 +105,7 @@
 					<p>
 					<li class="pp"><div class="stm_jb">
 							<img src="img/football-field.png">
-						</div>: <%= stadium.getG_name() %></li>
+						</div> : <%= stadium.getG_name() %></li>
 					</p>
 					<p>
 					<li class="pp"><div class="stm_jb">
@@ -115,7 +115,7 @@
 					<p>
 					<li class="pp"><div class="stm_jb">
 							<img src="img/maximize.png">
-						</div>: 구장 크기 <%= stadium.getG_size() %></li>	
+						</div> : 구장 크기 <%= stadium.getG_size() %></li>	
 					</p>
 					<p>
 					<li class="pp"><div class="stm_jb">

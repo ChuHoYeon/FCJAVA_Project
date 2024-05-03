@@ -125,3 +125,27 @@ th img {
   color: white;
   border-color: #4CAF50;
 }
+#radioButtons {
+    display: flex; /* Flexbox를 사용하여 자식 요소들을 가로로 정렬합니다. */
+}
+#radioButtons input[type="radio"] {
+    display: none;
+}
+
+#radioButtons input[type="radio"] + label {
+    display: inline-block;
+    padding: 15px 20px;
+    border: 1px solid #dfdfdf;
+    background-color: #dfdfdf;
+    border-radius:10px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 10px; /* 각 라디오 버튼 사이의 간격을 조절합니다. */
+    width: 140px; /* 버튼 상자의 너비를 지정합니다. */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 상자 크기를 지정합니다. */
+}
+
+#radioButtons input[type="radio"]:checked + label {
+    background-color: #113a6b;
+    color: #ffffff;
+}
