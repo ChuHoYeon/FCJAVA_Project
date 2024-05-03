@@ -1,5 +1,5 @@
 
-new Swiper('.swiper', {
+new Swiper('.topSwiper', {
   autoplay: {
     delay: 5000
   },

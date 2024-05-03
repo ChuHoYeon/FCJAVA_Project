@@ -1,10 +1,11 @@
 .loginMain {
-    min-height: 713px;
-    }
+    min-height: 886px;
+    align-content: center;
+}
 
 .contents {
     width: 600px;
-    margin: 145px auto 0 auto;
+    margin: 0 auto 0 auto;
     padding: 40px 85px 85px 85px;
     border: 1px solid #bbbbbb;
     border-radius: 8px;

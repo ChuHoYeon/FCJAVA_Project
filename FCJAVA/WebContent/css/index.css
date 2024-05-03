@@ -2,28 +2,38 @@
 	width: 1280px;
 	margin: 0 auto;
 }
-.mainb > div {
-	height: 400px;
+.topSwiper {
+	height: 700px;
+}
+.topSwiper img {
+	width: 100%;
+	height: 100%;
+    object-fit: cover;
 }
 .contentBox {
 	margin-bottom: 40px;
 }
 .contentBox:nth-of-type(2) {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: space-between;
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 40px;
 }
 .aashow {
-	width: 640px;
+	width: 620px;
 	display: flex;
+	border: 1px solid #ebebeb;
 }
-.aashow img {
-	height: 100%;
-	object-fit: cover;
+#notice {
+	width: 100%;
+}
+.accordion-header .accordion-button {
+    font-size: 12pt;
 }
 .teamShow {
-	width: 640px;
-}
-.teamShow img {
-	width: 100%;
+	width: 620px;
+	border: 1px solid #ebebeb;
 }
 .iGroundBox {
     display: flex;
@@ -62,13 +72,8 @@
     border-right: 1px solid #67c07c;
     border-top: 1px solid #67c07c;
     text-align: center;
+    flex-grow: 1;
 }
-.team-tab .tab:nth-child(1) {flex-grow: 1;}
-.team-tab .tab:nth-child(2) {flex-grow: 1;}
-.team-tab .tab:nth-child(3) {flex-grow: 1;}
-.team-tab .tab:nth-child(4) {flex-grow: 1;}
-.team-tab .tab:nth-child(5) {flex-grow: 1;}
-
 .team-tab .tab:first-child {
 	border-left: 1px solid #67c07c;
 }
@@ -126,8 +131,10 @@
 	justify-content: space-between;
 }
 .prdList li img {
-	width: 300px;
-	height: 300px;
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	background-color: #F5F5F5;
 }
 .crestBox {
 	margin-right: 12px
@@ -138,5 +145,60 @@
 	object-fit: cover;
 }
 .title_h {
-	font-size: 16pt;
+	font-size: 21px;
+    color: #3e3d55;
+    line-height: 50px;
+    font-weight: 700;
+}
+.title_h:last-of-type {
+	display: flex;
+	justify-content: space-between;
+}
+.teamTitle {
+	margin-bottom: 25px;
+}
+.teamCard {
+	display: flex;
+	gap: 35px;
+    align-items: center;
+    padding: 30px 56px;
+}
+.teamInfo {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px 0;
+}
+
+.teamInfo p {
+	margin: 0;
+}
+.teamImg img {
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	border: 1px solid #ebebeb;
+	border-radius: 50%;
+}
+
+.mainb .swiper-pagination-bullet {
+    width: 50px;
+	border-radius: 0;
+	background-color: #d7d7d7;
+	opacity: 0.5;
+}
+.mainb .swiper-pagination-bullet-active {
+   	opacity: 1;
+	background: #b22222;
+}
+.teamShow .swiper-button-next ,.teamShow  .swiper-button-prev {
+	color: #44435B !important;
+}
+.teamShow .swiper-pagination-bullet-active {
+	background-color: #44435B !important;
+}
+.moreLink a{
+    font-size: 10pt;
+}
+.moreLink a:link, .moreLink a:visited {
+	color: gray;
 }

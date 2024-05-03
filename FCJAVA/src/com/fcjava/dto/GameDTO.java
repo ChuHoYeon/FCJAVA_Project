@@ -12,6 +12,7 @@ public class GameDTO {
 	private String game_subfn_date;
 	private String game_st_date;
 	private String game_fn_date;
+	private int game_apply;
 	
 	public int getGame_num() {
 		return game_num;
@@ -72,6 +73,12 @@ public class GameDTO {
 	}
 	public void setGame_fn_date(String game_fn_date) {
 		this.game_fn_date = game_fn_date;
+	}
+	public int getGame_apply() {
+		return game_apply;
+	}
+	public void setGame_apply(int game_apply) {
+		this.game_apply = game_apply;
 	}
 
 }

@@ -9,7 +9,7 @@ a {
 }
 .hed0 {
     width: auto;
-    height: 100px;
+    height: 70px;
     background-color: #b22222;
 }
 
@@ -65,12 +65,18 @@ a {
     position: relative;
     width: 1280px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    color: white;
+    height: -webkit-fill-available;
 }
-
+.hed1 a {
+	color: white;
+}
 #layer {
 	display: none;
     position: absolute;
-    top: 100px;
+    top: 70px;
     z-index: 999;
     background-color: hsla(42, 23%, 9%, 0.796);
     width: 100%;
@@ -80,7 +86,15 @@ a {
 .mouseNav {
     background-color: hsla(42, 23%, 9%, 0.69);
 }
-
+#loginNav {
+	height: 24px;
+}
+#loginNav span {
+	font-size: 22px;
+}
+#loginNav, #joinNav {
+	width: 50px;
+}
 .navImg {
     width: 168px;
     height: 80px;
@@ -88,13 +102,13 @@ a {
 
 #layer>.layerInner {
     padding-top: 15px;
-    width: 942px;
+    width: 890px;
     margin: 0 auto;
+    display: flex;
 }
 
 .layerInner ul {
-    float: left;
-    width: 177px;
+    width: 178px;
     text-align: center;
     font-size: 11pt;
     color: white;
@@ -119,11 +133,6 @@ a {
     color: white;
 }
 
-header a {
-    color: azure;
-    text-decoration-line: none;
-}
-
 ul,
 li {
     list-style: none;
@@ -134,38 +143,23 @@ li {
 #headerNav {
     list-style: none;
     display: flex;
-    margin: 0 auto;
-    width: 890px;
-    height: 100px;
     padding: 0;
     justify-content: center;
+    height: -webkit-fill-available;
 }
 
-#headerNav a li {
-    list-style: none;
-    float: left;
+#headerNav li a {
+    display: block;
     width: 178px;
-    height: 100px;
-    color: azure;
     font-size: 12pt;
-    text-decoration-line: none;
     text-align: center;
-    line-height: 98px;
+    height: -webkit-fill-available;
+    line-height: 70px;
 }
-
-.join1 {
-    width: 200px;
-    float: right;
-    margin: 0 auto;
-    background-color: #b22222;
-}
-
 .logo {
-    float: left;
-    margin: 0 auto;
-    margin-top: 18px;
     background-color: #b22222;
     font-size: 30pt;
+    padding: 0 23px;
 }
 
 .right1 {
@@ -173,12 +167,22 @@ li {
     margin-right: 30px;
     margin-top: 40px;
 }
+.userMenu {
+	display: flex;
+    gap: 15px;
+    padding: 0 20px;
+    align-items: center;
+    text-align: center;
+}
 
 .right1 span {
     font-size: 18pt;
     cursor: pointer;
 }
-
+#myTeam {
+	height: 24px;
+	cursor: pointer;
+}
 .right2 {
 	width: 36.8px;
     float: right;

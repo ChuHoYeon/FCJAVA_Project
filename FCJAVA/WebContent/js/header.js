@@ -1,9 +1,9 @@
 $(function () {
-    $("#headerNav >a> li").mouseenter(function () {
+    $("#headerNav li").mouseenter(function () {
         $("#layer").stop().slideDown(200);
         $(this).addClass("mouseNav");
     });
-    $("#headerNav >a> li").mouseleave(function () {
+    $("#headerNav li").mouseleave(function () {
         $(this).removeClass("mouseNav");
     });
     $("#layer").mouseleave(function () {

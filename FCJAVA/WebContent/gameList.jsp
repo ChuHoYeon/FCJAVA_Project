@@ -9,11 +9,6 @@
 	List<GameDTO> gameList = (List<GameDTO>) request.getAttribute("Games");
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	Date currentDate = new Date();
-	Date startDate = null;
-	Date finalDate = null;
-	Date substDate = null;
-	Date subfnDate = null;
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -63,20 +58,22 @@
 					</div>
 				</div>
 				<ul class="conten-area">
-				<% 
-					for(GameDTO game : gameList) {
-						substDate = dateFormat.parse(game.getGame_subst_date());
-			            subfnDate = dateFormat.parse(game.getGame_subfn_date());
-						startDate = dateFormat.parse(game.getGame_st_date());
-						finalDate = dateFormat.parse(game.getGame_fn_date());
-						String hours = String.valueOf(startDate.getHours());
-						String minutes = String.valueOf(startDate.getMinutes());
-						if(hours.length() == 1) {
-							hours = "0"+hours;
-						}
-						if(minutes.length() == 1) {
-							minutes = "0"+minutes;
-						}
+				<%
+				int i=1;
+				for(GameDTO game : gameList) {
+					int per = (game.getGame_apply() * 100) / game.getGame_type();
+					Date substDate = dateFormat.parse(game.getGame_subst_date());
+					Date subfnDate = dateFormat.parse(game.getGame_subfn_date());
+					Date startDate = dateFormat.parse(game.getGame_st_date());
+					Date finalDate = dateFormat.parse(game.getGame_fn_date());
+					String hours = String.valueOf(startDate.getHours());
+					String minutes = String.valueOf(startDate.getMinutes());
+					if(hours.length() == 1) {
+						hours = "0"+hours;
+					}
+					if(minutes.length() == 1) {
+						minutes = "0"+minutes;
+					}
 				%>
 					<li>
 						<a href="fcjava.game?page=2&game_num=<%= game.getGame_num() %>" class="game-card">
@@ -84,15 +81,17 @@
 								<div class="game-status">
 								<% if (currentDate.before(substDate)){%>
 									<span class="status">접수예정</span>
-								<% } else if(currentDate.after(substDate) && currentDate.before(subfnDate)) { %>
-									<span class="status">접수중</span>
-								<% } else if (currentDate.after(subfnDate) && currentDate.before(finalDate)) {%>
+								<% } else if(currentDate.after(subfnDate) && currentDate.before(startDate) || (currentDate.after(substDate) && currentDate.before(subfnDate) && per == 100)) { %>
+									<span class="status end-status">접수마감</span>
+								<% } else if (currentDate.after(substDate) && currentDate.before(finalDate)) {%>
 									<span class="status start-status">진행중</span>
-								<% } else if (currentDate.after(finalDate)) { %>
+								<% } else if (currentDate.after(finalDate) || (currentDate.after(subfnDate) && per < 100)) { %>
 									<span class="status end-status">종료</span>
+								<% } else {%>
+									<span class="status">접수중</span>
 								<% } %>
 								</div>
-								<img src="https://cdn.life-sports.kr/news/photo/202401/2333_2856_3017.jpg"/>
+								<img src="png/gameposter<%=i %>.jpg"/>
 							</div>
 							<div class="card-title">
 								<article class="gameDate">
@@ -106,98 +105,16 @@
 							</div>
 						</a>
 					</li>
-				<% } %>
+				<%
+				i++;
+				if(i>2) i=1;
+				} %>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
-	
-<script>
-	$(function() {
-		//clear버튼
-		$(".closeBtn").hide();
-		$("input[name='search-text']").keyup(function(){
-			  $(".closeBtn").toggle(Boolean($(this).val()));
-		});
-		$(".closeBtn").click(function() {
-			$("input[name='search-text']").val('').focus();
-			$(this).hide();
-		})
-		//검색 탭
-		$("input[name='status-tab']").on("change", function () {
-			let search = $("input[name='search-text']").val();
-			let status = $(this).val();
-			let currentTime = new Date();
-			getSearching(search, status, currentTime);
-		});
-		//검색버튼
-		$(".btn-search").on("click", function() {
-			let search = $("input[name='search-text']").val();
-			let status = $("input[name='status-tab']:checked").val();
-			let currentTime = new Date();
-			getSearching(search, status, currentTime);
-		});
-		//검색 엔터키
-		$("input[name='search-text']").keypress(function(event) {
-		    if (event.which === 13) {
-		        $(".btn-search").click();
-		    }
-		});
-		//검색ajax
-		function getSearching(search, status, currentTime) {
-			$.ajax({
-                url: "fcjava.game?page=gameSearch",
-                data: {
-                    "search-text": search,
-                    "status-tab": status
-                },
-                dataType: 'json',
-                success: function(data) {
-               		$(".conten-area").empty();
-               		$(".searchResult").empty();
-                	if(data.length > 0) {
-                		$(".no-search").remove();
-	                	for (let i = 0; i < data.length; i++) {
-	                		const substDate = new Date(data[i].subst_date);
-	                        const subfnDate = new Date(data[i].subfn_date);
-	                        const startDate = new Date(data[i].st_date);
-	                        const finalDate = new Date(data[i].fn_date);
-	                        
-	                        const month = startDate.getMonth() + 1;
-	                        const day = startDate.getDate();
-	                        const hours = startDate.getHours();
-	                        const minutes = startDate.getMinutes();
-	                       	
-	                		let state = "";
-	                		if(currentTime < substDate) {
-	                			state = "<span class='status'>접수예정</span>";
-	                		} else if (currentTime > subfnDate && currentTime < startDate || (currentTime > substDate && currentTime < subfnDate)) {
-	                			state = "<span class='status end-status'>접수마감</span>";
-	                		} else if (currentTime > substDate && currentTime < subfnDate) {
-	                			state = "<span class='status'>접수중</span>";
-	                		} else if (currentTime > startDate && currentTime < finalDate) {
-	                			state = "<span class='status start-status'>진행중</span>";
-	                		} else if (currentTime > finalDate) {
-	                			state = "<span class='status end-status'>종료</span>";
-	                		}
-	                		let str = "<li><a href='fcjava.game?page=2&game_num="+data[i].num+"' class='game-card'><div class='card-thumb'><div class='game-status'>"+state+"</div>";
-	                		let str1 = "<img src='https://cdn.life-sports.kr/news/photo/202401/2333_2856_3017.jpg'/></div><div class='card-title'><article class='gameDate'><p class='m'> "+month+"월</p><p class='d'> "+day+" </p></article><div class='title-holder'><h3>"+data[i].name+"</h3>";
-	                		let str2 = "<p> "+hours+":"+minutes+"  •  "+data[i].place+"  • "+data[i].type+"강</p></div></div></a></li>";
-	                		
-	                		$(".conten-area").append(str+str1+str2);
-	                	}
-	                	$(".searchResult").append("총 <strong>"+data.length+"</strong> 개");
-                	} else {
-                		$(".searchResult").append("총 <strong>"+data.length+"</strong> 개");
-                		$(".no-search").remove();
-                		$(".content").append("<div class='no-search'>검색된 결과가 없습니다.</div>");
-                	}
-                },
-            });
-		}
-	})
-</script>
+	<script src="js/gameList.js"></script>
 </body>
 </html>

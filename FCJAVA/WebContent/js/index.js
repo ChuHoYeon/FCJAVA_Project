@@ -1,5 +1,6 @@
 $(function() {
 	let $league = $(".tab-focus").data("league");
+	newTeamList()
 	searchLeague($league);
 	
 	//탭 변경
@@ -45,4 +46,72 @@ $(function() {
             }
 		})
 	}
+	let teamSwiper = new Swiper(".teamSwiper", {
+		spaceBetween: 30,
+		centeredSlides: true,
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true,
+		},
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		}
+	});
+	function newTeamList() {
+		$.ajax({
+			url: 'fcjava.team',
+			data: {
+				"page":"newTeamList",
+			},
+			success: function(data) {
+				let teamList = JSON.parse(data);
+				$.each(teamList, function(index, value) {
+					let teamLogo = "./png/defaultLogo.png";
+					if(value.t_logo != null){
+						teamLogo = "/FCJAVA/png/playerPhoto/"+value.t_logo;
+					}
+					let date = new Date(value.t_c_day);
+					let formattedDate = date.getFullYear() + '-' + (date.getMonth() + 1).toString().padStart(2, '0') + '-' + date.getDate().toString().padStart(2, '0');
+					teamSwiper.appendSlide(
+					`
+					<div class="swiper-slide teamCard">
+						<div class="teamImg"><img src='${teamLogo}'/></div>
+						<div>
+							<h2 class="teamTitle">${value.t_name}</h2>
+							<div class="teamInfo">
+								<p class="col">연고지 : ${value.hom_city}</p>
+								<p class="col">팀 실력 : ${value.t_skill}</p>
+								<p class="col">활동요일 : ${value.week_time}</p>
+								<p class="col">생성일 : ${formattedDate}</p>
+							</div>
+						</div>
+					</div>
+					`);
+				});
+			},
+			error: function(xhr, status, error) {
+            	console.error('에러:', error);
+            }
+		});
+	}
+	let topSwiper = new Swiper('.topSwiper', {
+		autoplay: {
+			delay: 5000,
+		},
+		loop: true,
+		slidesPerView: 1,
+		centeredSlides: true,
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
+	});
+/*	
+	$('.over').hover(function () {
+		$(this).attr('src', $(this).attr('src').replace('.avif', '_on.avif'));
+	}, function () {
+		$(this).attr('src', $(this).attr('src').replace('_on.avif', '.avif'));
+	});
+*/
 })

@@ -220,7 +220,7 @@
 						%>
 					</ul>
 				<% } else { %>
-					<div style="text-align: center;">경기가 종료되었습니다. 결과가 준비되는 동안 잠시만 기다려주세요</div>
+					<div class="resultMemo">경기가 종료되었습니다. 결과가 준비되는 동안 잠시만 기다려주세요</div>
 				<% } %>
 		</div>
 		<% } %>

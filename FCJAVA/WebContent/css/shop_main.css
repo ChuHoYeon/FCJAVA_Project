@@ -1,349 +1,60 @@
-.img1 {
-	width: 1200px;
-	height: 480px;
-	margin-left: 40px;
-	margin-top: 40px;
-	background-image: url("../png/uni7.png");
-	background-repeat: no-repeat;
-}
-
-.img2 {
-	width: 1200px;
-	height: 480px;
-	margin-left: 40px;
-	margin-top: 40px;
-	background-image: url("../png/ball1.PNG");
-	background-repeat: no-repeat;
-}
-
-.img3 {
-	width: 1200px;
-	height: 480px;
-	margin-left: 40px;
-	margin-top: 40px;
-	background-image: url("../png/sin_bal00.png");
-	background-repeat: no-repeat;
-}
-
-.font1 {
-	font-size: 30px;
-	text-align: center;
-	line-height: 480px;
-	color: rgb(255, 255, 255);
-	background-color: rgba(255, 255, 255, 0);
-}
-
-.font2 {
-	font-size: 30px;
-	text-align: center;
-	line-height: 480px;
-	color: rgb(255, 255, 255);
-	background-color: rgba(255, 255, 255, 0);
-}
-
-.font3 {
-	font-size: 30px;
-	text-align: center;
-	line-height: 480px;
-	color: rgb(255, 255, 255);
-	background-color: rgba(255, 255, 255, 0);
-}
-
-.img2 {
-	width: 1200px;
-	height: 480px;
-	background-color: brown;
-	margin-left: 40px;
-	margin-top: 40px;
-}
-
-.s_box {
+.content {
 	width: 1280px;
-	min-height: 1610px;
-	overflow : auto;
-	margin: auto;
-}
-
-.s_box3 {
-	width: 1280px;
-	min-height: 1430px;
-	overflow: auto;
-	margin: auto;
-}
-
-td {
-	width: 160px;
-	text-align: center;
-}
-
-ul {
-	margin: 0;
-	padding: 0;
-}
-
-.group3 li {
-	list-style: none;
-	float: left;
-	margin: 5px;
-}
-
-.box1 {
-	width: 200px;
-	height: 300px;
-	background-color: bisque;
-}
-
-.title0 {
-	width: 1280px;
-	height: 50px;
 	margin: 0 auto;
 }
-
-.list_title1 {
-	display: block;
-	width: 400px;
-	height: 50px;
-	color: rgb(0, 0, 0);
-	font-size: 20pt;
-}
-
-.sh1 {
-	width: 300px;
-	height: 300px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-left: 50px;
-	margin-right: 45px;
-}
-
-.sh2 {
-	width: 300px;
-	height: 400px;
-}
-
-.unit1 {
-	margin: 30px 0;
-	width: 400px;
-	height: 30px;
-	
-}
-
-.shop_price {
-	font-size: 11pt;
-	margin-top: 5px;
-	margin-left: 2px;
-}
-
-.prd_title {
-	font-size: 11pt;
-	font-weight: 550;
-	margin-left: 2px;
-}
-
-.search_1 {
-	width: 300px;
-	height: 50px;
-	border-radius: 10px;
-	border-width: 2px;
-	border-color: darkgrey;
-	border-style: solid;
-	float: right;
-	margin-right: 5px;
-}
-
-.sum5 {
-	width: 1280px;
-	height: 50px;
-	margin: 20px auto;
-}
-
-.tab1 {
-	width: 100px;
-	height: 40px;
-	border: 1px;
-	background-color: rgb(0, 0, 0);
-	text-align: center;
-	color: white;
-	border-radius: 10px;
-	display: block;
-	line-height: 40px;
-	margin-right: 1px;
-}
-
-.s_box_board {
-	width: 1280px;
-	min-height: 1430px;
-	margin: auto;
-	overflow: auto;
-}
-
-.s_box_board_w {
-	width: 1280px;
-	height: 1400px;
-	margin: auto;
-}
-
-.board_title {
-	width: 1280px;
-	height: 100px;
-	font-size: 24pt;
-	margin: auto;
-	text-align: center;
-	line-height: 70pt;
+.prdTop .title {
+	margin-top: 50px;
 	font-size: 24pt;
 }
-
-.title_box {
-	width: 1000px;
-	height: 60px;
-	margin-left: 150px;
-	font-size: 20pt;
+.prdList {
+	display: flex;
+    width: inherit;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+.prdItem {
+	width: 200px;
+	display: flex;
+    flex-direction: column;
+    margin: 0 20px;
 }
 
-.pic_box {
-	width: 790px;
-	height: 40px;
-	margin-left: 150px;
-	margin-top: 20px;
+.prdItem img{
+	width: 200px;
+	height: 200px;
+	background-color: #F5F5F5;
 }
-
-.pic_btn {
+.prdtext {
 	width: 200px;
 	height: 40px;
-	margin-left: 5px;
-	background: #000;
-	color: white;
-	margin-top: 20px;
-	border: 1px;
-	border-color: #000;
-}
-
-.text_box {
-	width: 1000px;
-	height: 500px;
-	margin-left: 150px;
-	margin-top: 20px;
-	font-size: 20pt;
-	resize: none;
-}
-
-.s_box_top {
-	width: 100%;
-	margin: auto;
-	display: block;
-	background-color: #e6e6e6;
-}
-
-.s_box_board_in {
-	width: 1280px;
-	height: 500px;
-	margin: 10px;
-	display: block;
-}
-
-.bobox1 {
-	width: 400px;
-	height: 500px;
-	float: left;
-	margin-right: 10px;
-	max-lines: 400px;
-}
-
-.text001 {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.btn4 {
-	width: 200px;
-	height: 42px;
-	background: #000;
-	color: white;
-	border-radius: 10px 10px 10px 10px;
-	margin-bottom : 20px;
-	
-}
-.btn5 {
-	width: 200px;
-	height: 42px;
-	background: #000;
-	color: white;
-	margin-left: 450px;
-	border-radius: 10px 10px 10px 10px;
-	margin-top: 20px;
-}
-
-
-.btn6 {
-	width: 200px;
-	height: 42px;
-	background: #000;
-	color: white;
-border-radius: 10px 10px 10px 10px;
-	margin-left: 10px;
-	margin-top: 20px;
-}
-
-
-.btn7 {
-	width: 200px;
-	height: 42px;
-	background: #000;
-	color: white;
-	margin-bottom : 20px;
-	border-radius: 10px 10px 10px 10px;
-}
-
-
-
-
-.btn8 {
-	width: 100px;
-	height: 50px;
-	border-radius: 10px;
-	
-	background: #000;
-	color: white;
-	float : right;
-	margin-right : 45px; 
-}
-
-.se_box1 {
-	width: 500px;
-	height: 40px;
-	margin-top: 40px;
-	margin-bottom : 40px;
-	margin-left:310px;
-	align-items: center;
-	border-radius: 10px 10px 10px 10px;
-}
-
-
-.text002 {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	font-size: 10pt;
-}
-
-.text003 {
-	padding: 32px 0px ;
-	text-align: center;
-	font-size: 24pt;
 	font-weight: bold;
+	font-size: 13px;
+	margin-top: 10px;
+	margin-bottom: 0;
 }
-
-
-.text004 {
-	margin-top : 20pt;
-	text-align: center;
-	font-size: 10pt;
-	
+.prdprice {
+	margin-top: 5px;
+	font-weight: bold;
+	font-size: 13px;
+	margin-bottom: 0;
 }
-
-.titleHiden {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+.prdSearch {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+}
+.searchBtn {
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+	background: #000;
+	color: white;
+}
+.searchBox {
+	width: 360px;
+	border-radius: 10px;
+	border: 2px solid darkgrey;
+	padding: 0 8px;
 }

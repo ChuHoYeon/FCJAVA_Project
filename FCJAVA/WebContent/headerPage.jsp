@@ -6,8 +6,6 @@
 	String id = request.getParameter("id");
 	String sessionID = (String) session.getAttribute("ID");
 	List<TeamDTO> myTeamList = (List<TeamDTO>) session.getAttribute("MyTeamList");
-	//System.out.println(sessionID);
-	//System.out.println(myTeamList.size());
 	if (id != null){
 	    session.setAttribute("ID",id);
 	    sessionID = (String) session.getAttribute("ID");
@@ -16,8 +14,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Header Page</title>
 	<!--구글 폰트 -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 	<!--구글 아이콘-->
@@ -29,8 +25,6 @@
 	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 	<!-- 헤더 css -->
 	<link rel="stylesheet" href="css/header.css" type="text/css">
-	<!-- 헤더 js -->
-	<script src="js/header.js"></script>
 </head>
 <script>
     $(document).ready(function(){
@@ -38,23 +32,25 @@
         let id = "<%= id %>";
         let sessionID = "<%= sessionID %>";
 
-        if((id === 'null' && sessionID === 'null') |id === ''){
-
-            $(".join1 #loginNav").html("<a href='login.jsp' class='right1 f-10' >로그인</a>");
-            $(".join1 #joinNav").html("<a href='join.jsp' class='right1 f-10'>회원가입</a>");
+        if((id === 'null' && sessionID === 'null') ||id === ''){
+            $("#loginNav").html("<a href='login.jsp' class='f-10' >로그인</a>");
+            $("#joinNav").html("<a href='join.jsp' class='f-10'>회원가입</a>");
         } else {
 
-            $(".join1 #loginNav").html("<a href='#' class='right2 f-10' ><span class='material-symbols-outlined'>person</span></a>");
-            $(".join1 #joinNav").html("<a href='logout.jsp' class='right1 f-10'>로그아웃</a>");
+            $("#loginNav").html("<span class='material-symbols-outlined'>person</span>");
+            $("#joinNav").html("<a href='logout.jsp' class='f-10'>로그아웃</a>");
         }
         
-        $("#myTeam").click(function() {
-        	if((id === 'null' && sessionID === 'null') |id === ''){
-        		event.preventDefault();
+        $("#myTeam").click(function(event) {
+        	if((id === 'null' && sessionID === 'null') ||id === ''){
+        		$('#myTeamListModal').modal('hide');
                 alert("로그인이 필요합니다.");
                 window.location.href = "login.jsp";
-        	}
-		})
+        	} else {
+                // 로그인되어 있으면 모달을 엽니다.
+                $('#myTeamListModal').modal('show');
+            }
+    	})
     });
 </script>
 <body>
@@ -92,33 +88,33 @@
 	
 	<header class="hed0">
         <div class="hed1">
-            <div class="join1">
-                <span id="joinNav"><!--<a href="join.jsp" class="right1 f-10">회원가입</a>--></span>
-                <span id="loginNav"><!--<a href="login.jsp" class="right1 f-10">로그인 </a>--></span>
-                <a class="right1" id="myTeam" data-bs-toggle="modal" data-bs-target="#myTeamListModal">
-                    <span class="material-symbols-outlined">
-                        groups
-                    </span>
-                </a>
+        	<div class="logo">
+            	<a href="index.jsp">FC JAVA</a>
             </div>
-            <a href="index.jsp" class="logo">FC JAVA</a>
             <ul id="headerNav">
-                <a href="fcjava.team?page=list">
-                    <li>팀 </li>
-                </a>
-                <a href="fcjava.game?page=gameList">
-                    <li>토너먼트</li>
-                </a>
-                <a href="fcjava.stadium1?page=2">
-                    <li>구장</li>
-                </a>
-                <a href="freeBorder.jsp">
-                    <li>게시판</li>
-                </a>
-                <a href="shop_main.jsp">
-                    <li>쇼핑</li>
-                </a>
+            	<li>
+                	<a href="fcjava.team?page=list">팀 </a>
+                </li>
+                <li>
+                	<a href="fcjava.game?page=gameList">토너먼트</a>
+                </li>
+                <li>
+                	<a href="fcjava.stadium1?page=2">구장</a>
+                </li>
+                <li>
+                	<a href="freeBorder.jsp">게시판</a>
+                </li>
+                <li>
+                	<a href="fcjava.prd?page=prdUniform">쇼핑</a>
+                </li>
             </ul>
+            <div class="userMenu">
+                <div id="myTeam" data-bs-toggle="modal" data-bs-target="#myTeamListModal">
+                    <span class="material-symbols-outlined">groups</span>
+                </div>
+               	<div id="loginNav"><!--<a href="login.jsp" class="right1 f-10">로그인 </a>--></div>
+               	<div id="joinNav"><!--<a href="join.jsp" class="right1 f-10">회원가입</a>--></div>
+            </div>
         </div> <!-- hed1 -->
         <div id="layer">
             <div class="layerInner">
@@ -128,7 +124,7 @@
                 </ul>
                 <ul>
                     <li><img src="png/navimg1.webp" class="navImg"></li>
-                    <li><a href="#">경기기록</a></li>
+                    <li><a href="fcjava.game?page=gameList">대회목록</a></li>
                 </ul>
                 <ul>
                     <li><img src="png/navimg2.jpg" class="navImg">
@@ -143,15 +139,14 @@
                 </ul>
                 <ul>
                     <li><img src="png/navimg4.avif" class="navImg"></li>
-                    <li><a href="fcjava.prd?page=prdUniform">유니폼</a></li>
-                    <li><a href="shop_list2.jsp">축구용품</a></li>
-                    <li><a href="shop_list3.jsp">운동화</a></li>
+                    <li><a href="fcjava.prd?page=prdUniform">축구용품</a></li>
                 </ul>
             </div>
         </div> <!-- layer -->
     </header>
+    <!-- 헤더 js -->
+	<script src="js/header.js"></script>
     <!-- bootstrap js -->
     <script src="./js/bootstrap.bundle.min.js"></script>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 </html>

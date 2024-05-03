@@ -14,6 +14,12 @@
 	FROM fc_java.team_info
 	ORDER BY t_c_day DESC;
 	</select>
+	<select id="indexTeamList" resultType="com.fcjava.dto.TeamDTO">
+	SELECT *
+	FROM fc_java.team_info
+	ORDER BY t_c_day DESC
+	LIMIT 3;
+	</select>
 	<!-- #팀 검색 -->
 	<select id="searchTeamList" parameterType="java.util.Map" resultType="com.fcjava.dto.TeamDTO">
 	SELECT *
@@ -103,13 +109,18 @@
 		FROM fc_java.game 
 		order by game_fn_date DESC;
 	</select>
+	<select id="gameApplyCount" resultType="java.lang.Integer">
+	SELECT count(*)
+	FROM fc_java.game_apply
+	WHERE game_num = #{game_num};
+	</select>
 	<!-- $대회 목록  #검색 -->
 	<select id="gameSelect" resultType="com.fcjava.dto.GameDTO">
 		SELECT * 
 		FROM fc_java.game 
 		WHERE game_name LIKE '%${text}%'
 		<if test="type != null and type.equals('ing')">
-		AND game_subfn_date &lt; NOW() AND game_fn_date &gt; NOW()
+		AND game_st_date &lt; NOW() AND game_fn_date &gt; NOW()
 		</if>
 		<if test="type != null and type.equals('end')">
 		AND game_fn_date &lt; NOW()

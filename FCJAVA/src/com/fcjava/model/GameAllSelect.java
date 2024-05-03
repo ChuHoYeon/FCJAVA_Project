@@ -20,6 +20,9 @@ public class GameAllSelect {
 	public List<GameDTO> getAllSelect() { //파일3 메소드
 		SqlSession getSql = sql.openSession(); //connection
 		List<GameDTO> gameList = getSql.selectList("allSelectGame"); // [5] DB검색 후 결과 가져오기
+		for(GameDTO game : gameList) {
+			game.setGame_apply(getSql.selectOne("gameApplyCount", game.getGame_num()));
+		}
 		getSql.close();
 		return gameList; // [6] 가져온 결과 리턴
 	}

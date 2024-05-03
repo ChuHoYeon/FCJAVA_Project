@@ -98,10 +98,12 @@ input::-webkit-search-results-decoration{
     border-radius: 8px;
     text-align: center;
 }
+.card-title > .gameDate p {
+	margin-bottom: 0;
+}
 .card-title > .gameDate > .m {
 	font-size: 14px;
 	font-weight: 700;
-	margin: 0;
 }
 .card-title > .gameDate > .d {
     font-size: 26px;

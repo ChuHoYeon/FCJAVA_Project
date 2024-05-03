@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fcjava.action.IndexNewTeamAction;
 import com.fcjava.action.TeamApplyAction;
 import com.fcjava.action.TeamApplyCheckAction;
 import com.fcjava.action.TeamCreateFormation;
@@ -88,6 +89,16 @@ public class TeamControll extends HttpServlet {
 		else if(pageNumber.equals("createFormation")) {
 			//포메이션 생성
 			connection = TeamCreateFormation.getTeamCreateFormation();
+			try {
+				url = connection.DBconnection(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(pageNumber.equals("newTeamList")) {
+			//인덱스 새로운팀3개
+			connection = IndexNewTeamAction.getIndexNewTeamAction();
 			try {
 				url = connection.DBconnection(request, response);
 			} catch (Exception e) {
