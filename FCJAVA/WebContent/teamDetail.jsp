@@ -7,11 +7,14 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Arrays" %>
+<%@ page import="com.fcjava.dto.TeamGameResultDTO" %>
+<%@ page import="com.fcjava.model.StringChange" %>
 <%
 	String sessionID = (String)session.getAttribute("ID");
 	TeamDTO team = (TeamDTO) request.getAttribute("team");
 	List<PlayerDTO> playerList = (List<PlayerDTO>) request.getAttribute("playerList");
 	List<TeamFormationDTO> teamFormations = (List<TeamFormationDTO>) request.getAttribute("teamFormations");
+	List<TeamGameResultDTO> teamGameResultList = (List<TeamGameResultDTO>) request.getAttribute("teamGameResultList");
 	
 	int year = team.getT_c_day().getYear()+1900;
 	int month = team.getT_c_day().getMonth()+1;
@@ -152,7 +155,7 @@
 				</div>
 				<div>
 					<% if(team.getT_sns() != null && !team.getT_sns().equals("")) { %>
-					<p><a href="https://www.naver.com"><%= team.getT_sns() %></a></p>
+					<p><a href="<%= team.getT_sns() %>" target="_blank" rel="noopener noreferrer"><%= team.getT_sns() %></a></p>
 					<% } else { %>
 					<p>등록된 홈페이지가 없습니다.</p>
 					<% } %>
@@ -180,7 +183,7 @@
 				<div class="team-tab">
 					<div class="tab tab-focus"><p>선수</p></div>
 					<div class="tab"><p>일정</p></div>
-					<div class="tab"><p>기록</p></div>
+					<div class="tab"><p>결과</p></div>
 					<div class="tab"><p>포메이션</p></div>
 					<div class="tab"><p>게시판</p></div>
 				</div><!-- 탭 -->
@@ -244,7 +247,40 @@
 					</div><!-- 일정 -->
 					
 					<div class="tab-content record-content">
-						<h2>기록칸</h2>
+					<%if(!teamGameResultList.isEmpty()) { 
+					  	for(TeamGameResultDTO gameResult : teamGameResultList){
+					  		int gameYear = gameResult.getGame_date().getYear()+1900;
+					  		String gameMonth = StringChange.lengthCheck(String.valueOf(gameResult.getGame_date().getMonth()+1));
+					  		String gameDate = StringChange.lengthCheck(String.valueOf(gameResult.getGame_date().getDate()));
+					  		String gameDay = StringChange.getDay(gameResult.getGame_date().getDay());
+					  		String gameTime = StringChange.lengthCheck(String.valueOf(gameResult.getGame_date().getHours()))+":"+StringChange.lengthCheck(String.valueOf(gameResult.getGame_date().getMinutes()));
+					%>
+						<div class="gameResult">
+							<div class="gameTitle">
+								<%= gameResult.getGame_name() %> <label><%if(gameResult.getGame_type()==2){out.print("결승전");}else{ out.print(gameResult.getGame_type()+"강전"); }%></label>
+							</div>
+							<div class="gameResultInfo">
+								<div class="gameDate">
+									<p><%= gameYear+"."+gameMonth+"."+gameDate+"("+gameDay+")"+gameTime %></p>
+									<p><%= gameResult.getGame_place() %></p>
+								</div>
+								<div class="team1">
+									<div class="team1Name"><%= gameResult.getTeam1_name() %></div>
+									<div class="team1Logo"><img alt="" src="png/defaultLogo.png"></div>
+								</div>
+								<div class="center">
+									<span class="score"><%= gameResult.getTeam1_score() %></span> :
+									<span class="score"><%= gameResult.getTeam2_score() %></span>
+								</div>
+								<div class="team2">
+									<div class="team2Logo"><img alt="" src="png/defaultLogo.png"></div>
+									<div class="team2Name"><%= gameResult.getTeam2_name() %></div>
+								</div>
+							</div>
+						</div>
+					<% }} else { %>
+						<div class="notResult">경기 결과가 없습니다.</div>
+					<% } %>
 					</div><!-- 기록 -->
 					
 					<div class="tab-content formation-content">
@@ -252,7 +288,9 @@
 							<div class="formation-box">
 								<div class="formation-slide">
 									<div class="team-formation-list" data-formationdata='<%=teamFormationsJson%>'>
-									<% for(TeamFormationDTO formation : teamFormations) {
+									<%
+									if(!teamFormations.isEmpty() || team.getId().equals(sessionID)){
+									for(TeamFormationDTO formation : teamFormations) {
 										if(!formationName.equals(formation.getFormation_name())) {
 											formationName = formation.getFormation_name();
 											formationChk = formation.getFormation();
@@ -270,7 +308,9 @@
 											<div>새 포메이션</div>
 											<div><span class="material-symbols-outlined">add</span></div>
 										</div>
-									<%} %>
+									<%} }else{%>
+										<div class="notFormation">생성된 포메이션이 없습니다.</div>
+									<% } %>
 									</div>
 								</div>
 								<button class="back"><span class="material-symbols-outlined">arrow_back_ios</span></button>

@@ -32,7 +32,7 @@
 					TeamDTO team = new TeamDTO();
 					team.setT_num(myTeamrs.getInt("t_num"));
 					team.setT_name(myTeamrs.getString("t_name"));
-					team.setT_logo(myTeamrs.getString("t_name"));
+					team.setT_logo(myTeamrs.getString("t_logo"));
 					team.setMax_p_num(myTeamrs.getInt("max_p_num"));
 					myTeamList.add(team);
 				}

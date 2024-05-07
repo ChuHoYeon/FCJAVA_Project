@@ -9,8 +9,10 @@ import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.PlayerDTO;
 import com.fcjava.dto.TeamDTO;
 import com.fcjava.dto.TeamFormationDTO;
+import com.fcjava.dto.TeamGameResultDTO;
 import com.fcjava.model.TeamDetail;
 import com.fcjava.model.TeamFormation;
+import com.fcjava.model.TeamGameResult;
 import com.fcjava.model.TeamPlayersList;
 
 public class TeamDetailAction implements DBinterface{
@@ -50,6 +52,11 @@ public class TeamDetailAction implements DBinterface{
 			TeamFormation teamFormation = TeamFormation.getTeamFormation();
 			List<TeamFormationDTO> teamFormations = teamFormation.getTeamFormations(teamNumber);
 			request.setAttribute("teamFormations", teamFormations);
+			
+			//팀 결과
+			TeamGameResult teamGameResult = TeamGameResult.getTeamGameResult();
+			List<TeamGameResultDTO> teamGameResultList = teamGameResult.getTeamGameAllResult(teamNumber);
+			request.setAttribute("teamGameResultList", teamGameResultList);
 
 			url = "teamDetail.jsp";
 		} else {

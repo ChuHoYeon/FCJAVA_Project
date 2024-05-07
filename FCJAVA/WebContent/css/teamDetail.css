@@ -16,6 +16,12 @@
     padding: 15px 15px;
     border: 1px solid #ebebeb;
 }
+.team-tab-info {
+	padding-bottom: 16px;
+}
+.record-content {
+	min-height: 682px;
+}
 .team-img {
 	width: 150px;
 	height: 150px;
@@ -301,6 +307,7 @@ select[name="position"] {
 .team-formation-list {
 	height: 100px;
 	width: 300vw;
+    background-color: #F2F2F2;
 }
 .savedformation {
 	border: 1px solid white;
@@ -331,7 +338,7 @@ select[name="position"] {
 }
 .back {
 	position: absolute;
-	top: 30px;
+	top: 33px;
     width: 25px;
     height: 32px;
     background-color: transparent;
@@ -339,7 +346,7 @@ select[name="position"] {
 }
 .next {
 	position: absolute;
-	top: 30px;
+	top: 33px;
     right: 0px;
 	width: 25px;
     height: 32px;
@@ -413,6 +420,13 @@ select[name="position"] {
 	background-color: #424254;
 	color: white;
 }
+.notFormation {
+	width: 890px;
+    text-align: center;
+    height: 100px;
+    font-size: 14pt;
+    line-height: 100px;
+}
 .forPlaterName {
 	width: 100px;
 	overflow: hidden;
@@ -423,6 +437,7 @@ select[name="position"] {
     background-color: #424254;
     color: white;
     border-radius: 3px;
+    padding: 0 4px;
 }
 .createPlayer {
 	cursor: pointer;
@@ -453,4 +468,62 @@ select[name="position"] {
 	display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+.gameResult {
+	border: 1px solid #ececee;
+	margin-bottom: 20px;
+}
+.gameTitle {
+	background-color: #A88759;
+	color: white;
+    text-align: center;
+}
+.gameResultInfo {
+	display: flex;
+	align-items: center;
+    padding: 10px 0;
+}
+.gameDate {
+	width: 20%;
+    text-align: center;
+}
+.gameDate p {
+	margin: 0;
+}
+.center {
+	width: 10%;
+	text-align: center;
+	font-size: 18pt;
+	font-weight: bold;
+}
+.win {
+	color: #b22222;
+}
+.team1 {
+	display: flex;
+	align-items: center;
+	width: 35%;
+	justify-content: flex-end;
+	gap: 20px;
+    font-size: 14pt;
+}
+.team2 {
+	display: flex;
+	align-items: center;
+	width: 35%;
+	gap: 20px;
+	font-size: 14pt;
+}
+.team1 .team1Logo img , .team2 .team2Logo img{
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #ebebeb;
+}
+.notResult {
+	text-align: center;
 }

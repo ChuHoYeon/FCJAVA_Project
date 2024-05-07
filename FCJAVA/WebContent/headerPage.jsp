@@ -67,10 +67,15 @@
       		<%
       		int teamCount = (myTeamList != null) ? myTeamList.size() : 0;
       		for(int i=0; i<3; i++) {
-      			if(i < teamCount && myTeamList != null) { %>
+      			if(i < teamCount && myTeamList != null) { 
+      			String teamLogo = "png/defaultLogo.png";
+      			if(myTeamList.get(i).getT_logo() != null) teamLogo = "/FCJAVA/png/playerPhoto/"+myTeamList.get(i).getT_logo();
+      			%>
       			<a href="fcjava.team?page=detail&teamNumber=<%= myTeamList.get(i).getT_num() %>">
 		      		<div class="header-team-area">
-		      			<div class="header-team-logo"><img alt="팀 로고" src="png/defaultLogo.png"></div>
+		      			<div class="header-team-logo">
+		      				<img alt="팀 로고" src="<%=teamLogo%>">
+		      			</div>
 		      			<div class="header-team-name"><%= myTeamList.get(i).getT_name() %></div>
 		      		</div>
       			</a>

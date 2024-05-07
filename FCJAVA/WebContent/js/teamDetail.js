@@ -9,6 +9,20 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 $(document).ready(function(){
 	const formationdata = $(".team-formation-list").data("formationdata");
+	let $scores = $('.score');
+	for (var i = 0; i < $scores.length - 1; i += 2) {
+	    let $score1 = $($scores[i]);
+	    let $score2 = $($scores[i + 1]);
+	    
+	    let score1 = parseInt($score1.text());
+	    let score2 = parseInt($score2.text());
+	    
+	    if (score1 > score2) {
+	      $score1.addClass('win');
+	    } else if (score1 < score2) {
+	      $score2.addClass('win');
+	    }
+	}
 	//신청 취소버튼
 	$("#staticBackdrop").on('hidden.bs.modal', function() {
 		$(".player-photo").html('<img alt="선수 사진" src="png/default-profile.jpg">');

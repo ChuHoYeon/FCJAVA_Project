@@ -110,7 +110,7 @@
 			</div>
 			<div class="infoLine">
 				<label class="menuLabel">최대 가입인원</label>
-				<input type="number" name="maxNum" class="textInput" min="1" max="99" placeholder="최대 99명" />
+				<input type="number" name="maxNum" class="textInput" min="11" max="99" placeholder="최대 99명" />
 			</div>
 			<h1 class="palyerTitle">선수 정보</h1>
 			<div class="playerCard">

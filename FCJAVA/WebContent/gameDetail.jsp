@@ -12,8 +12,7 @@
 <%
 	String sessionID = (String) session.getAttribute("ID");
 	GameDTO game =(GameDTO) request.getAttribute("game");
-	
-	StringChange stringChange = new StringChange();
+
 	//나의 팀 리스트
   	JSONArray myTeamListArray = new JSONArray();
 	List<TeamDTO> myTeamList = (List<TeamDTO>) session.getAttribute("MyTeamList");
@@ -178,10 +177,10 @@
 							Date gameDate = dateFormat.parse(result.getGame_date());
 							String month = String.valueOf(gameDate.getMonth()+1);
 							String date = String.valueOf(gameDate.getDate());
-							String day = stringChange.getDay(gameDate.getDay());
+							String day = StringChange.getDay(gameDate.getDay());
 							String hours = String.valueOf(gameDate.getHours());
 							String minutes = String.valueOf(gameDate.getMinutes());
-							String time = stringChange.lengthCheck(month)+"."+stringChange.lengthCheck(date)+" "+day+" "+stringChange.lengthCheck(hours)+":"+stringChange.lengthCheck(minutes);
+							String time = StringChange.lengthCheck(month)+"."+StringChange.lengthCheck(date)+" "+day+" "+StringChange.lengthCheck(hours)+":"+StringChange.lengthCheck(minutes);
 							
 							String team1 ="";
 							String team2 ="";
@@ -291,7 +290,7 @@
 	    } else if (score1 < score2) {
 	      $score2.addClass('win');
 	    }
-	  }
+	}
 	
 	//신청버튼
 	$(".apply").click(function() {
