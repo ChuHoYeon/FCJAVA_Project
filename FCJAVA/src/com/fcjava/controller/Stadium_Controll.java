@@ -22,7 +22,7 @@ public class Stadium_Controll extends HttpServlet {
 		
 		if (pageNumber.equals("1")) {
 			//구장 등록
-			System.out.println("1번 성공");
+			System.out.println();
 			connection = Stadium_ControllApply.getStadium();
 			try {
 				url = connection.DBconnection(request, response);
@@ -34,7 +34,7 @@ public class Stadium_Controll extends HttpServlet {
 		}
 		else if (pageNumber.equals("2")) {
 			//구장 리스트
-			System.out.println("2번 성공");
+			System.out.println();
 			connection = Stadium_over.getStadium();
 			try {
 				url = connection.DBconnection(request, response);
@@ -46,7 +46,7 @@ public class Stadium_Controll extends HttpServlet {
 		}
 		else if (pageNumber.equals("3")) {
 			//구장 상세 -booking
-			System.out.println("3번 성공");
+			System.out.println();
 			connection = Stadium_Nextboo.getstadium();
 			try {
 				url = connection.DBconnection(request, response);
@@ -58,16 +58,17 @@ public class Stadium_Controll extends HttpServlet {
 		}
 		else if (pageNumber.equals("4")) {
 			//구장 상세 -booking
-			System.out.println("4번 성공");
+			System.out.println();
 			connection = Stadium_booking.getStadium_booking();
 			try {
 				url = connection.DBconnection(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				// TODO Auto-generated catch blockxx`
 				e.printStackTrace();
 			}
 			request.getRequestDispatcher(url).forward(request, response);
 		}
 	}
+
 	
 }

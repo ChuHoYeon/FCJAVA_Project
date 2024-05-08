@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.fcjava.dto.StadiumDTO"%>
+<%
+	String sessionId = (String) session.getAttribute("ID");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -199,7 +202,8 @@
 	
 
 	<jsp:include page="footerPage.jsp" />
-
+<script>
+	let sessionId = '<%=sessionId%>';
+</script>
 </body>
-
 </html>

@@ -20,11 +20,10 @@
     
         <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-        <script defer src="js/main.js"></script>
         <script src="https://kit.fontawesome.com/bc44b0c9cb.js" crossorigin="anonymous"></script>
         <!-- <script src="js/main2.js"></script> -->
         <link rel="stylesheet" href="css/str_qa.css">
-
+		<link rel="stylesheet" type="text/css" href="css/freeBorder.css">
         <!--구글 아이콘-->
          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     </head>
@@ -60,12 +59,19 @@
     <jsp:useBean id="user" class="java_web.qa1"></jsp:useBean>  
 <section class="s_box_qa">
 	
-
-		<input class="qa_box1" type="text" maxlength="30" size="30" placeholder=" 검색어를입력해주세요"/> 
-		<input class="btn4" type="button" value="검색"> 
-		<a href=str_qa1.jsp>
-		<button id="ww" class="btn7">글쓰기</button>
-		</a>
+<form class="searchContent">
+					<div class="searchArea">
+						<select class="selectSearchBtn" name="selectText">
+							<option value="title">제목</option>
+							<option value="memo">내용</option>
+							<option value="id">작성자</option>
+							<option value="titlememo">제목+내용</option>
+						</select>
+						<input type="search" name="searchText" class="selectSearchBtn" placeholder="검색어를 입력해주세요"/>
+						<button type="submit" class="subResetBtn">검색</button>
+						<button type="reset" class="subResetBtn">초기화</button>
+					</div>
+				</form>
 	<%	
 		ArrayList<qa> bob = user.woob1();
 	%>

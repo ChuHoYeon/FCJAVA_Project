@@ -208,4 +208,5 @@
 	<insert id="booking" parameterType="com.fcjava.dto.StadiumBookingDTO">
 		insert into fc_java.sta_booking (b_ground_no, b_team_no, b_vs_team, b_won, b_date, b_tiem) values(#{b_ground_no}, #{b_team_no},#{b_vs_team}, #{b_won}, #{b_date}, #{b_time})
 	</insert>
+	
 </mapper>

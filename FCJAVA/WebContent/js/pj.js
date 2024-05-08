@@ -82,8 +82,22 @@ $(function () {
             }
         });
     });
-   
-    $('form').submit(function() {
+ // 로그인 상태 확인 함수 (쿠키 사용 예시)
+    function isUserLoggedIn() {
+        // `isLoggedIn` 쿠키가 존재하는지 확인
+    	let check = false;
+    	if(sessionId != 'null') check=true;
+        return check;
+    }
+
+    // 폼 제출 이벤트 핸들러
+    $('form').submit(function () {
+        if (!isUserLoggedIn()) {
+            alert('로그인이 필요한 서비스입니다. 로그인해주세요.');
+            window.location.href = "login.jsp";
+            return false; // 제출을 중지합니다.
+        }
+
         var form = $(this);
         var amountText = form.find('.won h3').text().trim(); // 금액 표시 부분의 텍스트 가져오기
         var amount = parseInt(amountText.replace(/\D/g, '')); // 텍스트에서 숫자 추출하기
@@ -100,7 +114,11 @@ $(function () {
             alert('예약할 날짜를 선택하세요.');
             return false; // 제출을 중지합니다.
         }
+
+        // 계속 진행
+        return true;
     });
+
 
 });
 
