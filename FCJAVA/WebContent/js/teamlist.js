@@ -73,13 +73,17 @@ $(function () {
         	let month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
         	let day = ("0" + dateObj.getDate()).slice(-2);
         	let formattedDate = year + "-" + month + "-" + day;
+        	let teamLogo = "png/defaultLogo.png";
+        	if(teamList[i].t_logo != null) {
+        		teamLogo = "/FCJAVA/png/playerPhoto/"+teamList[i].t_logo;
+        	}
             $("#teamlists").append(
                 /*html*/
                 `
                 <li>
 	        		<div class="team" data-bs-toggle="modal" data-bs-target='#Modal${teamList[i].t_num}'>
 	                    <div class="teamlogo">
-	                        <img src="png/defaultLogo.png"/>
+	                        <img src="${teamLogo}"/>
 	                    </div>
 	                    <div class="teamTitle">
 	                        <h2>${teamList[i].t_name}</h2>
@@ -100,7 +104,7 @@ $(function () {
 			            <div class="modal-content">
 			                <div class="modal-body">
 		                       <div class="pop-logo">
-		                            <img src="png/defaultLogo.png"/>
+		                            <img src="${teamLogo}"/>
 		                        </div>
 		                        <div class="pop-info">
 		                            <h1 class="modal-title fs-5" id="ModalLabel">${teamList[i].t_name}</h1>

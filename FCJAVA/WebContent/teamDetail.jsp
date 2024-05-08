@@ -16,6 +16,7 @@
 	List<TeamFormationDTO> teamFormations = (List<TeamFormationDTO>) request.getAttribute("teamFormations");
 	List<TeamGameResultDTO> teamGameResultList = (List<TeamGameResultDTO>) request.getAttribute("teamGameResultList");
 	
+	boolean isTeamPlayer = false;
 	int year = team.getT_c_day().getYear()+1900;
 	int month = team.getT_c_day().getMonth()+1;
 	int date = team.getT_c_day().getDate();
@@ -25,10 +26,6 @@
     int[] ages = (int[]) request.getAttribute("ages"); // [0]10대, [1]20대, [2]30대, [3]40대, [4]50대, [5]60대 이상
     int[] positions = (int[]) request.getAttribute("positions"); // [0]공격수, [1]미드필더, [2]수비수, [3]골키퍼
     
-	String savePath = "/png/playerPhoto";
-	ServletContext context = getServletContext();
-	String sRealPath = context.getRealPath(savePath);
-
 	String formationChk = "";
 	String formationName = "";
 	boolean firstFormation = true;
@@ -212,6 +209,7 @@
 							int p_month = player.getPl_ap_date().getMonth()+1;
 							int p_date = player.getPl_ap_date().getDate();
 							String playerDate = p_year+"-"+p_month+"-"+p_date;
+							if(player.getId().equals(sessionID)) isTeamPlayer = true;
 	
 							String sFilePath = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
 							if(player.getPl_pic() == null) sFilePath="png/default-profile.jpg";
@@ -377,7 +375,22 @@
 						</div><!-- class="createFormation" -->
 					</div><!-- 포메이션 -->
 					<div class="tab-content board-content">
-						<h2>게시판칸</h2>
+					<% if(isTeamPlayer) { %>
+						<div>
+							<h2>게시판</h2>
+							<table>
+								<tr>
+									<td>번호</td>
+									<td>제목</td>
+									<td>작성자</td>
+									<td>날짜</td>
+									<td>조회수</td>
+								</tr>
+							</table>
+						</div>
+					<% }else{ %>
+						<div>접근불가</div>
+					<% } %>
 					</div><!-- 게시판-->
 					
 				</div><!-- class="team-tab-info" -->
