@@ -376,17 +376,19 @@
 					</div><!-- 포메이션 -->
 					<div class="tab-content board-content">
 					<% if(isTeamPlayer) { %>
-						<div>
-							<h2>게시판</h2>
-							<table>
-								<tr>
-									<td>번호</td>
-									<td>제목</td>
-									<td>작성자</td>
-									<td>날짜</td>
-									<td>조회수</td>
-								</tr>
-							</table>
+						<div class="board_write">
+							<form method="post" enctype="multipart/form-data">
+								<input type="hidden" name="board_id" value="<%=sessionID%>" >
+								<div class="b_write">
+									<div class="b_label">게시판 글쓰기</div>
+									<div class="b_title">
+										<input type="text" name="board_title" placeholder="글 제목"/>
+									</div>
+									<div class="b_content"><textarea name="board_content" placeholder="글 내용"></textarea></div>
+									<div class="b_file"><input type="file" name="board_file" /></div>
+								</div>
+								<div><input type="button" value="글쓰기" /></div>
+							</form>
 						</div>
 					<% }else{ %>
 						<div>접근불가</div>

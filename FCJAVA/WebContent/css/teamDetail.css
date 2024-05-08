@@ -527,3 +527,21 @@ select[name="position"] {
 .notResult {
 	text-align: center;
 }
+
+.b_write {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #ebebeb;
+}
+.b_label {
+	padding: 8px 10px;
+    text-align: center;
+    border-bottom: 1px solid #ebebeb;
+}
+.b_title {
+	padding: 8px 10px;
+}
+.b_title input[name="board_title"] {
+	outline: none;
+    border: 1px solid #ebebeb;
+}
