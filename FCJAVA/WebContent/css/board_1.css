@@ -1,0 +1,51 @@
+.s_box_in {
+	display: flex;
+    flex-wrap: wrap;
+    gap: 25px 40px;
+    padding: 40px 0;
+}
+.bobox1 {
+	width: 400px;
+}
+.s_box_board {
+	width: 1280px;
+	margin: 0 auto;
+}
+.topArea {
+	background-color: #e6e6e6;
+}
+.topContent {
+	width: 936px;
+	margin: 0 auto;
+	padding: 32px 0;
+}
+.topTitle {
+	text-align: center;
+    margin-bottom: 20px;
+}
+.topMemo {
+	text-align: center;
+    font-size: 11pt;
+}
+.searchLine {
+	width: 645px;
+	margin: 0 auto;
+	display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+.se_box1 {
+	padding: 6px 10px;
+	font-size: 11pt;
+	border: 1px solid black;
+	width: 450px;
+}
+.btn4 {
+	padding: 0 25px;
+    font-size: 11pt;
+    border-radius: 3px;
+    border: 1px solid #303030;
+    background-color: #444;
+    color: #fff;
+	
+}

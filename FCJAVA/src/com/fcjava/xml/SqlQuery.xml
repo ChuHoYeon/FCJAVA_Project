@@ -2,13 +2,11 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
-	<!-- #소속된 팀 개수 -->
 	<select id="countTeam" resultType="java.lang.Integer">
 	SELECT COUNT(*) 
 	FROM fc_java.pl_info 
 	WHERE id = #{id};
 	</select>
-	<!-- #팀 리스트 -->
 	<select id="selectTeamList" resultType="com.fcjava.dto.TeamDTO">
 	SELECT * 
 	FROM fc_java.team_info
@@ -20,7 +18,6 @@
 	ORDER BY t_c_day DESC
 	LIMIT 3;
 	</select>
-	<!-- #팀 검색 -->
 	<select id="searchTeamList" parameterType="java.util.Map" resultType="com.fcjava.dto.TeamDTO">
 	SELECT *
     FROM fc_java.team_info
@@ -45,19 +42,16 @@
     </if>
     ORDER BY t_c_day DESC;
 	</select>
-	<!-- #팀 상세정보 -->
 	<select id="selectTeam" resultType="com.fcjava.dto.TeamDTO">
 	SELECT *
 	FROM fc_java.team_info
 	WHERE t_num = #{t_num};
 	</select>
-	<!-- #가입한 선수목록 -->
 	<select id="selectPlayerList" resultType="com.fcjava.dto.PlayerDTO">
 	SELECT fc_java.pl_info.*,fc_java.mem_info.b_day,fc_java.mem_info.gender 
 	FROM fc_java.pl_info JOIN fc_java.mem_info ON fc_java.pl_info.id = fc_java.mem_info.id 
 	WHERE fc_java.pl_info.t_num = #{t_num};
 	</select>
-	<!-- #팀 신청 -->
 	<insert id="insertPlayerApply" parameterType="com.fcjava.dto.PlayerDTO">
 	INSERT INTO fc_java.pl_info (t_num, id, pl_pic, back_num, position, pl_memo, height, weight)
 	VALUES (#{t_num}, #{id}
@@ -79,29 +73,24 @@
 	</choose>
 	);
 	</insert>
-	<!-- #팀 탈퇴 -->
 	<delete id="deleteTeamSecession" parameterType="com.fcjava.dto.PlayerDTO">
 	DELETE FROM fc_java.pl_info
 	WHERE t_num=#{t_num} and id=#{id};
 	</delete>
-	<!-- #포메이션 검색 -->
 	<select id="selectFormations" resultType="com.fcjava.dto.TeamFormationDTO">
 	SELECT * 
 	FROM fc_java.t_formation 
 	WHERE t_num = #{t_num};
 	</select>
-	<!-- #포메이션 이름 중복확인 -->
 	<select id="isFormationName" resultType="com.fcjava.dto.TeamFormationDTO">
 	SELECT * 
 	FROM fc_java.t_formation 
 	WHERE t_num = #{t_num} AND formation_name = #{formation_name};
 	</select>
-	<!-- #포메이션 생성 -->
 	<insert id="createFormation" parameterType="com.fcjava.dto.TeamFormationDTO">
 	INSERT INTO fc_java.t_formation (t_num, formation, formation_name, position_num, player_id)
 	VALUES (#{t_num},#{formation},#{formation_name},#{position_num},#{player_id});
 	</insert>
-	<!-- #팀 대회 결과 -->
 	<select id="selectTeamGameAllResult" resultType="com.fcjava.dto.TeamGameResultDTO">
 	SELECT game.game_name, gr1.game_type, gr1.game_date, game.game_place, team1.t_logo as team1_logo, team1.t_name as team1_name, gr1.team1_score, team2.t_logo as team2_logo, team2.t_name as team2_name, gr1.team2_score
 	FROM game_result gr1
@@ -121,8 +110,18 @@
 	)
 	ORDER BY gr1.game_date DESC;
 	</select>
+	<select id="teamBoardCount" resultType="java.lang.Integer">SELECT COUNT(*) FROM fc_java.board_${teamNumber};</select>
+	<select id="selectTeamBoardList" parameterType="java.util.Map" resultType="com.fcjava.dto.TeamBoardDTO">
+	SELECT * FROM board_${t_num} order by board_createdate desc limit ${startrow},10;
+	</select>
+	<insert id="insertTeamBoard" parameterType="com.fcjava.dto.TeamBoardDTO">
+	INSERT INTO board_${t_num} (board_num, board_id, board_title, board_content, board_file, board_readcount, board_createdate, board_lastupdate) VALUES (default,#{board_id},#{board_title},#{board_content},#{board_file},0,now(),now());
+	</insert>
 	
-	<!-- $대회 목록 #모든 리스트 -->
+	
+	
+	
+	
 	<select id="allSelectGame" resultType="com.fcjava.dto.GameDTO">
 		SELECT * 
 		FROM fc_java.game 
@@ -133,7 +132,6 @@
 	FROM fc_java.game_apply
 	WHERE game_num = #{game_num};
 	</select>
-	<!-- $대회 목록  #검색 -->
 	<select id="gameSelect" resultType="com.fcjava.dto.GameDTO">
 		SELECT * 
 		FROM fc_java.game 
@@ -146,31 +144,25 @@
 		</if>
 		order by game_fn_date DESC;
 	</select>
-	
-	<!-- $대회 상세 #대회정보 -->
 	<select id="selectGame" resultType="com.fcjava.dto.GameDTO">
 		SELECT * 
 		FROM fc_java.game 
 		WHERE game_num = ${game_num};
 	</select>
-	<!-- $대회 상세 #신청한 팀 리스트 -->
 	<select id="selectApplyTeam" resultType="com.fcjava.dto.GameApplyTeam">
 		SELECT game_apply.game_num, team_info.t_num, team_info.t_name, team_info.t_logo, game_apply.game_apply_date 
 		FROM game_apply 
 		JOIN team_info ON game_apply.team_num = team_info.t_num 
 		WHERE game_apply.game_num = ${game_num};
 	</select>
-	<!-- $대회 상세 #신청 -->
 	<insert id="applyGame" parameterType="com.fcjava.dto.GameApplyDTO">
 		INSERT INTO fc_java.game_apply 
 		VALUES(#{game_num},#{team_num},now(),default);
 	</insert>
-	<!-- $대회 상세 #신청 취소 -->
 	<delete id="applyCancelGame" parameterType="com.fcjava.dto.GameApplyDTO">
 		DELETE FROM fc_java.game_apply
 		WHERE game_num=#{game_num} and team_num=#{team_num};
 	</delete>
-	<!-- $대회 상세 #대회 결과 -->
 	<select id="getGameResult" resultType="com.fcjava.dto.GameResultDTO">
 		SELECT *
 		FROM fc_java.game_result

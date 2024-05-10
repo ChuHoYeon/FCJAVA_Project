@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fcjava.action.IndexNewTeamAction;
 import com.fcjava.action.TeamApplyAction;
 import com.fcjava.action.TeamApplyCheckAction;
+import com.fcjava.action.TeamBoardWriteAction;
 import com.fcjava.action.TeamCreateFormation;
 import com.fcjava.action.TeamDetailAction;
 import com.fcjava.action.TeamListAction;
@@ -99,6 +100,16 @@ public class TeamControll extends HttpServlet {
 		else if(pageNumber.equals("newTeamList")) {
 			//인덱스 새로운팀3개
 			connection = IndexNewTeamAction.getIndexNewTeamAction();
+			try {
+				url = connection.DBconnection(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(pageNumber.equals("writeBoard")) {
+			//팀 게시판 등록
+			connection = TeamBoardWriteAction.getTeamBoardWriteAction();
 			try {
 				url = connection.DBconnection(request, response);
 			} catch (Exception e) {

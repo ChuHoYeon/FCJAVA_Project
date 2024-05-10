@@ -4,33 +4,51 @@
 <%@ page import="com.fcjava.dto.TeamDTO" %>
 <%@ page import="com.fcjava.dto.PlayerDTO" %>
 <%@ page import="com.fcjava.dto.TeamFormationDTO" %>
+<%@ page import="com.fcjava.dto.PageDTO" %>
+<%@ page import="com.fcjava.dto.TeamBoardDTO" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="com.fcjava.dto.TeamGameResultDTO" %>
 <%@ page import="com.fcjava.model.StringChange" %>
+<%@ page import="com.google.gson.Gson" %>
 <%
 	String sessionID = (String)session.getAttribute("ID");
-	TeamDTO team = (TeamDTO) request.getAttribute("team");
-	List<PlayerDTO> playerList = (List<PlayerDTO>) request.getAttribute("playerList");
-	List<TeamFormationDTO> teamFormations = (List<TeamFormationDTO>) request.getAttribute("teamFormations");
-	List<TeamGameResultDTO> teamGameResultList = (List<TeamGameResultDTO>) request.getAttribute("teamGameResultList");
+	TeamDTO team = (TeamDTO) request.getAttribute("team"); //팀 정보
+	List<PlayerDTO> playerList = (List<PlayerDTO>) request.getAttribute("playerList"); //선수 목록
+	List<TeamFormationDTO> teamFormations = (List<TeamFormationDTO>) request.getAttribute("teamFormations"); //포메이션 목록
+	List<TeamGameResultDTO> teamGameResultList = (List<TeamGameResultDTO>) request.getAttribute("teamGameResultList"); //경기결과 목록
+	List<TeamBoardDTO> teamBoardList = (List<TeamBoardDTO>) request.getAttribute("teamBoardList"); //게시판 목록
+	PageDTO pageInfo = (PageDTO) request.getAttribute("pageInfo"); //게시판 페이지 정보
+	String boardpage = request.getParameter("boardpage");
+	int tabNumber = (Integer) request.getAttribute("tabNumber");
 	
+    int[] genders = (int[]) request.getAttribute("genders"); // [0]남자, [1]여자
+    int[] ages = (int[]) request.getAttribute("ages"); // [0]10대, [1]20대, [2]30대, [3]40대, [4]50대, [5]60대 이상
+    int[] positions = (int[]) request.getAttribute("positions"); // [0]공격수, [1]미드필더, [2]수비수, [3]골키퍼
 	boolean isTeamPlayer = false;
 	int year = team.getT_c_day().getYear()+1900;
 	int month = team.getT_c_day().getMonth()+1;
 	int date = team.getT_c_day().getDate();
-	int applyCheck = 3;
-
-    int[] genders = (int[]) request.getAttribute("genders"); // [0]남자, [1]여자
-    int[] ages = (int[]) request.getAttribute("ages"); // [0]10대, [1]20대, [2]30대, [3]40대, [4]50대, [5]60대 이상
-    int[] positions = (int[]) request.getAttribute("positions"); // [0]공격수, [1]미드필더, [2]수비수, [3]골키퍼
-    
-	String formationChk = "";
+   	String formationChk = "";
 	String formationName = "";
 	boolean firstFormation = true;
 	
-	//포메이션없을때 조건문
+	int listCount=pageInfo.getListCount();
+	int nowPage=pageInfo.getPage();
+	int maxPage=pageInfo.getMaxPage();
+	int startPage=pageInfo.getStartPage();
+	int endPage=pageInfo.getEndPage();
+	
+	int applyCheck = 3;
+	for(int i=0; i<playerList.size(); i++) {
+		if(playerList.get(i).getId().equals(sessionID) && team.getId().equals(sessionID)){
+			applyCheck = 1; break;
+		}else if(playerList.get(i).getId().equals(sessionID)){
+			applyCheck = 2; break;
+		}
+	}
+	
 	JSONArray jsonArray = new JSONArray();
 	for (TeamFormationDTO formation : teamFormations) {
 	    JSONObject jsonFormation = new JSONObject();
@@ -67,7 +85,9 @@
 	<!-- teamDetail css -->
 	<link rel="stylesheet" href="css/teamDetail.css" />
 </head>
-
+<script type="text/javascript">
+	let tabNumber = <%=tabNumber%>;
+</script>
 <body>
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
@@ -159,13 +179,7 @@
 				</div>
 				<div class="subArea">
 				<%
-				for(int i=0; i<playerList.size(); i++) {
-					if(playerList.get(i).getId().equals(sessionID) && team.getId().equals(sessionID)){
-						applyCheck = 1; break;
-					}else if(playerList.get(i).getId().equals(sessionID)){
-						applyCheck = 2; break;
-					}
-				}
+				
 				switch (applyCheck){
 					case 1:%><button type="button" id="team-delete" class="applyleaveBtn deleteTeam">삭제하기</button><%break;
 					case 2:%><button type="button" id="team-leave" class="applyleaveBtn leaveTeam">탈퇴하기</button><%break;
@@ -178,7 +192,7 @@
 			<!-- --------------------------- -->
 			<div class="right-info">
 				<div class="team-tab">
-					<div class="tab tab-focus"><p>선수</p></div>
+					<div class="tab"><p>선수</p></div>
 					<div class="tab"><p>일정</p></div>
 					<div class="tab"><p>결과</p></div>
 					<div class="tab"><p>포메이션</p></div>
@@ -376,18 +390,74 @@
 					</div><!-- 포메이션 -->
 					<div class="tab-content board-content">
 					<% if(isTeamPlayer) { %>
+						<div class="board_list">
+							<% if(teamBoardList != null && listCount > 0){ %>
+							<table class="boardTable">
+								<thead>
+									<tr>
+										<th>번호</th>
+										<th>제목</th>
+										<th>글쓴이</th>
+										<th>등록일</th>
+										<th>조회수</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+									for(int i=0;i<teamBoardList.size();i++){
+										int boardMonth = teamBoardList.get(i).getBoard_createdate().getMonth()+1;
+										int boardDate = teamBoardList.get(i).getBoard_createdate().getDate();
+									%>
+								<tr>
+									<td><%= teamBoardList.get(i).getBoard_num() %></td>
+									<td><%= teamBoardList.get(i).getBoard_title() %></td>
+									<td><%= teamBoardList.get(i).getBoard_id() %></td>
+									<td><%= boardMonth + "-" + boardDate %></td>
+									<td><%= teamBoardList.get(i).getBoard_readcount() %></td>
+								</tr>
+								<% } %>
+								</tbody>
+							</table>
+							<div>
+								<%if(nowPage<=1){ %>
+								[이전]&nbsp;
+								<%}else{ %>
+								<a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=nowPage-1 %>">[이전]</a>&nbsp;
+								<%} %>
+						
+								<%for(int a=startPage;a<=endPage;a++){
+										if(a==nowPage){%>
+								[<%=a %>]
+								<%}else{ %>
+								<a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=a %>">[<%=a %>]
+								</a>&nbsp;
+								<%} %>
+								<%} %>
+						
+								<%if(nowPage>=maxPage){ %>
+								[다음]
+								<%}else{ %>
+								<a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=nowPage+1 %>">[다음]</a>
+								<%} %>
+							</div>
+							<% } %>
+						</div>
 						<div class="board_write">
-							<form method="post" enctype="multipart/form-data">
+							<form action="fcjava.team?page=writeBoard" method="post" enctype="multipart/form-data">
+								<input type="hidden" name="t_num" value="<%=team.getT_num()%>" />
 								<input type="hidden" name="board_id" value="<%=sessionID%>" >
 								<div class="b_write">
 									<div class="b_label">게시판 글쓰기</div>
 									<div class="b_title">
-										<input type="text" name="board_title" placeholder="글 제목"/>
+										<input type="text" name="board_title" maxlength="45" required="required" placeholder="글 제목"/>
 									</div>
-									<div class="b_content"><textarea name="board_content" placeholder="글 내용"></textarea></div>
-									<div class="b_file"><input type="file" name="board_file" /></div>
+									<div class="b_content"><textarea name="board_content" id="editor" placeholder="글 내용" required="required"></textarea></div>
+									<div class="b_file"><input type="file" class="form-control" name="board_file" accept="image/*" /></div>
 								</div>
-								<div><input type="button" value="글쓰기" /></div>
+								<div class="write_bottom">
+									<input type="button" class="writeBtn" value="취소" />
+									<input type="submit" class="writeBtn" value="글쓰기" />
+								</div>
 							</form>
 						</div>
 					<% }else{ %>
@@ -403,13 +473,6 @@
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
 	
-	<!-- teamDetail js -->
-	<script src="js/teamDetail.js"></script>
-	<!-- bootstrap js -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- chart.js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-	
 	<script>
     $(document).ready(function(){
        	const sessionID = '<%= sessionID %>';//로그인한 아이디
@@ -423,7 +486,7 @@
        	const genderCt = $('#genderChart');
        	const ageCt = $('#ageChart');
        	const positionCt = $('#positionChart');
-       	
+        
        	//가입인원 max시 가입버튼 비활성화
        	if(nowCount >= maxCount) {
        		$(".applyleaveBtn").prop('disabled', true);
@@ -532,5 +595,11 @@
     	
     });
 	</script>
+	<!-- teamDetail js -->
+	<script src="js/teamDetail.js"></script>
+	<!-- bootstrap js -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- chart.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 </body>
 </html>

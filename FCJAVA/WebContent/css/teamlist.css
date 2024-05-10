@@ -227,6 +227,7 @@ input[type="checkbox"]:checked + .checkbox_set {
     height: 126px;
     border-radius: 50%;
     border: 1px solid #ebebeb;
+    object-fit: cover;
 }
 
 .pop-info {

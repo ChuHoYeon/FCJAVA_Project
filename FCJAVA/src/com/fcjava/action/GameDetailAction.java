@@ -44,6 +44,7 @@ public class GameDetailAction implements DBinterface {
             gameResultList = gameResult.GameResultList(gameNum);
             request.setAttribute("gameResultList", gameResultList);
         }
+		
 		return "gameDetail.jsp";
 	}
 

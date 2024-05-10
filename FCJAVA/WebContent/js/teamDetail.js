@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function(){
 	const formationdata = $(".team-formation-list").data("formationdata");
 	let $scores = $('.score');
+	
 	for (var i = 0; i < $scores.length - 1; i += 2) {
 	    let $score1 = $($scores[i]);
 	    let $score2 = $($scores[i + 1]);
@@ -33,6 +34,8 @@ $(document).ready(function(){
 		$("textarea[name='pl_memo']").val('');
 	});
 	
+
+	$('.tab').eq(tabNumber).addClass("tab-focus");
 	$('.tab').each(function(index) {
         if ($(this).hasClass('tab-focus')) {
             $('.tab-content').eq(index).show();
@@ -320,7 +323,9 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
 });
+
 function isSelectedPlayer() {
 	$('.selectPlayers .formation-players').removeClass('selectedPlayer');
 	
