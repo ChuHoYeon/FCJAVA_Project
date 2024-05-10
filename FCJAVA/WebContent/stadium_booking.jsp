@@ -132,7 +132,12 @@
 						<span class="booking_label">이용 시간</span>
 						<div class="booking_data"> <%= selectedTimes %></div>
 						<input type="hidden" name="b_time" value="<%= selectedTimes %>" />
+						<div class="taem_bk">내 팀</div>
+						<input type="hidden" name="b_time" value="<%= selectedTimes %>" />
+						
+						
 					</div>
+					
 					<div id="radioButtons">
 						<input type="radio" name="ck_vs" id="ck_yes" value="1"class="radio-button" onclick="selectButton(this)"> 
 						<label for="ck_yes">친선경기 O</label>
