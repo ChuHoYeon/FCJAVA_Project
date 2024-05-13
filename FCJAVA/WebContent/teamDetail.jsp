@@ -1,3 +1,5 @@
+<%@page import="com.google.gson.internal.GsonBuildConfig"%>
+<%@page import="com.google.gson.GsonBuilder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
@@ -68,6 +70,7 @@
 	    jsonArray.add(jsonFormation);
 	}
 	String teamFormationsJson = jsonArray.toJSONString();
+	String jsonTeamBoardList = new Gson().toJson(teamBoardList);
 %>
 <!DOCTYPE html>
 <html>
@@ -87,6 +90,7 @@
 </head>
 <script type="text/javascript">
 	let tabNumber = <%=tabNumber%>;
+	let jsonTeamBoardList = <%= jsonTeamBoardList %>;
 </script>
 <body>
 	<!-- 헤더 -->
@@ -391,8 +395,17 @@
 					<div class="tab-content board-content">
 					<% if(isTeamPlayer) { %>
 						<div class="board_list">
-							<% if(teamBoardList != null && listCount > 0){ %>
+							<div class="post-area">
+								<button id="writeBoardBtn" class="writeBtn">글쓰기</button>
+							</div>
 							<table class="boardTable">
+								<colgroup>
+									<col class="boardNumber">
+									<col class="boardTitle">
+									<col class="boardWriter">
+									<col class="boardCreateDate">
+									<col class="boardReadNum">
+								</colgroup>
 								<thead>
 									<tr>
 										<th>번호</th>
@@ -402,6 +415,7 @@
 										<th>조회수</th>
 									</tr>
 								</thead>
+							<% if(teamBoardList != null && listCount > 0){ %>
 								<tbody>
 									<%
 									for(int i=0;i<teamBoardList.size();i++){
@@ -410,37 +424,39 @@
 									%>
 								<tr>
 									<td><%= teamBoardList.get(i).getBoard_num() %></td>
-									<td><%= teamBoardList.get(i).getBoard_title() %></td>
-									<td><%= teamBoardList.get(i).getBoard_id() %></td>
-									<td><%= boardMonth + "-" + boardDate %></td>
+									<td class="showBoardDetail" data-boardNum="<%= teamBoardList.get(i).getBoard_num() %>"><%= teamBoardList.get(i).getBoard_title() %></td>
+									<td><%= teamBoardList.get(i).getBoard_id() %>
+									</td>
+									<td><%= StringChange.lengthCheck(String.valueOf(boardMonth)) + "-" + StringChange.lengthCheck(String.valueOf(boardDate)) %></td>
 									<td><%= teamBoardList.get(i).getBoard_readcount() %></td>
 								</tr>
 								<% } %>
 								</tbody>
+								<% } %>
 							</table>
 							<div>
+								<ul class="page_line">
 								<%if(nowPage<=1){ %>
-								[이전]&nbsp;
+								<li>[이전]</li>
 								<%}else{ %>
-								<a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=nowPage-1 %>">[이전]</a>&nbsp;
+								<li><a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=nowPage-1 %>">[이전]</a></li>
 								<%} %>
 						
 								<%for(int a=startPage;a<=endPage;a++){
 										if(a==nowPage){%>
-								[<%=a %>]
+								<li>[<%=a %>]</li>
 								<%}else{ %>
-								<a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=a %>">[<%=a %>]
-								</a>&nbsp;
+								<li><a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=a %>">[<%=a %>]</a></li>
 								<%} %>
 								<%} %>
 						
 								<%if(nowPage>=maxPage){ %>
-								[다음]
+								<li>[다음]</li>
 								<%}else{ %>
-								<a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=nowPage+1 %>">[다음]</a>
+								<li><a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=nowPage+1 %>">[다음]</a></li>
 								<%} %>
+								</ul>
 							</div>
-							<% } %>
 						</div>
 						<div class="board_write">
 							<form action="fcjava.team?page=writeBoard" method="post" enctype="multipart/form-data">
@@ -455,10 +471,12 @@
 									<div class="b_file"><input type="file" class="form-control" name="board_file" accept="image/*" /></div>
 								</div>
 								<div class="write_bottom">
-									<input type="button" class="writeBtn" value="취소" />
-									<input type="submit" class="writeBtn" value="글쓰기" />
+									<input type="button" id="boardCancleBtn" class="writeBtn" value="취소" />
+									<input type="submit" class="writeBtn" value="저장" />
 								</div>
 							</form>
+						</div>
+						<div class="board_detail">
 						</div>
 					<% }else{ %>
 						<div>접근불가</div>

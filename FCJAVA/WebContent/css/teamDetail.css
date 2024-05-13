@@ -537,7 +537,7 @@ select[name="position"] {
 	border: 1px solid #ebebeb;
 }
 .b_label {
-	padding: 8px 10px;
+	padding: 8px 0;
     text-align: center;
     border-bottom: 1px solid #ebebeb;
     background-color: #F8F9FA;
@@ -545,6 +545,9 @@ select[name="position"] {
 .b_title, .b_content {
 	padding: 8px 10px;
 	border-bottom: 1px solid #ebebeb;
+}
+.b_file {
+	padding: 8px 10px;
 }
 .b_title input[name="board_title"] {
 	outline: none;
@@ -579,31 +582,49 @@ select[name="position"] {
 }
 .boardTable {
 	width: 100%;
-	border: 1px solid;
-	font-size: 13px;
+	border: 1px solid #ebebeb;
+	font-size: 12pt;
 }
-.boardTable tr td {
+.boardTable th,.boardTable td {
 	padding: 8px 5px;
 }
 .boardTable thead {
-	background-color: #F4F4F4;
+	background-color: #F8F9FA;
 	font-weight: bold;
 	text-align: center;
 }
+.boardTable tbody td:nth-of-type(1) {
+	text-align: center;
+}
+.boardTable tbody td:nth-of-type(3) {
+	text-align: center;
+}
+.boardTable tbody td:nth-of-type(4) {
+	text-align: center;
+}
+.boardTable tbody td:nth-of-type(5) {
+	text-align: center;
+}
+.boardNumber {
+	width: 9%;
+}
+.boardWriter {
+	width: 15%;
+}
+.boardCreateDate {
+	width: 9%;
+}
+.boardReadNum {
+	width: 9%;
+}
 
-.boardTable td:nth-of-type(1) {
-	width: 72px;
-	text-align: center;
+.post-area {
+	text-align: right;
+    margin: 10px 0;
 }
-.boardTable td:nth-of-type(2)
-.boardTable td:nth-of-type(3) {
-	width: 70px;
-}
-.boardTable td:nth-of-type(4) {
-	width: 70px;
-	text-align: center;
-}
-.boardTable td:nth-of-type(5) {
-	width: 70px;
-	text-align: center;
+.page_line {
+	display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px 0;
 }

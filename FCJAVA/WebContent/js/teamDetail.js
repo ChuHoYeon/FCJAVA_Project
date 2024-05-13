@@ -324,6 +324,29 @@ $(document).ready(function(){
 		}
 	});
 	
+	$('#writeBoardBtn').on('click', function() {
+		$('.board_list').hide();
+		$('.board_write').show();
+	});
+	$('#boardCancleBtn').on('click', function() {
+		let isCancel = confirm('작성을 취소하시겠습니까?');
+		if(isCancel) {
+			$('.board_write').hide();
+			$('input[name="board_title"]').val('');
+			$('textarea[name="board_content"]').val('');
+			$('input[name="board_file"]').val('');
+			$('.board_list').show();
+		}
+	});
+	$('.showBoardDetail').on('click', function() {
+		//$('.board_list').hide();
+		//$('.board_write').hide();
+		let $de = $(this).data("boardnum");
+		console.log(jsonTeamBoardList);
+		$.each(jsonTeamBoardList, function(i, elt) {
+			console.log(elt.board_num)
+		})
+	})
 });
 
 function isSelectedPlayer() {
