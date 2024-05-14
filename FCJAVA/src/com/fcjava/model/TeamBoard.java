@@ -29,9 +29,10 @@ public class TeamBoard {
 	public List<TeamBoardDTO> getBoardList(String t_num,int page, int limit) {
 		List<TeamBoardDTO> teamBoardList = null;
 		Map<String, Object> params = new HashMap<>();
-		int startrow=(page-1)*10; 
+		int startrow=(page-1)*limit; 
 		params.put("t_num", t_num);
 		params.put("startrow", startrow);
+		params.put("endrow", limit);
 		SqlSession getSql = sql.openSession();
 		teamBoardList = getSql.selectList("selectTeamBoardList", params);
 		getSql.close();

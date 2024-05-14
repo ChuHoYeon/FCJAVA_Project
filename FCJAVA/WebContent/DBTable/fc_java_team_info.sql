@@ -36,7 +36,7 @@ CREATE TABLE `team_info` (
   `t_sns` varchar(255) DEFAULT NULL,
   `t_age` varchar(10) NOT NULL,
   PRIMARY KEY (`t_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-08 17:42:42
+-- Dump completed on 2024-05-14 18:12:47

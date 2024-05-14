@@ -16,26 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `freeborderlikes`
+-- Table structure for table `board_18`
 --
 
-DROP TABLE IF EXISTS `freeborderlikes`;
+DROP TABLE IF EXISTS `board_18`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `freeborderlikes` (
-  `id` varchar(20) COLLATE utf8_bin NOT NULL,
-  `number` int(11) NOT NULL
+CREATE TABLE `board_18` (
+  `board_num` int(11) NOT NULL AUTO_INCREMENT,
+  `board_id` varchar(20) COLLATE utf8_bin NOT NULL,
+  `board_title` varchar(45) COLLATE utf8_bin NOT NULL,
+  `board_content` text COLLATE utf8_bin NOT NULL,
+  `board_file` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `board_readcount` int(11) NOT NULL,
+  `board_createdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `board_lastupdate` datetime NOT NULL,
+  PRIMARY KEY (`board_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `freeborderlikes`
+-- Dumping data for table `board_18`
 --
 
-LOCK TABLES `freeborderlikes` WRITE;
-/*!40000 ALTER TABLE `freeborderlikes` DISABLE KEYS */;
-INSERT INTO `freeborderlikes` VALUES ('1234',21),('1234',10),('1234',23),('1234',27),('1234',20),('12345',13),('12345',14),('12345',20),('12345',28),('12345',29),('1234',32),('1',33),('123456',9),('123456',10),('123456',23);
-/*!40000 ALTER TABLE `freeborderlikes` ENABLE KEYS */;
+LOCK TABLES `board_18` WRITE;
+/*!40000 ALTER TABLE `board_18` DISABLE KEYS */;
+/*!40000 ALTER TABLE `board_18` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -47,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-14 18:12:46
+-- Dump completed on 2024-05-14 18:12:45

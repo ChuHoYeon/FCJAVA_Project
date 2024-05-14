@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class TeamBoardDTO {
 	
-	private int t_num;
 	private int board_num;
 	private String board_id;
 	private String board_title;
@@ -13,6 +12,7 @@ public class TeamBoardDTO {
 	private int board_readcount;
 	private Date board_createdate;
 	private Date board_lastupdate;
+	private int t_num;
 	
 	public int getT_num() {
 		return t_num;

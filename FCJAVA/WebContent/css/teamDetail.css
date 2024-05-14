@@ -536,6 +536,11 @@ select[name="position"] {
 	flex-direction: column;
 	border: 1px solid #ebebeb;
 }
+.b_writer {
+	font-weight: bold;
+	padding: 5px 10px;
+	border-bottom: 1px solid #ebebeb;
+}
 .b_label {
 	padding: 8px 0;
     text-align: center;
@@ -627,4 +632,38 @@ select[name="position"] {
     justify-content: center;
     gap: 5px;
     margin: 10px 0;
+}
+.showBoardDetail {
+	cursor: pointer;
+}
+.articleArea {
+	border: 1px solid #ebebeb;
+}
+.articleHead {
+	display: flex;
+	justify-content: space-between;
+    margin: 0 0 20px 0;
+    padding: 14px 10px 16px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ccc;
+}
+.articleWriter {
+	width: 30%;
+}
+.articleDate {
+	width: 40%;
+    text-align: center;
+}
+.articleHit {
+	width: 30%;
+	text-align: right;
+}
+.articleMain {
+	padding: 15px 20px;
+}
+.articleTitle {
+	margin-bottom: 35px;
+}
+.articleContent {
+    min-height: 444px;
 }

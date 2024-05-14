@@ -28,11 +28,7 @@ CREATE TABLE `t_board_comment` (
   `id` varchar(20) NOT NULL,
   `t_coment_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `t_coment_memo` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`t_coment_num`),
-  KEY `t_board_num_idx` (`t_board_num`),
-  KEY `id_idx` (`id`),
-  CONSTRAINT `comen_id` FOREIGN KEY (`id`) REFERENCES `mem_info` (`id`),
-  CONSTRAINT `comen_t_board_num` FOREIGN KEY (`t_board_num`) REFERENCES `t_board` (`t_board_num`)
+  PRIMARY KEY (`t_coment_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-26 18:23:40
+-- Dump completed on 2024-05-14 18:12:46

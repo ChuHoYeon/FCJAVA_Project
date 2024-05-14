@@ -112,7 +112,7 @@
 	</select>
 	<select id="teamBoardCount" resultType="java.lang.Integer">SELECT COUNT(*) FROM fc_java.board_${teamNumber};</select>
 	<select id="selectTeamBoardList" parameterType="java.util.Map" resultType="com.fcjava.dto.TeamBoardDTO">
-	SELECT * FROM board_${t_num} order by board_createdate desc limit ${startrow},10;
+	SELECT * FROM board_${t_num} order by board_createdate desc limit ${startrow},${endrow};
 	</select>
 	<insert id="insertTeamBoard" parameterType="com.fcjava.dto.TeamBoardDTO">
 	INSERT INTO board_${t_num} (board_num, board_id, board_title, board_content, board_file, board_readcount, board_createdate, board_lastupdate) VALUES (default,#{board_id},#{board_title},#{board_content},#{board_file},0,now(),now());

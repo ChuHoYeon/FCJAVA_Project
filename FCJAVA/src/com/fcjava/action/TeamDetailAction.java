@@ -69,7 +69,7 @@ public class TeamDetailAction implements DBinterface{
 			
 			//게시판 목록
 			int page=1;
-			int limit=10;
+			int limit=13;
 			List<TeamBoardDTO> teamBoardList = null;
 			
 			if(request.getParameter("boardpage")!=null){

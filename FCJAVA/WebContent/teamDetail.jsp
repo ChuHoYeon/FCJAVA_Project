@@ -396,7 +396,7 @@
 					<% if(isTeamPlayer) { %>
 						<div class="board_list">
 							<div class="post-area">
-								<button id="writeBoardBtn" class="writeBtn">글쓰기</button>
+								<button type="button" id="writeBoardBtn" class="writeBtn">글쓰기</button>
 							</div>
 							<table class="boardTable">
 								<colgroup>
@@ -425,8 +425,7 @@
 								<tr>
 									<td><%= teamBoardList.get(i).getBoard_num() %></td>
 									<td class="showBoardDetail" data-boardNum="<%= teamBoardList.get(i).getBoard_num() %>"><%= teamBoardList.get(i).getBoard_title() %></td>
-									<td><%= teamBoardList.get(i).getBoard_id() %>
-									</td>
+									<td><%= teamBoardList.get(i).getBoard_id() %></td>
 									<td><%= StringChange.lengthCheck(String.valueOf(boardMonth)) + "-" + StringChange.lengthCheck(String.valueOf(boardDate)) %></td>
 									<td><%= teamBoardList.get(i).getBoard_readcount() %></td>
 								</tr>
@@ -467,12 +466,13 @@
 									<div class="b_title">
 										<input type="text" name="board_title" maxlength="45" required="required" placeholder="글 제목"/>
 									</div>
+									<div class="b_writer"><%=sessionID%></div>
 									<div class="b_content"><textarea name="board_content" id="editor" placeholder="글 내용" required="required"></textarea></div>
 									<div class="b_file"><input type="file" class="form-control" name="board_file" accept="image/*" /></div>
 								</div>
 								<div class="write_bottom">
 									<input type="button" id="boardCancleBtn" class="writeBtn" value="취소" />
-									<input type="submit" class="writeBtn" value="저장" />
+									<input type="submit" class="writeBtn" value="작성완료" />
 								</div>
 							</form>
 						</div>

@@ -328,6 +328,7 @@ $(document).ready(function(){
 		$('.board_list').hide();
 		$('.board_write').show();
 	});
+	
 	$('#boardCancleBtn').on('click', function() {
 		let isCancel = confirm('작성을 취소하시겠습니까?');
 		if(isCancel) {
@@ -338,15 +339,41 @@ $(document).ready(function(){
 			$('.board_list').show();
 		}
 	});
+	
 	$('.showBoardDetail').on('click', function() {
-		//$('.board_list').hide();
-		//$('.board_write').hide();
+		$('.board_list').hide();
+		$('.board_detail').show();
 		let $de = $(this).data("boardnum");
-		console.log(jsonTeamBoardList);
 		$.each(jsonTeamBoardList, function(i, elt) {
-			console.log(elt.board_num)
-		})
-	})
+			if($de == elt.board_num) {
+				$('.board_detail').empty();
+				$('.board_detail').append(`
+				<div class="post-area"><button type="button" id="tolistBtn" class="writeBtn">목록</button></div>
+				<div class="articleArea">
+					<div class="articleHead">
+						<div class="articleWriter">${elt.board_id}</div>
+						<div class="articleDate">${elt.board_createdate}</div>
+						<div class="articleHit">조회수 : ${elt.board_readcount}</div>
+					</div>
+					<div class="articleMain">
+						<div class="articleTitle"><h1>${elt.board_title}</h1></div>
+						<div class="articleContent">${elt.board_content}</div>
+					</div>
+				</div>
+				`);
+				if(elt.board_file != null) {
+					$('.articleContent').prepend(`<div><img src="/FCJAVA/png/boardUpload/${elt.board_file}"/></div>`);
+				}
+				return false;
+			}
+		});
+	});
+	
+	$(document).on('click', '#tolistBtn', function() {
+	    $('.board_detail').hide();
+	    $('.board_detail').empty();
+	    $('.board_list').show();
+	});
 });
 
 function isSelectedPlayer() {
