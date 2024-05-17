@@ -47,10 +47,10 @@
 								<img src="img/ground_1_<%=stadium.getG_no() %>.jpg" width="900">
 							</div>
 							<div class="swiper-slide">
-								<img src="img/rm1.JPG" alt="이미지 준비중">
+								<img src="img/rm1.jpg" alt="이미지 준비중">
 							</div>
 							<div class="swiper-slide">
-								<img src="img/rm1.JPG" alt="이미지 준비중">
+								<img src="img/rm1.jpg" alt="이미지 준비중">
 							</div>
 						</div>  
 					</div>
