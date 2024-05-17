@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 });
 $(document).ready(function(){
-	const formationdata = $(".team-formation-list").data("formationdata");
+	const formationdata = formationjsonArray;
 	let $scores = $('.score');
 	
 	for (var i = 0; i < $scores.length - 1; i += 2) {
@@ -151,7 +151,7 @@ $(document).ready(function(){
 
 	let $dataFormation = $(".showFor").data("formation");
 	let $dataFormationname = $(".showFor").data("formationname");
-	let matchingData = formationdata.filter(function(item) {
+	let matchingData = formationjsonArray.filter(function(item) {
         return item.formation == $dataFormation && item.formation_name == $dataFormationname;
     });
 	if(matchingData.length > 0) {
@@ -166,16 +166,20 @@ $(document).ready(function(){
 			$('.showPlayer').each(function() {
 				let cardid = $(this).data('cardid');
 				const position = selectedFormation[cardid];
-				const translateX = position.x;
-				const translateY = position.y;
-				$(this).css('transform', 'translate('+translateX+'px,'+translateY+'px)');
+				$(this).css('transform', 'translate('+position.x+'px,'+position.y+'px)');
 				$(this).empty();
-				let formationPlayerProfile = '<img alt="선수사진" src="'+matchingData[cardid].player_pic+'">';
-				formationPlayerProfile += '<div class="forPlaterName">'+matchingData[cardid].player_id+'</div>';
-				$(this).append(formationPlayerProfile);
-				
-				let rightPlayerProfile = '<div class="formation-players"><div class="for-player-img"><img alt="선수사진" src="'+matchingData[cardid].player_pic+'"></div><div>'+matchingData[cardid].player_id+'</div></div>';
-		        $('.formation-info').append(rightPlayerProfile);
+				$(this).append(`
+				<img alt="선수사진" src="${matchingData[cardid].player_pic}">
+				<div class="forPlaterName">${matchingData[cardid].player_id}</div>
+				`);
+		        $('.formation-info').append(`
+		        <div class="formation-players">
+		        	<div class="for-player-img">
+		        		<img alt="선수사진" src="${matchingData[cardid].player_pic}">
+		        	</div>
+		        	<div>${matchingData[cardid].player_id}</div>
+		        </div>
+		        `);
 			});
 		}
 	}
@@ -186,7 +190,7 @@ $(document).ready(function(){
 		
 		$dataFormation = $(".showFor").data("formation");
 		$dataFormationname = $(".showFor").data("formationname");
-		matchingData = formationdata.filter(function(item) {
+		matchingData = formationjsonArray.filter(function(item) {
 	        return item.formation == $dataFormation && item.formation_name == $dataFormationname;
 	    });
 		
@@ -231,6 +235,7 @@ $(document).ready(function(){
 		$('.showFormation').hide();
 		$('.createFormation').show();
 	});
+	
 	let $selectFormationValue = $('#selectFormation').val();
 	selectFormation($selectFormationValue);
 	function selectFormation($selectFormationValue) {
@@ -245,10 +250,12 @@ $(document).ready(function(){
 			});
 		}
 	}
+	
 	//포메이션 변경시 배치이동
 	$('#selectFormation').on('change', function() {
 		selectFormation($(this).val());
 	});
+	
 	//뒤로가기,취소버튼
 	$('.cancleCreateFormation').on('click', function() {
 		let isCancle = confirm('저장을 취소하시겠습니까?');
@@ -287,6 +294,7 @@ $(document).ready(function(){
 			return false;
 		}
 	})
+	
 	let $player_id = null;
 	$('.createPlayer').on('click', function() {
 		$createPlayerImgSrc = $(this).find('img');
@@ -295,6 +303,7 @@ $(document).ready(function(){
         $('.createPlayer').find('img').removeClass('focus-player');
         $(this).find('img').addClass('focus-player');
 	});
+	
 	$('.selectPlayers .formation-players').on('click', function(event) {
 		if($createPlayerImgSrc != null && $createPlayerName != null) {
 			let selectPlayerImgSrc = $(this).find('.for-player-img img').attr('src');
@@ -307,11 +316,9 @@ $(document).ready(function(){
 				$('.createPlayer').each(function() {
 					if($(this).find('.forPlaterName').text() == selectPlayerName) {
 						$(this).find('.forPlaterName').text('');
-						//$(this).find('img').attr('src', "png/uniform.png");
 						$(this).find('img').attr('src', "png/default-profile.jpg");
 					}
 				});
-				//$createPlayerImgSrc.attr('src', selectPlayerImgSrc);
 				$createPlayerImgSrc.attr('src', "png/uniform.png");
 				$createPlayerName.text(selectPlayerName);
 				$player_id.val(selectPlayerName);
@@ -319,7 +326,6 @@ $(document).ready(function(){
 				isSelectedPlayer();
 				$createPlayerImgSrc = null;
 				$createPlayerName = null;
-				
 			}
 		}
 	});
@@ -389,6 +395,7 @@ function isSelectedPlayer() {
 		});
 	});
 }
+
 $(document).on('click', function(event) {
     // 클릭된 요소가 .createPlayer 또는 .formation-players 요소가 아닌 경우
     if (!$(event.target).closest('.createPlayer').length && !$(event.target).closest('.formation-players').length) {

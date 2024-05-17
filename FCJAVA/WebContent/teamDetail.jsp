@@ -69,7 +69,7 @@
 	    }
 	    jsonArray.add(jsonFormation);
 	}
-	String teamFormationsJson = jsonArray.toJSONString();
+	
 	String jsonTeamBoardList = new Gson().toJson(teamBoardList);
 %>
 <!DOCTYPE html>
@@ -89,6 +89,7 @@
 	<link rel="stylesheet" href="css/teamDetail.css" />
 </head>
 <script type="text/javascript">
+	let formationjsonArray = <%= jsonArray%>;
 	let tabNumber = <%=tabNumber%>;
 	let jsonTeamBoardList = <%= jsonTeamBoardList %>;
 </script>
@@ -282,14 +283,14 @@
 								</div>
 								<div class="team1">
 									<div class="team1Name"><%= gameResult.getTeam1_name() %></div>
-									<div class="team1Logo"><img alt="" src="png/defaultLogo.png"></div>
+									<div class="team1Logo"><img alt="" src="/FCJAVA/png/playerPhoto/<%=gameResult.getTeam1_logo()%>"></div>
 								</div>
 								<div class="center">
 									<span class="score"><%= gameResult.getTeam1_score() %></span> :
 									<span class="score"><%= gameResult.getTeam2_score() %></span>
 								</div>
 								<div class="team2">
-									<div class="team2Logo"><img alt="" src="png/defaultLogo.png"></div>
+									<div class="team2Logo"><img alt="" src="/FCJAVA/png/playerPhoto/<%=gameResult.getTeam2_logo()%>"></div>
 									<div class="team2Name"><%= gameResult.getTeam2_name() %></div>
 								</div>
 							</div>
@@ -303,7 +304,7 @@
 						<div class="showFormation">
 							<div class="formation-box">
 								<div class="formation-slide">
-									<div class="team-formation-list" data-formationdata='<%=teamFormationsJson%>'>
+									<div class="team-formation-list">
 									<%
 									if(!teamFormations.isEmpty() || team.getId().equals(sessionID)){
 									for(TeamFormationDTO formation : teamFormations) {
@@ -498,6 +499,7 @@
        	const teamName = "<%= team.getT_name() %>"; //팀 이름
        	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
        	const maxCount = <%=team.getMax_p_num() %>; //최대 가입 인원
+       	
        	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
        	const ages = JSON.parse('<%= Arrays.toString(ages) %>');
        	const positions = JSON.parse('<%= Arrays.toString(positions) %>');

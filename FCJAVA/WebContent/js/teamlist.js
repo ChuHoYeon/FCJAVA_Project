@@ -154,7 +154,6 @@ $(function () {
                 t_name: teamName
         	},
         	success: function(result) {
-        		console.log('ajax성공! = ' + result.length);
         		$("#teamlists").empty();
         		showTeam = 10;
         		teamList = result;

@@ -23,13 +23,10 @@ public class TeamCountPlayerInfo {
     public void countAge(String birthDate) {
         // 생년월일 문자열을 년, 월, 일로 분리
         int year = Integer.parseInt(birthDate.substring(0, 4));
-        
         // 현재 연도를 구하기 위해 Calendar 객체 생성
         int currentYear = cal.get(Calendar.YEAR);
-        
         // 한국 나이 계산 (만 나이)
         int koreanAge = currentYear - year + 1;
-        
         // 연령대 구분
         if (koreanAge >= 10 && koreanAge < 20) {
             ages[0]++; // 10대

@@ -92,7 +92,8 @@
 	VALUES (#{t_num},#{formation},#{formation_name},#{position_num},#{player_id});
 	</insert>
 	<select id="selectTeamGameAllResult" resultType="com.fcjava.dto.TeamGameResultDTO">
-	SELECT game.game_name, gr1.game_type, gr1.game_date, game.game_place, team1.t_logo as team1_logo, team1.t_name as team1_name, gr1.team1_score, team2.t_logo as team2_logo, team2.t_name as team2_name, gr1.team2_score
+	SELECT game.game_name, gr1.game_type, gr1.game_date, game.game_place, team1.t_logo as team1_logo,
+	       team1.t_name as team1_name, gr1.team1_score, team2.t_logo as team2_logo, team2.t_name as team2_name, gr1.team2_score
 	FROM game_result gr1
 	JOIN game ON gr1.game_num = game.game_num
 	JOIN team_info AS team1 ON gr1.team1_num = team1.t_num
