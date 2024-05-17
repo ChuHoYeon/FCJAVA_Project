@@ -4,7 +4,7 @@
 <%@ page import="com.fcjava.dto.StadiumDTO"%>
 <%
 	String sessionId = (String) session.getAttribute("ID");
-%>
+%> 
 <!DOCTYPE html>
 <html>
 <head>
