@@ -624,8 +624,10 @@ select[name="position"] {
 }
 
 .post-area {
-	text-align: right;
+	display: flex;
+    gap: 15px;
     margin: 10px 0;
+    justify-content: flex-end;
 }
 .page_line {
 	display: flex;
@@ -641,7 +643,6 @@ select[name="position"] {
 }
 .articleHead {
 	display: flex;
-	justify-content: space-between;
     margin: 0 0 20px 0;
     padding: 14px 10px 16px;
     background: #f8f8f8;
@@ -663,6 +664,9 @@ select[name="position"] {
 }
 .articleTitle {
 	margin-bottom: 35px;
+}
+.articleTitle h1 {
+	font-size: 30pt;
 }
 .articleContent {
     min-height: 444px;

@@ -111,6 +111,19 @@
 	)
 	ORDER BY gr1.game_date DESC;
 	</select>
+	<update id="createTeamBoardTable" parameterType="java.lang.Integer">
+    CREATE TABLE board_${t_num} (
+	  `board_num` int(11) NOT NULL AUTO_INCREMENT,
+	  `board_id` varchar(20) COLLATE utf8_bin NOT NULL,
+	  `board_title` varchar(45) COLLATE utf8_bin NOT NULL,
+	  `board_content` text COLLATE utf8_bin NOT NULL,
+	  `board_file` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+	  `board_readcount` int(11) NOT NULL,
+	  `board_createdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `board_lastupdate` datetime NOT NULL,
+	  PRIMARY KEY (`board_num`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+	</update>
 	<select id="teamBoardCount" resultType="java.lang.Integer">SELECT COUNT(*) FROM fc_java.board_${teamNumber};</select>
 	<select id="selectTeamBoardList" parameterType="java.util.Map" resultType="com.fcjava.dto.TeamBoardDTO">
 	SELECT * FROM board_${t_num} order by board_createdate desc limit ${startrow},${endrow};

@@ -283,14 +283,26 @@
 								</div>
 								<div class="team1">
 									<div class="team1Name"><%= gameResult.getTeam1_name() %></div>
-									<div class="team1Logo"><img alt="" src="/FCJAVA/png/playerPhoto/<%=gameResult.getTeam1_logo()%>"></div>
+									<div class="team1Logo">
+										<% if(gameResult.getTeam1_logo() != null){ %>
+										<img alt="" src="/FCJAVA/png/playerPhoto/<%=gameResult.getTeam1_logo()%>">
+										<% }else{ %>
+										<img alt="" src="/FCJAVA/png/defaultLogo.png">
+										<% } %>
+									</div>
 								</div>
 								<div class="center">
 									<span class="score"><%= gameResult.getTeam1_score() %></span> :
 									<span class="score"><%= gameResult.getTeam2_score() %></span>
 								</div>
 								<div class="team2">
-									<div class="team2Logo"><img alt="" src="/FCJAVA/png/playerPhoto/<%=gameResult.getTeam2_logo()%>"></div>
+									<div class="team2Logo">
+										<% if(gameResult.getTeam2_logo() != null){ %>
+										<img alt="" src="/FCJAVA/png/playerPhoto/<%=gameResult.getTeam2_logo()%>">
+										<% }else{ %>
+										<img alt="" src="/FCJAVA/png/defaultLogo.png">
+										<% } %>
+									</div>
 									<div class="team2Name"><%= gameResult.getTeam2_name() %></div>
 								</div>
 							</div>
@@ -405,7 +417,6 @@
 									<col class="boardTitle">
 									<col class="boardWriter">
 									<col class="boardCreateDate">
-									<col class="boardReadNum">
 								</colgroup>
 								<thead>
 									<tr>
@@ -413,7 +424,6 @@
 										<th>제목</th>
 										<th>글쓴이</th>
 										<th>등록일</th>
-										<th>조회수</th>
 									</tr>
 								</thead>
 							<% if(teamBoardList != null && listCount > 0){ %>
@@ -428,7 +438,6 @@
 									<td class="showBoardDetail" data-boardNum="<%= teamBoardList.get(i).getBoard_num() %>"><%= teamBoardList.get(i).getBoard_title() %></td>
 									<td><%= teamBoardList.get(i).getBoard_id() %></td>
 									<td><%= StringChange.lengthCheck(String.valueOf(boardMonth)) + "-" + StringChange.lengthCheck(String.valueOf(boardDate)) %></td>
-									<td><%= teamBoardList.get(i).getBoard_readcount() %></td>
 								</tr>
 								<% } %>
 								</tbody>
@@ -493,12 +502,12 @@
 	<jsp:include page="footerPage.jsp" />
 	
 	<script>
+    const sessionID = '<%= sessionID %>';//로그인한 아이디
+     	const t_num = "<%= team.getT_num() %>"; //팀 번호
+     	const teamName = "<%= team.getT_name() %>"; //팀 이름
+     	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
+     	const maxCount = <%=team.getMax_p_num() %>; //최대 가입 인원
     $(document).ready(function(){
-       	const sessionID = '<%= sessionID %>';//로그인한 아이디
-       	const t_num = "<%= team.getT_num() %>"; //팀 번호
-       	const teamName = "<%= team.getT_name() %>"; //팀 이름
-       	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
-       	const maxCount = <%=team.getMax_p_num() %>; //최대 가입 인원
        	
        	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
        	const ages = JSON.parse('<%= Arrays.toString(ages) %>');

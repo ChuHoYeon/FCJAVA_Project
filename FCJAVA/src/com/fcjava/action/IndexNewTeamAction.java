@@ -26,8 +26,8 @@ public class IndexNewTeamAction implements DBinterface{
 		List<TeamDTO> indexteamList = teamList.indexTeamList();
 		if(indexteamList != null) {
 			response.setCharacterEncoding("UTF-8");
+			String jsonTeam = new Gson().toJson(indexteamList);
 	        PrintWriter out = response.getWriter();
-	        String jsonTeam = new Gson().toJson(indexteamList);
 	        out.println(jsonTeam);
 		}
 		return url;

@@ -5,6 +5,7 @@
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="com.fcjava.model.TeamApply" %>
+<%@ page import="com.fcjava.model.TeamBoardTable" %>
 <%@ page import="java.util.List"%>
 <%@ page import="com.fcjava.dto.TeamDTO"%>
  <%
@@ -41,6 +42,9 @@
 	
 	TeamApply teamApply = TeamApply.getTeamApply();
 	teamApply.insertTeamApply(t_num, id, pl_pic, back_num, position, pl_memo, height, weight);
+	
+	TeamBoardTable teamTable = TeamBoardTable.getTeamBoardTable();
+	teamTable.createTeamBoardTable(t_num);
 	
 	List<TeamDTO> myTeamList = db.getTeamList(id);
 	session.setAttribute("MyTeamList", myTeamList);

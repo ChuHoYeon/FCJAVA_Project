@@ -359,7 +359,6 @@ $(document).ready(function(){
 					<div class="articleHead">
 						<div class="articleWriter">${elt.board_id}</div>
 						<div class="articleDate">${elt.board_createdate}</div>
-						<div class="articleHit">조회수 : ${elt.board_readcount}</div>
 					</div>
 					<div class="articleMain">
 						<div class="articleTitle"><h1>${elt.board_title}</h1></div>
@@ -370,6 +369,7 @@ $(document).ready(function(){
 				if(elt.board_file != null) {
 					$('.articleContent').prepend(`<div><img src="/FCJAVA/png/boardUpload/${elt.board_file}"/></div>`);
 				}
+
 				return false;
 			}
 		});
