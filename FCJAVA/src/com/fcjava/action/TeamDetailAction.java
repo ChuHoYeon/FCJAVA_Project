@@ -71,7 +71,6 @@ public class TeamDetailAction implements DBinterface{
 			int page=1;
 			int limit=13;
 			List<TeamBoardDTO> teamBoardList = null;
-			
 			if(request.getParameter("boardpage")!=null){
 				page=Integer.parseInt(request.getParameter("boardpage"));
 			}
@@ -81,9 +80,7 @@ public class TeamDetailAction implements DBinterface{
 			int maxPage=(int)((double)listCount/limit+0.95);
 			int startPage = (((int) ((double)page / 10 + 0.9)) - 1) * 10 + 1;
 	   	    int endPage = startPage+10-1;
-			
 	   	    if (endPage> maxPage) endPage= maxPage;
-	   	    
 	   	    PageDTO pageInfo = new PageDTO();
 	   		pageInfo.setEndPage(endPage);
 	   		pageInfo.setListCount(listCount);

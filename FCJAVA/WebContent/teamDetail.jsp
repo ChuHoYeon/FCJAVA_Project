@@ -27,7 +27,9 @@
 	
     int[] genders = (int[]) request.getAttribute("genders"); // [0]남자, [1]여자
     int[] ages = (int[]) request.getAttribute("ages"); // [0]10대, [1]20대, [2]30대, [3]40대, [4]50대, [5]60대 이상
+    
     int[] positions = (int[]) request.getAttribute("positions"); // [0]공격수, [1]미드필더, [2]수비수, [3]골키퍼
+    
 	boolean isTeamPlayer = false;
 	int year = team.getT_c_day().getYear()+1900;
 	int month = team.getT_c_day().getMonth()+1;
@@ -51,7 +53,7 @@
 		}
 	}
 	
-	JSONArray jsonArray = new JSONArray();
+	JSONArray formationjsonArray = new JSONArray();
 	for (TeamFormationDTO formation : teamFormations) {
 	    JSONObject jsonFormation = new JSONObject();
 	    jsonFormation.put("formation", formation.getFormation());
@@ -67,7 +69,7 @@
    				}
     		} else {jsonFormation.put("player_pic", "png/default-profile.jpg");}
 	    }
-	    jsonArray.add(jsonFormation);
+	    formationjsonArray.add(jsonFormation);
 	}
 	
 	String jsonTeamBoardList = new Gson().toJson(teamBoardList);
@@ -89,7 +91,7 @@
 	<link rel="stylesheet" href="css/teamDetail.css" />
 </head>
 <script type="text/javascript">
-	let formationjsonArray = <%= jsonArray%>;
+	let formationjsonArray = <%= formationjsonArray%>;
 	let tabNumber = <%=tabNumber%>;
 	let jsonTeamBoardList = <%= jsonTeamBoardList %>;
 </script>
@@ -337,9 +339,10 @@
 											<div>새 포메이션</div>
 											<div><span class="material-symbols-outlined">add</span></div>
 										</div>
-									<%} }else{%>
+									<% } 
+									}else{%>
 										<div class="notFormation">생성된 포메이션이 없습니다.</div>
-									<% } %>
+								<%  } %>
 									</div>
 								</div>
 								<button class="back"><span class="material-symbols-outlined">arrow_back_ios</span></button>
@@ -489,7 +492,10 @@
 						<div class="board_detail">
 						</div>
 					<% }else{ %>
-						<div>접근불가</div>
+						<div class="warningText">
+							<img src="png/trar.png"/>
+							<p>이 게시판은 팀에 소속된 선수만 접근할 수 있습니다.</p>
+						</div>
 					<% } %>
 					</div><!-- 게시판-->
 					
@@ -503,126 +509,13 @@
 	
 	<script>
     const sessionID = '<%= sessionID %>';//로그인한 아이디
-     	const t_num = "<%= team.getT_num() %>"; //팀 번호
-     	const teamName = "<%= team.getT_name() %>"; //팀 이름
-     	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
-     	const maxCount = <%=team.getMax_p_num() %>; //최대 가입 인원
-    $(document).ready(function(){
-       	
-       	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
-       	const ages = JSON.parse('<%= Arrays.toString(ages) %>');
-       	const positions = JSON.parse('<%= Arrays.toString(positions) %>');
-       	const genderCt = $('#genderChart');
-       	const ageCt = $('#ageChart');
-       	const positionCt = $('#positionChart');
-        
-       	//가입인원 max시 가입버튼 비활성화
-       	if(nowCount >= maxCount) {
-       		$(".applyleaveBtn").prop('disabled', true);
-       		$(".applyleaveBtn").css('cursor', 'auto');
-       		$(".stopApply").html("<p>더이상 가입할 수 없습니다.</p>");
-       	}
-       	
-       	//성별 차트
-       	const genderData = {
-       		labels: ['남','여'],
-       		datasets: [{
-       			data: genders,
-       			backgroundColor: ['rgba(54, 162, 235, 1)','rgba(255, 99, 132, 1)'],
-       			hoverOffset: 4
-       		}]
-       	};
-       	const genderChart = new Chart(genderCt, {
-       	  type: 'doughnut',
-       	  data: genderData,
-       	  options: {
-       		  borderWidth: 0
-       	  },
-       	});
-       	//나이 차트
-       	const ageData = {
-       		labels: ['10대','20대','30대','40대','50대','60대 이상'],
-       		datasets: [{
-       			data: ages,
-       			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(203, 170, 203, 1)','rgba(198, 219, 218, 1)'],
-       			hoverOffset: 4
-       		}]
-       	};
-       	const ageChart = new Chart(ageCt, {
-       	  type: 'doughnut',
-       	  data: ageData,
-       	  options: {
-       		  plugins: {
-       			  legend: {display: false},
-       			  title: {
-       				  display: true,
-       				  text: '선수 나이대'
-       			  }
-       		  },
-       		  borderWidth: 0
-       	  },
-       	  borderJoinStyle: 'round'
-       	});
-       	//포지션 차트
-       	const positionData = {
-       		labels: ['공격수','미드필더','수비수','골키퍼'],
-       		datasets: [{
-       			data: positions,
-       			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)'],
-       		}]
-       	};
-       	const positionChart = new Chart(positionCt, {
-       	  type: 'bar',
-       	  data: positionData,
-       	  options: {
-       		  plugins: {
-       			  legend: {display: false},
-       			  title: {
-       				  display: true,
-       				  text: '선호 포지션'
-       			  }
-       		  },
-       		  scales: {
-       			  x: { grid: {display: false} },
-       			  y: { grid: {display: false}, min: 0, ticks: {stepSize: 1} }
-       		  }
-       	  }
-       	});
-       	
-    	//가입하기 버튼
-        $("#team-apply").on("click", function() {
-        	let alrim = confirm("["+teamName+"]팀에 가입 하시겠습니까?");
-        	if(alrim) {
-        		if(sessionID != 'null') {
-        			$.ajax({
-        				url : 'fcjava.team?page=teamApplyCheck',
-           				data: {id : sessionID},
-           				success : function(result) {
-           					if(result.indexOf("OK") != -1){
-           	        			$("#staticBackdrop").modal('show');
-           					} else {
-           						alert("팀3개 소속. 더이상 가입 불가");
-           					}
-           				},
-            		});
-        		} else {
-        			let loging = confirm("팀 가입을 위해서는 로그인이 필요합니다. 로그인 후에 팀에 가입하세요.");
-        			if(loging) {window.location.href="login.jsp";}
-        		}
-        	}
-    	});
-    	//탈퇴하기 버튼
-    	$("#team-leave").on("click", function() {
-    		let alrim = confirm("["+teamName+"]팀에서 탈퇴 하시겠습니까?");
-    		if(alrim) {
-    			if(sessionID != null) {
-    				alert("탈퇴하셨습니다.");
-    				window.location.href="fcjava.team?page=secession&t_num="+t_num+"&id="+sessionID;
-    			}
-    		}
-		});
-    	
-    });
+  	const t_num = "<%= team.getT_num() %>"; //팀 번호
+  	const teamName = "<%= team.getT_name() %>"; //팀 이름
+  	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
+  	const maxCount = <%=team.getMax_p_num() %>; //최대 가입 인원
+  	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
+  	const ages = JSON.parse('<%= Arrays.toString(ages) %>');
+  	const positions = JSON.parse('<%= Arrays.toString(positions) %>');
 	</script>
 	<!-- teamDetail js -->
 	<script src="js/teamDetail.js"></script>

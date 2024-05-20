@@ -671,3 +671,9 @@ select[name="position"] {
 .articleContent {
     min-height: 444px;
 }
+.warningText {
+	text-align: center;
+}
+.warningText img {
+	width: 200px;
+}

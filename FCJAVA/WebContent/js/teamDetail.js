@@ -11,6 +11,13 @@ $(document).ready(function(){
 	const formationdata = formationjsonArray;
 	let $scores = $('.score');
 	
+	//가입인원 max시 가입버튼 비활성화
+   	if(nowCount >= maxCount) {
+   		$(".applyleaveBtn").prop('disabled', true);
+   		$(".applyleaveBtn").css('cursor', 'auto');
+   		$(".stopApply").html("<p>더이상 가입할 수 없습니다.</p>");
+   	}
+	
 	for (var i = 0; i < $scores.length - 1; i += 2) {
 	    let $score1 = $($scores[i]);
 	    let $score2 = $($scores[i + 1]);
@@ -24,6 +31,108 @@ $(document).ready(function(){
 	      $score2.addClass('win');
 	    }
 	}
+	//성별 차트
+   	const genderCt = $('#genderChart');
+   	const genderData = {
+   		labels: ['남','여'],
+   		datasets: [{
+   			data: genders,
+   			backgroundColor: ['rgba(54, 162, 235, 1)','rgba(255, 99, 132, 1)'],
+   			hoverOffset: 4
+   		}]
+   	};
+   	const genderChart = new Chart(genderCt, {
+   	  type: 'doughnut',
+   	  data: genderData,
+   	  options: {
+   		  borderWidth: 0
+   	  },
+   	});
+   	const ageCt = $('#ageChart');
+   	//나이 차트
+   	const ageData = {
+   		labels: ['10대','20대','30대','40대','50대','60대 이상'],
+   		datasets: [{
+   			data: ages,
+   			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(203, 170, 203, 1)','rgba(198, 219, 218, 1)'],
+   			hoverOffset: 4
+   		}]
+   	};
+   	const ageChart = new Chart(ageCt, {
+   	  type: 'doughnut',
+   	  data: ageData,
+   	  options: {
+   		  plugins: {
+   			  legend: {display: false},
+   			  title: {
+   				  display: true,
+   				  text: '선수 나이대'
+   			  }
+   		  },
+   		  borderWidth: 0
+   	  },
+   	  borderJoinStyle: 'round'
+   	});
+   	const positionCt = $('#positionChart');
+   	//포지션 차트
+   	const positionData = {
+   		labels: ['공격수','미드필더','수비수','골키퍼'],
+   		datasets: [{
+   			data: positions,
+   			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)'],
+   		}]
+   	};
+   	const positionChart = new Chart(positionCt, {
+   	  type: 'bar',
+   	  data: positionData,
+   	  options: {
+   		  plugins: {
+   			  legend: {display: false},
+   			  title: {
+   				  display: true,
+   				  text: '선호 포지션'
+   			  }
+   		  },
+   		  scales: {
+   			  x: { grid: {display: false} },
+   			  y: { grid: {display: false}, min: 0, ticks: {stepSize: 1} }
+   		  }
+   	  }
+   	});
+   	
+	//가입하기 버튼
+    $("#team-apply").on("click", function() {
+    	let alrim = confirm("["+teamName+"]팀에 가입 하시겠습니까?");
+    	if(alrim) {
+    		if(sessionID != 'null') {
+    			$.ajax({
+    				url : 'fcjava.team?page=teamApplyCheck',
+       				data: {id : sessionID},
+       				success : function(result) {
+       					if(result.indexOf("OK") != -1){
+       	        			$("#staticBackdrop").modal('show');
+       					} else {
+       						alert("팀3개 소속. 더이상 가입 불가");
+       					}
+       				},
+        		});
+    		} else {
+    			let loging = confirm("팀 가입을 위해서는 로그인이 필요합니다. 로그인 후에 팀에 가입하세요.");
+    			if(loging) {window.location.href="login.jsp";}
+    		}
+    	}
+	});
+	//탈퇴하기 버튼
+	$("#team-leave").on("click", function() {
+		let alrim = confirm("["+teamName+"]팀에서 탈퇴 하시겠습니까?");
+		if(alrim) {
+			if(sessionID != null) {
+				alert("탈퇴하셨습니다.");
+				window.location.href="fcjava.team?page=secession&t_num="+t_num+"&id="+sessionID;
+			}
+		}
+	});
+	
 	//신청 취소버튼
 	$("#staticBackdrop").on('hidden.bs.modal', function() {
 		$(".player-photo").html('<img alt="선수 사진" src="png/default-profile.jpg">');
@@ -187,13 +296,11 @@ $(document).ready(function(){
 	$('.savedformation').on("click",function(){
 		$('.savedformation').removeClass('showFor');
 		$(this).addClass('showFor');
-		
 		$dataFormation = $(".showFor").data("formation");
 		$dataFormationname = $(".showFor").data("formationname");
 		matchingData = formationjsonArray.filter(function(item) {
 	        return item.formation == $dataFormation && item.formation_name == $dataFormationname;
 	    });
-		
 		showFormation(matchingData);
 	});
 	
@@ -238,6 +345,7 @@ $(document).ready(function(){
 	
 	let $selectFormationValue = $('#selectFormation').val();
 	selectFormation($selectFormationValue);
+	
 	function selectFormation($selectFormationValue) {
 		const selecteFormation = formations[$selectFormationValue];
 		if(selecteFormation) {
@@ -397,8 +505,8 @@ function isSelectedPlayer() {
 }
 
 $(document).on('click', function(event) {
-    // 클릭된 요소가 .createPlayer 또는 .formation-players 요소가 아닌 경우
-    if (!$(event.target).closest('.createPlayer').length && !$(event.target).closest('.formation-players').length) {
+    if (!$(event.target).closest('.createPlayer').length 
+    		&& !$(event.target).closest('.formation-players').length) {
         $createPlayerImgSrc = null;
         $createPlayerName = null;
         $('.createPlayer').find('img').removeClass('focus-player');
