@@ -52,6 +52,7 @@
 	FROM fc_java.pl_info JOIN fc_java.mem_info ON fc_java.pl_info.id = fc_java.mem_info.id 
 	WHERE fc_java.pl_info.t_num = #{t_num};
 	</select>
+	
 	<insert id="insertPlayerApply" parameterType="com.fcjava.dto.PlayerDTO">
 	INSERT INTO fc_java.pl_info (t_num, id, pl_pic, back_num, position, pl_memo, height, weight)
 	VALUES (#{t_num}, #{id}
