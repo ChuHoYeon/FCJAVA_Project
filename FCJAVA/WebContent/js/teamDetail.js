@@ -1,8 +1,10 @@
 let $createPlayerImgSrc = null;
 let $createPlayerName = null;
 //선수 소개 팝오버
+
 document.addEventListener('DOMContentLoaded', function() {
-        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        var popoverTriggerList = [].slice.call(
+        		document.querySelectorAll('[data-bs-toggle="popover"]'));
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
             return new bootstrap.Popover(popoverTriggerEl);
         });
@@ -291,7 +293,7 @@ $(document).ready(function(){
 		        `);
 			});
 		}
-	}
+	};
 
 	$('.savedformation').on("click",function(){
 		$('.savedformation').removeClass('showFor');
@@ -425,6 +427,7 @@ $(document).ready(function(){
 					if($(this).find('.forPlaterName').text() == selectPlayerName) {
 						$(this).find('.forPlaterName').text('');
 						$(this).find('img').attr('src', "png/default-profile.jpg");
+						$(this).find('input[type="hidden"]').val('');
 					}
 				});
 				$createPlayerImgSrc.attr('src', "png/uniform.png");
@@ -499,10 +502,10 @@ function isSelectedPlayer() {
 		$('.createPlayer').each(function() {
 			if($(this).find('.forPlaterName').text() == isSelectedPlayerName) {
 				isSelectedPlayer.addClass('selectedPlayer');
-			}
+			};
 		});
 	});
-}
+};
 
 $(document).on('click', function(event) {
     if (!$(event.target).closest('.createPlayer').length 

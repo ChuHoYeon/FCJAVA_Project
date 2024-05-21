@@ -97,7 +97,7 @@ $(function() {
 	}
 	let topSwiper = new Swiper('.topSwiper', {
 		autoplay: {
-			delay: 5000,
+			delay: 2500,
 		},
 		loop: true,
 		slidesPerView: 1,
@@ -107,11 +107,4 @@ $(function() {
 			clickable: true,
 		},
 	});
-/*	
-	$('.over').hover(function () {
-		$(this).attr('src', $(this).attr('src').replace('.avif', '_on.avif'));
-	}, function () {
-		$(this).attr('src', $(this).attr('src').replace('_on.avif', '.avif'));
-	});
-*/
 })

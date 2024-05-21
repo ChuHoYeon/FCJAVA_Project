@@ -141,7 +141,7 @@
 			<div class="contentBox">
 				<div class="title_h">
 					<div>쇼핑몰</div>
-					<div class="moreLink"><a href="#">더보기</a></div>
+					<div class="moreLink"><a href="fcjava.prd?page=prdUniform">더보기</a></div>
 				</div>
 		        <ul class="prdList">
 		            <li><img class="over" src="png/prd/10759903_1.png"></li>

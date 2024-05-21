@@ -54,7 +54,8 @@
 	</select>
 	
 	<insert id="insertPlayerApply" parameterType="com.fcjava.dto.PlayerDTO">
-	INSERT INTO fc_java.pl_info (t_num, id, pl_pic, back_num, position, pl_memo, height, weight)
+	INSERT INTO fc_java.pl_info
+	(t_num, id, pl_pic, back_num, position, pl_memo, height, weight)
 	VALUES (#{t_num}, #{id}
 	<choose>
 		<when test="pl_pic != null">,#{pl_pic}</when>

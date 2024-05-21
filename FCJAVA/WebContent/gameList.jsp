@@ -83,7 +83,7 @@
 									<span class="status">접수예정</span>
 								<% } else if(currentDate.after(subfnDate) && currentDate.before(startDate) || (currentDate.after(substDate) && currentDate.before(subfnDate) && per == 100)) { %>
 									<span class="status end-status">접수마감</span>
-								<% } else if (currentDate.after(substDate) && currentDate.before(finalDate)) {%>
+								<% } else if (currentDate.after(startDate) && currentDate.before(finalDate)) {%>
 									<span class="status start-status">진행중</span>
 								<% } else if (currentDate.after(finalDate) || (currentDate.after(subfnDate) && per < 100)) { %>
 									<span class="status end-status">종료</span>

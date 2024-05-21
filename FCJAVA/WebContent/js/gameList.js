@@ -45,6 +45,7 @@ $(function() {
             		$(".no-search").remove();
             		let imgNum = 1;
                 	for (let i = 0; i < data.length; i++) {
+                		let per = (data[i].game_apply * 100) / data[i].type;
                 		const substDate = new Date(data[i].subst_date);
                         const subfnDate = new Date(data[i].subfn_date);
                         const startDate = new Date(data[i].st_date);
@@ -63,14 +64,14 @@ $(function() {
                 		let state = "";
                 		if(currentTime < substDate) {
                 			state = "<span class='status'>접수예정</span>";
-                		} else if (currentTime > subfnDate && currentTime < startDate || (currentTime > substDate && currentTime < subfnDate)) {
+                		} else if (currentTime > subfnDate && currentTime < startDate || (currentTime > substDate && currentTime < subfnDate && per ==100)) {
                 			state = "<span class='status end-status'>접수마감</span>";
-                		} else if (currentTime > substDate && currentTime < subfnDate) {
-                			state = "<span class='status'>접수중</span>";
                 		} else if (currentTime > startDate && currentTime < finalDate) {
                 			state = "<span class='status start-status'>진행중</span>";
-                		} else if (currentTime > finalDate) {
+                		} else if (currentTime > finalDate || (currentTime > subfnDate && per < 100)) {
                 			state = "<span class='status end-status'>종료</span>";
+                		} else {
+                			state = "<span class='status'>접수중</span>";
                 		}
                 		let str = "<li><a href='fcjava.game?page=2&game_num="+data[i].num+"' class='game-card'><div class='card-thumb'><div class='game-status'>"+state+"</div>";
                 		let str1 = "<img src='png/gameposter"+imgNum+".jpg'/></div><div class='card-title'><article class='gameDate'><p class='m'> "+month+"월</p><p class='d'> "+day+" </p></article><div class='title-holder'><h3>"+data[i].name+"</h3>";

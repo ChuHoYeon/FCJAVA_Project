@@ -24,8 +24,8 @@ public class GameSearchAction {
 		GameSearch gameSearch = GameSearch.getGameSelect();
 		List<GameDTO> gameList = gameSearch.getGameSelect(type, text);
 		
+		
 		JSONArray jsonArray = new JSONArray();
-
 		for(GameDTO game : gameList) {
 			JSONObject json = new JSONObject();
 			json.put("num", game.getGame_num());
@@ -38,6 +38,7 @@ public class GameSearchAction {
 			json.put("subfn_date", game.getGame_subfn_date());
 			json.put("st_date", game.getGame_st_date());
 			json.put("fn_date", game.getGame_fn_date());
+			json.put("game_apply", game.getGame_apply());
 			
 			jsonArray.add(json);
 		}

@@ -58,3 +58,10 @@
 	border: 2px solid darkgrey;
 	padding: 0 8px;
 }
+.prdCountArea {
+    padding: 0 20px;
+}
+.prdCount {
+	font-weight: bolder;
+	color: #ad0000;
+}

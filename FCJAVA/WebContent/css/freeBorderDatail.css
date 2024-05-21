@@ -102,6 +102,7 @@
 .content_viewer {
 	min-height: 406px;
     border: 1px solid #ebebeb;
+    padding: 8px;
 }
 .sectionTop {
     background-color: #e6e6e6;

@@ -119,6 +119,11 @@ input::-webkit-search-results-decoration{
 }
 .title-holder > h3 {
 	font-size: 20px;
+    width: 312px;
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .title-holder > p {
 	font-size: 12px;

@@ -26,6 +26,9 @@ public class GameSearch {
         
 		SqlSession getSql = sql.openSession(); //connection
 		List<GameDTO> gameList = getSql.selectList("gameSelect", select);
+		for(GameDTO game : gameList) {
+			game.setGame_apply(getSql.selectOne("gameApplyCount", game.getGame_num()));
+		}
 		getSql.close();
 		return gameList;
 	}

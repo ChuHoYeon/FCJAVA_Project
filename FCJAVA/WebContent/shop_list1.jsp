@@ -29,11 +29,12 @@
 	<main>
 		<div class="content">
 			<div class="prdTop">
-				<div class="title">축구용품 (<%=prdList.size() %>)</div>
+				<div class="title">축구용품</div>
 				<div class="prdSearch">
 					<input type="search" class="searchBox" placeholder="검색어를 입력해주세요">
 					<input type="button" class="searchBtn" value="검색">
 				</div>
+				<div class="prdCountArea">총 상품 <label class="prdCount"><%=prdList.size() %></label>개</div>
 			</div>
 			<ul class="prdList">
 			<%if (prdList != null && !prdList.isEmpty()) {

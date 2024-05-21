@@ -16,8 +16,6 @@ public class PrdOveRide implements DBinterface {
 	@Override
 	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("2");
-		
 		String prd_no = request.getParameter("prd_no");
 		String prd_category=request.getParameter("prd_category");
 		String prd_name=request.getParameter("prd_name");

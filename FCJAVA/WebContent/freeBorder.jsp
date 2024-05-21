@@ -120,7 +120,7 @@
 														if(!freeBorderLikes.isEmpty()){
 															Boolean res = false;
 															for(FreeBorderLikesDTO likes : freeBorderLikes){
-																if(likes.getId().equals(freeborder.getId()) && likes.getNumber()==freeborder.getNumber()){
+																if(likes.getNumber()==freeborder.getNumber()){
 																	res =true;
 																}
 															}

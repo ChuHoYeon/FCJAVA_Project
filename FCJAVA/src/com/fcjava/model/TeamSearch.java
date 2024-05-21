@@ -39,7 +39,6 @@ public class TeamSearch {
         }else {
         	params.put("week_time", week_time);
         }
-        
 		List<TeamDTO> teamList = getSql.selectList("searchTeamList", params);
 		getSql.close();
 		
