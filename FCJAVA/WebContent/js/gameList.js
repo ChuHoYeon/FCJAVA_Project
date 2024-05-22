@@ -73,11 +73,27 @@ $(function() {
                 		} else {
                 			state = "<span class='status'>접수중</span>";
                 		}
-                		let str = "<li><a href='fcjava.game?page=2&game_num="+data[i].num+"' class='game-card'><div class='card-thumb'><div class='game-status'>"+state+"</div>";
-                		let str1 = "<img src='png/gameposter"+imgNum+".jpg'/></div><div class='card-title'><article class='gameDate'><p class='m'> "+month+"월</p><p class='d'> "+day+" </p></article><div class='title-holder'><h3>"+data[i].name+"</h3>";
-                		let str2 = "<p> "+hours+":"+minutes+"  •  "+data[i].place+"  • "+data[i].type+"강</p></div></div></a></li>";
-                		
-                		$(".conten-area").append(str+str1+str2);
+                		$(".conten-area").append(`
+                			<li>
+                				<a href='fcjava.game?page=2&game_num=${data[i].num}' class='game-card'>
+	                				<div class='card-thumb'>
+	                					<div class='game-status'>${state}</div>
+	                					<img src='png/gameposter${imgNum}.jpg'/>
+	        						</div>
+	        						<div class='card-title'>
+	        							<article class='gameDate'>
+	        								<p class='m'>${month}월</p>
+	        								<p class='d'>${day}</p>
+	    								</article>
+										<div class='title-holder'>
+											<h3>${data[i].name}</h3>
+											<p>${hours}:${minutes}  •  ${data[i].place}  • ${data[i].type}강</p>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+                		`);
                 		imgNum += 1;
                 		if(imgNum>2) imgNum=1;
                 	}

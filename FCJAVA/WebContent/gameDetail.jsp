@@ -85,7 +85,11 @@
 	   				<a href="fcjava.game?page=apply&game_num=<%= game.getGame_num() %>&team_num=<%= team.getT_num() %>" class="teamChoice">
 		      			<div class="apply_team_area">
 							<div class="teamLogo">
+								<% if(team.getT_logo() != null){ %>
+								<img src="/FCJAVA/png/playerPhoto/<%=team.getT_logo() %>" />
+								<% }else{ %>
 								<img src="png/defaultLogo.png" />
+								<% } %>
 							</div>
 							<div class="applyteamNameModal"><%= team.getT_name() %></div>
 						</div>
@@ -122,10 +126,14 @@
 					    for(GameApplyTeam team : applyTeamList) {
 					%>
 						<li>
-						<a href="#<%= team.getGame_num() %>">
+						<a href="/FCJAVA/fcjava.team?page=detail&teamNumber=<%= team.getT_num() %>">
 							<div class="apply_team_area">
 									<div class="teamLogo">
+										<% if(team.getT_logo() != null){ %>
+										<img src="/FCJAVA/png/playerPhoto/<%=team.getT_logo() %>" />
+										<% }else{ %>
 										<img src="png/defaultLogo.png" />
+										<% } %>
 									</div>
 									<div class="applyteamName"><%= team.getT_name() %></div>
 									<div class="applyDate">신청일 <%= team.getGame_apply_date().substring(0, team.getGame_apply_date().length()-3) %></div>
@@ -227,6 +235,8 @@
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
 <script>
+	const sessionID = <%= sessionID %>;
+	const gameNumber = <%= game.getGame_num() %>;
 	let per = <%= per %>;
 	const subst_date = new Date("<%= subst_date %>");
 	const subfn_date = new Date("<%= subfn_date %>");
@@ -294,9 +304,8 @@
 	
 	//신청버튼
 	$(".apply").click(function() {
-		const sessionID = <%= sessionID %>;
 		if (sessionID == null){
-			const result = confirm("로그인해!");
+			const result = confirm("로그인이 필요합니다.");
 			if(result){
 				window.location.href="login.jsp";
 				return false;
@@ -321,16 +330,15 @@
 		    event.preventDefault();
 		    alert("이미 참가한 팀입니다.");
 		} else {
-		    alert("참가 완료!");
+		    alert("참가 완료되었습니다.");
 		    $("#confirmModal").modal("hide");
 		};
 	})
 	//취소 버튼
 	$(".cancel-apply").on("click", function() {
-		const gameNumber = <%= game.getGame_num() %>;
 		const result = confirm("취소하시겠습니까?");
 		if (result) {
-			alert("취소!");
+			alert("취소되었습니다.");
 			const url = "fcjava.game?page=applyCancel&game_num="+gameNumber+"&team_num="+duplicationNumber;
 			window.location.href = url;
 		}
