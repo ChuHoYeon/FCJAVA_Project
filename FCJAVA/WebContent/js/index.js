@@ -13,8 +13,7 @@ $(function() {
     
 	function searchLeague($league) {
 		$.ajax({
-			url: 'fcjava.index',
-			type: 'GET',
+			url: 'fcjava.index?page=footballData',
 			data: {
 				"league" : $league,
 			},
@@ -46,18 +45,6 @@ $(function() {
             }
 		})
 	}
-	let teamSwiper = new Swiper(".teamSwiper", {
-		spaceBetween: 30,
-		centeredSlides: true,
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true,
-		},
-		navigation: {
-			nextEl: ".swiper-button-next",
-			prevEl: ".swiper-button-prev",
-		}
-	});
 	function newTeamList() {
 		$.ajax({
 			url: 'fcjava.team',
@@ -106,5 +93,17 @@ $(function() {
 			el: '.swiper-pagination',
 			clickable: true,
 		},
+	});
+	let teamSwiper = new Swiper(".teamSwiper", {
+		spaceBetween: 30,
+		centeredSlides: true,
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true,
+		},
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		}
 	});
 })

@@ -12,11 +12,14 @@ import com.fcjava.model.TeamList;
 import com.google.gson.Gson;
 
 public class IndexNewTeamAction implements DBinterface{
-	static IndexNewTeamAction indexNewTeamAction = new IndexNewTeamAction();
+	private static final IndexNewTeamAction indexNewTeamAction = new IndexNewTeamAction();
+	
+	private IndexNewTeamAction() {}
+	
 	public static IndexNewTeamAction getIndexNewTeamAction() {
 		return indexNewTeamAction;
 	}
-
+	
 	@Override
 	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub

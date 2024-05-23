@@ -46,7 +46,7 @@
     
     <servlet>
         <servlet-name>index</servlet-name>
-        <servlet-class>com.fcjava.controller.IndexServlet</servlet-class>
+        <servlet-class>com.fcjava.controller.IndexControll</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
