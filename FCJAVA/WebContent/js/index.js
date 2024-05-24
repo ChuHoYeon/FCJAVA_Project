@@ -1,8 +1,9 @@
 $(function() {
 	let $league = $(".tab-focus").data("league");
-	newTeamList()
-	searchLeague($league);
-	
+	randomStadium();
+	newTeamList();
+	searchLeague($league);	
+    
 	//탭 변경
     $('.tab').on("click",function(){
     	$league = $(this).data("league");
@@ -10,11 +11,67 @@ $(function() {
         $(this).addClass('tab-focus');
         searchLeague($league);
     });
-    
+
+    function randomStadium() {
+		$.ajax({
+			url: 'fcjava.index',
+			data: {
+				"page" : "oneStadium",
+			},
+			success: function(data) {
+				const jsonStadium = JSON.parse(data);
+				$('#stadiumName').append(`${jsonStadium.g_name}`);
+				$('#stadiumTime').append(`${jsonStadium.g_time}`);
+				$('#stadiumSize').append(`${jsonStadium.g_size}`);
+				$('#stadiumAddr').append(`${jsonStadium.g_add}`);
+				$('input[name="sta_num"]').val(jsonStadium.g_no);
+			},
+		});
+	};
+	$('input[type="date"]').val(new Date().toISOString().substring(0, 10));
+	
+	$('form[name="goStadium"]').on('submit', function() {
+		let selectedTimes = $('input[name="selectedTimes"]').val();
+		if(sessionID == null){
+			alert('로그인이 필요한 서비스입니다. 로그인해주세요.');
+            window.location.href = "login.jsp";
+            return false;
+		}
+		if(selectedTimes == ''){
+			alert('예약할 시간을 선택하세요.');
+            return false;
+		}
+
+	});
+	$('.checkBtn').on('click', function() {
+		console.log(sessionID);
+		
+		let selectedTimes = [];
+    	$('.checkBtn:checked').each(function() {
+    		var time = $(this).next('label').text();
+            selectedTimes.push(time);
+		});
+		
+		let a=$('.checkBtn:checked').length;
+		if(a > 3) {
+			alert("최대 이용시간은 3시간 입니다.");
+			return false;
+		}
+		if(a >= 1){
+			let price = a*3;
+			$('.price').text(price+'0,000 원');			
+		}else {
+			$('.price').text('');
+		}
+		$('input[name="selectedTimes"]').val(selectedTimes.join(','));
+		$('input[name="totalAmount"]').val(parseInt($('.price').text().replace(/\D/g, '')));
+	});
+
 	function searchLeague($league) {
 		$.ajax({
-			url: 'fcjava.index?page=footballData',
+			url: 'fcjava.index',
 			data: {
+				"page" : "footballData",
 				"league" : $league,
 			},
 			success: function(data) {
@@ -47,7 +104,7 @@ $(function() {
 	}
 	function newTeamList() {
 		$.ajax({
-			url: 'fcjava.team',
+			url: 'fcjava.index',
 			data: {
 				"page":"newTeamList",
 			},
@@ -106,4 +163,6 @@ $(function() {
 			prevEl: ".swiper-button-prev",
 		}
 	});
-})
+	
+	
+});

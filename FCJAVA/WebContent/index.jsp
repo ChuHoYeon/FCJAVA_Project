@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<% String sessionID = (String) session.getAttribute("ID"); %>
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +15,9 @@
     <!--구글 아이콘-->
      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
-
+<script type="text/javascript">
+	let sessionID = <%=sessionID%>;
+</script>
 <body>
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
@@ -34,26 +36,41 @@
     </div>
 	<section>
 		<div class="indexSection">
-			<div class="contentBox">
+			<div class="contentBox" id="showStadium">
 				<div class="title_h">구장 예약 </div>
-				<div class="iGroundBox">
+				<form action="fcjava.stadium1?page=3" name="goStadium" method="post" class="iGroundBox">
+					<input type="hidden" name="sta_num"/>
 					<div class="groundImg"><img alt="구장사진" src="img/sdf.jpg" width="300"></div>
 					<div class="groundInfo">
-						<p><img src="img/football-field.png"> 서울 디지털 운동장 축구장 </p>
-                        <p><img src="img/clock.png"> 운영시간:06:00~24:00</p>
-                        <p><img src="img/maximize.png"> :104 x 68</p>
-                        <p> <img src="img/map.png"> :서울시 금천구 가산동 459-18</p>
+						<p id="stadiumName"><img src="img/football-field.png"></p>
+                        <p id="stadiumTime"><img src="img/clock.png"> 운영시간:</p>
+                        <p id="stadiumSize"><img src="img/maximize.png"> :</p>
+                        <p id="stadiumAddr"><img src="img/map.png"> :</p>
 					</div>
 					<div class="groundCom">
-						<div>📅 예약 가능 날짜 : 오늘 ~ 03.21 (목)</div>
-						<div>
-							<div class="time_box">06:00</div>
-							<div class="time_box">08:00</div>
-							<div class="time_box">10:00</div>
+						<div><input type="date" name="date" /></div>
+						<div id="btnArea">
+						<%for (int i = 6; i < 24; i++) { 
+							String clock = String.valueOf(i);
+							if(clock.length() < 2) {
+								clock = '0'+clock;
+							}
+						%>
+							<input type="checkbox" id="stm_btn<%=i %>" class="checkBtn" name="chkbox" />
+							<label for="stm_btn<%=i %>" class="clockBtn"><%=clock %>:00</label>
+						<% } %>
 						</div>
-						<div><input type="button" class="reserBtn" value="예약하기"></div>
+						<div class="reserArea">
+							<div class="resert">
+								<input type="submit" class="reserBtn" value="예약하기">
+							</div>
+							<div class="price">
+							</div>
+							<input type="hidden" name="selectedTimes" id="selectedTimes"> 
+							<input type="hidden" name="totalAmount" id="totalAmount">
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 			<div class="contentBox">
 				<div class="title_h">공지사항</div>

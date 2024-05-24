@@ -201,6 +201,9 @@
 		delete from testdb.user where prd_no = ${prd_no};
 	</delete>
 	
+	<select id="randomStadium" resultType="com.fcjava.dto.StadiumDTO">
+	SELECT * FROM fc_java.stadium1 order by rand() limit 1;
+	</select>
 	<!-- 구장 등록-->
     <insert id="str_insert" parameterType="com.fcjava.dto.StadiumDTO">
         insert into fc_java.stadium1 (g_no, gmem_id, g_name, g_time, g_size, g_add, g_memo, g_img) values(#{g_no}, #{gmem_id}, #{g_name}, #{g_time}, #{g_size}, #{g_add}, #{g_memo}, #{g_img});
