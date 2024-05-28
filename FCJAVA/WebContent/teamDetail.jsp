@@ -78,7 +78,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>팀테스트2</title>
+	<title>FC JAVA</title>
 	<!--구글 폰트 -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 	<!--구글 아이콘-->

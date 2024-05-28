@@ -1,133 +1,77 @@
+.history_bar {
+	margin: 30px 0;
+}
 .shop_de_section {
-    width: 1280px;
-min-height : 1200px;
-    margin: 0 auto;
-
+	width: 1280px;
+	margin: 0 auto;
+    margin-bottom: 60px;
 }
-
-.sh_de1 {
-
-    width: 100%;
-    float: left;
-
+.prdetail {
+	display: flex;
+    justify-content: space-between;
 }
-
-
-.shop_de_section ul li {
-    list-style: none;
-    display: inline-block;
-    background-color: aquamarine;
-    margin-right: 10px;
-    width: 70px;
-    height: 70px;
-
+.prd_left {
+	width: 620px;
 }
-
-
-
-.sum_box{
-    width:1280px;
+.prd_img {
+	border: 1px solid #e2e2e2;
+	background-color: #f5f5f5;
 }
-
-.text_box {
-    width: 680px;
-    float: left;
-
+.prd_img img {
+	width: 618px;
+	height: 618px;
+	background-color: #f5f5f5;
 }
-
-.opt_box { 
-	width : 500px;
-	float : left;
+.prd_img_list {
+	display: flex;
+	gap: 11px;
 }
-.de_title {
-    font-size: 24pt;
-    line-height: 60px;
-    margin-top: 120px;
+.prd_thum .prd_img_list li {
+	width: 115px;
+	background-color: #f5f5f5;
 }
-
-.de_title2 {
-    width: 1280px;
-    font-size: 20pt;
-    float: left;
-   margin: 20px auto;
+.prd_thum .prd_img_list li img {
+	width: 115px;
+	border: 1px solid #e2e2e2;
+	background-color: #f5f5f5;
 }
-
-
-.image_box {
-    width: 600px;
-    float: left;
+.prd_right {
+	width: 575px;
+	padding-left: 40px;
+	border-left: 1px solid #dbdbdb;
 }
-
-.btn_de1 {
-
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 450px;
-    height: 40px;
-    color: white;
-    background-color: black;
-    border-radius: 10px;
+.prd_name {
+	font-size: 28px;
+	font-weight: 700;
 }
-
-.ct1 {
-    width: 1280px;
-    overflow: auto;
-    margin-bottom: 30px;
+.prd_etc .prd_price_txt {
+	color: #737272;
+	text-align: right;
 }
-
-.pr1 {
-    font-size: 16pt;
+.prd_etc .prd_price_txt .prd_price {
+	color: #ff4200;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 10px;
 }
-
-
-.labtn1 { 
-	display : inline-block;
-	line-height:40px;
-	text-align :center;
-	width : 100px; 
-	height: 40px; 
-	border-radius : 10px;
-	border-width : 1px;
-	border-style : solid; 
-	border-color : black;
-	background-color: white;
-	margin : 5px;
-	color: black ;
-	
+.prd_etc .prd_price_txt .won {
+    font-size: 30px;
+    font-weight: bold;
 }
-
-.dinon{
-	display: none;
-}
-.dinon:checked + label {
-	
-	display : inline-block;
-	line-height:40px;
-	text-align :center;
-	width : 100px; 
-	height: 40px; 
-	background-color: black;
+.buyBtn {
+	width: 100%;
 	color: white;
-
+	background-color: black;
+	border-radius: 10px;
+	padding: 8px 48px;
 }
-
-
-
-
-.swiper{
-    width :100%;
-    margin: auto;
+.de_info {
+	font-size: 14px;
+    padding: 37px 71px;
+    border: 1px solid;
+    width: 1024px;
+    margin: 0 auto;
 }
-
-a {
-    text-decoration-line: none;
+.sugPrd {
+	font-size: 16pt;
 }
-
-.ma1 {
-	
-margin-top: 30px;
-margin-bottom: 30px; 
-
-	}
-	
-

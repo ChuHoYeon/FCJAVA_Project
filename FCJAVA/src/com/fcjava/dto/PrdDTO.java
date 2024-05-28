@@ -2,13 +2,13 @@ package com.fcjava.dto;
 
 public class PrdDTO {
 
-	int prd_no;
-	String prd_category;
-	String prd_name;
-	String prd_price; 
-	String prd_image; 
-	String prd_memo;
-	String prd_brand;
+	private int prd_no;
+	private String prd_category;
+	private String prd_name;
+	private String prd_price; 
+	private String prd_image; 
+	private String prd_memo;
+	private String prd_brand;
 	
 	public int getPrd_no() {
 		return prd_no;

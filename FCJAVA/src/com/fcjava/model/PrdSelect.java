@@ -11,7 +11,8 @@ import com.fcjava.dto.PrdDTO;
 
 
 public class PrdSelect {
-	static PrdSelect prdSelect = new PrdSelect();
+	private static final PrdSelect prdSelect = new PrdSelect();
+	private PrdSelect() {}
 	public static PrdSelect getPrdSelect() {
 		return prdSelect;
 	}
@@ -23,5 +24,13 @@ public class PrdSelect {
 		List<PrdDTO> prdList = getSql.selectList("prdSelect");
 		getSql.close();
 		return prdList;
+	}
+	
+	public PrdDTO getOnePrd(String prdNum) {
+		PrdDTO prd=null;
+		SqlSession getSql = sql.openSession();
+		prd = getSql.selectOne("onePrd", prdNum);
+		getSql.close();
+		return prd;
 	}
 }

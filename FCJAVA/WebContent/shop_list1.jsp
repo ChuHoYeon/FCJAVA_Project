@@ -1,16 +1,14 @@
-<%@page import="com.fcjava.model.*"%>
-<%@page import="com.fcjava.dto.PrdDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page import="com.fcjava.dto.PrdDTO"%>
 <%
 	List<PrdDTO> prdList = (List<PrdDTO>) request.getAttribute("Prd");
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+	<title>FC JAVA</title>
 	<link rel="stylesheet" href="css/shop_main.css" type="text/css">
 	
 	<script src="js/shop_over.js"></script>
@@ -21,11 +19,9 @@
 	<!--jQuery url-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
-
 <body>
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
-
 	<main>
 		<div class="content">
 			<div class="prdTop">
@@ -38,7 +34,6 @@
 			</div>
 			<ul class="prdList">
 			<%if (prdList != null && !prdList.isEmpty()) {
-				int i = 1;
 				for (PrdDTO prd : prdList) {%>
 				<li class="prdItem">
 					<a href="fcjava.prd?page=prdDetail&PrdNum=<%=prd.getPrd_no()%>">
@@ -47,7 +42,7 @@
 						<p class="prdprice"><%=prd.getPrd_price()%> 원</p>
 					</a>
 				</li>
-				<%i++;}}%>
+				<%}}%>
 			</ul>
 		</div>
 	</main>

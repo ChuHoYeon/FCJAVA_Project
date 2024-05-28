@@ -188,18 +188,20 @@
 		WHERE game_num = #{gameNum};
 	</select>
 	
-	<!-- $상품 리스트 -->
+	
 	<select id="prdSelect" resultType="com.fcjava.dto.PrdDTO">
 		SELECT * FROM prdinfo;
 	</select>
-	<!-- #상품 등록 -->
+	<select id="onePrd" parameterType="java.lang.String" resultType="com.fcjava.dto.PrdDTO">
+		SELECT * FROM fc_java.prdinfo WHERE prd_no = #{prdNum};
+	</select>
 	<insert id="insertPrd" parameterType="com.fcjava.dto.PrdDTO">
 		insert into prdinfo values(${prd_no},#{prd_category},#{prd_name},#{prd_price},#{prd_image},#{prd_memo},#{prd_brand});
 	</insert>
-	<!-- #상품 삭제 -->
 	<delete id="deletePrd" parameterType="com.fcjava.dto.PrdDTO">
 		delete from testdb.user where prd_no = ${prd_no};
 	</delete>
+	
 	
 	<select id="randomStadium" resultType="com.fcjava.dto.StadiumDTO">
 	SELECT * FROM fc_java.stadium1 order by rand() limit 1;

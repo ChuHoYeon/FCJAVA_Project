@@ -1,6 +1,4 @@
-package com.fcjava.controller;
-
-import java.util.List;
+package com.fcjava.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,21 +7,26 @@ import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.PrdDTO;
 import com.fcjava.model.PrdSelect;
 
-public class PrdDeControll implements DBinterface {
-	static PrdDeControll prdDeControll = new PrdDeControll();
-	public static PrdDeControll getPrdDeControll() {
-		return prdDeControll;
+public class PrdDetailAction implements DBinterface {
+	private static final PrdDetailAction prdDetailAction = new PrdDetailAction();
+	private PrdDetailAction() {}
+	public static PrdDetailAction getPrdDetailAction() {
+		return prdDetailAction;
 	}
 
 	@Override
 	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String prdNum = request.getParameter("PrdNum");
-		PrdSelect prdSelect = PrdSelect.getPrdSelect();
-		List<PrdDTO> prdList = prdSelect.getSelect();
+		String url = null;
+		PrdDTO prd = null;
 		
-		request.setAttribute("Prd", prdList);
-		return "shop_de.jsp?PrdNum="+prdNum;
+		PrdSelect prdSelect = PrdSelect.getPrdSelect();
+		prd = prdSelect.getOnePrd(prdNum);
+		
+		request.setAttribute("prd", prd);
+		url = "shop_de.jsp?PrdNum="+prdNum;
+		return url;
 	}
 
 }

@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fcjava.action.PrdDetailAction;
 import com.fcjava.controller.interfaces.DBinterface;
 
 public class PrdControll extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		request.setCharacterEncoding("UTF-8");
 		String pageNumber = request.getParameter("page");
 		DBinterface connection;
 		String url = "";
@@ -42,7 +44,7 @@ public class PrdControll extends HttpServlet {
 		
 		if(pageNumber.equals("prdDetail")) {
 			//쇼핑몰 상세 불러오기 
-			connection=PrdDeControll.getPrdDeControll();
+			connection=PrdDetailAction.getPrdDetailAction();
 			try {
 				url=connection.DBconnection(request, response);
 			} catch (Exception e) {
