@@ -4,17 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
-<%
-	String id = request.getParameter("id");
-	String sessionID = (String) session.getAttribute("ID");
-
-	if (id != null) {
-		session.setAttribute("ID", id);
-		sessionID = (String) session.getAttribute("ID");
-	}
-%>
-
 <%
 	List<PrdDTO> prdList = (List<PrdDTO>) request.getAttribute("Prd");
 	String prdNum = request.getParameter("PrdNum");
@@ -38,14 +27,10 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/shop_de.css" type="text/css">
 
-
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
-<script defer src="js/swife2.js"></script>
-
-
+<script defer src="js/shop_de.js"></script>
 <!--구글 폰트 -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
@@ -56,118 +41,8 @@
 <!--jQuery url-->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- 헤더 css -->
-<link rel="stylesheet" href="css/header.css" type="text/css">
-<!-- 헤더 js -->
-<script src="js/header.js"></script>
-
-
-
-<!--구글 폰트 -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-	rel="stylesheet">
-<!--구글 아이콘-->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-<!--jQuery url-->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- 헤더 css -->
-<link rel="stylesheet" href="css/header.css" type="text/css">
-<!-- 헤더 js -->
-<script src="js/header.js"></script>
-
-
 
 </head>
-
-<script>
-    $(document).ready(function(){
-        //로그인
-        var id = "<%=id%>";
-        var sessionID = "<%=sessionID%>
-	";
-						if ((id === 'null' && sessionID === 'null') | id === '') {
-							$(".join1 #loginNav")
-									.html(
-											"<a href='login.jsp' class='right1 f-10' >로그인</a>");
-							$(".join1 #joinNav")
-									.html(
-											"<a href='join.jsp' class='right1 f-10'>회원가입</a>");
-						} else {
-							$(".join1 #loginNav")
-									.html(
-											"<a href='my_page.jsp' class='right2 f-10' ><span class='material-symbols-outlined'>person</span></a>");
-							$(".join1 #joinNav")
-									.html(
-											"<a href='logout.jsp' class='right1 f-10'>로그아웃</a>");
-						}
-					});
-</script>
-
-<!-- 
-
-<script>
-$(document).ready(function(){
-
-// $('.over').hover(function(){
-//        $(this).attr('src', $(this).attr('src').replace('.jpg','_on.jpg')); 
-
-//     }, function(){
-//     $(this).attr('src', $(this).attr('src').replace('_on.jpg','.jpg')); 
-// });
-
-
-
-$('.over').hover(function(){
-    $(this).attr('src',$('ch1').attr('src').replace('.jpg','_on.jpg')); 
-}, function(){
-    $(this).attr('src',$('.ch1').attr('src').replace('_on.jpg','.jpg')); 
-});
-
-
-});
-
-
-
-
-</script> -->
-
-<script>
-	// $(document).ready(function(){
-	//     $('.over').hover(function(){
-	//         var originalSrc = $(this).attr('src');
-	//         var newSrc = $(this).attr('src').replace('.jpg','_on.jpg'); // 호버된 이미지의 속성 변경
-	//         $('.sh_de1 img').attr('src', newSrc); // sh_de1 클래스에 속한 이미지 파일의 src 속성 변경
-	//     }, function(){
-	//         var originalSrc = $(this).attr('src');
-	//         var newSrc = $(this).attr('src').replace('_on.jpg','.jpg'); // 원래 이미지의 속성 변경
-	//         $('.sh_de1 img').attr('src', newSrc); // sh_de1 클래스에 속한 이미지 파일의 src 속성 변경
-	//     });
-	// });
-
-	$(document).ready(
-			function() {
-				$('.over').hover(
-						function() {
-							// 호버된 이미지의 src 속성을 변경하여 sh_de1 클래스에 속한 이미지 파일의 src 속성을 변경합니다.
-							$('.sh_de1 img').attr(
-									'src',
-									$(this).attr('src').replace('.jpg',
-											'_on.jpg'));
-						},
-						function() {
-							// 원래 이미지의 src 속성을 변경하여 sh_de1 클래스에 속한 이미지 파일의 src 속성을 변경합니다.
-							$('.sh_de1 img').attr(
-									'src',
-									$(this).attr('src').replace('_on.jpg',
-											'.jpg'));
-						});
-			});
-</script>
-
-
 <body>
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
@@ -177,9 +52,8 @@ $('.over').hover(function(){
 			<div class="image_box">
 				<div class="sh_de1 ma1">
 					<div>
-						<a href="index.jsp">Home </a> > <a
-							href="fcjava.prd?page=prdUniform"> 유니폼 </a>>
-						<%=realPrd.getPrd_name()%>
+						<a href="index.jsp">Home </a> >
+						<a href="fcjava.prd?page=prdUniform"> 축구용품 </a> > <%=realPrd.getPrd_name()%>
 					</div>
 					<img class="ch1" src="png/de1.jpg" alt="">
 				</div>
@@ -261,15 +135,8 @@ $('.over').hover(function(){
 				</div>
 			</div>
 		</div>
-
-
-
-
 	</section>
-
-
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
 </body>
-
 </html>
