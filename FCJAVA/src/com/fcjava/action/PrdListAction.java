@@ -1,4 +1,4 @@
-package com.fcjava.controller;
+package com.fcjava.action;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.PrdDTO;
 import com.fcjava.model.PrdSelect;
 
-public class PrdControllSelect implements DBinterface {
-	static PrdControllSelect prdControllSelect = new PrdControllSelect();
-	public static PrdControllSelect getPrdControllSelect() {
+public class PrdListAction implements DBinterface {
+	static PrdListAction prdControllSelect = new PrdListAction();
+	public static PrdListAction getPrdControllSelect() {
 		return prdControllSelect;
 	}
 

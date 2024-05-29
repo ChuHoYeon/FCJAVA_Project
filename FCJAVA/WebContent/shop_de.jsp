@@ -54,6 +54,10 @@
 					<p class="prd_name"><%=prd.getPrd_name()%></p>
 					<div class="prd_comment">
 						<table>
+							<colgroup>
+								<col class="prd_label">
+								<col class="prd_info">
+							</colgroup>
 							<tr>
 								<td>제품코드</td>
 								<td><%=prd.getPrd_image() %></td>
@@ -66,6 +70,14 @@
 								<td>카테고리</td>
 								<td><%=prd.getPrd_category() %></td>
 							</tr>
+							<tr>
+								<td>색상</td>
+								<td>블랙+화이트</td>
+							</tr>
+							<tr>
+								<td>원산지</td>
+								<td>중국</td>
+							</tr>
 						</table>
 					</div>
 					<div class="prd_etc">
@@ -77,32 +89,36 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="tab-content">
-			<div class="de_info">상세설명</div>
-			<div> 
-				<table border="1">
-					<tr>
-						<td>제품 소재</td>
-						<td>폴리에스터 100% </td>
-					</tr>
-					<tr>
-						<td>색상</td>
-						<td>블랙 </td>
-					</tr>
-					<tr>
-						<td>제조국</td>
-						<td>인도네시아 </td>
-					</tr>
-					<tr>
-						<td>품질보증기준</td>
-						<td>관련법 및 소비자분쟁해결기준에 따름. 전자상거래 법에 의거하여 수령하신날로 부터 7일이내 물품에 이상이 없을시 교환 및 반품처리해드립니다. </td>
-					</tr>
-					<tr>
-						<td>크기,무게</td>
-						<td>51cm(가로) x 28cm(세로) x 28cm(폭) </td>
-					</tr>
-				</table>
+		<div class="tabs-container">
+			<div class="tabs-menu"></div>
+			<div class="tab">
+				<div class="tab-content">
+					<div class="de_info">상세설명</div>
+					<div> 
+						<table border="1">
+							<tr>
+								<td>제품 소재</td>
+								<td>폴리에스터 100% </td>
+							</tr>
+							<tr>
+								<td>색상</td>
+								<td>블랙 </td>
+							</tr>
+							<tr>
+								<td>제조국</td>
+								<td>인도네시아 </td>
+							</tr>
+							<tr>
+								<td>품질보증기준</td>
+								<td>관련법 및 소비자분쟁해결기준에 따름. 전자상거래 법에 의거하여 수령하신날로 부터 7일이내 물품에 이상이 없을시 교환 및 반품처리해드립니다. </td>
+							</tr>
+							<tr>
+								<td>크기,무게</td>
+								<td>51cm(가로) x 28cm(세로) x 28cm(폭) </td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="sugPrd">추천제품</div>

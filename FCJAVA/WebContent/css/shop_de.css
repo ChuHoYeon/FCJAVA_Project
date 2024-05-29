@@ -1,5 +1,6 @@
 .history_bar {
 	margin: 30px 0;
+    border-bottom: 1px solid #dbdbdb;
 }
 .shop_de_section {
 	width: 1280px;
@@ -74,4 +75,23 @@
 }
 .sugPrd {
 	font-size: 16pt;
+}
+.prd_comment {
+	border-top: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+    margin-top: 40px;
+    padding: 15px 0;
+}
+.prd_comment table {
+	width: 100%;
+}
+.prd_comment table tr td {
+	margin: 8px 0;
+	display: inline-block;
+}
+.prd_etc {
+	margin: 15px 0;
+}
+.prd_label {
+	width: 200px;
 }

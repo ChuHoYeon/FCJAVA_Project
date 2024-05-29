@@ -1,4 +1,4 @@
-package com.fcjava.controller;
+package com.fcjava.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.model.PrdCreate;
 
-public class PrdOveRide implements DBinterface {
+public class PrdOveRideAction implements DBinterface {
 	
-	static PrdOveRide prdOveRide = new PrdOveRide();
-	public static PrdOveRide getPrdOveRide() {
+	static PrdOveRideAction prdOveRide = new PrdOveRideAction();
+	public static PrdOveRideAction getPrdOveRide() {
 		return prdOveRide;
 	}
 	

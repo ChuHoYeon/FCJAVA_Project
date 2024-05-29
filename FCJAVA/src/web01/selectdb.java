@@ -13,14 +13,14 @@ public class selectdb {
         ArrayList<board_get_set> cc = new ArrayList<board_get_set>();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java", "root", "1234");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://13.125.248.45/fc_java", "user1", "1234");
             if (conn == null) {
                 throw new Exception("데이터베이스에 연결할 수 없습니다.");
             }
 
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from board_1;");
+            ResultSet rs = stmt.executeQuery("select * from prd_board;");
 
             while (rs.next()) {
                 board_get_set aa = new board_get_set();
@@ -48,13 +48,13 @@ public class selectdb {
         PreparedStatement pstmt = null;
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java", "root", "1234");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://13.125.248.45/fc_java", "user1", "1234");
             if (conn == null) {
                 throw new Exception("데이터베이스에 연결할 수 없습니다.");
             }
 
-            pstmt = conn.prepareStatement("INSERT INTO board_1 (title, bon, c_time, u_time, user) VALUES (?, ?, NOW(), NOW(), 'default_user')");
+            pstmt = conn.prepareStatement("INSERT INTO prd_board (title, bon, c_time, u_time, user) VALUES (?, ?, NOW(), NOW(), 'default_user')");
             pstmt.setString(1, title);
             pstmt.setString(2, bon);
             int insertedRows = pstmt.executeUpdate();

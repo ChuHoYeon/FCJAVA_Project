@@ -13,8 +13,8 @@ public class qa1 {
 	  	Statement  stmt = null;
  
 		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java","root","1234");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://13.125.248.45/fc_java","user1","1234");
 			if(conn == null){
 				throw new Exception("데이터베이스에 연결할 수 없습니다.<br>"); //db연결
 			}

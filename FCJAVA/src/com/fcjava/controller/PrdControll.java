@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fcjava.action.PrdDetailAction;
+import com.fcjava.action.PrdListAction;
+import com.fcjava.action.PrdOveRideAction;
 import com.fcjava.controller.interfaces.DBinterface;
 
 public class PrdControll extends HttpServlet {
@@ -19,7 +21,7 @@ public class PrdControll extends HttpServlet {
 
 		if(pageNumber.equals("6")) {
 			//쇼핑몰 등록
-			connection=PrdOveRide.getPrdOveRide();
+			connection=PrdOveRideAction.getPrdOveRide();
 			try {
 				url=connection.DBconnection(request, response);
 			} catch (Exception e) {
@@ -31,7 +33,7 @@ public class PrdControll extends HttpServlet {
 		}
 		if(pageNumber.equals("prdUniform")) {
 			//쇼핑몰 리스트 불러오기 
-			connection=PrdControllSelect.getPrdControllSelect();
+			connection=PrdListAction.getPrdControllSelect();
 			try {
 				url=connection.DBconnection(request, response);
 			} catch (Exception e) {

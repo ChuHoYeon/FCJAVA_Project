@@ -1,14 +1,10 @@
 package com.fcjava.model;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.fcjava.dao.SqlDAO;
 import com.fcjava.dto.StadiumBookingDTO;
-import com.fcjava.dto.StadiumDTO;
-import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
 
 public class BookingStadium {
 	static BookingStadium bookingStadium = new BookingStadium();
