@@ -53,7 +53,7 @@ $(document).ready(function(){
    	const ageCt = $('#ageChart');
    	//나이 차트
    	const ageData = {
-   		labels: ['10대','20대','30대','40대','50대','60대 이상'],
+   		labels: ['10대이하','20대','30대','40대','50대','60대 이상'],
    		datasets: [{
    			data: ages,
    			backgroundColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(203, 170, 203, 1)','rgba(198, 219, 218, 1)'],

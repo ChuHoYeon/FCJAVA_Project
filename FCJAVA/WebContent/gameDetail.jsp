@@ -126,17 +126,17 @@
 					    for(GameApplyTeam team : applyTeamList) {
 					%>
 						<li>
-						<a href="/FCJAVA/fcjava.team?page=detail&teamNumber=<%= team.getT_num() %>">
+						<a href="/fcjava.team?page=detail&teamNumber=<%= team.getT_num() %>">
 							<div class="apply_team_area">
-									<div class="teamLogo">
-										<% if(team.getT_logo() != null){ %>
-										<img src="/FCJAVA/png/playerPhoto/<%=team.getT_logo() %>" />
-										<% }else{ %>
-										<img src="png/defaultLogo.png" />
-										<% } %>
-									</div>
-									<div class="applyteamName"><%= team.getT_name() %></div>
-									<div class="applyDate">신청일 <%= team.getGame_apply_date().substring(0, team.getGame_apply_date().length()-3) %></div>
+								<div class="teamLogo">
+									<% if(team.getT_logo() != null){ %>
+									<img src="/png/playerPhoto/<%=team.getT_logo() %>" />
+									<% }else{ %>
+									<img src="png/defaultLogo.png" />
+									<% } %>
+								</div>
+								<div class="applyteamName"><%= team.getT_name() %></div>
+								<div class="applyDate">신청일 <%= team.getGame_apply_date().substring(0, team.getGame_apply_date().length()-3) %></div>
 							</div>
 						</a>
 						</li>

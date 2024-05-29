@@ -28,7 +28,8 @@ public class TeamCountPlayerInfo {
         // 한국 나이 계산 (만 나이)
         int koreanAge = currentYear - year + 1;
         // 연령대 구분
-        if (koreanAge >= 10 && koreanAge < 20) {
+        //if (koreanAge >= 10 && koreanAge < 20) {
+        if (koreanAge < 20) {
             ages[0]++; // 10대
         } else if (koreanAge >= 20 && koreanAge < 30) {
             ages[1]++; // 20대
