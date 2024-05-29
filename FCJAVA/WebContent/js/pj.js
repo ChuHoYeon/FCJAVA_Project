@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var today = new Date().toISOString().slice(0, 10);
     document.getElementById('soccerDate1').value = today;
 });
-
+ 
 
 
 var checkboxValues = {

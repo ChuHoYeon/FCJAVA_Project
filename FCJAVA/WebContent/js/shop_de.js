@@ -15,4 +15,4 @@ new Swiper('.swiper', {
 		prevEl : '.swiper-button-prev',
 		nextEl : '.swiper-button-next'
 	}
-});
+}); 

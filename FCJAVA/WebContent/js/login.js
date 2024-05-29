@@ -20,7 +20,7 @@ function loginCheck(){
 			} else {
 				result=true;
 			}
-		},
+		}, 
 		//ajax가 끝나고나서 loginCheck함수가 끝나게할려고.
 		async: false,
 	});

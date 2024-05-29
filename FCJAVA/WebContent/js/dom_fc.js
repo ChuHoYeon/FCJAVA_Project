@@ -9,7 +9,7 @@ function off2(){
     var da = document.getElementsByTagName("input");
     da[0].style.borderColor = "black";
     
-}
+} 
 
 
 // function on() {

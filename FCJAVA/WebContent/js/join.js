@@ -13,7 +13,7 @@ function pwCheck() {
   } else if (!expPass.test(pw.value)) {
     war[1].innerHTML = "비밀번호는 대문자/소문자/특수문자 포함 4~20글자 입력해주세요.";
     box[1].style.borderColor = "red";
-  }
+  } 
   else {
     war[1].innerHTML = "";
     box[1].style.borderColor = "green";

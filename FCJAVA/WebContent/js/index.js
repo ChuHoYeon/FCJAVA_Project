@@ -11,7 +11,7 @@ $(function() {
         $(this).addClass('tab-focus');
         searchLeague($league);
     });
-
+ 
     function randomStadium() {
 		$.ajax({
 			url: 'fcjava.index',

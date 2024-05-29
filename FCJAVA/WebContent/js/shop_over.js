@@ -21,7 +21,7 @@ $(document).ready(function () {
 //     $('.sh2 img').attr('src',$('.sh2 img').attr('src').replace('_on.avif','.avif'));
 //   });
 // });
-
+ 
 
 
 $(document).ready(function(){ 

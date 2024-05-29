@@ -19,7 +19,7 @@ $(document).ready(function(){
    		$(".applyleaveBtn").css('cursor', 'auto');
    		$(".stopApply").html("<p>더이상 가입할 수 없습니다.</p>");
    	}
-	
+	 
 	for (var i = 0; i < $scores.length - 1; i += 2) {
 	    let $score1 = $($scores[i]);
 	    let $score2 = $($scores[i + 1]);

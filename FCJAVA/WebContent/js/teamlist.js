@@ -10,7 +10,7 @@ $(function () {
     	let teamLogo = "png/defaultLogo.png";
     	if(teamList[i].t_logo != null) {
     		teamLogo = "/FCJAVA/png/playerPhoto/"+teamList[i].t_logo;
-    	}
+    	} 
         $("#teamlists").append(
             /*html*/
             `

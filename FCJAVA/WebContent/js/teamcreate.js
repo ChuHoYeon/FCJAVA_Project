@@ -18,7 +18,7 @@ $(function() {
 		playerPhoto = URL.createObjectURL(file);
 		$('.logoImg').html(" <img src='" + playerPhoto + "'/> ");
 	});
-	
+	 
 	$('#pl_pic').on("change", function() {
 		let file = this.files[0];
 		playerPhoto = URL.createObjectURL(file);
