@@ -81,7 +81,7 @@
 		<%
 		for(qa data : bob) {
 			data.gettitle();
-	     	out.println("<a href='str_qa1.jsp'><img src='img/rm.jpg'>" + data.gettitle() + "<p>" + data.getu_name() + "</p></a>");
+	     	out.println("<a href='str_qa2.jsp'><img src='img/rm.jpg'>" + data.gettitle() + "<p>" + data.getu_name() + "</p></a>");
 		}
 	     %>
 	     </div>
