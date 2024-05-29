@@ -287,9 +287,9 @@
 									<div class="team1Name"><%= gameResult.getTeam1_name() %></div>
 									<div class="team1Logo">
 										<% if(gameResult.getTeam1_logo() != null){ %>
-										<img alt="" src="/FCJAVA/png/playerPhoto/<%=gameResult.getTeam1_logo()%>">
+										<img alt="" src="/png/playerPhoto/<%=gameResult.getTeam1_logo()%>">
 										<% }else{ %>
-										<img alt="" src="/FCJAVA/png/defaultLogo.png">
+										<img alt="" src="/png/defaultLogo.png">
 										<% } %>
 									</div>
 								</div>
@@ -300,9 +300,9 @@
 								<div class="team2">
 									<div class="team2Logo">
 										<% if(gameResult.getTeam2_logo() != null){ %>
-										<img alt="" src="/FCJAVA/png/playerPhoto/<%=gameResult.getTeam2_logo()%>">
+										<img alt="" src="/png/playerPhoto/<%=gameResult.getTeam2_logo()%>">
 										<% }else{ %>
-										<img alt="" src="/FCJAVA/png/defaultLogo.png">
+										<img alt="" src="/png/defaultLogo.png">
 										<% } %>
 									</div>
 									<div class="team2Name"><%= gameResult.getTeam2_name() %></div>
