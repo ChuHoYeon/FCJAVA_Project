@@ -33,7 +33,7 @@
 				<div class="prdCountArea">총 상품 <label class="prdCount"><%=prdList.size() %></label>개</div>
 			</div>
 			<ul class="prdList">
-			<%if (prdList != null && !prdList.isEmpty()) {
+			<%if (prdList != null && !prdList.isEmpty()) { 
 				for (PrdDTO prd : prdList) {%>
 				<li class="prdItem">
 					<a href="fcjava.prd?page=prdDetail&PrdNum=<%=prd.getPrd_no()%>">

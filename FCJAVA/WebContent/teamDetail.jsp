@@ -33,7 +33,7 @@
 	boolean isTeamPlayer = false;
 	int year = team.getT_c_day().getYear()+1900;
 	int month = team.getT_c_day().getMonth()+1;
-	int date = team.getT_c_day().getDate();
+	int date = team.getT_c_day().getDate(); 
    	String formationChk = "";
 	String formationName = "";
 	boolean firstFormation = true;

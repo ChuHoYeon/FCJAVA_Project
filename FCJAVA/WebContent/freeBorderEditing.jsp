@@ -9,3 +9,4 @@
 	db.updateFreeBorder(number, title, memo);
 	response.sendRedirect("freeBorderDetail.jsp?number="+number);
 %>
+ 

@@ -33,7 +33,7 @@
 			    <li class="breadcrumb-item active" aria-current="page"><%=prd.getPrd_name()%></li>
 			  </ol>
 			</nav>
-		</div>
+		</div> 
 		<div class="prdetail">
 			<div class="prd_left">
 				<p class="prd_img">

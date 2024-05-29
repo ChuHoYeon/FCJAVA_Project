@@ -33,7 +33,7 @@
 </head>
 <body>
 	<main class="booking_Main">
-		<div class="booking_top">
+		<div class="booking_top"> 
 			<div class="top-title">
 				<h3> <%= stadium.getG_name() %> </h3>
 			</div>

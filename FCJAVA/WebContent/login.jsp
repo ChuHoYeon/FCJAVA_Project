@@ -23,7 +23,7 @@
 
     <section class="loginMain">
     	<div class="formBox">
-	        <form action="index.jsp" class="contents" onsubmit="return loginCheck()">
+	        <form action="index.jsp" method="post" class="contents" onsubmit="return loginCheck()">
 	            <h1>FC JAVA</h1>
 	            <h5>FC JAVA 서비스를 이용하시려면 아이디와 비밀번호를 입력해주세요.</h5>
 	            <div>

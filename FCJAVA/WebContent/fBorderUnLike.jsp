@@ -5,4 +5,4 @@
 	String id = request.getParameter("ID");
 	String number = request.getParameter("Num");
 	db.deleteFreeBorderLike(id, number);
-%>
+%> 

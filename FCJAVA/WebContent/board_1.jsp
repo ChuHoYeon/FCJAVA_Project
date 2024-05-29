@@ -23,7 +23,7 @@
 		let id = <%= id%>;
 		if(id == null) {
 			$("#ww").hide();
-		}
+		} 
 		$('#ww').on('click', function() {
 			window.location.href="board_1_w.jsp";
 		});

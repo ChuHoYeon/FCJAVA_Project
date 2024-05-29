@@ -74,7 +74,7 @@
       			<a href="fcjava.team?page=detail&teamNumber=<%= myTeamList.get(i).getT_num() %>">
 		      		<div class="header-team-area">
 		      			<div class="header-team-logo">
-		      				<img alt="팀 로고" src="<%=teamLogo%>">
+		      				<img src="<%=teamLogo%>">
 		      			</div>
 		      			<div class="header-team-name"><%= myTeamList.get(i).getT_name() %></div>
 		      		</div>

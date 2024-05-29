@@ -25,7 +25,7 @@
 	<link rel="stylesheet" href="css/gameList.css" />
 </head>
 
-<body>
+<body> 
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
 	<div class="main">

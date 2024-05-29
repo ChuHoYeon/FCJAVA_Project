@@ -20,7 +20,7 @@
 		totalBorde += 1;
 	}
 %>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -112,29 +112,29 @@
 				<ul class="freeBorderList">
 					<%
 						if (totalBorde != 0){
-													for(FreeBorderDTO freeborder : freeBorder) {
-														out.print("<li class='srchlist'><a href='freeBorderDetail.jsp?number="+freeborder.getNumber()+"' class='title'><span class='flag-career'>"+freeborder.getNumber()+"</span>");
-														out.print("<p>"+freeborder.getTitle()+"</p></a><div class='borderInfo'><span>"+freeborder.getId()+"</span>");
-														out.print("<span>"+freeborder.getTime()+"</span></div><div class='flag-btn'>");
-														out.print("<button type='button' class='btn-favorite' value='"+freeborder.getNumber()+"'>");
-														if(!freeBorderLikes.isEmpty()){
-															Boolean res = false;
-															for(FreeBorderLikesDTO likes : freeBorderLikes){
-																if(likes.getNumber()==freeborder.getNumber()){
-																	res =true;
-																}
-															}
-															if (res){
-																out.print("<img class='love' srcset='png/love-red.svg' width='24' height='24'/>");
-															} else {
-																out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
-															}
-														} else {
-															out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
-														}
-														out.print("</button></div></li>");
-													}
-												} else {
+							for(FreeBorderDTO freeborder : freeBorder) {
+								out.print("<li class='srchlist'><a href='freeBorderDetail.jsp?number="+freeborder.getNumber()+"' class='title'><span class='flag-career'>"+freeborder.getNumber()+"</span>");
+								out.print("<p>"+freeborder.getTitle()+"</p></a><div class='borderInfo'><span>"+freeborder.getId()+"</span>");
+								out.print("<span>"+freeborder.getTime()+"</span></div><div class='flag-btn'>");
+								out.print("<button type='button' class='btn-favorite' value='"+freeborder.getNumber()+"'>");
+								if(!freeBorderLikes.isEmpty()){
+									Boolean res = false;
+									for(FreeBorderLikesDTO likes : freeBorderLikes){
+										if(likes.getNumber()==freeborder.getNumber()){
+											res =true;
+										}
+									}
+									if (res){
+										out.print("<img class='love' srcset='png/love-red.svg' width='24' height='24'/>");
+									} else {
+										out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
+									}
+								} else {
+									out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
+								}
+								out.print("</button></div></li>");
+							}
+						} else {
 					%>
 						<li class="srchNo">검색된 내용이 없습니다.</li>
 					<%

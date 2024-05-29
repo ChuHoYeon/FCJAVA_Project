@@ -23,7 +23,7 @@
             teamObject.put("name", team.getT_name());
             myTeamListArray.add(teamObject);
         }
-    }
+    } 
 	String myTeamNameList = myTeamListArray.toJSONString();
 
 	//신청 팀 리스트

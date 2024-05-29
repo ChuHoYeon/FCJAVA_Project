@@ -2,7 +2,7 @@
 <%@ page import="web01.selectdb" %> <!-- selectdb 클래스 import -->
 
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
     <meta charset="UTF-8">
     <title>후기 작성 결과</title>

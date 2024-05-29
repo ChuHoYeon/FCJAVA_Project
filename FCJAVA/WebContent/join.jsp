@@ -30,7 +30,7 @@
 
     <section>
         <div id="joinMain">
-            <form id="joinForm" action="joining.jsp" onsubmit="return joinbtn()" method="get">
+            <form id="joinForm" action="joining.jsp" onsubmit="return joinbtn()" method="post">
                 <div id="joinHeader">회원가입</div>
                 <div id="allJoin">
                     <div class="infoBox">

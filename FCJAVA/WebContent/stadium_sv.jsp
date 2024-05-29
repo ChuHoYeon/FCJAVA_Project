@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="./css/pj.css">
 <!-- <link href="css/btn.css"rel= "stylesheet"type="text/css"> -->
 <script defer src="./js/stadium_pj.js"></script>
-<script defer src="./js/pj.js"></script>
+<script defer src="./js/pj.js"></script> 
 <link rel="stylesheet" type="text/css" href="css/checkbox.css">
 
 <title></title>

@@ -31,7 +31,7 @@
     <div class="container">
         <h2>구장 후기 출력</h2>
         <table class="table table-striped">
-            <tr>
+            <tr> 
                 <td class="header">제목</td>
                 <td><%= request.getParameter("title") %></td>
             </tr>

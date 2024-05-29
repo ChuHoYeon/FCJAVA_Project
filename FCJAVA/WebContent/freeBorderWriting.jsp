@@ -9,3 +9,4 @@
 	db.insertFreeBorder(sessionID, title, content);
 	response.sendRedirect("freeBorder.jsp");
 %>
+ 

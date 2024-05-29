@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body> 
     <header class="hed0">
         <div class="hed1">
             <div class="join1">

@@ -25,7 +25,7 @@
 		let title = $("input[name='title']").val();
 		let memo = $("textarea[name='memo']").val();
 		let check = true;
-		
+		 
 		if(title === "" && memo === "") {
 			alert("모든 문항을 입력해주세요.")
 			check = false;

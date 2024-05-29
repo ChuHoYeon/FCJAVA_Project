@@ -6,10 +6,4 @@
     
     response.sendRedirect("index.jsp");
     
-    /* String endPage = request.getHeader("referer");
-    if (endPage != null && !endPage.isEmpty()) {
-        response.sendRedirect(endPage);
-    } else {
-        response.sendRedirect("index.jsp");
-    } */
 %>

@@ -32,7 +32,7 @@
  	String age = multi.getParameter("age");
  	db.insertTeam(id, name, logo, city, week, info, maxNum, skill, sns, age);
  	
- 	String t_num = db.getTeamNum(id);
+ 	String t_num = db.getTeamNum(id); 
 	String pl_pic = multi.getFilesystemName(file1);
  	String back_num = multi.getParameter("back_num");
 	String position = multi.getParameter("position");

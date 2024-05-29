@@ -31,7 +31,7 @@
 			check = false;
 		} else {
 			let result = confirm("저장하시겠습니까?");
-			if(result == false) {
+			if(result == false) { 
 				check = false;
 			}			
 		}

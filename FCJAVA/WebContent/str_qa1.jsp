@@ -31,7 +31,7 @@
 <body>
     <!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
-
+ 
     <form action="board.html" method="post">
     <table> 
         <tr><td><h2>구장 후기</h2></td></tr>

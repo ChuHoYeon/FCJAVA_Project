@@ -78,7 +78,7 @@
 		})
 	})
 </script>
-<body>
+<body> 
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
 	<main class="mainContent">

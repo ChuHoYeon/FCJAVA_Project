@@ -5,4 +5,4 @@
 	String number = request.getParameter("number");
 	db.deleteFreeBorder(number);
 	response.sendRedirect("freeBorder.jsp");
-%>
+%> 

@@ -27,7 +27,7 @@
 	<div>
 		<div>
 			<h1>구장 등록</h1>
-		</div>
+		</div> 
 	</div>
 	<div class="imbox">
 		<form action="ghg.stadium1" method="post">

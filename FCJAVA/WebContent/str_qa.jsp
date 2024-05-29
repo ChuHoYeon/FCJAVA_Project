@@ -71,7 +71,7 @@
 						<button type="submit" class="subResetBtn">검색</button>
 						<button type="reset" class="subResetBtn">초기화</button>
 					</div>
-				</form>
+				</form> 
 	<%	
 		ArrayList<qa> bob = user.woob1();
 	%>
