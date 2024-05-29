@@ -26,7 +26,7 @@
     justify-content: center;
     overflow: hidden; /* 이미지가 div를 벗어나지 않도록 함 */
 }
-
+ 
 .imgbox, .imgord {
     position: relative;
     margin-top: -20px; /* 이전 요소와의 간격 조절 */

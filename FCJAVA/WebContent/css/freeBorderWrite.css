@@ -25,7 +25,7 @@
     padding: 13px 16px;
     background-color: #F5F6F8;
     border-radius: 10px;
-}
+} 
 .boardTitle:focus {
 	outline-color: #DEE1E5
 }
