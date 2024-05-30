@@ -109,6 +109,7 @@ $(function() {
 				"page":"newTeamList",
 			},
 			success: function(data) {
+				try{
 				let teamList = JSON.parse(data);
 				$.each(teamList, function(index, value) {
 					let teamLogo = "./png/defaultLogo.png";
@@ -133,6 +134,9 @@ $(function() {
 					</div>
 					`);
 				});
+				} catch(e){
+					console.error("JSON파싱 오류:",e);
+				}
 			},
 			error: function(xhr, status, error) {
             	console.error('에러:', error);
