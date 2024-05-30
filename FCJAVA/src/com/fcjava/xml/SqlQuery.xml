@@ -12,6 +12,12 @@
 	FROM fc_java.team_info
 	ORDER BY t_c_day DESC;
 	</select>
+	<select id="refrashMyTeamList" parameterType="java.lang.String" resultType="com.fcjava.dto.TeamDTO">
+	SELECT fc_java.team_info.* 
+	FROM fc_java.team_info 
+	JOIN fc_java.pl_info ON fc_java.team_info.t_num = fc_java.pl_info.t_num 
+	WHERE fc_java.pl_info.id = #{id} order by fc_java.pl_info.pl_ap_date desc;
+	</select>
 	<select id="indexTeamList" resultType="com.fcjava.dto.TeamDTO">
 	SELECT *
 	FROM fc_java.team_info

@@ -35,7 +35,7 @@
 	<link rel="stylesheet" type="text/css" href="css/freeBorder.css">
 </head>
 <script>
-	let sessionID = <%=sessionID%>;
+	let sessionID = '<%=sessionID%>';
 </script>
 <body>
 	<!-- 헤더 -->
@@ -112,6 +112,6 @@
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
 	
-	<script src="js/freeBorder"></script>
+	<script src="js/freeBorder.js"></script>
 </body>
 </html>
