@@ -85,6 +85,17 @@
 	DELETE FROM fc_java.pl_info
 	WHERE t_num=#{t_num} and id=#{id};
 	</delete>
+	<select id="selectScheduleList" parameterType="java.lang.String" resultType="com.fcjava.dto.TeamScheduleDTO">
+	SELECT sta_booking.b_date as reserdate, sta_booking.b_tiem as resertime, stadium1.g_name as groundname,
+			stadium1.g_add as groundaddr, sta_booking.b_bk_tiem as receiptdate, sta_booking.b_vs_team as vs_team,
+			sta_booking.b_vs_team_num as vs_team_num, IFNULL(team_info.t_logo, null) AS vs_team_logo,
+			IFNULL(team_info.t_name, null) AS vs_team_name
+	FROM sta_booking 
+	JOIN stadium1 ON sta_booking.b_ground_no = stadium1.g_no 
+	LEFT JOIN team_info ON sta_booking.b_vs_team_num = team_info.t_num
+	WHERE sta_booking.b_team_no = #{teamNumber}
+	ORDER BY sta_booking.b_date DESC;
+	</select>
 	<select id="selectFormations" resultType="com.fcjava.dto.TeamFormationDTO">
 	SELECT * 
 	FROM fc_java.t_formation 
@@ -120,7 +131,6 @@
 	)
 	ORDER BY gr1.game_date DESC;
 	</select>
-	
 	<update id="createTeamBoardTable" parameterType="java.lang.Integer">
     CREATE TABLE board_${t_num} (
 	  `board_num` int(11) NOT NULL AUTO_INCREMENT,
@@ -134,7 +144,6 @@
 	  PRIMARY KEY (`board_num`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
 	</update>
-	
 	<select id="teamBoardCount" resultType="java.lang.Integer">SELECT COUNT(*) FROM fc_java.board_${teamNumber};</select>
 	<select id="selectTeamBoardList" parameterType="java.util.Map" resultType="com.fcjava.dto.TeamBoardDTO">
 	SELECT * FROM board_${t_num} order by board_createdate desc limit ${startrow},${endrow};

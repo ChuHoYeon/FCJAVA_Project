@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="fc_java.FreeBorderDTO"%>
+<%@ page import="com.fcjava.dto.FreeBorderDTO"%>
 <jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
 <%
 	String number = request.getParameter("number");

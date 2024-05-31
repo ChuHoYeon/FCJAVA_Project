@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="fc_java.FreeBorderDTO"%>
-<%@ page import="fc_java.FreeBorderLikesDTO"%>
+<%@ page import="com.fcjava.dto.FreeBorderDTO"%>
+<%@ page import="com.fcjava.dto.FreeBorderLikesDTO"%>
 <%@ page import="java.util.ArrayList" %>
 <jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
 <%

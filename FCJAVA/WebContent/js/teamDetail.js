@@ -1,7 +1,6 @@
 let $createPlayerImgSrc = null;
 let $createPlayerName = null;
 //선수 소개 팝오버
-
 document.addEventListener('DOMContentLoaded', function() {
         var popoverTriggerList = [].slice.call(
         		document.querySelectorAll('[data-bs-toggle="popover"]'));

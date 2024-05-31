@@ -76,7 +76,7 @@ function birCheck() {
 }
 //휴대폰 번호
 function cellCheck() {
-  let expCell = /^01([0|1|6|7|8|9])?\d{8}$/;
+  let expCell = /^01([0|1|6|7|8|9])?\d{9}$/;
   var cell = document.querySelector("input[type='tel']");
   if (cell.value == "") {
     war[5].innerHTML = "휴대폰 번호를 입력해주세요.";

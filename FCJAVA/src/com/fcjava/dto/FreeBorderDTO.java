@@ -1,4 +1,4 @@
-package fc_java;
+package com.fcjava.dto;
 
 public class FreeBorderDTO {
 	

@@ -493,7 +493,7 @@ select[name="position"] {
 	width: 20%;
     text-align: center;
 }
-.gameDate p {
+.gameResultInfo p {
 	margin: 0;
 }
 .center {
@@ -676,4 +676,84 @@ select[name="position"] {
 }
 .warningText img {
 	width: 200px;
+}
+.teamSchedule {
+	border: 1px solid #ececee;
+}
+.scheduleDate {
+	width: 12%;
+    text-align: center;
+    padding: 0 10px;
+    box-sizing: content-box;
+}
+.schedulePlace {
+	width: 24%;
+    text-align: center;
+    padding: 0 8px;
+    box-sizing: content-box;
+}
+.scheduleTeamSolo {
+	width: 44%;
+	display: flex;
+	padding: 0 10px 0 74px;
+    align-items: center;
+    gap: 20px;
+}
+.scheduleTeamApply {
+	width: 44%;
+	display: flex;
+	padding: 0 10px 0 74px;
+    align-items: center;
+    gap: 20px;
+}
+.scheduleTeam {
+	width: 44%;
+	display: flex;
+    box-sizing: content-box;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+.scheduleTime {
+	width: 14%;
+	padding: 0 10px;
+    box-sizing: content-box;
+}
+.teamLogo img {
+	width: 45px;
+    height: 45px;
+    border: 1px solid #ebebeb;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.monthScheduleList {
+	margin-bottom: 30px;
+}
+.currenMonth {
+	background-color: #5987A8;
+    color: white;
+    text-align: center;
+}
+.vsBold {
+	font-weight: bold;
+	width: 18px;
+}
+.teamScheduleName {
+	width: 46%;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.teamScheduleApply {
+	width: 24%;
+    color: coral;
+}
+.doubleName {
+	width: 136px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text-right {
+	text-align: right;
 }
