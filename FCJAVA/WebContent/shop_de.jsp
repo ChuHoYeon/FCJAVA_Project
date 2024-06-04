@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>FC JAVA</title>
+	<title><%=prd.getPrd_name()%></title>
 	<!--구글 폰트 -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 	<!--구글 아이콘-->
@@ -16,7 +16,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<!-- swiper css -->
 	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-	
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="css/shop_de.css" type="text/css">
 </head>
@@ -42,10 +41,10 @@
 				<div class="prd_thum">
 					<ul class="prd_img_list">
 						<li><img src="png/de1.jpg" width="100px" alt=""></li>
-						<li><img src="png/de2.jpg" width="100px" alt=""></li>
-						<li><img src="png/de3.jpg" width="100px" alt=""></li>
-						<li><img src="png/de4.jpg" width="100px" alt=""></li>
-						<li><img src="png/de5.jpg" width="100px" alt=""></li>
+						<li><img src="png/prd/<%=prd.getPrd_image()%>_1.png" width="100px" alt=""></li>
+						<li><img src="png/prd/<%=prd.getPrd_image()%>_1.png" width="100px" alt=""></li>
+						<li><img src="png/prd/<%=prd.getPrd_image()%>_1.png" width="100px" alt=""></li>
+						<li><img src="png/prd/<%=prd.getPrd_image()%>_1.png" width="100px" alt=""></li>
 					</ul>
 				</div>
 			</div> <!-- class="prd_left" -->
@@ -54,28 +53,24 @@
 					<p class="prd_name"><%=prd.getPrd_name()%></p>
 					<div class="prd_comment">
 						<table>
-							<colgroup>
-								<col class="prd_label">
-								<col class="prd_info">
-							</colgroup>
 							<tr>
-								<td>제품코드</td>
+								<td class="prd_label">제품코드</td>
 								<td><%=prd.getPrd_image() %></td>
 							</tr>
 							<tr>
-								<td>브랜드</td>
+								<td class="prd_label">브랜드</td>
 								<td><%=prd.getPrd_brand() %></td>
 							</tr>
 							<tr>
-								<td>카테고리</td>
+								<td class="prd_label">카테고리</td>
 								<td><%=prd.getPrd_category() %></td>
 							</tr>
 							<tr>
-								<td>색상</td>
+								<td class="prd_label">색상</td>
 								<td>블랙+화이트</td>
 							</tr>
 							<tr>
-								<td>원산지</td>
+								<td class="prd_label">원산지</td>
 								<td>중국</td>
 							</tr>
 						</table>
@@ -93,7 +88,7 @@
 			<div class="tabs-menu"></div>
 			<div class="tab">
 				<div class="tab-content">
-					<div class="de_info">상세설명</div>
+					<div class="sugPrd">상세설명</div>
 					<div> 
 						<table border="1">
 							<tr>

@@ -66,12 +66,8 @@
 	border-radius: 10px;
 	padding: 8px 48px;
 }
-.de_info {
-	font-size: 14px;
-    padding: 37px 71px;
-    border: 1px solid;
-    width: 1024px;
-    margin: 0 auto;
+.tabs-container {
+	margin: 70px 0px;
 }
 .sugPrd {
 	font-size: 16pt;
@@ -94,5 +90,6 @@
 	margin: 15px 0;
 }
 .prd_label {
-	width: 200px;
+    width: 20%;
+    border-right: 1px solid #e2e2e2;
 }
