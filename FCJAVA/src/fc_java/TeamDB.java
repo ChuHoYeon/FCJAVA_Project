@@ -59,8 +59,8 @@ public class TeamDB {
 			return teamList;
 		}
 		//팀 이름 중복확인
-		public Boolean isTeamName(String teamName) throws Exception {
-			Boolean result = false;
+		public boolean isTeamName(String teamName) throws Exception {
+			boolean overlap = false;
 			Connection conn = null;
 			Statement stmt = null;
 			String sql = "SELECT * FROM fc_java.team_info WHERE BINARY t_name = '"+teamName+"';";
@@ -69,12 +69,12 @@ public class TeamDB {
 				stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				if (rs.next()) {
-					result = true;
+					overlap = true;
 				}
 			} finally {
 				endConnection(conn, stmt);
 			}
-			return result;
+			return overlap;
 		}
 		//팀 생성
 		public void insertTeam(String id, String name, String logo, String city, String week, String info, String maxNum, String skill, String sns, String age) throws Exception {

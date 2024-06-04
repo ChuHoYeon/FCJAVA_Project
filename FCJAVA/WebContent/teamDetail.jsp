@@ -348,7 +348,7 @@
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-						<h1>비어있음.</h1>
+						<div class="notResult">일정 결과가 없습니다.</div>
 					</c:otherwise>
 					</c:choose>
 					</div><!-- 일정 -->
