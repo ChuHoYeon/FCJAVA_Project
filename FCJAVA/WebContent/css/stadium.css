@@ -290,18 +290,18 @@ input[type="submit"] {
     line-height: 31px; /* 텍스트 줄 간격을 아이콘 크기와 맞춤 */
 }
 <!-- -->
-  .scroll-time {
-        width: 100%; /* 원하는 너비로 설정 */
-        overflow-x: auto; /* 가로 스크롤 추가 */
-        border: 1px solid #ccc; /* 경계선 추가 (선택 사항) */
-        padding: 10px; /* 패딩 추가 (선택 사항) */
-        white-space: nowrap; /* 요소들을 한 줄로 나열 */
+ /*  .scroll-time {
+        width: 100%; 원하는 너비로 설정
+        overflow-x: auto; 가로 스크롤 추가
+        border: 1px solid #ccc; 경계선 추가 (선택 사항)
+        padding: 10px; 패딩 추가 (선택 사항)
+        white-space: nowrap; 요소들을 한 줄로 나열
         
     }
     .checkbox_label {
-        display: inline-block; /* 레이블을 인라인 블록 요소로 설정 */
-        margin-right: 10px; /* 레이블 사이에 간격 추가 */
+        display: inline-block; 레이블을 인라인 블록 요소로 설정
+        margin-right: 10px; 레이블 사이에 간격 추가
     }
-
+ */
     
     
