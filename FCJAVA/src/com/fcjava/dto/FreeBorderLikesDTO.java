@@ -1,7 +1,10 @@
-package fc_java;
+package com.fcjava.dto;
 
 public class FreeBorderLikesDTO {
-	String id;
+	
+	private String id;
+	private int number;
+	
 	public String getId() {
 		return id;
 	}
@@ -14,5 +17,4 @@ public class FreeBorderLikesDTO {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	int number;
 }

@@ -10,8 +10,10 @@ import com.fcjava.dto.TeamDTO;
 public class TeamDB {
 		//DB 시작
 		Connection startConnection() throws Exception {
+			//Class.forName("com.mysql.jdbc.Driver");
+			//Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java?characterEncoding=utf8", "root", "1234");
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://13.209.17.148/fc_java?characterEncoding=utf8", "user1", "1234");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://3.35.198.138/fc_java?characterEncoding=utf8", "user1", "1234");
 			if (conn == null) {
 				throw new Exception("데이터베이스에 연결할 수 없습니다.<br>");
 			}
@@ -57,8 +59,8 @@ public class TeamDB {
 			return teamList;
 		}
 		//팀 이름 중복확인
-		public Boolean isTeamName(String teamName) throws Exception {
-			Boolean result = false;
+		public boolean isTeamName(String teamName) throws Exception {
+			boolean overlap = false;
 			Connection conn = null;
 			Statement stmt = null;
 			String sql = "SELECT * FROM fc_java.team_info WHERE BINARY t_name = '"+teamName+"';";
@@ -67,12 +69,12 @@ public class TeamDB {
 				stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				if (rs.next()) {
-					result = true;
+					overlap = true;
 				}
 			} finally {
 				endConnection(conn, stmt);
 			}
-			return result;
+			return overlap;
 		}
 		//팀 생성
 		public void insertTeam(String id, String name, String logo, String city, String week, String info, String maxNum, String skill, String sns, String age) throws Exception {

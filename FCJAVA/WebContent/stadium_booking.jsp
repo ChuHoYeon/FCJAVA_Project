@@ -73,7 +73,7 @@
 				<!-- <div class="no-apply"></div> -->
 	<div class="gpsbox">
 		<div id="map" style="width:1000px;height:500px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2ee0d8044ef493120fb264fa92c3bce6&libraries=services"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ba2183ec4f927d10296536308f61d35&libraries=services"></script>
 	<script>
 	const addr = '<%= addr %>';
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

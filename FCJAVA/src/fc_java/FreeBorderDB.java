@@ -3,12 +3,17 @@ package fc_java;
 import java.sql.*;
 import java.util.ArrayList;
 
+import com.fcjava.dto.FreeBorderDTO;
+import com.fcjava.dto.FreeBorderLikesDTO;
+
 
 public class FreeBorderDB {
 	//DB 시작
 	Connection startConnection() throws Exception {
+		//Class.forName("com.mysql.jdbc.Driver");
+		//Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fc_java?characterEncoding=utf8", "root", "1234");
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://13.209.17.148/fc_java?characterEncoding=utf8", "user1", "1234");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://3.35.198.138/fc_java?characterEncoding=utf8", "user1", "1234");
 		if (conn == null) {
 			throw new Exception("데이터베이스에 연결할 수 없습니다.<br>");
 		}

@@ -9,7 +9,8 @@ import com.fcjava.dao.SqlDAO;
 import com.fcjava.dto.PlayerDTO;
 
 public class TeamPlayersList {
-	static TeamPlayersList teamPlayersList = new TeamPlayersList();
+	private static final TeamPlayersList teamPlayersList = new TeamPlayersList();
+	private TeamPlayersList() {}
 	public static TeamPlayersList getTeamPlayersList() {
 		return teamPlayersList;
 	}

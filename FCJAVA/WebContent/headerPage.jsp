@@ -10,6 +10,7 @@
 	    session.setAttribute("ID",id);
 	    sessionID = (String) session.getAttribute("ID");
 	}
+	
 %>
 <!DOCTYPE html>
 <html>

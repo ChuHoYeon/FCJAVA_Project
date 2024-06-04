@@ -7,7 +7,8 @@ import com.fcjava.dao.SqlDAO;
 import com.fcjava.dto.PlayerDTO;
 
 public class TeamApply {
-	static TeamApply teamApply = new TeamApply();
+	private static final TeamApply teamApply = new TeamApply();
+	private TeamApply() {}
 	public static TeamApply getTeamApply() {
 		return teamApply;
 	}

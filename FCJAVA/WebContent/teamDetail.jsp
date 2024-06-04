@@ -1,8 +1,11 @@
-<%@page import="com.google.gson.internal.GsonBuildConfig"%>
-<%@page import="com.google.gson.GsonBuilder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="org.json.simple.JSONArray"%>
-<%@page import="org.json.simple.JSONObject"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="com.google.gson.internal.GsonBuildConfig"%>
+<%@ page import="com.google.gson.GsonBuilder"%>
+<%@ page import="org.json.simple.JSONArray"%>
+<%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="com.fcjava.dto.TeamDTO" %>
 <%@ page import="com.fcjava.dto.PlayerDTO" %>
 <%@ page import="com.fcjava.dto.TeamFormationDTO" %>
@@ -14,6 +17,14 @@
 <%@ page import="com.fcjava.dto.TeamGameResultDTO" %>
 <%@ page import="com.fcjava.model.StringChange" %>
 <%@ page import="com.google.gson.Gson" %>
+<c:choose>
+<c:when test="${empty team.t_logo }">
+	<c:set var="team_logo" value="png/defaultLogo.png" />
+</c:when>
+<c:otherwise>
+	<c:set var="team_logo" value="/FCJAVA/png/playerPhoto/${team.t_logo}" />
+</c:otherwise>
+</c:choose>
 <%
 	String sessionID = (String)session.getAttribute("ID");
 	TeamDTO team = (TeamDTO) request.getAttribute("team"); //팀 정보
@@ -24,6 +35,7 @@
 	PageDTO pageInfo = (PageDTO) request.getAttribute("pageInfo"); //게시판 페이지 정보
 	String boardpage = request.getParameter("boardpage");
 	int tabNumber = (Integer) request.getAttribute("tabNumber");
+	//List<TeamScheduleDTO> teamScheduleList = (List<TeamScheduleDTO>) request.getAttribute("teamScheduleList");
 	
     int[] genders = (int[]) request.getAttribute("genders"); // [0]남자, [1]여자
     int[] ages = (int[]) request.getAttribute("ages"); // [0]10대, [1]20대, [2]30대, [3]40대, [4]50대, [5]60대 이상
@@ -186,7 +198,6 @@
 				</div>
 				<div class="subArea">
 				<%
-				
 				switch (applyCheck){
 					case 1:%><button type="button" id="team-delete" class="applyleaveBtn deleteTeam">삭제하기</button><%break;
 					case 2:%><button type="button" id="team-leave" class="applyleaveBtn leaveTeam">탈퇴하기</button><%break;
@@ -245,7 +256,7 @@
 								</div>
 								<div class="player-backnum"><%= player.getBack_num() %></div>
 								<div class="player-hei"><% if(player.getHeight() != null) { out.print(player.getHeight()+"cm");} else { out.print("미입력"); }%></div>
-								<div class="player-wei"><% if(player.getWeight() != null) { out.print(player.getWeight()+"cm");} else { out.print("미입력"); }%></div>
+								<div class="player-wei"><% if(player.getWeight() != null) { out.print(player.getWeight()+"kg");} else { out.print("미입력"); }%></div>
 								<div class="player-memo">
 									<div class="memo-in">
 										<% if(player.getPl_memo() != null) { %>
@@ -262,7 +273,84 @@
 					</div><!-- 선수 -->
 					
 					<div class="tab-content schedule-content">
-						<h2>일정칸</h2>
+					<c:set var="currentMonth" value="" />
+	 				<c:choose>
+					<c:when test="${not empty teamScheduleList }">
+						<c:forEach var="teamSchedule" items="${teamScheduleList }">
+						<fmt:formatDate value="${teamSchedule.reserdate}" pattern="yyyy-MM" var="monthYear" />
+						<fmt:formatDate value="${teamSchedule.reserdate}" pattern="yyyy-MM-dd" var="formatReserDate" />
+						<fmt:formatDate value="${teamSchedule.reserdate}" pattern="EEEE" var="reserweek" />
+						<c:choose>
+							<c:when test="${empty teamSchedule.vs_team_logo }">
+								<c:set var="vs_team_logo" value="png/defaultLogo.png" />
+							</c:when>
+							<c:otherwise>
+								<c:set var="vs_team_logo" value="/png/playerPhoto/${teamSchedule.vs_team_logo }" />
+							</c:otherwise>
+						</c:choose>
+						
+					    <c:if test="${currentMonth != monthYear}">
+						    <c:if test="${not empty currentMonth}">
+					            </div>
+					        </c:if>
+					        <c:set var="currentMonth" value="${monthYear}" />
+					        <div class="monthScheduleList">
+					        <div class="currenMonth">${currentMonth}</div>
+					    </c:if>
+						<div class="teamSchedule">
+							<div class="gameResultInfo">
+								<div class="scheduleDate">
+									<p><c:out value="${formatReserDate }"/> (<c:out value="${fn:substring(reserweek, 0, 1) }"/>)</p>
+								</div>
+								<div class="schedulePlace">
+									<p><c:out value="${teamSchedule.groundname }"/></p>
+								</div>
+								<c:choose>
+								<c:when test="${teamSchedule.vs_team == 0 && empty teamSchedule.vs_team_num }">
+								<div class="scheduleTeamSolo">
+									<div class="teamLogo">
+										<img src="${team_logo }" />
+									</div>
+									<div><c:out value="${team.t_name }"/></div>
+								</div>
+								</c:when>
+								<c:when test="${teamSchedule.vs_team == 1 && empty teamSchedule.vs_team_num }">
+								<div class="scheduleTeamApply">
+									<div class="teamLogo">
+										<img src="${team_logo }" />
+									</div>
+									<div class="teamScheduleName"><c:out value="${team.t_name }"/></div>
+									<div class="teamScheduleApply">신청 가능</div>
+								</div>
+								</c:when>
+								<c:otherwise>
+								<div class="scheduleTeam">
+									<div class="doubleName text-right"><c:out value="${team.t_name }"/></div>
+									<div class="teamLogo">
+										<img src="${team_logo }" />
+									</div>
+									<div class="vsBold">vs</div>
+									<div class="teamLogo">
+										<img src="${vs_team_logo }" />
+									</div>
+									<div class="doubleName">${teamSchedule.vs_team_name }</div>
+								</div>
+								</c:otherwise>
+								</c:choose>
+								<div class="scheduleTime">
+									<p><c:out value="${teamSchedule.resertime }"/></p>
+								</div>
+							</div>
+						</div>
+						<c:if test="${teamSchedule eq teamScheduleList[fn:length(teamScheduleList) - 1]}">
+					        </div>
+					    </c:if>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<div class="notResult">일정 결과가 없습니다.</div>
+					</c:otherwise>
+					</c:choose>
 					</div><!-- 일정 -->
 					
 					<div class="tab-content record-content">
@@ -280,7 +368,7 @@
 							</div>
 							<div class="gameResultInfo">
 								<div class="gameDate">
-									<p><%= gameYear+"."+gameMonth+"."+gameDate+"("+gameDay+")"+gameTime %></p>
+									<p><%= gameYear+"."+gameMonth+"."+gameDate+" ("+gameDay+") "+gameTime %></p>
 									<p><%= gameResult.getGame_place() %></p>
 								</div>
 								<div class="team1">

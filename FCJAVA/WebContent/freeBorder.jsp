@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="fc_java.FreeBorderDTO"%>
-<%@ page import="fc_java.FreeBorderLikesDTO"%>
+<%@ page import="com.fcjava.dto.FreeBorderDTO"%>
+<%@ page import="com.fcjava.dto.FreeBorderLikesDTO"%>
 <%@ page import="java.util.ArrayList" %>
 <jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
 <%
@@ -35,7 +35,7 @@
 	<link rel="stylesheet" type="text/css" href="css/freeBorder.css">
 </head>
 <script>
-	let sessionID = <%=sessionID%>;
+	let sessionID = '<%=sessionID%>';
 </script>
 <body>
 	<!-- 헤더 -->
@@ -112,6 +112,6 @@
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
 	
-	<script src="js/freeBorder"></script>
+	<script src="js/freeBorder.js"></script>
 </body>
 </html>

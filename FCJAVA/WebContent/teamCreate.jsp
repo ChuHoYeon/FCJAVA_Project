@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>FC JAVA : 팀생성</title>
 	<!--구글 폰트 -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 	<!--구글 아이콘-->
@@ -13,19 +13,18 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	
 	<link rel="stylesheet" href="css/teamCreate.css"/>
-	<script type="text/javascript" src="js/teamcreate.js"></script>
 </head>
 
 <body>
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
 	<div>
-		<form action="teamCreating.jsp" class="create-area" onsubmit="return teamCreating()" method="post" enctype="multipart/form-data">
+		<form action="teamCreating.jsp" class="create-area" id="teamCreating" method="post" enctype="multipart/form-data">
 			<h1 class="tcreateTitle">팀 만들기</h1>
 			<div class="infoLine">
 				<div class="logoBox">
 					<div class="logoImg">
-						<img src="png/defaultLogo.png"/> 
+						<img src="png/defaultLogo.png"/>
 					</div>
 					<label for="logoImgPlue">로고 변경</label>
 					<input type="file" accept="image/*" name="teamLogo" id="logoImgPlue"/>
@@ -96,7 +95,7 @@
 				<label for="pro" class="menuBtn">프로</label>
 			</div>
 			<div class="infoLine">
-				<label class="menuLabel">연령대</label>
+				<label class="menuLabel">선호 연령대</label>
 				<input type="radio" name="age" id="age10" value="10~20대"/>
 				<label for="age10" class="menuBtn">10~20대</label>
 				<input type="radio" name="age" id="age20" value="20~30대"/>
@@ -152,5 +151,6 @@
 	</div>
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
+	<script type="text/javascript" src="js/teamCreate.js"></script>
 </body>
 </html>

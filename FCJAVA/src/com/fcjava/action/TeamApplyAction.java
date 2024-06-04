@@ -1,11 +1,15 @@
 package com.fcjava.action;
 
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fcjava.controller.interfaces.DBinterface;
+import com.fcjava.dto.TeamDTO;
+import com.fcjava.model.MyTeamList;
 import com.fcjava.model.TeamApply;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -19,6 +23,7 @@ public class TeamApplyAction implements DBinterface {
 	@Override
 	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
 		String url = null;
 		
 		String uploadPath = request.getRealPath("/png/playerPhoto"); //어느위치에 저장할것인지. 폴더위치
@@ -39,6 +44,10 @@ public class TeamApplyAction implements DBinterface {
 		TeamApply teamApply = TeamApply.getTeamApply();
 		teamApply.insertTeamApply(t_num, id, pl_pic, back_num, position, pl_memo, height, weight);
 
+		MyTeamList myList = MyTeamList.getMyTeamList();
+		List<TeamDTO> myTeamList = myList.refrashMyTeamList(id);
+		session.setAttribute("MyTeamList", myTeamList);
+		
 		url = "fcjava.team?page=detail&teamNumber="+t_num;
 		return url;
 	}

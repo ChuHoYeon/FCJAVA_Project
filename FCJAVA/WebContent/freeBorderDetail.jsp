@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="fc_java.FreeBorderDTO"%>
+<%@ page import="com.fcjava.dto.FreeBorderDTO"%>
 <jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
 <%
 	String number = request.getParameter("number");
@@ -27,56 +27,9 @@
 	<link rel="stylesheet" type="text/css" href="css/freeBorderDatail.css">
 </head>
 <script>
-	$(function(){
-		const check = <%=check%>;
-		if(check == false){
-			$(".updateContent").hide()
-		}
-		
-		$('#delbtn').click(function(){
-	        let result = confirm("삭제하시겠습니까?");
-	        if(result){
-	            window.location.href = 'freeBorderDelete.jsp?number=' + <%=number%>; // 페이지 이동
-	        }
-	    });
-
-		$(".btn-favorite").click(function(){
-			let sessionID = <%=sessionID %>
-			let borderNum = $(this).val();
-			let src = $(".love");
-			console.log(sessionID);
-			if(sessionID !== null) {
-				if(src.attr("srcset") == "png/love-zero.svg"){
-					$.ajax({
-				  	      url : "fBorderLike.jsp",
-				  	      data : {
-				  	    	  ID : sessionID,
-				  	    	  Num : borderNum,
-			  	    	  },
-				  	      success : function(re){
-				  	    	  src.attr("srcset", "png/love-red.svg");
-				  	      }
-				  	});
-				} else {
-					$.ajax({
-				  	      url : "fBorderUnLike.jsp",
-				  	      data : {
-				  	    	  ID : sessionID,
-				  	    	  Num : borderNum,
-			  	    	  },
-				  	      success : function(re){
-				  	    	  src.attr("srcset", "png/love-zero.svg");
-				  	      }
-				  	});
-				}	
-			} else {
-				let isLogin = confirm("로그인을 해야 이용가능합니다. 로그인하시겠습니까?");
-				if (isLogin) {
-					window.location.href = "login.jsp";
-				}
-			}
-		})
-	})
+const check = <%=check%>;
+const freeBorderPage = '<%=number%>';
+const sessionID = '<%=sessionID %>';
 </script>
 <body> 
 	<!-- 헤더 -->
@@ -130,5 +83,6 @@
 	</main>
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
+	<script src="js/freeBorderDetail.js"></script>
 </body>
 </html>

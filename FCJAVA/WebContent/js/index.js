@@ -32,7 +32,7 @@ $(function() {
 	
 	$('form[name="goStadium"]').on('submit', function() {
 		let selectedTimes = $('input[name="selectedTimes"]').val();
-		if(sessionID == null){
+		if(sessionID == 'null'){
 			alert('로그인이 필요한 서비스입니다. 로그인해주세요.');
             window.location.href = "login.jsp";
             return false;
@@ -44,8 +44,6 @@ $(function() {
 
 	});
 	$('.checkBtn').on('click', function() {
-		console.log(sessionID);
-		
 		let selectedTimes = [];
     	$('.checkBtn:checked').each(function() {
     		var time = $(this).next('label').text();

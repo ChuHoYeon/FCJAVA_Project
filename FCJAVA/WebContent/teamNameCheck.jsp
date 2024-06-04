@@ -2,12 +2,12 @@
     pageEncoding="UTF-8"%>
 <jsp:useBean id="db" class="fc_java.TeamDB"></jsp:useBean>
 <%
-	String teamName = request.getParameter("teamNAME");
-	Boolean result = db.isTeamName(teamName);
-	if(result) {
-		out.println("1");
+	String teamName = request.getParameter("teamName");
+	boolean overlap = db.isTeamName(teamName);
+	if(overlap) {
+		out.println("있음");
 	}
 	else {
-		out.println("0");
+		out.println("없음");
 	}
 %> 
