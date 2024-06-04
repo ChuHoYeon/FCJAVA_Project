@@ -477,7 +477,7 @@ $(document).ready(function(){
 				</div>
 				`);
 				if(elt.board_file != null) {
-					$('.articleContent').prepend(`<div><img src="/FCJAVA/png/boardUpload/${elt.board_file}"/></div>`);
+					$('.articleContent').prepend(`<div><img src="/png/boardUpload/${elt.board_file}"/></div>`);
 				}
 
 				return false;

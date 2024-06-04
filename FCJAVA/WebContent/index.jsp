@@ -51,6 +51,7 @@
 						<div><input type="date" name="date" /></div>
 						<div id="btnArea">
 						<%for (int i = 6; i < 24; i++) { 
+							if(i==12) i=18;
 							String clock = String.valueOf(i);
 							if(clock.length() < 2) {
 								clock = '0'+clock;

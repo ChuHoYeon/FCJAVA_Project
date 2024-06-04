@@ -464,7 +464,7 @@
 											<option>4-1-4-1</option>
 											<option>4-4-2</option>
 										</select>
-										<input type="text" name="formation_name" class="form-control" placeholder="새 포메이션 이름"/>
+										<input type="text" name="formation_name" class="form-control" maxlength="10" placeholder="새 포메이션 이름"/>
 										<button type="button" class="cancleCreateFormation btn btn-outline-secondary"><span class="material-symbols-outlined">undo</span></button>
 										<button type="submit" class="saveFormation btn btn-outline-secondary"><span class="material-symbols-outlined">save</span></button>
 									</div>

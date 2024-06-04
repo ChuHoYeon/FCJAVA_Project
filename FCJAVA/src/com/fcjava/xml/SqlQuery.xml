@@ -99,7 +99,8 @@
 	<select id="selectFormations" resultType="com.fcjava.dto.TeamFormationDTO">
 	SELECT * 
 	FROM fc_java.t_formation 
-	WHERE t_num = #{t_num};
+	WHERE t_num = #{t_num}
+	ORDER BY create_date DESC;
 	</select>
 	<select id="isFormationName" resultType="com.fcjava.dto.TeamFormationDTO">
 	SELECT * 
