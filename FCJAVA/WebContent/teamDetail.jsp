@@ -104,9 +104,17 @@
 	<link rel="stylesheet" href="css/teamDetail.css" />
 </head>
 <script type="text/javascript">
-	let formationjsonArray = <%= formationjsonArray%>;
-	let tabNumber = <%=tabNumber%>;
-	let jsonTeamBoardList = <%= jsonTeamBoardList %>;
+	const formationjsonArray = <%= formationjsonArray%>;
+	const tabNumber = <%=tabNumber%>;
+	const jsonTeamBoardList = <%= jsonTeamBoardList %>;
+    const sessionID = '<%= sessionID %>';//로그인한 아이디
+  	const t_num = "<%= team.getT_num() %>"; //팀 번호
+  	const teamName = "<%= team.getT_name() %>"; //팀 이름
+  	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
+  	const maxCount = <%=team.getMax_p_num() %>; //최대 가입 인원
+  	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
+  	const ages = JSON.parse('<%= Arrays.toString(ages) %>');
+  	const positions = JSON.parse('<%= Arrays.toString(positions) %>');
 </script>
 <body>
 	<!-- 헤더 -->
@@ -207,6 +215,14 @@
 				%>
 				</div>
 				<div class="stopApply"></div>
+				<div class="team-chating"><button id="team-chating-btn">팀 채팅</button></div>
+				<div class="chat-ab">
+					<div class="teamChatTitle"><%=team.getT_name() %><label id="chatConNum">3</label></div>
+			    	<ul id="messages"></ul>
+					<form id="chatingform">
+			        	<input id="chat-input" autocomplete="off" /><button id="sendBtn"><img src="png/send29.svg"></button>
+			    	</form>
+				</div>
 			</div><!-- class="left-teamInfo" -->
 			<!-- --------------------------- -->
 			<div class="right-info">
@@ -591,28 +607,11 @@
 				</div><!-- class="team-tab-info" -->
 			</div><!-- class="right-info" -->
 		</div><!-- class="teamArea" -->
-		<div class="chat-ab">
-			<form id="form" action="">
-	        	<input id="chat-input" autocomplete="off" /><button>Send</button>
-	    	</form>
-	    	<ul id="messages"></ul>
-		</div>
 	</main>
 
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
 	
-	<script>
-    const sessionID = '<%= sessionID %>';//로그인한 아이디
-  	const t_num = "<%= team.getT_num() %>"; //팀 번호
-  	const teamName = "<%= team.getT_name() %>"; //팀 이름
-  	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
-  	const maxCount = <%=team.getMax_p_num() %>; //최대 가입 인원
-  	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
-  	const ages = JSON.parse('<%= Arrays.toString(ages) %>');
-  	const positions = JSON.parse('<%= Arrays.toString(positions) %>');
-  	let socket;
-	</script>
 	<!-- teamDetail js -->
 	<script src="js/teamDetail.js"></script>
 	<!-- bootstrap js -->

@@ -1,49 +1,61 @@
 const express = require('express');
-const http = require('http');
+const app = express();
+const server = require('http').createServer(app);
 const socketIo = require('socket.io');
 const cors = require('cors')
-
-const app = express();
-const server = http.createServer(app);
+const PORT = 3000;
 const io = socketIo(server, {
     cors: {
-        origin: "http://http://localhost:8082",  // JSP 애플리케이션이 실행되는 도메인
+        origin: 'http://localhost:8082',
         methods: ["GET", "POST"]
     }
 });
 
 app.use(cors())
 
-app.get('/', (req, res) => {
-    res.send('Socket.IO server running');
-});
-
-let users = {};
+let users = {}; 
 
 io.on('connection', (socket) => {
-	 console.log('a user connected: ' + socket.id);
-	
-	 // 새로운 사용자가 연결되면 사용자 정보 저장
-    socket.on('set username', (username) => {
-    	console.log(username);
-        users[socket.id] = username;
-        console.log(users);
-        io.emit('user connected', username);
+
+    socket.on('join team', (data) => {
+    	const {t_num, sessionID} = data;
+        socket.join(t_num);
+        users[socket.id] = { t_num, sessionID };
+        io.to(t_num).emit('user connected', sessionID);
+        
+        io.in(t_num).allSockets().then(sockets => {
+            const numClients = sockets.size;
+            io.to(t_num).emit('team size', numClients);
+        }).catch(err => {
+            console.error(`Error retrieving sockets for team ${t_num}:`, err);
+        });
     });
     
-    socket.on('chat message', (msg) => {
-        const username = users[socket.id] || 'Anonymous';
-        io.emit('chat message', { username, msg });
+    socket.on('chat message', (message) => {
+        const user = users[socket.id];
+        if (user) {
+            const { t_num, sessionID } = user;
+            io.to(t_num).emit('chat message', { sessionID, message });
+        }
     });
     
     socket.on('disconnect', () => {
-        const username = users[socket.id];
-        delete users[socket.id];
-        io.emit('user disconnected', username);
-        console.log('user disconnected: ' + socket.id);
+        const user = users[socket.id];
+        if (user) {
+            const { t_num, sessionID } = user;
+            io.to(t_num).emit('user disconnected', sessionID);
+            delete users[socket.id];
+            
+            io.in(t_num).allSockets().then(sockets => {
+                const numClients = sockets.size;
+                io.to(t_num).emit('team size', numClients);
+            }).catch(err => {
+                console.error(`Error retrieving sockets for team ${t_num}:`, err);
+            });
+        }
     });
 });
 
-server.listen(3000, () => {
-    console.log('listening on *:3000');
+server.listen(PORT, () => {
+	console.log('Start Server');
 });

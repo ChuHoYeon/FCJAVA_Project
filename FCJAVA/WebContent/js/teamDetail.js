@@ -490,46 +490,6 @@ $(document).ready(function(){
 	    $('.board_detail').empty();
 	    $('.board_list').show();
 	});
-
-	/* 채팅 영역*/
-	$('.player-captain').on("click", () => {
-		const chatDisplay = $('.chat-ab').css('display');
-		if(chatDisplay == 'none'){
-			$('.chat-ab').show();
-			
-			socket = io('http://http://localhost:3000'); // Node.js 서버와 연결
-			socket.emit('set username', sessionID);
-			
-			$('#form').submit(function() {
-				const message = $('#chat-input').val();
-				socket.emit('chat message', message); // 메시지를 서버로 전송
-				$('#chat-input').val('');
-				return false;
-			});
-			
-			socket.on('chat message', function(data){
-				const message = `${data.username}: ${data.msg}`;
-				$('#messages').append($('<li>').text(message)); // 서버로부터 받은 메시지를 표시
-			});
-			
-			socket.on('user connected', function(username) {
-				$('#messages').append($('<li>').text(username + ' 님이 참여하였습니다.'));
-			});
-			
-		} else {
-			const exitChating = confirm("채팅창을 나가시겠습니까?");
-			if (exitChating) {
-				$('.chat-ab').hide();
-				socket.on('user disconnected', function(username) {
-					$('#messages').append($('<li>').text(username + ' 퇴장하였습니다.'));
-				});
-				if (socket) {
-					socket.disconnect();
-					socket = null;
-				}
-			}
-		}
-	});
 	
 });
 
@@ -555,4 +515,69 @@ $(document).on('click', function(event) {
         $createPlayerName = null;
         $('.createPlayer').find('img').removeClass('focus-player');
     }
+});
+
+let socket;
+	/* 채팅 영역*/
+$('#team-chating-btn').on("click", () => {
+	if(sessionID == 'null') {
+		const goLogin = confirm('팀에 소속된 선수만 참가하실수 있습니다. 로그인하시겠습니까?');
+		if(goLogin) window.location.href = 'login.jsp';
+		return false;
+	}
+	const chatDisplay = $('.chat-ab').css('display');
+	if(chatDisplay == 'none'){
+		$('.chat-ab').show();
+		$('.chat-ab').css('display','flex');
+		socket = io('http://localhost:3000');
+		socket.emit('join team', { t_num, sessionID });
+		
+		socket.on('user connected', function(username) {
+			$('#messages').prepend($('<li>').html(`<div class="inChating">${username} 님이 참여하였습니다.</div>`));
+		});
+		
+		$('#chatingform').submit(function(e) {
+			e.preventDefault();
+			const message = $('#chat-input').val();
+			if(message == '') {
+				alert('메세지를 입력해주세요');
+				return false;
+			}
+			socket.emit('chat message', message); // 메시지를 서버로 전송
+			$('#chat-input').val('');
+			return false;
+		});
+		
+		socket.on('chat message', function(msg){
+			const message = msg.message;
+			const writer = msg.sessionID;
+			if(writer == sessionID) {
+				$('#messages').prepend($('<li class="msg-send">').html(`<div class="msg-writer">${writer}</div><div class="msg-send-message">${message}</div>`)); // 서버로부터 받은 메시지를 표시				
+			} else {
+				$('#messages').prepend($('<li class="msg-receive">').html(`<div class="msg-writer">${writer}</div><div class="msg-receive-message">${message}</div>`));
+			}
+		});
+		
+		socket.on('user disconnected', function(username) {
+			$('#messages').prepend($('<li>').html(`<div class="inChating">${username} 님이 퇴장하였습니다.</div>`));
+		});
+		
+		socket.on('team size', function (numClients) {
+            $('#chatConNum').text(numClients);
+        });
+				
+	} else {
+		const exitChating = confirm("채팅창을 나가시겠습니까?");
+		if (exitChating) {
+			$('#messages').empty();
+			$('.chat-ab').hide();
+			console.log('소켓전');
+			console.log(socket);
+			if (socket) {
+				console.log('소켓후');
+				socket.disconnect();
+                socket = null;
+			}
+		}
+	}
 });

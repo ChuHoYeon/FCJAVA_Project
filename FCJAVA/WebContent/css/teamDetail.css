@@ -758,12 +758,90 @@ select[name="position"] {
 	text-align: right;
 }
 .chat-ab {
-	position: absolute;
-	width: 400px;
-	height: 600px;
 	background-color: white;
-	border: 1px solid black;
-	bottom: -212px;
-	right: 0;
+	border: 1px solid #e2e2e2;
 	display: none;
+    height: 414px;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+#messages {
+	display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    min-height: 345px;
+    background-color: #EFEFEF;
+}
+#messages li {
+	margin-bottom: 5px;
+    padding: 0 4px;
+}
+#messages li:last-child {
+	margin-top: 5px;
+}
+#messages::-webkit-scrollbar {
+	width: 5px;
+	background: #e6e6e9;
+}
+#messages::-webkit-scrollbar-thumb {
+	background-color: #44435B;
+}
+.team-chating {
+	width: 100%;
+}
+#team-chating-btn {
+	width: 100%;
+	background-color: #424254;
+    color: white;
+    padding: 6px;
+}
+.msg-send {
+	text-align: right;
+}
+#chatingform {
+	display: flex;
+}
+#sendBtn {
+	border: 2px solid #424254;
+    background-color: white;
+}
+#sendBtn img {
+	width: 29px;
+}
+.inChating {
+	width: fit-content;
+	background-color: #424254;
+    color: white;
+    font-size: 10pt;
+    padding: 2px 5px;
+    border-radius: 12px;
+    margin: 0 auto;
+    text-align: center;
+}
+.teamChatTitle {
+    text-align: center;
+    padding: 3px 0;
+    border-bottom: 1px solid #424254;
+    font-weight: bold;
+}
+.msg-writer {
+	font-size: 12px;
+}
+#chatConNum {
+	color: #b22222;
+    font-size: 13px;
+}
+.msg-send-message {
+	display: inline-block;
+	background-color: #C2D8F0;
+	padding: 2px 8px;
+	border-radius: 10px 0 10px 10px;
+	border: 1px solid #BCD5F4;
+}
+.msg-receive-message {
+	display: inline-block;
+	background-color: #FFFFFF;
+	padding: 2px 8px;
+	border-radius: 0 10px 10px 10px;
+	border: 1px solid #EDEDED;
 }
