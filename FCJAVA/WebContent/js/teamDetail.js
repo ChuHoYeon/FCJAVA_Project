@@ -490,7 +490,49 @@ $(document).ready(function(){
 	    $('.board_detail').empty();
 	    $('.board_list').show();
 	});
+
+	/* 채팅 영역*/
+	$('.player-captain').on("click", () => {
+		const chatDisplay = $('.chat-ab').css('display');
+		if(chatDisplay == 'none'){
+			$('.chat-ab').show();
+			
+			socket = io('http://localhost:3000'); // Node.js 서버와 연결
+			socket.emit('set username', sessionID);
+			
+			$('#form').submit(function() {
+				const message = $('#chat-input').val();
+				socket.emit('chat message', message); // 메시지를 서버로 전송
+				$('#chat-input').val('');
+				return false;
+			});
+			
+			socket.on('chat message', function(data){
+				const message = `${data.username}: ${data.msg}`;
+				$('#messages').append($('<li>').text(message)); // 서버로부터 받은 메시지를 표시
+			});
+			
+			socket.on('user connected', function(username) {
+				$('#messages').append($('<li>').text(username + ' 님이 참여하였습니다.'));
+			});
+			
+		} else {
+			const exitChating = confirm("채팅창을 나가시겠습니까?");
+			if (exitChating) {
+				$('.chat-ab').hide();
+				socket.on('user disconnected', function(username) {
+					$('#messages').append($('<li>').text(username + ' 퇴장하였습니다.'));
+				});
+				if (socket) {
+					socket.disconnect();
+					socket = null;
+				}
+			}
+		}
+	});
+	
 });
+
 
 function isSelectedPlayer() {
 	$('.selectPlayers .formation-players').removeClass('selectedPlayer');

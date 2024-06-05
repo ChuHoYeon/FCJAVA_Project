@@ -91,6 +91,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>FC JAVA</title>
+	<script src="http://localhost:3000/socket.io/socket.io.js"></script>
 	<!--구글 폰트 -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 	<!--구글 아이콘-->
@@ -590,6 +591,12 @@
 				</div><!-- class="team-tab-info" -->
 			</div><!-- class="right-info" -->
 		</div><!-- class="teamArea" -->
+		<div class="chat-ab">
+			<form id="form" action="">
+	        	<input id="chat-input" autocomplete="off" /><button>Send</button>
+	    	</form>
+	    	<ul id="messages"></ul>
+		</div>
 	</main>
 
 	<!-- 푸터 -->
@@ -604,6 +611,7 @@
   	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
   	const ages = JSON.parse('<%= Arrays.toString(ages) %>');
   	const positions = JSON.parse('<%= Arrays.toString(positions) %>');
+  	let socket;
 	</script>
 	<!-- teamDetail js -->
 	<script src="js/teamDetail.js"></script>

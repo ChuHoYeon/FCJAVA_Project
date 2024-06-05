@@ -757,3 +757,13 @@ select[name="position"] {
 .text-right {
 	text-align: right;
 }
+.chat-ab {
+	position: absolute;
+	width: 400px;
+	height: 600px;
+	background-color: white;
+	border: 1px solid black;
+	bottom: -212px;
+	right: 0;
+	display: none;
+}
