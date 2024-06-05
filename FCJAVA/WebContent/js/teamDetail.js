@@ -497,7 +497,7 @@ $(document).ready(function(){
 		if(chatDisplay == 'none'){
 			$('.chat-ab').show();
 			
-			socket = io('http://localhost:3000'); // Node.js 서버와 연결
+			socket = io('http://http://localhost:3000'); // Node.js 서버와 연결
 			socket.emit('set username', sessionID);
 			
 			$('#form').submit(function() {
