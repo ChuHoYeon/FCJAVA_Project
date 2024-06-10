@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
 <%@ page import="com.fcjava.dto.StadiumDTO"%>
+
 <%
 	StadiumDTO stadium = (StadiumDTO) request.getAttribute("stadium");
+			
 %>
  <%
 	String selectedTimes = request.getParameter("selectedTimes");
@@ -133,9 +136,14 @@
 						<div class="booking_data"> <%= selectedTimes %></div>
 						<input type="hidden" name="b_time" value="<%= selectedTimes %>" />
 						<div class="taem_bk">내 팀</div>
-						<input type="hidden" name="b_time" value="<%= selectedTimes %>" />
-						
-						
+						<br>
+						<%
+				      	List<StadiumDTO> team_name = (List<StadiumDTO>)request.getAttribute("team_name");
+				            
+				            for (int i=0; i< team_name.size(); i++) {
+			            %>
+						<input type="radio" name="b_time<%=i%>" > <%=team_name.get(i).getT_name()%>
+						<%}%>
 					</div>
 					
 					<div id="radioButtons">

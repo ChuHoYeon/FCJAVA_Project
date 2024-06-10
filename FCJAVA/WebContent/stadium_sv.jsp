@@ -131,7 +131,7 @@
 			<div class="stm_tiembox">
 
 				<form class="stm_teamsearch1" id="stm_teamsearch1-box-1"
-					action="fcjava.stadium1?page=3&sta_num=<%= stadium.getG_no() %>"
+					action="fcjava.stadium1?page=3&sta_num=<%= stadium.getG_no() %>&id=<%=sessionId %>"
 					method="POST">
 					<div class="ord">
 						<input type='date' name="date" id='soccerDate1' />

@@ -438,7 +438,9 @@
 											<div class="foramtionName"><%=formation.getFormation() %></div>
 											<div class="formationTitle"><%=formation.getFormation_name() %></div>
 										</div>	
-									<% firstFormation = false;}} %>
+									<% firstFormation = false;
+										}
+									} %>
 									<% if(team.getId().equals(sessionID)){ %>
 										<div class="createFormationBtn">
 											<div>새 포메이션</div>

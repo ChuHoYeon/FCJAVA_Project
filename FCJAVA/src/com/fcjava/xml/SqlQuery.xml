@@ -100,7 +100,7 @@
 	SELECT * 
 	FROM fc_java.t_formation 
 	WHERE t_num = #{t_num}
-	ORDER BY create_date DESC;
+	ORDER BY create_date DESC, formation_num ASC;
 	</select>
 	<select id="isFormationName" resultType="com.fcjava.dto.TeamFormationDTO">
 	SELECT * 
@@ -222,21 +222,22 @@
 	<select id="randomStadium" resultType="com.fcjava.dto.StadiumDTO">
 	SELECT * FROM fc_java.stadium1 order by rand() limit 1;
 	</select>
-	<!-- 구장 등록-->
     <insert id="str_insert" parameterType="com.fcjava.dto.StadiumDTO">
         insert into fc_java.stadium1 (g_no, gmem_id, g_name, g_time, g_size, g_add, g_memo, g_img) values(#{g_no}, #{gmem_id}, #{g_name}, #{g_time}, #{g_size}, #{g_add}, #{g_memo}, #{g_img});
     </insert>
-    <!-- 구장 리스트 -->
     <select id="sta_select" resultType="com.fcjava.dto.StadiumDTO">    
          SELECT * FROM fc_java.stadium1;
     </select>
-    <!-- 구장 리스트 -->
     <select id="selectsta" resultType="com.fcjava.dto.StadiumDTO">
 		SELECT * 
 		FROM fc_java.stadium1 
 		WHERE g_no = #{g_no};
 	</select>
-	<!-- 예약 정보  -->
+	<select id="selecteam_name" resultType="com.fcjava.dto.StadiumDTO">
+		SELECT * 
+		FROM fc_java.team_info 
+		WHERE id = #{id};
+	</select>
 	<insert id="booking" parameterType="com.fcjava.dto.StadiumBookingDTO">
 		insert into fc_java.sta_booking (b_ground_no, b_team_no, b_vs_team, b_won, b_date, b_tiem) values(#{b_ground_no}, #{b_team_no},#{b_vs_team}, #{b_won}, #{b_date}, #{b_time})
 	</insert>

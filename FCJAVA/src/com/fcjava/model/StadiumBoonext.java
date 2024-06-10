@@ -1,5 +1,7 @@
 package com.fcjava.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -24,5 +26,17 @@ public class StadiumBoonext {
 	    
 	    session.close();
 	    return nextboo;
+	    }
+	    
+	    public List<StadiumDTO> getTeamName(String id) {
+	    SqlSession session = sql.openSession();
+	    
+	    
+	    StadiumDTO t_name2 = new StadiumDTO();
+	    t_name2.setId(id);
+	    List<StadiumDTO> t_name = session.selectList("selecteam_name", t_name2);
+	    
+	    session.close();
+	    return t_name;
 	    }
 }

@@ -15,8 +15,8 @@
 			return stadiumselect;
 		}
 		
-		@Override
 		//구장 예약 
+		@Override
 		public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			// TODO Auto-generated method stub
 			// 구장 리스트
