@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: fc_java
 -- ------------------------------------------------------
--- Server version	5.7.44-log
+-- Server version	8.0.36-2ubuntu3
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,19 +23,19 @@ DROP TABLE IF EXISTS `stadium1`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `stadium1` (
-  `g_no` int(11) NOT NULL AUTO_INCREMENT,
-  `gmem_id` varchar(20) COLLATE utf8_bin NOT NULL,
-  `g_name` varchar(50) COLLATE utf8_bin NOT NULL,
-  `g_time` varchar(45) COLLATE utf8_bin NOT NULL,
-  `g_size` varchar(45) COLLATE utf8_bin NOT NULL,
-  `g_add` varchar(50) COLLATE utf8_bin NOT NULL,
-  `g_memo` text COLLATE utf8_bin NOT NULL,
-  `g_img` varchar(250) COLLATE utf8_bin DEFAULT NULL,
-  `g_com_num` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `g_com_add` varchar(250) COLLATE utf8_bin DEFAULT NULL,
-  `g_com_pnum` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `g_no` int NOT NULL AUTO_INCREMENT,
+  `gmem_id` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `g_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `g_time` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `g_size` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `g_add` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `g_memo` text CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `g_img` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
+  `g_com_num` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
+  `g_com_add` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
+  `g_com_pnum` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   PRIMARY KEY (`g_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-29 15:16:34
+-- Dump completed on 2024-06-07  0:26:29

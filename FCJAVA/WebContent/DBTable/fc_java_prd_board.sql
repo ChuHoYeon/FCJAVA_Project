@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: fc_java
 -- ------------------------------------------------------
--- Server version	5.7.44-log
+-- Server version	8.0.36-2ubuntu3
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,14 +23,14 @@ DROP TABLE IF EXISTS `prd_board`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `prd_board` (
-  `num` int(11) NOT NULL AUTO_INCREMENT,
+  `num` int NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
   `bon` text NOT NULL,
   `c_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `u_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `user` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-29 15:16:36
+-- Dump completed on 2024-06-07  0:26:09

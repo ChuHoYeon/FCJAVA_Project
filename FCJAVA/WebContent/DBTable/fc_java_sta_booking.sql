@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: fc_java
 -- ------------------------------------------------------
--- Server version	5.7.44-log
+-- Server version	8.0.36-2ubuntu3
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,16 +23,17 @@ DROP TABLE IF EXISTS `sta_booking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sta_booking` (
-  `booking_no` int(11) NOT NULL AUTO_INCREMENT,
-  `b_ground_no` int(11) NOT NULL,
-  `b_team_no` int(11) NOT NULL,
+  `booking_no` int NOT NULL AUTO_INCREMENT,
+  `b_ground_no` int NOT NULL,
+  `b_team_no` int NOT NULL,
   `b_bk_tiem` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `b_vs_team` int(11) NOT NULL,
-  `b_won` varchar(45) COLLATE utf8_bin NOT NULL,
-  `b_date` varchar(45) COLLATE utf8_bin NOT NULL,
-  `b_tiem` varchar(45) COLLATE utf8_bin NOT NULL,
+  `b_vs_team` int NOT NULL,
+  `b_won` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `b_date` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `b_tiem` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
+  `b_vs_team_num` int DEFAULT NULL,
   PRIMARY KEY (`booking_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +42,7 @@ CREATE TABLE `sta_booking` (
 
 LOCK TABLES `sta_booking` WRITE;
 /*!40000 ALTER TABLE `sta_booking` DISABLE KEYS */;
-INSERT INTO `sta_booking` VALUES (1,1,26,'2024-04-30 11:23:08',1,'90000','2024-04-30','19:00,20:00,21:00'),(2,1,26,'2024-04-30 11:23:29',1,'90000','2024-04-30','19:00,20:00,21:00'),(4,1,26,'2024-04-30 12:57:47',1,'90000','2024-04-30','10:00,11:00,18:00'),(5,2,26,'2024-04-30 12:58:28',1,'90000','2024-05-01','18:00,19:00,20:00'),(6,9,26,'2024-04-30 17:56:00',1,'90000','2024-05-01','09:00,10:00,11:00'),(7,8,26,'2024-05-02 09:38:56',1,'90000','2024-05-28','06:00,07:00,08:00'),(8,5,26,'2024-05-02 09:46:31',0,'60000','2024-06-05','22:00,23:00'),(9,8,26,'2024-05-02 09:47:52',1,'60000','2024-05-08','10:00,11:00'),(10,1,26,'2024-05-02 09:59:26',0,'90000','2024-05-02','18:00,19:00,20:00'),(11,1,26,'2024-05-02 10:44:09',0,'60000','2024-05-02','18:00,19:00'),(12,1,26,'2024-05-03 15:56:46',0,'90000','2024-05-03','06:00,07:00,08:00');
+INSERT INTO `sta_booking` VALUES (1,1,26,'2024-04-30 11:23:08',1,'90000','2024-04-30','19:00,20:00,21:00',NULL),(2,1,26,'2024-04-30 11:23:29',1,'90000','2024-04-30','19:00,20:00,21:00',NULL),(4,1,26,'2024-04-30 12:57:47',1,'90000','2024-04-30','10:00,11:00,18:00',NULL),(5,2,26,'2024-04-30 12:58:28',1,'90000','2024-05-01','18:00,19:00,20:00',NULL),(6,9,26,'2024-04-30 17:56:00',1,'90000','2024-05-01','09:00,10:00,11:00',NULL),(7,8,26,'2024-05-02 09:38:56',1,'90000','2024-05-28','06:00,07:00,08:00',NULL),(8,5,26,'2024-05-02 09:46:31',0,'60000','2024-06-05','22:00,23:00',NULL),(9,8,26,'2024-05-02 09:47:52',1,'60000','2024-05-08','10:00,11:00',NULL),(10,1,26,'2024-05-02 09:59:26',0,'90000','2024-05-02','18:00,19:00,20:00',NULL),(11,1,26,'2024-05-02 10:44:09',0,'60000','2024-05-02','18:00,19:00',NULL),(12,1,26,'2024-05-03 15:56:46',0,'90000','2024-05-03','06:00,07:00,08:00',NULL);
 /*!40000 ALTER TABLE `sta_booking` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-29 15:16:36
+-- Dump completed on 2024-06-07  0:26:38
