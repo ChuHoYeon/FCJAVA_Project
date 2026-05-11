@@ -1,0 +1,22 @@
+# Normalize text files across operating systems.
+* text=auto
+
+# Keep Windows launcher scripts usable on Windows.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Keep Unix-style scripts usable in Unix-like shells.
+*.sh text eol=lf
+
+# Treat binary assets as binary.
+*.avif binary
+*.gif binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.jar binary
+*.pdf binary
+*.zip binary

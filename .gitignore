@@ -1,0 +1,58 @@
+# FCJAVA project ignores
+
+# Java/Eclipse build outputs
+/FCJAVA/build/
+/FCJAVA/bin/
+*.class
+
+# Node chat server dependencies and runtime output
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+coverage/
+.nyc_output/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# IDE/editor local files
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.iml
+/.project
+/FCJAVA/.project
+/FCJAVA/.classpath
+/FCJAVA/.settings/
+/FCJAVA/.tern-project
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# JVM crash logs
+hs_err_pid*
+replay_pid*
+
+# Packaged artifacts
+*.war
+*.ear
