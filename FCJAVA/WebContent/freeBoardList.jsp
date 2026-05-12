@@ -6,15 +6,15 @@
 <%@ page import="java.util.List" %>
 <%
 	String sessionID = (String) session.getAttribute("ID");
-	List<FreeBoardDTO> freeBoard = (List<FreeBoardDTO>) request.getAttribute("freeBoardList");
+	List<FreeBoardDTO> freeBoardList = (List<FreeBoardDTO>) request.getAttribute("freeBoardList");
 	List<FreeBoardLikeDTO> freeBoardLikes = (List<FreeBoardLikeDTO>) request.getAttribute("freeBoardLikes");
-	if (freeBoard == null) {
-		freeBoard = Collections.emptyList();
+	if (freeBoardList == null) {
+		freeBoardList = Collections.emptyList();
 	}
 	if (freeBoardLikes == null) {
 		freeBoardLikes = Collections.emptyList();
 	}
-	int totalBoardCount = freeBoard.size();
+	int totalBoardCount = freeBoardList.size();
 %>
 <!DOCTYPE html> 
 <html>
@@ -68,7 +68,7 @@
 				<ul class="freeBoardList">
 					<%
 					if (totalBoardCount != 0){
-										for(FreeBoardDTO freeBoard : freeBoard) {
+										for(FreeBoardDTO freeBoard : freeBoardList) {
 											out.print("<li class='srchlist'><a href='fcjava.board?page=detail&number="+freeBoard.getNumber()+"' class='title'><span class='flag-career'>"+freeBoard.getNumber()+"</span>");
 											out.print("<p>"+freeBoard.getTitle()+"</p></a><div class='borderInfo'><span>"+freeBoard.getId()+"</span>");
 											out.print("<span>"+freeBoard.getTime()+"</span></div><div class='flag-btn'>");
