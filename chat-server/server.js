@@ -6,7 +6,7 @@ const cors = require('cors')
 const PORT = 3000;
 const io = socketIo(server, {
     cors: {
-        origin: 'http://localhost:8082',
+        origin: 'http://localhost:8080',
         methods: ["GET", "POST"]
     }
 });
