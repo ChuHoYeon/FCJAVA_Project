@@ -2,16 +2,16 @@ $(function() {
 	let $league = $(".tab-focus").data("league");
 	randomStadium();
 	newTeamList();
-	searchLeague($league);	
-    
+	searchLeague($league);
+
 	//탭 변경
     $('.tab').on("click",function(){
-    	$league = $(this).data("league");
+	$league = $(this).data("league");
         $('.tab').removeClass('tab-focus');
         $(this).addClass('tab-focus');
         searchLeague($league);
     });
- 
+
     function randomStadium() {
 		$.ajax({
 			url: 'fcjava.index',
@@ -29,7 +29,7 @@ $(function() {
 		});
 	};
 	$('input[type="date"]').val(new Date().toISOString().substring(0, 10));
-	
+
 	$('form[name="goStadium"]').on('submit', function() {
 		let selectedTimes = $('input[name="selectedTimes"]').val();
 		if(sessionID == 'null'){
@@ -45,11 +45,11 @@ $(function() {
 	});
 	$('.checkBtn').on('click', function() {
 		let selectedTimes = [];
-    	$('.checkBtn:checked').each(function() {
-    		var time = $(this).next('label').text();
+	$('.checkBtn:checked').each(function() {
+		var time = $(this).next('label').text();
             selectedTimes.push(time);
 		});
-		
+
 		let a=$('.checkBtn:checked').length;
 		if(a > 3) {
 			alert("최대 이용시간은 3시간 입니다.");
@@ -57,7 +57,7 @@ $(function() {
 		}
 		if(a >= 1){
 			let price = a*3;
-			$('.price').text(price+'0,000 원');			
+			$('.price').text(price+'0,000 원');
 		}else {
 			$('.price').text('');
 		}
@@ -73,16 +73,15 @@ $(function() {
 				"league" : $league,
 			},
 			success: function(data) {
-                let plTeamList = data.standings[0].table;
 				$('#standings').empty();
-                $.each(plTeamList, function(index, value) {
-					let num = index+1;
+
+                $.each(data, function(index, value) {
 					$('#standings').append(`
 						<div class="clubLine">
 							<div class="clubItem">${value.position}</div>
 							<div class="clubItem clubName">
-								<div class="crestBox"><img src='${value.team.crest}' /></div>
-								<div>${value.team.name}</div>
+								<div class="crestBox"><img src='${value.teamCrest}' /></div>
+								<div>${value.teamName}</div>
 							</div>
 							<div class="clubItem">${value.playedGames}</div>
 							<div class="clubItem">${value.won}</div>
@@ -96,7 +95,7 @@ $(function() {
 				})
             },
             error: function(xhr, status, error) {
-            	console.error('리그 순위 에러:', xhr.responseText);
+	console.error('리그 순위 에러:', xhr.responseText);
             }
 		})
 	}
@@ -137,7 +136,7 @@ $(function() {
 				}
 			},
 			error: function(xhr, status, error) {
-            	console.error('에러:', error);
+	console.error('에러:', error);
             }
 		});
 	}
@@ -165,6 +164,6 @@ $(function() {
 			prevEl: ".swiper-button-prev",
 		}
 	});
-	
-	
+
+
 });

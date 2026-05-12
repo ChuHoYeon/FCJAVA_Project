@@ -1,0 +1,261 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="footballData">
+
+	<resultMap id="footballLeagueStandingResultMap" type="com.fcjava.dto.football.FootballLeagueStandingDTO">
+        <id property="standingId" column="standing_id"/>
+
+        <result property="snapshotDate" column="snapshot_date"/>
+
+        <result property="seasonId" column="season_id"/>
+        <result property="seasonYear" column="season_year"/>
+        <result property="seasonStartDate" column="season_start_date"/>
+        <result property="seasonEndDate" column="season_end_date"/>
+        <result property="currentMatchday" column="current_matchday"/>
+
+        <result property="areaId" column="area_id"/>
+        <result property="areaName" column="area_name"/>
+        <result property="areaCode" column="area_code"/>
+        <result property="areaFlag" column="area_flag"/>
+
+        <result property="competitionId" column="competition_id"/>
+        <result property="competitionName" column="competition_name"/>
+        <result property="leagueCode" column="league_code"/>
+        <result property="competitionType" column="competition_type"/>
+        <result property="competitionEmblem" column="competition_emblem"/>
+
+        <result property="stage" column="stage"/>
+        <result property="standingType" column="standing_type"/>
+        <result property="standingGroup" column="standing_group"/>
+
+        <result property="teamId" column="team_id"/>
+        <result property="teamName" column="team_name"/>
+        <result property="teamShortName" column="team_short_name"/>
+        <result property="teamTla" column="team_tla"/>
+        <result property="teamCrest" column="team_crest"/>
+
+        <result property="position" column="position"/>
+        <result property="playedGames" column="played_games"/>
+        <result property="won" column="won"/>
+        <result property="draw" column="draw"/>
+        <result property="lost" column="lost"/>
+        <result property="points" column="points"/>
+        <result property="goalsFor" column="goals_for"/>
+        <result property="goalsAgainst" column="goals_against"/>
+        <result property="goalDifference" column="goal_difference"/>
+
+        <result property="form" column="form"/>
+
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <select id="countTodayStanding" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM football_league_standing
+        WHERE snapshot_date = CURDATE()
+          AND league_code = #{leagueCode}
+          AND season_year = #{seasonYear}
+    </select>
+
+    <select id="selectTodayStanding" parameterType="map" resultMap="footballLeagueStandingResultMap">
+        SELECT
+            standing_id,
+            snapshot_date,
+
+            season_id,
+            season_year,
+            season_start_date,
+            season_end_date,
+            current_matchday,
+
+            area_id,
+            area_name,
+            area_code,
+            area_flag,
+
+            competition_id,
+            competition_name,
+            league_code,
+            competition_type,
+            competition_emblem,
+
+            stage,
+            standing_type,
+            standing_group,
+
+            team_id,
+            team_name,
+            team_short_name,
+            team_tla,
+            team_crest,
+
+            position,
+            played_games,
+            won,
+            draw,
+            lost,
+            points,
+            goals_for,
+            goals_against,
+            goal_difference,
+
+            form,
+
+            created_at,
+            updated_at
+        FROM football_league_standing
+        WHERE snapshot_date = CURDATE()
+          AND league_code = #{leagueCode}
+          AND season_year = #{seasonYear}
+        ORDER BY position ASC
+    </select>
+
+    <insert id="insertApiResponseLog" parameterType="com.fcjava.dto.football.FootballApiResponseLogDTO">
+        INSERT INTO football_api_response_log (
+            snapshot_date,
+            api_name,
+            request_url,
+            league_code,
+            season_year,
+            response_json
+        )
+        VALUES (
+            #{snapshotDate},
+            #{apiName},
+            #{requestUrl},
+            #{leagueCode},
+            #{seasonYear},
+            CAST(#{responseJson} AS JSON)
+        )
+        ON DUPLICATE KEY UPDATE
+            request_url = VALUES(request_url),
+            response_json = VALUES(response_json),
+            updated_at = CURRENT_TIMESTAMP
+    </insert>
+
+    <insert id="insertLeagueStanding" parameterType="com.fcjava.dto.football.FootballLeagueStandingDTO">
+        INSERT INTO football_league_standing (
+            snapshot_date,
+
+            season_id,
+            season_year,
+            season_start_date,
+            season_end_date,
+            current_matchday,
+
+            area_id,
+            area_name,
+            area_code,
+            area_flag,
+
+            competition_id,
+            competition_name,
+            league_code,
+            competition_type,
+            competition_emblem,
+
+            stage,
+            standing_type,
+            standing_group,
+
+            team_id,
+            team_name,
+            team_short_name,
+            team_tla,
+            team_crest,
+
+            position,
+            played_games,
+            won,
+            draw,
+            lost,
+            points,
+            goals_for,
+            goals_against,
+            goal_difference,
+
+            form
+        )
+        VALUES (
+            #{snapshotDate},
+
+            #{seasonId},
+            #{seasonYear},
+            #{seasonStartDate},
+            #{seasonEndDate},
+            #{currentMatchday},
+
+            #{areaId},
+            #{areaName},
+            #{areaCode},
+            #{areaFlag},
+
+            #{competitionId},
+            #{competitionName},
+            #{leagueCode},
+            #{competitionType},
+            #{competitionEmblem},
+
+            #{stage},
+            #{standingType},
+            #{standingGroup},
+
+            #{teamId},
+            #{teamName},
+            #{teamShortName},
+            #{teamTla},
+            #{teamCrest},
+
+            #{position},
+            #{playedGames},
+            #{won},
+            #{draw},
+            #{lost},
+            #{points},
+            #{goalsFor},
+            #{goalsAgainst},
+            #{goalDifference},
+
+            #{form}
+        )
+        ON DUPLICATE KEY UPDATE
+            season_id = VALUES(season_id),
+            season_start_date = VALUES(season_start_date),
+            season_end_date = VALUES(season_end_date),
+            current_matchday = VALUES(current_matchday),
+
+            area_id = VALUES(area_id),
+            area_name = VALUES(area_name),
+            area_code = VALUES(area_code),
+            area_flag = VALUES(area_flag),
+
+            competition_id = VALUES(competition_id),
+            competition_name = VALUES(competition_name),
+            competition_type = VALUES(competition_type),
+            competition_emblem = VALUES(competition_emblem),
+
+            stage = VALUES(stage),
+            standing_type = VALUES(standing_type),
+            standing_group = VALUES(standing_group),
+
+            team_name = VALUES(team_name),
+            team_short_name = VALUES(team_short_name),
+            team_tla = VALUES(team_tla),
+            team_crest = VALUES(team_crest),
+
+            position = VALUES(position),
+            played_games = VALUES(played_games),
+            won = VALUES(won),
+            draw = VALUES(draw),
+            lost = VALUES(lost),
+            points = VALUES(points),
+            goals_for = VALUES(goals_for),
+            goals_against = VALUES(goals_against),
+            goal_difference = VALUES(goal_difference),
+            form = VALUES(form),
+
+            updated_at = CURRENT_TIMESTAMP
+    </insert>
+    
+</mapper>

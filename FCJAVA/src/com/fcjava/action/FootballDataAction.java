@@ -1,16 +1,21 @@
 package com.fcjava.action;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fcjava.dto.football.FootballStandingViewDTO;
+import com.fcjava.service.FootballDataService;
+import com.google.gson.Gson;
+
 public class FootballDataAction implements Action {
+
 	private static final FootballDataAction instance = new FootballDataAction();
+
+	private FootballDataService footballDataService = FootballDataService.getInstance();
+
 	private FootballDataAction() {};
 
 	public static FootballDataAction getInstance() {
@@ -19,30 +24,24 @@ public class FootballDataAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
 		String league = request.getParameter("league");
-		String apiUrl = "http://api.football-data.org/v4/competitions/"+league+"/standings";
-		String apiKey = "08c6346796f3425192dcf8961f2aa2e7";
-		URL url = new URL(apiUrl);
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod("GET");
-		conn.setRequestProperty("X-Auth-Token", apiKey);
-		int responseCode = conn.getResponseCode();
-		response.setContentType("application/json");	
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
-		if (responseCode == HttpURLConnection.HTTP_OK) {
-			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			String inputLine;
-			StringBuilder plData = new StringBuilder();
-			while ((inputLine = in.readLine()) != null) {
-				plData.append(inputLine);
-			}
-			in.close();
-			out.println(plData);
-		} else {
-			out.println("API 호출 실패: " + responseCode);
+
+		if (league == null || league.trim().isEmpty()) {
+		    league = "PL";
 		}
+
+		List<FootballStandingViewDTO> standingList = footballDataService.getStandingList(league);
+
+		Gson gson = new Gson();
+		String json = gson.toJson(standingList);
+
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
+
 		return null;
 	}
 

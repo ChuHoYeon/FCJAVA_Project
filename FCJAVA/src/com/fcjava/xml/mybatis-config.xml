@@ -5,20 +5,21 @@
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.cj.jdbc.Driver" />	
+				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
 				<property name="url" value="jdbc:mysql://localhost:3306/fc_java?useUnicode=true&amp;characterEncoding=UTF-8" />
 				<property name="username" value="user1" />
 				<property name="password" value="1234" />
 			</dataSource>
 		</environment>
 	</environments>
-	
+
 	<mappers>
 	    <mapper resource="com/fcjava/xml/user-mapper.xml" />
 	    <mapper resource="com/fcjava/xml/board-mapper.xml" />
-    	<mapper resource="com/fcjava/xml/team-mapper.xml" />
-    	<mapper resource="com/fcjava/xml/game-mapper.xml" />
-    	<mapper resource="com/fcjava/xml/product-mapper.xml" />
-    	<mapper resource="com/fcjava/xml/stadium-mapper.xml" />
+	<mapper resource="com/fcjava/xml/team-mapper.xml" />
+	<mapper resource="com/fcjava/xml/game-mapper.xml" />
+	<mapper resource="com/fcjava/xml/product-mapper.xml" />
+	<mapper resource="com/fcjava/xml/stadium-mapper.xml" />
+	<mapper resource="com/fcjava/xml/football-data-mapper.xml"/>
 	</mappers>
 </configuration>
