@@ -3,20 +3,22 @@ package com.fcjava.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.StadiumBookingDTO;
-import com.fcjava.dto.StadiumDTO;
-import com.fcjava.model.BookingStadium;
-import com.fcjava.model.StadiumBoonext;
+import com.fcjava.service.StadiumService;
 
-public class Stadium_booking implements DBinterface {
-	static Stadium_booking stadium_booking = new Stadium_booking();
-	public static Stadium_booking getStadium_booking() {
-		return stadium_booking;
+public class Stadium_booking implements Action {
+	private static final Stadium_booking instance = new Stadium_booking();
+
+	private final StadiumService stadiumService = StadiumService.getInstance();
+	
+	private Stadium_booking() {}
+	
+	public static Stadium_booking getInstance() {
+		return instance;
 	}
 
 	@Override
-	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int b_team_no = Integer.parseInt(request.getParameter("t_num"));
 		int b_ground_no = Integer.parseInt(request.getParameter("b_ground_no"));
 		String b_won = request.getParameter("b_won");
@@ -24,10 +26,17 @@ public class Stadium_booking implements DBinterface {
 		String b_time = request.getParameter("b_time");
 		int b_vs_team = Integer.parseInt(request.getParameter("ck_vs"));
 		
-		BookingStadium bk1 = BookingStadium.getBookingStadium();
-		bk1.booking1(b_ground_no, b_team_no,b_vs_team,b_won,b_date,b_time);
+		StadiumBookingDTO goboo = new StadiumBookingDTO();
+	 	goboo.setB_ground_no(b_ground_no);
+        goboo.setB_team_no(b_team_no);
+        goboo.setB_vs_team(b_vs_team);
+        goboo.setB_won(b_won); 
+        goboo.setB_date(b_date);
+        goboo.setB_time(b_time);
 		
-		return "fcjava.team?page=detail&teamNumber="+b_team_no;  
+		stadiumService.bookStadium(goboo);
+		
+		return "redirect:fcjava.team?page=detail&teamNumber="+b_team_no;  
 	}	
 	
 	

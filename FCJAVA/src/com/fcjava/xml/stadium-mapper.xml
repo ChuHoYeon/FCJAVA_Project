@@ -1,0 +1,31 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="stadium">
+    <select id="sta_select" resultType="com.fcjava.dto.StadiumDTO">    
+         SELECT * FROM fc_java.stadium;
+    </select>
+    
+	<select id="selecteam_name" resultType="com.fcjava.dto.StadiumDTO">
+		SELECT * 
+		FROM fc_java.team_info 
+		WHERE id = #{id};
+	</select>
+	
+	<select id="randomStadium" resultType="com.fcjava.dto.StadiumDTO">
+		SELECT * FROM fc_java.stadium order by rand() limit 1;
+	</select>
+	
+    <select id="selectsta" resultType="com.fcjava.dto.StadiumDTO">
+		SELECT * 
+		FROM fc_java.stadium 
+		WHERE g_no = #{g_no};
+	</select>
+	
+	<insert id="booking" parameterType="com.fcjava.dto.StadiumBookingDTO">
+		insert into fc_java.sta_booking (b_ground_no, b_team_no, b_vs_team, b_won, b_date, b_tiem) values(#{b_ground_no}, #{b_team_no},#{b_vs_team}, #{b_won}, #{b_date}, #{b_time})
+	</insert>
+	
+	<insert id="str_insert" parameterType="com.fcjava.dto.StadiumDTO">
+        insert into fc_java.stadium (g_no, gmem_id, g_name, g_time, g_size, g_add, g_memo, g_img) values(#{g_no}, #{gmem_id}, #{g_name}, #{g_time}, #{g_size}, #{g_add}, #{g_memo}, #{g_img});
+    </insert>
+</mapper>

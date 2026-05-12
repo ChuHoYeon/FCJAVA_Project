@@ -9,17 +9,16 @@ import java.net.URL;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fcjava.controller.interfaces.DBinterface;
-
-public class FootballDataAction implements DBinterface {
-	private static final FootballDataAction footballDataAction = new FootballDataAction();
+public class FootballDataAction implements Action {
+	private static final FootballDataAction instance = new FootballDataAction();
 	private FootballDataAction() {};
-	public static FootballDataAction getFootballDataAction() {
-		return footballDataAction;
+
+	public static FootballDataAction getInstance() {
+		return instance;
 	};
 
 	@Override
-	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String league = request.getParameter("league");
 		String apiUrl = "http://api.football-data.org/v4/competitions/"+league+"/standings";

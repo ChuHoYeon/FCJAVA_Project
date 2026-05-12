@@ -4,21 +4,25 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.TeamBoardDTO;
-import com.fcjava.model.TeamBoardWrite;
+import com.fcjava.service.TeamService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class TeamBoardWriteAction implements DBinterface{
-	static TeamBoardWriteAction teamBoardWriteAction = new TeamBoardWriteAction();
-	public static TeamBoardWriteAction getTeamBoardWriteAction() {
-		return teamBoardWriteAction;
+public class TeamBoardWriteAction implements Action{
+	
+	private static final TeamBoardWriteAction instance = new TeamBoardWriteAction();
+
+	private final TeamService teamService = TeamService.getInstance();
+	
+	private TeamBoardWriteAction() {}
+	
+	public static TeamBoardWriteAction getInstance() {
+		return instance;
 	}
 
 	@Override
-	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String url = null;
 		String t_num = null;
 		String realFolder="";
@@ -35,10 +39,10 @@ public class TeamBoardWriteAction implements DBinterface{
 		teamBoard.setBoard_title(multi.getParameter("board_title"));
 		teamBoard.setBoard_content(multi.getParameter("board_content"));
 		teamBoard.setBoard_file(multi.getOriginalFileName((String)multi.getFileNames().nextElement()));
-		TeamBoardWrite write = TeamBoardWrite.getTeamBoardWrite();
-		write.insertTeamBoard(teamBoard);
 		
-		url="fcjava.team?page=detail&teamNumber="+t_num;
+		teamService.writeTeamBoard(teamBoard);
+		
+		url="redirect:fcjava.team?page=detail&teamNumber="+t_num;
 		return url;
 	}
 

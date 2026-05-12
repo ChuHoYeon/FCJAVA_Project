@@ -3,27 +3,27 @@ package com.fcjava.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fcjava.controller.interfaces.DBinterface;
-import com.fcjava.dto.GameDTO;
-import com.fcjava.model.GameApply;
+import com.fcjava.service.GameService;
 
-public class GameApplyAction implements DBinterface {
+public class GameApplyAction implements Action {
+	private static final GameApplyAction instance = new GameApplyAction();
 	
-	static GameApplyAction gameControllApply = new GameApplyAction();
-	public static GameApplyAction getGameControllApply() {
-		return gameControllApply;
+	private final GameService gameService = GameService.getInstance();
+
+	private GameApplyAction() {}
+
+	public static GameApplyAction getInstance() {
+		return instance;
 	}
 
 	@Override
-	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String team_num = request.getParameter("team_num");
 		String game_num = request.getParameter("game_num");
 		
-		GameApply gameApply = GameApply.getApplyGame();
-		gameApply.applyGame(team_num, game_num);
+		gameService.applyGame(team_num, game_num);
 		
-		String url = "fcjava.game?page=2&game_num="+game_num;
+		String url = "redirect:fcjava.game?page=2&game_num="+game_num;
 		return url;
 	}
 

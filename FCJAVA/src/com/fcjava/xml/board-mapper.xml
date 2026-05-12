@@ -1,0 +1,85 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<select id="findFreeBoards" parameterType="java.util.Map" resultType="com.fcjava.dto.FreeBoardDTO">
+		SELECT *
+		FROM fc_java.freeborder
+		<where>
+			<if test="searchText != null and searchText != '' and selectText == 'title'">
+				title LIKE CONCAT('%', #{searchText}, '%')
+			</if>
+			<if test="searchText != null and searchText != '' and selectText == 'memo'">
+				memo LIKE CONCAT('%', #{searchText}, '%')
+			</if>
+			<if test="searchText != null and searchText != '' and selectText == 'id'">
+				id LIKE CONCAT('%', #{searchText}, '%')
+			</if>
+			<if test="searchText != null and searchText != '' and selectText == 'titlememo'">
+				(title LIKE CONCAT('%', #{searchText}, '%') OR memo LIKE CONCAT('%', #{searchText}, '%'))
+			</if>
+		</where>
+		ORDER BY number DESC;
+	</select>
+
+	<select id="findFreeBoard" parameterType="java.lang.String" resultType="com.fcjava.dto.FreeBoardDTO">
+		SELECT *
+		FROM fc_java.freeborder
+		WHERE number = #{number};
+	</select>
+
+	<select id="findFreeBoardLikesByUser" parameterType="java.lang.String" resultType="com.fcjava.dto.FreeBorderLikesDTO">
+		SELECT *
+		FROM fc_java.freeborderlikes
+		WHERE id = #{id};
+	</select>
+
+	<select id="existsFreeBoardLike" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM fc_java.freeborderlikes
+		WHERE id = #{id}
+		  AND number = #{number};
+	</select>
+
+	<insert id="insertFreeBoard" parameterType="com.fcjava.dto.FreeBoardDTO">
+		INSERT INTO fc_java.freeborder (id, title, memo)
+		VALUES (#{id}, #{title}, #{memo});
+	</insert>
+
+	<insert id="insertFreeBoardLike" parameterType="java.util.Map">
+		INSERT INTO fc_java.freeborderlikes
+		VALUES (#{id}, #{number});
+	</insert>
+
+	<update id="updateFreeBoard" parameterType="com.fcjava.dto.FreeBoardDTO">
+		UPDATE fc_java.freeborder
+		SET title = #{title}, memo = #{memo}
+		WHERE number = #{number};
+	</update>
+
+	<delete id="deleteFreeBoard" parameterType="java.lang.String">
+		DELETE FROM fc_java.freeborder
+		WHERE number = #{number};
+	</delete>
+
+	<delete id="deleteFreeBoardLike" parameterType="java.util.Map">
+		DELETE FROM fc_java.freeborderlikes
+		WHERE id = #{id}
+		  AND number = #{number};
+	</delete>
+
+	<select id="findProductReviews" resultType="com.fcjava.dto.PrdBbsDTO">
+		SELECT *
+		FROM fc_java.prd_board
+		ORDER BY c_time DESC;
+	</select>
+
+	<insert id="insertProductReview" parameterType="com.fcjava.dto.PrdBbsDTO">
+		INSERT INTO fc_java.prd_board (title, bon, c_time, u_time, user)
+		VALUES (#{title}, #{bon}, now(), now(), 'default_user');
+	</insert>
+
+	<select id="findStadiumQnaList" resultType="com.fcjava.dto.StadiumBbsDTO">
+		SELECT *
+		FROM fc_java.str_qa;
+	</select>
+</mapper>

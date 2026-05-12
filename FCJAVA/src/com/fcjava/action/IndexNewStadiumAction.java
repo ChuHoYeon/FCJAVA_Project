@@ -5,24 +5,23 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.StadiumDTO;
-import com.fcjava.model.StadiumNewOne;
+import com.fcjava.service.StadiumService;
 import com.google.gson.Gson;
 
-public class IndexNewStadiumAction implements DBinterface{
-	private static final IndexNewStadiumAction indexNewStadiumAction = new IndexNewStadiumAction();
+public class IndexNewStadiumAction implements Action{
+	private static final IndexNewStadiumAction instance = new IndexNewStadiumAction();
+
+	private final StadiumService stadiumService = StadiumService.getInstance();
+
 	private IndexNewStadiumAction() {};
-	public static IndexNewStadiumAction getIndexNewStadiumAction() {
-		return indexNewStadiumAction;
+	public static IndexNewStadiumAction getInstance() {
+		return instance;
 	}
 
 	@Override
-	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		StadiumDTO stadium = null;
-		StadiumNewOne stadiumNewOne = StadiumNewOne.getStadiumNewOne();
-		stadium = stadiumNewOne.getNewStadiumOne();
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		StadiumDTO stadium = stadiumService.findNewStadiumOne();
 		if(stadium != null) {
 			response.setCharacterEncoding("UTF-8");
 			String jsonStadium = new Gson().toJson(stadium);

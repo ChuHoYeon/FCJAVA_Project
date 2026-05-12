@@ -9,20 +9,25 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.fcjava.dto.GameDTO;
-import com.fcjava.model.GameSearch;
+import com.fcjava.service.GameService;
 
-public class GameSearchAction {
+public class GameSearchAction implements Action {
+	private static final GameSearchAction instance = new GameSearchAction();
 
-	static GameSearchAction gameControllSearch = new GameSearchAction();
-	public static GameSearchAction getGameControllSearch() {
-		return gameControllSearch;
+	private final GameService gameService = GameService.getInstance();
+
+	private GameSearchAction() {}
+
+	public static GameSearchAction getInstance() {
+		return instance;
 	}
 	
-	public JSONArray searchGame(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String text = request.getParameter("search-text");
 		String type = request.getParameter("status-tab");
-		GameSearch gameSearch = GameSearch.getGameSelect();
-		List<GameDTO> gameList = gameSearch.getGameSelect(type, text);
+		
+		List<GameDTO> gameList = gameService.searchGames(type, text);
 		
 		
 		JSONArray jsonArray = new JSONArray();
@@ -43,7 +48,9 @@ public class GameSearchAction {
 			jsonArray.add(json);
 		}
 		
-		return jsonArray;
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().print(jsonArray.toJSONString());
+		return null;
 	}
 
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	<select id="existsUser" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM fc_java.mem_info
+		WHERE BINARY id = #{id};
+	</select>
+
+	<select id="findUser" parameterType="com.fcjava.dto.UserDTO" resultType="com.fcjava.dto.UserDTO">
+		SELECT *
+		FROM fc_java.mem_info
+		WHERE BINARY id = #{id}
+		  AND BINARY pw = #{pw};
+	</select>
+
+	<insert id="insertUser" parameterType="com.fcjava.dto.UserDTO">
+		INSERT INTO fc_java.mem_info
+		VALUES (#{id}, #{pw}, #{name}, #{add}, #{b_day}, #{p_num}, #{gender}, #{email}, now());
+	</insert>
+</mapper>

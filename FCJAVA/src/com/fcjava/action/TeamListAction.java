@@ -5,24 +5,26 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.TeamDTO;
-import com.fcjava.model.TeamList;
+import com.fcjava.service.TeamService;
 
-public class TeamListAction implements DBinterface{
+public class TeamListAction implements Action{
 	
-	static TeamListAction teamListAction = new TeamListAction();
-	public static TeamListAction getTeamListAction() {
-		return teamListAction;
+	private static final TeamListAction instance = new TeamListAction();
+
+	private final TeamService teamService = TeamService.getInstance();
+	
+	private TeamListAction() {}
+	
+	public static TeamListAction getInstance() {
+		return instance;
 	}
 	
 	@Override
-	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String url = null;
-		TeamList team = TeamList.getTeamList();
-		List<TeamDTO> teamList = team.selectTeamList();
-		if(teamList != null) {
+		List<TeamDTO> teamList = teamService.findTeamList();
+		if (!teamList.isEmpty()) {
 			request.setAttribute("teamList", teamList);
 			url = "teamlist.jsp";
 		}

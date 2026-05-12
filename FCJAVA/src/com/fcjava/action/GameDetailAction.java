@@ -7,44 +7,41 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.GameApplyTeam;
 import com.fcjava.dto.GameDTO;
 import com.fcjava.dto.GameResultDTO;
-import com.fcjava.model.GameDetail;
-import com.fcjava.model.GameResult;
-import com.fcjava.model.GameTeamSelect;
+import com.fcjava.service.GameService;
 
-public class GameDetailAction implements DBinterface {
-	static GameDetailAction gameControllDetail = new GameDetailAction();
-	public static GameDetailAction getGameControllDetail() {
-		return gameControllDetail;
+public class GameDetailAction implements Action {
+	private static final GameDetailAction instance = new GameDetailAction();
+
+	private final GameService gameService = GameService.getInstance();
+
+	private GameDetailAction() {}
+
+	public static GameDetailAction getInstance() {
+		return instance;
 	}
 
 	@Override
-	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String gameNum = request.getParameter("game_num");
 		
-		GameDetail gameDetail = GameDetail.getGameDetail();
-		GameDTO game = gameDetail.getSelectGame(gameNum);
-		request.setAttribute("game", game);
+		GameDTO game = gameService.findGame(gameNum);		
+		List<GameApplyTeam> applyTeamList = gameService.findApplyTeams(gameNum);
 		
-		GameTeamSelect gameTeamSelect = GameTeamSelect.getGameTeamSelect();
-		List<GameApplyTeam> applyTeamList = gameTeamSelect.selectApplyTeam(gameNum);
-		request.setAttribute("applyTeamList", applyTeamList);
-		
-		//현재날짜가 대회기간이후일 경우 실행
+		//현재날짜가 대회기간이후일 경우
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date targetDate = dateFormat.parse(game.getGame_fn_date());
 		Date currentDate = new Date();
 		List<GameResultDTO> gameResultList = null;
 		if (currentDate.after(targetDate)) {
-            GameResult gameResult = GameResult.getGameResult();
-            gameResultList = gameResult.GameResultList(gameNum);
+            gameResultList = gameService.findGameResults(gameNum);
             request.setAttribute("gameResultList", gameResultList);
         }
 		
+		request.setAttribute("game", game);
+		request.setAttribute("applyTeamList", applyTeamList);
 		return "gameDetail.jsp";
 	}
 

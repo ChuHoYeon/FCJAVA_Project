@@ -6,27 +6,26 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fcjava.controller.interfaces.DBinterface;
 import com.fcjava.dto.TeamDTO;
-import com.fcjava.model.TeamList;
+import com.fcjava.service.TeamService;
 import com.google.gson.Gson;
 
-public class IndexNewTeamAction implements DBinterface{
-	private static final IndexNewTeamAction indexNewTeamAction = new IndexNewTeamAction();
+public class IndexNewTeamAction implements Action{
+	private static final IndexNewTeamAction instance = new IndexNewTeamAction();
+
+	private final TeamService teamService = TeamService.getInstance();
 	
 	private IndexNewTeamAction() {}
 	
-	public static IndexNewTeamAction getIndexNewTeamAction() {
-		return indexNewTeamAction;
+	public static IndexNewTeamAction getInstance() {
+		return instance;
 	}
 	
 	@Override
-	public String DBconnection(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String url = null;
 		
-		TeamList teamList = TeamList.getTeamList();
-		List<TeamDTO> indexteamList = teamList.indexTeamList();
+		List<TeamDTO> indexteamList = teamService.findIndexTeamList();
 		if(indexteamList != null) {
 			response.setCharacterEncoding("UTF-8");
 			String jsonTeam = new Gson().toJson(indexteamList);

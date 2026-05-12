@@ -1,0 +1,24 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+	<select id="findAll" resultType="com.fcjava.dto.PrdDTO">
+		SELECT *
+		FROM fc_java.prdinfo;
+	</select>
+	
+	<select id="onePrd" parameterType="java.lang.String" resultType="com.fcjava.dto.PrdDTO">
+		SELECT *
+		FROM fc_java.prdinfo
+		WHERE prd_no = #{prdNum};
+	</select>
+	
+	<insert id="insertPrd" parameterType="com.fcjava.dto.PrdDTO">
+		insert into fc_java.prdinfo
+		values(#{prd_no},#{prd_category},#{prd_name},#{prd_price},#{prd_image},#{prd_memo},#{prd_brand});
+	</insert>
+	
+	<delete id="deletePrd" parameterType="java.lang.String">
+		DELETE FROM fc_java_prdinfo
+		WHERE prd_no = #{prd_no};
+	</delete>
+</mapper>

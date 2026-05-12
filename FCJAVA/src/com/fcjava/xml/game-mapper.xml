@@ -1,0 +1,60 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="game">
+	<select id="allSelectGame" resultType="com.fcjava.dto.GameDTO">
+		SELECT * 
+		FROM fc_java.game
+		ORDER BY game_fn_date DESC;
+	</select>
+	
+	<select id="gameApplyCount" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM fc_java.game_apply
+		WHERE game_num = #{game_num};
+	</select>
+	
+	<select id="gameSelect" resultType="com.fcjava.dto.GameDTO">
+		SELECT * 
+		FROM fc_java.game 
+		WHERE game_name LIKE CONCAT('%',#{text},'%')
+		<if test="type != null and type.equals('ing')">
+		  AND game_st_date &lt; NOW()
+		  AND game_fn_date &gt; NOW()
+		</if>
+		<if test="type != null and type.equals('end')">
+		  AND game_fn_date &lt; NOW()
+		</if>
+		ORDER BY game_fn_date DESC;
+	</select>
+	
+	<select id="selectGame" resultType="com.fcjava.dto.GameDTO">
+		SELECT * 
+		FROM fc_java.game 
+		WHERE game_num = #{game_num};
+	</select>
+	
+	<select id="selectApplyTeam" resultType="com.fcjava.dto.GameApplyTeam">
+		SELECT game_apply.game_num, team_info.t_num, team_info.t_name, team_info.t_logo, game_apply.game_apply_date 
+		FROM game_apply 
+		JOIN fc_java.team_info
+		ON game_apply.team_num = team_info.t_num 
+		WHERE game_apply.game_num = #{game_num};
+	</select>
+	
+	<insert id="applyGame" parameterType="com.fcjava.dto.GameApplyDTO">
+		INSERT INTO fc_java.game_apply 
+		VALUES(#{game_num},#{team_num},now(),default);
+	</insert>
+	
+	<delete id="applyCancelGame" parameterType="com.fcjava.dto.GameApplyDTO">
+		DELETE FROM fc_java.game_apply
+		WHERE game_num=#{game_num}
+		  AND team_num=#{team_num};
+	</delete>
+	
+	<select id="getGameResult" resultType="com.fcjava.dto.GameResultDTO">
+		SELECT *
+		FROM fc_java.game_result
+		WHERE game_num = #{gameNum};
+	</select>
+</mapper>

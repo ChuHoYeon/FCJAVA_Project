@@ -5,18 +5,23 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fcjava.model.TeamApplyCheck;
+import com.fcjava.service.TeamService;
 
-public class TeamApplyCheckAction {
-	static TeamApplyCheckAction teamApplyCheckAction = new TeamApplyCheckAction();
-	public static TeamApplyCheckAction getTeamApplyCheckAction() {
-		return teamApplyCheckAction;
-	}
+public class TeamApplyCheckAction implements Action {
+	private final static TeamApplyCheckAction instance = new TeamApplyCheckAction();
+
+	private final TeamService teamService = TeamService.getInstance();
 	
-	public void goTeamApplyCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private TeamApplyCheckAction() {}
+	
+	public static TeamApplyCheckAction getInstance() {
+		return instance;
+	}
+
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
-		TeamApplyCheck teamApplyCheck=TeamApplyCheck.getTeamApplyCheck();
-		int count = teamApplyCheck.applyTeamCount(id);
+		int count = teamService.countApplyTeam(id);
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
@@ -25,5 +30,7 @@ public class TeamApplyCheckAction {
 		} else {
 			out.println("OK");
 		}
+		
+		return null;
 	}
 }
