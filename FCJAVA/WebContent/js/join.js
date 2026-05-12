@@ -208,7 +208,7 @@ $(function () {
 	      return;
 	  }
   	  $.ajax({
-  	      url : "joinIdCheck.jsp",
+  	      url : "fcjava.user?page=joinIdCheck",
   	      data : {ID : id},
   	      success : function(re){
   	    	  if (re.indexOf('1') != -1) {

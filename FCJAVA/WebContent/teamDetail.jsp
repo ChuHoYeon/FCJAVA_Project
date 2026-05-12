@@ -15,7 +15,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="com.fcjava.dto.TeamGameResultDTO" %>
-<%@ page import="com.fcjava.model.StringChange" %>
+<%@ page import="com.fcjava.util.StringChange" %>
 <%@ page import="com.google.gson.Gson" %>
 <c:choose>
 <c:when test="${empty team.t_logo }">

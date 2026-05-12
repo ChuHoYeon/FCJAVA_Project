@@ -1,7 +1,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5"> 
     <servlet>
         <servlet-name>name</servlet-name>
-        <servlet-class>com.fcjava.controller.Usercontroll</servlet-class>
+        <servlet-class>com.fcjava.controller.UserController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>name</servlet-name>
@@ -10,7 +10,7 @@
     
     <servlet>
         <servlet-name>team</servlet-name>
-        <servlet-class>com.fcjava.controller.TeamControll</servlet-class>
+        <servlet-class>com.fcjava.controller.TeamController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>team</servlet-name>
@@ -19,7 +19,7 @@
     
     <servlet>
         <servlet-name>game</servlet-name>
-        <servlet-class>com.fcjava.controller.GameControll</servlet-class>
+        <servlet-class>com.fcjava.controller.GameController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>game</servlet-name>
@@ -28,7 +28,7 @@
     
     <servlet>
         <servlet-name>prd</servlet-name>
-        <servlet-class>com.fcjava.controller.PrdControll</servlet-class>
+        <servlet-class>com.fcjava.controller.ProductController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>prd</servlet-name>
@@ -37,7 +37,7 @@
     
     <servlet>
         <servlet-name>stadium</servlet-name>
-        <servlet-class>com.fcjava.controller.Stadium_Controll</servlet-class>
+        <servlet-class>com.fcjava.controller.StadiumController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>stadium</servlet-name>
@@ -46,10 +46,37 @@
     
     <servlet>
         <servlet-name>index</servlet-name>
-        <servlet-class>com.fcjava.controller.IndexControll</servlet-class>
+        <servlet-class>com.fcjava.controller.IndexController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>*.index</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>board</servlet-name>
+        <servlet-class>com.fcjava.controller.BoardController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>board</servlet-name>
+        <url-pattern>*.board</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>review</servlet-name>
+        <servlet-class>com.fcjava.controller.ReviewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>review</servlet-name>
+        <url-pattern>*.review</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>qna</servlet-name>
+        <servlet-class>com.fcjava.controller.QnaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>qna</servlet-name>
+        <url-pattern>*.qna</url-pattern>
     </servlet-mapping>
 </web-app> 

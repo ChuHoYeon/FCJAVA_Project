@@ -53,7 +53,7 @@ $('#teamCreating').on('submit', function() {
 		return result;
 	} else {
 		$.ajax({
-		      url : "teamNameCheck.jsp",
+		      url : "fcjava.team?page=teamNameCheck",
 		      data : {teamName : teamName},
 		      success : function(re){
 		    	  if (re.indexOf('있음') != -1) {

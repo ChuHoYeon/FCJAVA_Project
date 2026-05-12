@@ -1,8 +1,13 @@
 <%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@page import="web01.board_get_set"%>
-<%@ page import="java.util.ArrayList"%>
+<%@page import="com.fcjava.dto.PrdBbsDTO"%>
+<%@ page import="java.util.Collections"%>
+<%@ page import="java.util.List"%>
 <%
 	String id = (String) session.getAttribute("ID");
+	List<PrdBbsDTO> reviews = (List<PrdBbsDTO>) request.getAttribute("reviews");
+	if (reviews == null) {
+		reviews = Collections.emptyList();
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -48,16 +53,13 @@
 			</div>
 		</form>
 		<ul class="s_box_in">
-			<jsp:useBean id="user" class="web01.selectdb" />
 			<%
-				ArrayList<board_get_set> cc = user.exme();
-				for (int i = 0; i < cc.size(); i++) {
-					board_get_set aa = cc.get(i);
+				for (PrdBbsDTO review : reviews) {
 			%>
 			<li class="bobox1">
 				<img src="png/player1.webp" width="400px"height="300px" alt="">
-				<h3 class="text001"><%=aa.getTitle()%></h3>
-				<div class="text002"><%=aa.getBon()%></div>
+				<h3 class="text001"><%=review.getTitle()%></h3>
+				<div class="text002"><%=review.getBon()%></div>
 			</li>
 			<% } %>
 		</ul>

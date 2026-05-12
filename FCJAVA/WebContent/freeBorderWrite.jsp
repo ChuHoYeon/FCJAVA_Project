@@ -41,7 +41,7 @@
 		let result = confirm("작성을 취소하시겠습니까?");
 		
 		if(result == true) {
-			window.location.href = "freeBorder.jsp"
+			window.location.href = "fcjava.board?page=list"
 		}
 	}
 </script>
@@ -61,7 +61,7 @@
 		</div>	
 		<section>
 			<div class="writeSection">
-				<form action="freeBorderWriting.jsp" onsubmit="return nullCheck()">
+				<form action="fcjava.board?page=write" onsubmit="return nullCheck()" method="post">
 					<div class="frm-flex">
 						<h1 class="writeLabel">게시글 작성</h1>
 						<label>제목</label>

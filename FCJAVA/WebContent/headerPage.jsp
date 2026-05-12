@@ -108,7 +108,7 @@
                 	<a href="fcjava.stadium1?page=2">구장</a>
                 </li>
                 <li>
-                	<a href="freeBorder.jsp">게시판</a>
+                	<a href="fcjava.board?page=list">게시판</a>
                 </li>
                 <li>
                 	<a href="fcjava.prd?page=prdUniform">쇼핑</a>
@@ -139,9 +139,9 @@
                 </ul>
                 <ul>
                     <li><img src="png/navimg3.webp" class="navImg"></li>
-                    <li><a href="freeBorder.jsp">자유게시판</a></li>
-                    <li><a href="str_qa.jsp">구장후기</a></li>
-                    <li><a href="board_1.jsp">쇼핑몰후기</a></li>
+                    <li><a href="fcjava.board?page=list">자유게시판</a></li>
+                    <li><a href="fcjava.qna?page=list">구장후기</a></li>
+                    <li><a href="fcjava.review?page=list">쇼핑몰후기</a></li>
                 </ul>
                 <ul>
                     <li><img src="png/navimg4.avif" class="navImg"></li>

@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java_web.qa"%>
-<%@ page import="java.util.ArrayList" %>
+<%@page import="com.fcjava.dto.StadiumBbsDTO"%>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.List" %>
+<%
+	List<StadiumBbsDTO> qnaList = (List<StadiumBbsDTO>) request.getAttribute("qnaList");
+	if (qnaList == null) {
+		qnaList = Collections.emptyList();
+	}
+%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>  
@@ -56,7 +63,6 @@
 자유게시판은 자유로운 의견을 남기는 공간으로 문의관련 답변은 드리지 않습니다.</div>
 		</div>
 	
-    <jsp:useBean id="user" class="java_web.qa1"></jsp:useBean>  
 <section class="s_box_qa">
 	
 <form class="searchContent">
@@ -72,16 +78,11 @@
 						<button type="reset" class="subResetBtn">초기화</button>
 					</div>
 				</form> 
-	<%	
-		ArrayList<qa> bob = user.woob1();
-	%>
-
      <div class='str_qa_box'>
      	<div class='image-container'>
 		<%
-		for(qa data : bob) {
-			data.gettitle();
-	     	out.println("<a href='str_qa2.jsp'><img src='img/rm.jpg'>" + data.gettitle() + "<p>" + data.getu_name() + "</p></a>");
+		for(StadiumBbsDTO data : qnaList) {
+	     	out.println("<a href='str_qa2.jsp'><img src='img/rm.jpg'>" + data.getTitle() + "<p>" + data.getU_name() + "</p></a>");
 		}
 	     %>
 	     </div>

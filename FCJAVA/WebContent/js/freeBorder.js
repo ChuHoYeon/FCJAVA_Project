@@ -9,7 +9,7 @@ $(function(){
 		if(sessionID !== 'null') {
 			if(src.attr("srcset") == "png/love-zero.svg"){
 				$.ajax({
-			  	      url : "fBorderLike.jsp",
+			  	      url : "fcjava.board?page=like",
 			  	      data : {
 			  	    	  ID : sessionID,
 			  	    	  Num : borderNum,
@@ -20,7 +20,7 @@ $(function(){
 			  	});
 			} else {
 				$.ajax({
-			  	      url : "fBorderUnLike.jsp",
+			  	      url : "fcjava.board?page=unlike",
 			  	      data : {
 			  	    	  ID : sessionID,
 			  	    	  Num : borderNum,

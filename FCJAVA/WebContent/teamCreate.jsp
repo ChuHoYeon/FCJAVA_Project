@@ -19,7 +19,7 @@
 	<!-- 헤더 -->
 	<jsp:include page="headerPage.jsp" />
 	<div>
-		<form action="teamCreating.jsp" class="create-area" id="teamCreating" method="post" enctype="multipart/form-data">
+		<form action="fcjava.team?page=create" class="create-area" id="teamCreating" method="post" enctype="multipart/form-data">
 			<h1 class="tcreateTitle">팀 만들기</h1>
 			<div class="infoLine">
 				<div class="logoBox">

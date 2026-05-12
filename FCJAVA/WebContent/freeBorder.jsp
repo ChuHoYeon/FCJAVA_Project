@@ -1,24 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.fcjava.dto.FreeBorderDTO"%>
+<%@ page import="com.fcjava.dto.FreeBoardDTO"%>
 <%@ page import="com.fcjava.dto.FreeBorderLikesDTO"%>
-<%@ page import="java.util.ArrayList" %>
-<jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.List" %>
 <%
 	String sessionID = (String) session.getAttribute("ID");
-	ArrayList<FreeBorderDTO> freeBorder = db.selectAllFreeBorder();
-	
-	String selectText = request.getParameter("selectText");
-	String searchText = request.getParameter("searchText");;
-	if(selectText != null && searchText != null){
-		freeBorder = db.selectFreeBorder(selectText, searchText);
+	List<FreeBoardDTO> freeBorder = (List<FreeBoardDTO>) request.getAttribute("freeBoardList");
+	List<FreeBorderLikesDTO> freeBorderLikes = (List<FreeBorderLikesDTO>) request.getAttribute("freeBoardLikes");
+	if (freeBorder == null) {
+		freeBorder = Collections.emptyList();
 	}
-	
-	ArrayList<FreeBorderLikesDTO> freeBorderLikes = db.selectAllFreeBorderLikes(sessionID);
-	int totalBorde = 0;
-	for(FreeBorderDTO freeborder : freeBorder) {
-		totalBorde += 1;
+	if (freeBorderLikes == null) {
+		freeBorderLikes = Collections.emptyList();
 	}
+	int totalBorde = freeBorder.size();
 %>
 <!DOCTYPE html> 
 <html>
@@ -71,30 +67,30 @@
 				</div>
 				<ul class="freeBorderList">
 					<%
-						if (totalBorde != 0){
-							for(FreeBorderDTO freeborder : freeBorder) {
-								out.print("<li class='srchlist'><a href='freeBorderDetail.jsp?number="+freeborder.getNumber()+"' class='title'><span class='flag-career'>"+freeborder.getNumber()+"</span>");
-								out.print("<p>"+freeborder.getTitle()+"</p></a><div class='borderInfo'><span>"+freeborder.getId()+"</span>");
-								out.print("<span>"+freeborder.getTime()+"</span></div><div class='flag-btn'>");
-								out.print("<button type='button' class='btn-favorite' value='"+freeborder.getNumber()+"'>");
-								if(!freeBorderLikes.isEmpty()){
-									Boolean res = false;
-									for(FreeBorderLikesDTO likes : freeBorderLikes){
-										if(likes.getNumber()==freeborder.getNumber()){
-											res =true;
+					if (totalBorde != 0){
+										for(FreeBoardDTO freeborder : freeBorder) {
+											out.print("<li class='srchlist'><a href='fcjava.board?page=detail&number="+freeborder.getNumber()+"' class='title'><span class='flag-career'>"+freeborder.getNumber()+"</span>");
+											out.print("<p>"+freeborder.getTitle()+"</p></a><div class='borderInfo'><span>"+freeborder.getId()+"</span>");
+											out.print("<span>"+freeborder.getTime()+"</span></div><div class='flag-btn'>");
+											out.print("<button type='button' class='btn-favorite' value='"+freeborder.getNumber()+"'>");
+											if(!freeBorderLikes.isEmpty()){
+												Boolean res = false;
+												for(FreeBorderLikesDTO likes : freeBorderLikes){
+													if(likes.getNumber()==freeborder.getNumber()){
+														res =true;
+													}
+												}
+												if (res){
+													out.print("<img class='love' srcset='png/love-red.svg' width='24' height='24'/>");
+												} else {
+													out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
+												}
+											} else {
+												out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
+											}
+											out.print("</button></div></li>");
 										}
-									}
-									if (res){
-										out.print("<img class='love' srcset='png/love-red.svg' width='24' height='24'/>");
 									} else {
-										out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
-									}
-								} else {
-									out.print("<img class='love' srcset='png/love-zero.svg' width='24' height='24'/>");
-								}
-								out.print("</button></div></li>");
-							}
-						} else {
 					%>
 						<li class="srchNo">검색된 내용이 없습니다.</li>
 					<%

@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.fcjava.dto.FreeBorderDTO"%>
-<jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
+<%@ page import="com.fcjava.dto.FreeBoardDTO"%>
 <%
 	String number = request.getParameter("number");
 	String sessionID = (String) session.getAttribute("ID");
-	FreeBorderDTO board = db.choiceFreeBorder(number);
-	Boolean like = db.choiceFreeBorderLike(sessionID, number);
-	Boolean check = false;
-	if(board.getId().equals(sessionID)){
-		check = true;
-	}
+	FreeBoardDTO board = (FreeBoardDTO) request.getAttribute("board");
+	Boolean like = (Boolean) request.getAttribute("like");
+	Boolean check = (Boolean) request.getAttribute("owner");
+	if (like == null) like = false;
+	if (check == null) check = false;
 %>
 <!DOCTYPE html>
 <html>
@@ -71,12 +69,12 @@ const sessionID = '<%=sessionID %>';
 			<div class="navFooter">
 				<div class="navLeft">
 					<div class="updateContent">
-						<% out.print("<a href='freeBorderEdit.jsp?number="+board.getNumber()+"' class='navButton'>수정</a>"); %>
+						<% out.print("<a href='fcjava.board?page=edit&number="+board.getNumber()+"' class='navButton'>수정</a>"); %>
 						<a id='delbtn' class='navButton'>삭제</a>
 					</div>
 				</div>
 				<div class="navRight">
-					<a href="freeBorder.jsp" class="navButton">목록</a>
+					<a href="fcjava.board?page=list" class="navButton">목록</a>
 				</div>
 			</div>
 		</section>

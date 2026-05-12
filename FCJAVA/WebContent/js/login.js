@@ -3,7 +3,7 @@ function loginCheck(){
 	let pw = $("input[name='pw']").val();
 	let result = false;
 	$.ajax({
-		url: "loginCheck.jsp",
+		url: "fcjava.user?page=login",
 		data: {
 			id: id,
 			pw: pw,

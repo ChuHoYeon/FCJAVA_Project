@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.fcjava.dto.FreeBorderDTO"%>
-<jsp:useBean id="db" class="fc_java.FreeBorderDB"></jsp:useBean>
+<%@ page import="com.fcjava.dto.FreeBoardDTO"%>
 <%
 	String number = request.getParameter("number");
-	FreeBorderDTO board = db.choiceFreeBorder(number);
+	FreeBoardDTO board = (FreeBoardDTO) request.getAttribute("board");
 %>
 <!DOCTYPE html>
 <html>
@@ -44,7 +43,7 @@
 		let result = confirm("작성을 취소하시겠습니까?");
 		
 		if(result == true) {
-			window.location.href = "freeBorderDetail.jsp?number="+<%=number%>;
+			window.location.href = "fcjava.board?page=detail&number="+<%=number%>;
 		}
 	}
 	
@@ -65,7 +64,7 @@
 		</div>
 		<section>
 			<div class="writeSection">
-			<form action="freeBorderEditing.jsp" onsubmit="return nullCheck()">
+			<form action="fcjava.board?page=update" onsubmit="return nullCheck()" method="post">
 				<div class="frm-flex">
 					<h1 class="writeLabel">게시글 수정</h1>
 					<label>제목</label>

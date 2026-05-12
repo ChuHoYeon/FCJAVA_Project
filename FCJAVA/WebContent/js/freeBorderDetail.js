@@ -6,7 +6,7 @@ $(function(){
 	$('#delbtn').click(function(){
         let result = confirm("삭제하시겠습니까?");
         if(result){
-            window.location.href = 'freeBorderDelete.jsp?number=' + freeBorderPage; // 페이지 이동
+            window.location.href = 'fcjava.board?page=delete&number=' + freeBorderPage;
         }
     });
 
@@ -17,7 +17,7 @@ $(function(){
 		if(sessionID !== 'null') {
 			if(src.attr("srcset") == "png/love-zero.svg"){
 				$.ajax({
-			  	      url : "fBorderLike.jsp",
+			  	      url : "fcjava.board?page=like",
 			  	      data : {
 			  	    	  ID : sessionID,
 			  	    	  Num : borderNum,
@@ -28,7 +28,7 @@ $(function(){
 			  	});
 			} else {
 				$.ajax({
-			  	      url : "fBorderUnLike.jsp",
+			  	      url : "fcjava.board?page=unlike",
 			  	      data : {
 			  	    	  ID : sessionID,
 			  	    	  Num : borderNum,

@@ -70,7 +70,7 @@
 
     <section class="s_box_board_w">
         <div class="board_title">구매 후기</div>
-        <form action="isRe.jsp"> <!-- isRe.jsp 파일로 POST 방식으로 폼 데이터 전송 -->
+        <form action="fcjava.review?page=write" method="post">
             <input class="title_box" type="text" name="title" placeholder=" 제목을 입력해 주세요 " />
             <textarea class="text_box" name="bon" placeholder=" 내용을 입력 해 주세요"> </textarea>
             <input class="pic_box" type="text" value="" disabled /> 
