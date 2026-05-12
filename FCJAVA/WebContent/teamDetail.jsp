@@ -15,7 +15,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="com.fcjava.dto.TeamGameResultDTO" %>
-<%@ page import="com.fcjava.util.StringChange" %>
+<%@ page import="com.fcjava.util.DateTextFormatter" %>
 <%@ page import="com.google.gson.Gson" %>
 <c:choose>
 <c:when test="${empty team.t_logo }">
@@ -36,26 +36,26 @@
 	String boardpage = request.getParameter("boardpage");
 	int tabNumber = (Integer) request.getAttribute("tabNumber");
 	//List<TeamScheduleDTO> teamScheduleList = (List<TeamScheduleDTO>) request.getAttribute("teamScheduleList");
-	
+
     int[] genders = (int[]) request.getAttribute("genders"); // [0]남자, [1]여자
     int[] ages = (int[]) request.getAttribute("ages"); // [0]10대, [1]20대, [2]30대, [3]40대, [4]50대, [5]60대 이상
-    
+
     int[] positions = (int[]) request.getAttribute("positions"); // [0]공격수, [1]미드필더, [2]수비수, [3]골키퍼
-    
+
 	boolean isTeamPlayer = false;
 	int year = team.getT_c_day().getYear()+1900;
 	int month = team.getT_c_day().getMonth()+1;
-	int date = team.getT_c_day().getDate(); 
-   	String formationChk = "";
+	int date = team.getT_c_day().getDate();
+	String formationChk = "";
 	String formationName = "";
 	boolean firstFormation = true;
-	
+
 	int listCount=pageInfo.getListCount();
 	int nowPage=pageInfo.getPage();
 	int maxPage=pageInfo.getMaxPage();
 	int startPage=pageInfo.getStartPage();
 	int endPage=pageInfo.getEndPage();
-	
+
 	int applyCheck = 3;
 	for(int i=0; i<playerList.size(); i++) {
 		if(playerList.get(i).getId().equals(sessionID) && team.getId().equals(sessionID)){
@@ -64,7 +64,7 @@
 			applyCheck = 2; break;
 		}
 	}
-	
+
 	JSONArray formationjsonArray = new JSONArray();
 	for (TeamFormationDTO formation : teamFormations) {
 	    JSONObject jsonFormation = new JSONObject();
@@ -73,17 +73,17 @@
 	    jsonFormation.put("position_num", formation.getPosition_num());
 	    jsonFormation.put("player_id", formation.getPlayer_id());
 	    for(PlayerDTO player : playerList) {
-	    	if(player.getId().equals(formation.getPlayer_id())) { 
-	    		if(player.getPl_pic() !=null){
-	    			jsonFormation.put("player_pic", "/FCJAVA/png/playerPhoto/"+player.getPl_pic());break;
-    			}else{
-    				jsonFormation.put("player_pic", "png/default-profile.jpg");
-   				}
-    		} else {jsonFormation.put("player_pic", "png/default-profile.jpg");}
+		if(player.getId().equals(formation.getPlayer_id())) {
+			if(player.getPl_pic() !=null){
+				jsonFormation.put("player_pic", "/FCJAVA/png/playerPhoto/"+player.getPl_pic());break;
+			}else{
+				jsonFormation.put("player_pic", "png/default-profile.jpg");
+				}
+		} else {jsonFormation.put("player_pic", "png/default-profile.jpg");}
 	    }
 	    formationjsonArray.add(jsonFormation);
 	}
-	
+
 	String jsonTeamBoardList = new Gson().toJson(teamBoardList);
 %>
 <!DOCTYPE html>
@@ -108,13 +108,13 @@
 	const tabNumber = <%=tabNumber%>;
 	const jsonTeamBoardList = <%= jsonTeamBoardList %>;
     const sessionID = '<%= sessionID %>';//로그인한 아이디
-  	const t_num = "<%= team.getT_num() %>"; //팀 번호
-  	const teamName = "<%= team.getT_name() %>"; //팀 이름
-  	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
-  	const maxCount = <%=team.getMax_p_num() %>; //최대 가입 인원
-  	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
-  	const ages = JSON.parse('<%= Arrays.toString(ages) %>');
-  	const positions = JSON.parse('<%= Arrays.toString(positions) %>');
+	const t_num = "<%= team.getT_num() %>"; //팀 번호
+	const teamName = "<%= team.getT_name() %>"; //팀 이름
+	const nowCount = <%=playerList.size() %>; //현재 가입한 인원
+	const maxCount = <%=team.getMax_p_num() %>; //최대 가입 인원
+	const genders = JSON.parse('<%= Arrays.toString(genders) %>');
+	const ages = JSON.parse('<%= Arrays.toString(ages) %>');
+	const positions = JSON.parse('<%= Arrays.toString(positions) %>');
 </script>
 <body>
 	<!-- 헤더 -->
@@ -129,36 +129,36 @@
 		      </div>
 		      <div class="modal-body">
 		        <div id="teamApplyForm">
-		        	<input type="hidden" name="t_num" value="<%= team.getT_num() %>" />
-		        	<input type="hidden" name="id" value="<%= sessionID %>" />
-		        	<div class="photo-area">
-		        		<div class="player-photo">
-		        			<img alt="선수 사진" src="png/default-profile.jpg">
-		        		</div>
-		        		<div class="photo-change-label">
-			        		<label for="pl_pic">사진 변경</label>
-			        		<input type="file" id="pl_pic" name="pl_pic" accept="image/*"/>
-		        		</div>
-		        	</div>
-		        	<div class="player-info">
-		        		<label for="back_num">희망 등번호</label>
-		        		<input type="text" id="back_num" name="back_num" maxlength="3" placeholder="최대 숫자3글자"/>
-		        		<label for="position">희망 포지션</label>
-		        		<select name="position">
-		        			<option value="공격수">공격수</option>
-		        			<option value="미드필더">미드필더</option>
-		        			<option value="수비수">수비수</option>
-		        			<option value="골키퍼">골키퍼</option>
-		        		</select>
-		        		<label for="height">키</label>
-		        		<input type="text" id="height" name="height" maxlength="3" placeholder="선택사항"/>
-		        		<label for="weight">몸무게</label>
-		        		<input type="text" id="weight" name="weight" maxlength="3" placeholder="선택사항"/>
-		        	</div>
-		        	<div class="player-intro">
-		        		<p>선수소개</p>
-		        		<textarea id="pl_memo" name="pl_memo" placeholder="선택사항" maxlength="50"></textarea>
-		        	</div>
+			<input type="hidden" name="t_num" value="<%= team.getT_num() %>" />
+			<input type="hidden" name="id" value="<%= sessionID %>" />
+			<div class="photo-area">
+				<div class="player-photo">
+					<img alt="선수 사진" src="png/default-profile.jpg">
+				</div>
+				<div class="photo-change-label">
+					<label for="pl_pic">사진 변경</label>
+					<input type="file" id="pl_pic" name="pl_pic" accept="image/*"/>
+				</div>
+			</div>
+			<div class="player-info">
+				<label for="back_num">희망 등번호</label>
+				<input type="text" id="back_num" name="back_num" maxlength="3" placeholder="최대 숫자3글자"/>
+				<label for="position">희망 포지션</label>
+				<select name="position">
+					<option value="공격수">공격수</option>
+					<option value="미드필더">미드필더</option>
+					<option value="수비수">수비수</option>
+					<option value="골키퍼">골키퍼</option>
+				</select>
+				<label for="height">키</label>
+				<input type="text" id="height" name="height" maxlength="3" placeholder="선택사항"/>
+				<label for="weight">몸무게</label>
+				<input type="text" id="weight" name="weight" maxlength="3" placeholder="선택사항"/>
+			</div>
+			<div class="player-intro">
+				<p>선수소개</p>
+				<textarea id="pl_memo" name="pl_memo" placeholder="선택사항" maxlength="50"></textarea>
+			</div>
 		        </div>
 		      </div>
 		      <div class="modal-footer">
@@ -218,10 +218,10 @@
 				<div class="team-chating"><button id="team-chating-btn">팀 채팅</button></div>
 				<div class="chat-ab">
 					<div class="teamChatTitle"><%=team.getT_name() %><label id="chatConNum">3</label></div>
-			    	<ul id="messages"></ul>
+				<ul id="messages"></ul>
 					<form id="chatingform">
-			        	<input id="chat-input" autocomplete="off" /><button id="sendBtn"><img src="png/send29.svg"></button>
-			    	</form>
+				<input id="chat-input" autocomplete="off" /><button id="sendBtn"><img src="png/send29.svg"></button>
+				</form>
 				</div>
 			</div><!-- class="left-teamInfo" -->
 			<!-- --------------------------- -->
@@ -233,7 +233,7 @@
 					<div class="tab"><p>포메이션</p></div>
 					<div class="tab"><p>게시판</p></div>
 				</div><!-- 탭 -->
-				
+
 				<div class="team-tab-info">
 					<div class="tab-content player-content">
 						<div class="chart-area">
@@ -259,7 +259,7 @@
 							int p_date = player.getPl_ap_date().getDate();
 							String playerDate = p_year+"-"+p_month+"-"+p_date;
 							if(player.getId().equals(sessionID)) isTeamPlayer = true;
-	
+
 							String sFilePath = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
 							if(player.getPl_pic() == null) sFilePath="png/default-profile.jpg";
 						%>
@@ -288,10 +288,10 @@
 						<% } %>
 						</ul>
 					</div><!-- 선수 -->
-					
+
 					<div class="tab-content schedule-content">
 					<c:set var="currentMonth" value="" />
-	 				<c:choose>
+					<c:choose>
 					<c:when test="${not empty teamScheduleList }">
 						<c:forEach var="teamSchedule" items="${teamScheduleList }">
 						<fmt:formatDate value="${teamSchedule.reserdate}" pattern="yyyy-MM" var="monthYear" />
@@ -305,7 +305,7 @@
 								<c:set var="vs_team_logo" value="/png/playerPhoto/${teamSchedule.vs_team_logo }" />
 							</c:otherwise>
 						</c:choose>
-						
+
 					    <c:if test="${currentMonth != monthYear}">
 						    <c:if test="${not empty currentMonth}">
 					            </div>
@@ -350,7 +350,7 @@
 									<div class="teamLogo">
 										<img src="${vs_team_logo }" />
 									</div>
-									<div class="doubleName">${teamSchedule.vs_team_name }</div>
+									<div class="doubleName">${teamSchedule.vs_teamNames }</div>
 								</div>
 								</c:otherwise>
 								</c:choose>
@@ -369,15 +369,15 @@
 					</c:otherwise>
 					</c:choose>
 					</div><!-- 일정 -->
-					
+
 					<div class="tab-content record-content">
-					<%if(!teamGameResultList.isEmpty()) { 
-					  	for(TeamGameResultDTO gameResult : teamGameResultList){
-					  		int gameYear = gameResult.getGame_date().getYear()+1900;
-					  		String gameMonth = StringChange.lengthCheck(String.valueOf(gameResult.getGame_date().getMonth()+1));
-					  		String gameDate = StringChange.lengthCheck(String.valueOf(gameResult.getGame_date().getDate()));
-					  		String gameDay = StringChange.getDay(gameResult.getGame_date().getDay());
-					  		String gameTime = StringChange.lengthCheck(String.valueOf(gameResult.getGame_date().getHours()))+":"+StringChange.lengthCheck(String.valueOf(gameResult.getGame_date().getMinutes()));
+					<%if(!teamGameResultList.isEmpty()) {
+						for(TeamGameResultDTO gameResult : teamGameResultList){
+							int gameYear = gameResult.getGame_date().getYear()+1900;
+							String gameMonth = DateTextFormatter.padTwoDigits(String.valueOf(gameResult.getGame_date().getMonth()+1));
+							String gameDate = DateTextFormatter.padTwoDigits(String.valueOf(gameResult.getGame_date().getDate()));
+							String gameDay = DateTextFormatter.formatDayName(gameResult.getGame_date().getDay());
+							String gameTime = DateTextFormatter.padTwoDigits(String.valueOf(gameResult.getGame_date().getHours()))+":"+DateTextFormatter.padTwoDigits(String.valueOf(gameResult.getGame_date().getMinutes()));
 					%>
 						<div class="gameResult">
 							<div class="gameTitle">
@@ -418,7 +418,7 @@
 						<div class="notResult">경기 결과가 없습니다.</div>
 					<% } %>
 					</div><!-- 기록 -->
-					
+
 					<div class="tab-content formation-content">
 						<div class="showFormation">
 							<div class="formation-box">
@@ -437,7 +437,7 @@
 										<%} %>
 											<div class="foramtionName"><%=formation.getFormation() %></div>
 											<div class="formationTitle"><%=formation.getFormation_name() %></div>
-										</div>	
+										</div>
 									<% firstFormation = false;
 										}
 									} %>
@@ -446,7 +446,7 @@
 											<div>새 포메이션</div>
 											<div><span class="material-symbols-outlined">add</span></div>
 										</div>
-									<% } 
+									<% }
 									}else{%>
 										<div class="notFormation">생성된 포메이션이 없습니다.</div>
 								<%  } %>
@@ -502,7 +502,7 @@
 									<% } %>
 									</div>
 									<div class="selectPlayers">
-									<% for(PlayerDTO player:playerList){ 
+									<% for(PlayerDTO player:playerList){
 										String sFilePath = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
 										if(player.getPl_pic() == null) sFilePath="png/default-profile.jpg";%>
 										<div class="formation-players">
@@ -547,7 +547,7 @@
 									<td><%= teamBoardList.get(i).getBoard_num() %></td>
 									<td class="showBoardDetail" data-boardNum="<%= teamBoardList.get(i).getBoard_num() %>"><%= teamBoardList.get(i).getBoard_title() %></td>
 									<td><%= teamBoardList.get(i).getBoard_id() %></td>
-									<td><%= StringChange.lengthCheck(String.valueOf(boardMonth)) + "-" + StringChange.lengthCheck(String.valueOf(boardDate)) %></td>
+									<td><%= DateTextFormatter.padTwoDigits(String.valueOf(boardMonth)) + "-" + DateTextFormatter.padTwoDigits(String.valueOf(boardDate)) %></td>
 								</tr>
 								<% } %>
 								</tbody>
@@ -560,7 +560,7 @@
 								<%}else{ %>
 								<li><a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=nowPage-1 %>">[이전]</a></li>
 								<%} %>
-						
+
 								<%for(int a=startPage;a<=endPage;a++){
 										if(a==nowPage){%>
 								<li>[<%=a %>]</li>
@@ -568,7 +568,7 @@
 								<li><a href="fcjava.team?page=detail&teamNumber=<%=team.getT_num() %>&tabNumber=4&boardpage=<%=a %>">[<%=a %>]</a></li>
 								<%} %>
 								<%} %>
-						
+
 								<%if(nowPage>=maxPage){ %>
 								<li>[다음]</li>
 								<%}else{ %>
@@ -605,7 +605,7 @@
 						</div>
 					<% } %>
 					</div><!-- 게시판-->
-					
+
 				</div><!-- class="team-tab-info" -->
 			</div><!-- class="right-info" -->
 		</div><!-- class="teamArea" -->
@@ -613,7 +613,7 @@
 
 	<!-- 푸터 -->
 	<jsp:include page="footerPage.jsp" />
-	
+
 	<!-- teamDetail js -->
 	<script src="js/teamDetail.js"></script>
 	<!-- bootstrap js -->

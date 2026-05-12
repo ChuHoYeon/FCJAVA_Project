@@ -19,6 +19,6 @@ public class ProductReviewListAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setAttribute("reviews", boardService.findProductReviews());
-		return "board_1.jsp";
+		return "productReviewList.jsp";
 	}
 }

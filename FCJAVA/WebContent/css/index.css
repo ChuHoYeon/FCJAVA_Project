@@ -129,11 +129,11 @@
 	display: flex;
     align-items: center;
 }
-.prdList {
+.productList {
 	display: flex;
 	justify-content: space-between;
 }
-.prdList li img {
+.productList li img {
 	width: 200px;
 	height: 200px;
 	object-fit: cover;

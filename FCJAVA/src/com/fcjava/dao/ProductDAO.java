@@ -5,44 +5,44 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.fcjava.dto.PrdDTO;
+import com.fcjava.dto.ProductDTO;
 import com.fcjava.util.MyBatisUtil;
 
 public class ProductDAO {
 	private static final ProductDAO instance = new ProductDAO();
-	
+
 	private ProductDAO() {}
-	
+
 	public static ProductDAO getInstance() {
 		return instance;
 	}
-	
+
 	private final SqlSessionFactory sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
-	
-	public List<PrdDTO> getSelect() {
+
+	public List<ProductDTO> findAll() {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
-			return session.selectList("product.findAll");			
+			return session.selectList("product.findAll");
 		}
 	}
 
-	public PrdDTO getOnePrd(String prdNum) {
+	public ProductDTO findById(String productId) {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
-			return session.selectOne("product.onePrd", prdNum);			
+			return session.selectOne("product.findById", productId);
 		}
 	}
-	
-	public void creatingPrd(PrdDTO prd) {
+
+	public void insertProduct(ProductDTO product) {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
-			int count = session.insert("product.insertPrd",prd);
+			int count = session.insert("product.insertProduct", product);
 			if (count > 0) {
 				session.commit();
 			}
 		}
 	}
-	
-	public void deleteProduct(String prdNum) {
+
+	public void deleteProduct(String productId) {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
-			int count = session.insert("product.deletePrd",prdNum);
+			int count = session.delete("product.deleteProduct", productId);
 			if (count > 0) {
 				session.commit();
 			}

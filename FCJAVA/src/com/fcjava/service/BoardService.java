@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.fcjava.dao.BoardDAO;
 import com.fcjava.dto.FreeBoardDTO;
-import com.fcjava.dto.FreeBorderLikesDTO;
-import com.fcjava.dto.PrdBbsDTO;
-import com.fcjava.dto.StadiumBbsDTO;
+import com.fcjava.dto.FreeBoardLikeDTO;
+import com.fcjava.dto.ProductReviewDTO;
+import com.fcjava.dto.StadiumQnaDTO;
 
 public class BoardService {
 	private static final BoardService instance = new BoardService();
@@ -27,7 +27,7 @@ public class BoardService {
 		return boardDAO.findFreeBoard(number);
 	}
 
-	public List<FreeBorderLikesDTO> findFreeBoardLikesByUser(String id) {
+	public List<FreeBoardLikeDTO> findFreeBoardLikesByUser(String id) {
 		return boardDAO.findFreeBoardLikesByUser(id);
 	}
 
@@ -63,18 +63,18 @@ public class BoardService {
 		boardDAO.deleteFreeBoardLike(id, number);
 	}
 
-	public List<PrdBbsDTO> findProductReviews() {
+	public List<ProductReviewDTO> findProductReviews() {
 		return boardDAO.findProductReviews();
 	}
 
 	public void writeProductReview(String title, String content) {
-		PrdBbsDTO review = new PrdBbsDTO();
+		ProductReviewDTO review = new ProductReviewDTO();
 		review.setTitle(title);
-		review.setBon(content);
+		review.setContent(content);
 		boardDAO.insertProductReview(review);
 	}
 
-	public List<StadiumBbsDTO> findStadiumQnaList() {
+	public List<StadiumQnaDTO> findStadiumQnaList() {
 		return boardDAO.findStadiumQnaList();
 	}
 }

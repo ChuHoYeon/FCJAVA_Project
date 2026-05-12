@@ -23,7 +23,7 @@ public class GameApplyAction implements Action {
 		
 		gameService.applyGame(team_num, game_num);
 		
-		String url = "redirect:fcjava.game?page=2&game_num="+game_num;
+		String url = "redirect:fcjava.game?page=detail&game_num="+game_num;
 		return url;
 	}
 

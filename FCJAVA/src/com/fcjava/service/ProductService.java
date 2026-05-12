@@ -3,7 +3,7 @@ package com.fcjava.service;
 import java.util.List;
 
 import com.fcjava.dao.ProductDAO;
-import com.fcjava.dto.PrdDTO;
+import com.fcjava.dto.ProductDTO;
 
 public class ProductService {
 	private static final ProductService instance = new ProductService();
@@ -16,15 +16,15 @@ public class ProductService {
 		return instance;
 	}
 
-	public List<PrdDTO> findProducts() {
-		return productDAO.getSelect();
+	public List<ProductDTO> findProducts() {
+		return productDAO.findAll();
 	}
 
-	public PrdDTO findProduct(String prdNum) {
-		return productDAO.getOnePrd(prdNum);
+	public ProductDTO findProduct(String productId) {
+		return productDAO.findById(productId);
 	}
 
-	public void createProduct(PrdDTO product) {
-		productDAO.creatingPrd(product);
+	public void createProduct(ProductDTO product) {
+		productDAO.insertProduct(product);
 	}
 }

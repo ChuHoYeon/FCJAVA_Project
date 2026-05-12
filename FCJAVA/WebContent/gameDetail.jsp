@@ -4,7 +4,7 @@
 <%@ page import="com.fcjava.dto.TeamDTO" %>
 <%@ page import="com.fcjava.dto.GameResultDTO" %>
 <%@ page import="com.fcjava.dto.GameApplyTeam" %>
-<%@ page import="com.fcjava.util.StringChange" %>
+<%@ page import="com.fcjava.util.DateTextFormatter" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -185,10 +185,10 @@
 							Date gameDate = dateFormat.parse(result.getGame_date());
 							String month = String.valueOf(gameDate.getMonth()+1);
 							String date = String.valueOf(gameDate.getDate());
-							String day = StringChange.getDay(gameDate.getDay());
+							String day = DateTextFormatter.formatDayName(gameDate.getDay());
 							String hours = String.valueOf(gameDate.getHours());
 							String minutes = String.valueOf(gameDate.getMinutes());
-							String time = StringChange.lengthCheck(month)+"."+StringChange.lengthCheck(date)+" "+day+" "+StringChange.lengthCheck(hours)+":"+StringChange.lengthCheck(minutes);
+							String time = DateTextFormatter.padTwoDigits(month)+"."+DateTextFormatter.padTwoDigits(date)+" "+day+" "+DateTextFormatter.padTwoDigits(hours)+":"+DateTextFormatter.padTwoDigits(minutes);
 							
 							String team1 ="";
 							String team2 ="";

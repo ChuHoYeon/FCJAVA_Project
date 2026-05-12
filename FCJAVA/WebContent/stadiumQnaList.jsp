@@ -1,0 +1,95 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="com.fcjava.dto.StadiumQnaDTO"%>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.List" %>
+<%
+	List<StadiumQnaDTO> qnaList = (List<StadiumQnaDTO>) request.getAttribute("qnaList");
+	if (qnaList == null) {
+		qnaList = Collections.emptyList();
+	}
+%>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <!-- <link rel="stylesheet" href="css/index.css" type="text/css"> -->
+        <link rel="stylesheet" href="css/shop_main.css" type="text/css">
+
+        <!-- <link rel="stylesheet" href="css/main.css" type="text/css"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/bc44b0c9cb.js" crossorigin="anonymous"></script>
+        <!-- <script src="js/main2.js"></script> -->
+        <link rel="stylesheet" href="css/stadiumQna.css">
+		<link rel="stylesheet" type="text/css" href="css/freeBoard.css">
+        <!--구글 아이콘-->
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    </head>
+
+
+    <script>
+        $(document).ready(function(){
+            $('.over').hover(function(){
+                var originalSrc = $(this).attr('src');
+                var newSrc = $(this).attr('src').replace('.avif','_on.avif'); // 호버된 이미지의 속성 변경
+                $('.sh_de1 img').attr('src', newSrc); // sh_de1 클래스에 속한 이미지 파일의 src 속성 변경
+            }, function(){
+                var originalSrc = $(this).attr('src');
+                var newSrc = $(this).attr('src').replace('_on.avif','.avif'); // 원래 이미지의 속성 변경
+                $('.sh_de1 img').attr('src', newSrc); // sh_de1 클래스에 속한 이미지 파일의 src 속성 변경
+            });
+
+        });
+    </script>
+
+
+
+
+<body bgcolor="f0ffff">
+	<!-- 헤더 -->
+	<jsp:include page="headerPage.jsp" />
+			<div class="qa_top text_qa1">
+		 구장 후기
+			<div class="text_qa2" > FC JAVA에 오신 여러분, 자유게시판에 환영합니다! 팀원들과 함께 즐거운 시간보낸 운동장에 대한 정보를 공유할 수 있는 자리입니다.
+자유게시판은 자유로운 의견을 남기는 공간으로 문의관련 답변은 드리지 않습니다.</div>
+		</div>
+
+<section class="s_box_qa">
+
+<form class="searchContent">
+					<div class="searchArea">
+						<select class="selectSearchBtn" name="selectText">
+							<option value="title">제목</option>
+							<option value="memo">내용</option>
+							<option value="id">작성자</option>
+							<option value="titlememo">제목+내용</option>
+						</select>
+						<input type="search" name="searchText" class="selectSearchBtn" placeholder="검색어를 입력해주세요"/>
+						<button type="submit" class="subResetBtn">검색</button>
+						<button type="reset" class="subResetBtn">초기화</button>
+					</div>
+				</form>
+     <div class='stadiumQnaBox'>
+	<div class='image-container'>
+		<%
+		for(StadiumQnaDTO data : qnaList) {
+		out.println("<a href='stadiumQnaDetail.jsp'><img src='img/rm.jpg'>" + data.getTitle() + "<p>" + data.getUserName() + "</p></a>");
+		}
+	     %>
+	     </div>
+     </div>
+
+	</section>
+	<!-- 푸터 -->
+	<jsp:include page="footerPage.jsp" />
+</body>
+</html>

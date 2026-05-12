@@ -38,7 +38,7 @@
 		<div class="indexSection">
 			<div class="contentBox" id="showStadium">
 				<div class="title_h">구장 예약 </div>
-				<form action="fcjava.stadium1?page=3" name="goStadium" method="post" class="iGroundBox">
+				<form action="fcjava.stadium?page=bookingForm" name="goStadium" method="post" class="iGroundBox">
 					<input type="hidden" name="sta_num"/>
 					<div class="groundImg"><img alt="구장사진" src="img/sdf.jpg" width="300"></div>
 					<div class="groundInfo">
@@ -159,9 +159,9 @@
 			<div class="contentBox">
 				<div class="title_h">
 					<div>쇼핑몰</div>
-					<div class="moreLink"><a href="fcjava.prd?page=prdUniform">더보기</a></div>
+					<div class="moreLink"><a href="fcjava.product?page=list">더보기</a></div>
 				</div>
-		        <ul class="prdList">
+		        <ul class="productList">
 		            <li><img class="over" src="png/prd/10759903_1.png"></li>
 		            <li><img class="over" src="png/prd/AC3444001_1.png"></li>
 		            <li><img class="over" src="png/prd/FJ4862011_1.png"></li>

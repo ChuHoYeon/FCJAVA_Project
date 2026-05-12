@@ -8,9 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.fcjava.dto.FreeBoardDTO;
-import com.fcjava.dto.FreeBorderLikesDTO;
-import com.fcjava.dto.PrdBbsDTO;
-import com.fcjava.dto.StadiumBbsDTO;
+import com.fcjava.dto.FreeBoardLikeDTO;
+import com.fcjava.dto.ProductReviewDTO;
+import com.fcjava.dto.StadiumQnaDTO;
 import com.fcjava.util.MyBatisUtil;
 
 public class BoardDAO {
@@ -41,7 +41,7 @@ public class BoardDAO {
 		}
 	}
 
-	public List<FreeBorderLikesDTO> findFreeBoardLikesByUser(String id) {
+	public List<FreeBoardLikeDTO> findFreeBoardLikesByUser(String id) {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
 			return session.selectList("board.findFreeBoardLikesByUser", id);
 		}
@@ -111,13 +111,13 @@ public class BoardDAO {
 		}
 	}
 
-	public List<PrdBbsDTO> findProductReviews() {
+	public List<ProductReviewDTO> findProductReviews() {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
 			return session.selectList("board.findProductReviews");
 		}
 	}
 
-	public void insertProductReview(PrdBbsDTO review) {
+	public void insertProductReview(ProductReviewDTO review) {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
 			int count = session.insert("board.insertProductReview", review);
 			if (count > 0) {
@@ -126,7 +126,7 @@ public class BoardDAO {
 		}
 	}
 
-	public List<StadiumBbsDTO> findStadiumQnaList() {
+	public List<StadiumQnaDTO> findStadiumQnaList() {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
 			return session.selectList("board.findStadiumQnaList");
 		}

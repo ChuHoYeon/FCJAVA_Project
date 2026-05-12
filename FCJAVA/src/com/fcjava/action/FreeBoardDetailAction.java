@@ -26,6 +26,6 @@ public class FreeBoardDetailAction implements Action {
 		request.setAttribute("board", board);
 		request.setAttribute("like", boardService.existsFreeBoardLike(sessionId, number));
 		request.setAttribute("owner", board != null && board.getId().equals(sessionId));
-		return "freeBorderDetail.jsp";
+		return "freeBoardDetail.jsp";
 	}
 }

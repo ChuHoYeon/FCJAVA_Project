@@ -2,11 +2,11 @@
 	width: 1280px;
 	margin: 0 auto;
 }
-.prdTop .title {
+.productTop .title {
 	margin-top: 50px;
 	font-size: 24pt;
 }
-.prdList {
+.productList {
 	display: flex;
     width: inherit;
     flex-wrap: wrap;
@@ -14,19 +14,19 @@
     margin-bottom: 50px;
     margin-top: 20px;
 }
-.prdItem {
+.productItem {
 	width: 200px;
 	display: flex;
     flex-direction: column;
     margin: 0 20px;
 }
 
-.prdItem img{
+.productItem img{
 	width: 200px;
 	height: 200px;
 	background-color: #F5F5F5;
 } 
-.prdtext {
+.productName {
 	width: 200px;
 	height: 40px;
 	font-weight: bold;
@@ -34,13 +34,13 @@
 	margin-top: 10px;
 	margin-bottom: 0;
 }
-.prdprice {
+.productPrice {
 	margin-top: 5px;
 	font-weight: bold;
 	font-size: 13px;
 	margin-bottom: 0;
 }
-.prdSearch {
+.productSearch {
 	display: flex;
 	justify-content: flex-end;
 	gap: 10px;
@@ -58,10 +58,10 @@
 	border: 2px solid darkgrey;
 	padding: 0 8px;
 }
-.prdCountArea {
+.productCountArea {
     padding: 0 20px;
 }
-.prdCount {
+.productCount {
 	font-weight: bolder;
 	color: #ad0000;
 }

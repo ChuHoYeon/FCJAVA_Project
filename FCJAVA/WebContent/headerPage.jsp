@@ -10,7 +10,7 @@
 	    session.setAttribute("ID",id);
 	    sessionID = (String) session.getAttribute("ID");
 	}
-	
+
 %>
 <!DOCTYPE html>
 <html>
@@ -41,17 +41,17 @@
             $("#loginNav").html("<span class='material-symbols-outlined'>person</span>");
             $("#joinNav").html("<a href='logout.jsp' class='f-10'>로그아웃</a>");
         }
-        
+
         $("#myTeam").click(function(event) {
-        	if((id === 'null' && sessionID === 'null') ||id === ''){
-        		$('#myTeamListModal').modal('hide');
+	if((id === 'null' && sessionID === 'null') ||id === ''){
+		$('#myTeamListModal').modal('hide');
                 alert("로그인이 필요합니다.");
                 window.location.href = "login.jsp";
-        	} else {
+	} else {
                 // 로그인되어 있으면 모달을 엽니다.
                 $('#myTeamListModal').modal('show');
             }
-    	})
+	})
     });
 </script>
 <body>
@@ -64,62 +64,62 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	      	<div class="header-team-areaList">
-      		<%
-      		int teamCount = (myTeamList != null) ? myTeamList.size() : 0;
-      		for(int i=0; i<3; i++) {
-      			if(i < teamCount && myTeamList != null) { 
-      			String teamLogo = "png/defaultLogo.png";
-      			if(myTeamList.get(i).getT_logo() != null) teamLogo = "/FCJAVA/png/playerPhoto/"+myTeamList.get(i).getT_logo();
-      			%>
-      			<a href="fcjava.team?page=detail&teamNumber=<%= myTeamList.get(i).getT_num() %>">
-		      		<div class="header-team-area">
-		      			<div class="header-team-logo">
-		      				<img src="<%=teamLogo%>">
-		      			</div>
-		      			<div class="header-team-name"><%= myTeamList.get(i).getT_name() %></div>
-		      		</div>
-      			</a>
-      		<% } else { %>
-      			<a href="teamCreate.jsp">
-      				<div class="teamCreatingGo">+</div>
-      			</a>
-   			<% }} %>
-	      	</div>
+		<div class="header-team-areaList">
+		<%
+		int teamCount = (myTeamList != null) ? myTeamList.size() : 0;
+		for(int i=0; i<3; i++) {
+			if(i < teamCount && myTeamList != null) {
+			String teamLogo = "png/defaultLogo.png";
+			if(myTeamList.get(i).getT_logo() != null) teamLogo = "/FCJAVA/png/playerPhoto/"+myTeamList.get(i).getT_logo();
+			%>
+			<a href="fcjava.team?page=detail&teamNumber=<%= myTeamList.get(i).getT_num() %>">
+				<div class="header-team-area">
+					<div class="header-team-logo">
+						<img src="<%=teamLogo%>">
+					</div>
+					<div class="header-team-name"><%= myTeamList.get(i).getT_name() %></div>
+				</div>
+			</a>
+		<% } else { %>
+			<a href="teamCreate.jsp">
+				<div class="teamCreatingGo">+</div>
+			</a>
+			<% }} %>
+		</div>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 	<!-- 팀  Modal -->
-	
+
 	<header class="hed0">
         <div class="hed1">
-        	<div class="logo">
-            	<a href="index.jsp">FC JAVA</a>
+	<div class="logo">
+	<a href="index.jsp">FC JAVA</a>
             </div>
             <ul id="headerNav">
-            	<li>
-                	<a href="fcjava.team?page=list">팀 </a>
+	<li>
+	<a href="fcjava.team?page=list">팀 </a>
                 </li>
                 <li>
-                	<a href="fcjava.game?page=gameList">토너먼트</a>
+	<a href="fcjava.game?page=gameList">토너먼트</a>
                 </li>
                 <li>
-                	<a href="fcjava.stadium1?page=2">구장</a>
+	<a href="fcjava.stadium?page=list">구장</a>
                 </li>
                 <li>
-                	<a href="fcjava.board?page=list">게시판</a>
+	<a href="fcjava.board?page=list">게시판</a>
                 </li>
                 <li>
-                	<a href="fcjava.prd?page=prdUniform">쇼핑</a>
+	<a href="fcjava.product?page=list">쇼핑</a>
                 </li>
             </ul>
             <div class="userMenu">
                 <div id="myTeam" data-bs-toggle="modal" data-bs-target="#myTeamListModal">
                     <span class="material-symbols-outlined">groups</span>
                 </div>
-               	<div id="loginNav"><!--<a href="login.jsp" class="right1 f-10">로그인 </a>--></div>
-               	<div id="joinNav"><!--<a href="join.jsp" class="right1 f-10">회원가입</a>--></div>
+	<div id="loginNav"><!--<a href="login.jsp" class="right1 f-10">로그인 </a>--></div>
+	<div id="joinNav"><!--<a href="join.jsp" class="right1 f-10">회원가입</a>--></div>
             </div>
         </div> <!-- hed1 -->
         <div id="layer">
@@ -135,7 +135,7 @@
                 <ul>
                     <li><img src="png/navimg2.jpg" class="navImg">
                     </li>
-                    <li><a href="fcjava.stadium1?page=2">구장예약</a></li>
+                    <li><a href="fcjava.stadium?page=list">구장예약</a></li>
                 </ul>
                 <ul>
                     <li><img src="png/navimg3.webp" class="navImg"></li>
@@ -145,7 +145,7 @@
                 </ul>
                 <ul>
                     <li><img src="png/navimg4.avif" class="navImg"></li>
-                    <li><a href="fcjava.prd?page=prdUniform">축구용품</a></li>
+                    <li><a href="fcjava.product?page=list">축구용품</a></li>
                 </ul>
             </div>
         </div> <!-- layer -->

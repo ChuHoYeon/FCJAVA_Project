@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fcjava.dto.FreeBoardDTO;
-import com.fcjava.dto.FreeBorderLikesDTO;
+import com.fcjava.dto.FreeBoardLikeDTO;
 import com.fcjava.service.BoardService;
 
 public class FreeBoardListAction implements Action {
@@ -27,10 +27,10 @@ public class FreeBoardListAction implements Action {
 		String sessionId = (String) request.getSession().getAttribute("ID");
 
 		List<FreeBoardDTO> freeBoardList = boardService.findFreeBoards(selectText, searchText);
-		List<FreeBorderLikesDTO> freeBoardLikes = boardService.findFreeBoardLikesByUser(sessionId);
+		List<FreeBoardLikeDTO> freeBoardLikes = boardService.findFreeBoardLikesByUser(sessionId);
 
 		request.setAttribute("freeBoardList", freeBoardList);
 		request.setAttribute("freeBoardLikes", freeBoardLikes);
-		return "freeBorder.jsp";
+		return "freeBoardList.jsp";
 	}
 }

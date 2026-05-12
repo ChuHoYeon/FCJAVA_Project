@@ -75,7 +75,7 @@
 					}
 				%>
 					<li>
-						<a href="fcjava.game?page=2&game_num=<%= game.getGame_num() %>" class="game-card">
+						<a href="fcjava.game?page=detail&game_num=<%= game.getGame_num() %>" class="game-card">
 							<div class="card-thumb">
 								<div class="game-status">
 								<% if (currentDate.before(substDate)){%>

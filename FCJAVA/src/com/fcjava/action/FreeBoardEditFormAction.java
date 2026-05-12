@@ -19,6 +19,6 @@ public class FreeBoardEditFormAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setAttribute("board", boardService.findFreeBoard(request.getParameter("number")));
-		return "freeBorderEdit.jsp";
+		return "freeBoardEdit.jsp";
 	}
 }

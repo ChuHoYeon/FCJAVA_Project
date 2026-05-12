@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fcjava.action.Action;
-import com.fcjava.action.PrdDetailAction;
-import com.fcjava.action.PrdListAction;
-import com.fcjava.action.PrdOveRideAction;
+import com.fcjava.action.ProductDetailAction;
+import com.fcjava.action.ProductListAction;
+import com.fcjava.action.ProductCreateAction;
 
 public class ProductController extends HttpServlet {
 	private final Map<String, Action> actions = new HashMap<>();
 
 	@Override
 	public void init() throws ServletException {
-		actions.put("6", PrdOveRideAction.getInstance());
-		actions.put("prdUniform", PrdListAction.getInstance());
-		actions.put("prdDetail", PrdDetailAction.getInstance());
+		actions.put("create", ProductCreateAction.getInstance());
+		actions.put("list", ProductListAction.getInstance());
+		actions.put("detail", ProductDetailAction.getInstance());
 	}
 
 	@Override

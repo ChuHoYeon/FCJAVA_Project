@@ -23,7 +23,7 @@ public class GameController extends HttpServlet {
 	public void init() throws ServletException {
 		actions.put("gameList", GameAllSelectAction.getInstance());
 		actions.put("gameSearch", GameSearchAction.getInstance());
-		actions.put("2", GameDetailAction.getInstance());
+		actions.put("detail", GameDetailAction.getInstance());
 		actions.put("apply", GameApplyAction.getInstance());
 		actions.put("applyCancel", GameApplyCancelAction.getInstance());
 	}

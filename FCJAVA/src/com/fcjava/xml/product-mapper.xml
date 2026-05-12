@@ -1,24 +1,36 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="product">
-	<select id="findAll" resultType="com.fcjava.dto.PrdDTO">
-		SELECT *
+	<select id="findAll" resultType="com.fcjava.dto.ProductDTO">
+		SELECT prd_no AS productNo,
+		       prd_category AS category,
+		       prd_name AS name,
+		       prd_price AS price,
+		       prd_image AS image,
+		       prd_memo AS memo,
+		       prd_brand AS brand
 		FROM fc_java.prdinfo;
 	</select>
 	
-	<select id="onePrd" parameterType="java.lang.String" resultType="com.fcjava.dto.PrdDTO">
-		SELECT *
+	<select id="findById" parameterType="java.lang.String" resultType="com.fcjava.dto.ProductDTO">
+		SELECT prd_no AS productNo,
+		       prd_category AS category,
+		       prd_name AS name,
+		       prd_price AS price,
+		       prd_image AS image,
+		       prd_memo AS memo,
+		       prd_brand AS brand
 		FROM fc_java.prdinfo
-		WHERE prd_no = #{prdNum};
+		WHERE prd_no = #{productId};
 	</select>
 	
-	<insert id="insertPrd" parameterType="com.fcjava.dto.PrdDTO">
+	<insert id="insertProduct" parameterType="com.fcjava.dto.ProductDTO">
 		insert into fc_java.prdinfo
-		values(#{prd_no},#{prd_category},#{prd_name},#{prd_price},#{prd_image},#{prd_memo},#{prd_brand});
+		values(#{productNo},#{category},#{name},#{price},#{image},#{memo},#{brand});
 	</insert>
 	
-	<delete id="deletePrd" parameterType="java.lang.String">
+	<delete id="deleteProduct" parameterType="java.lang.String">
 		DELETE FROM fc_java_prdinfo
-		WHERE prd_no = #{prd_no};
+		WHERE prd_no = #{productId};
 	</delete>
 </mapper>

@@ -23,7 +23,7 @@ public class GameApplyCancelAction implements Action{
 		
 		gameService.cancelGameApply(game_num, team_num);
 		
-		String url = "redirect:fcjava.game?page=2&game_num="+ game_num ;
+		String url = "redirect:fcjava.game?page=detail&game_num="+ game_num ;
 		return url;
 	}
 

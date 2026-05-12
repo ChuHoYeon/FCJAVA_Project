@@ -5,7 +5,7 @@
          SELECT * FROM fc_java.stadium;
     </select>
     
-	<select id="selecteam_name" resultType="com.fcjava.dto.StadiumDTO">
+	<select id="selectTeamNames" resultType="com.fcjava.dto.StadiumDTO">
 		SELECT * 
 		FROM fc_java.team_info 
 		WHERE id = #{id};

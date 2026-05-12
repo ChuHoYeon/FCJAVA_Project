@@ -19,6 +19,6 @@ public class StadiumQnaListAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setAttribute("qnaList", boardService.findStadiumQnaList());
-		return "str_qa.jsp";
+		return "stadiumQnaList.jsp";
 	}
 }

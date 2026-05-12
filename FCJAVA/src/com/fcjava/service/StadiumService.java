@@ -18,23 +18,23 @@ public class StadiumService {
 	}
 
 	public List<StadiumDTO> findStadiums() {
-		return stadiumDAO.getStadiumList();
+		return stadiumDAO.findAll();
 	}
 
 	public List<StadiumDTO> findTeamNames(String id) {
-		return stadiumDAO.getTeamName(id);
+		return stadiumDAO.findTeamNames(id);
 	}
 
 	public StadiumDTO findNewStadiumOne() {
-		return stadiumDAO.getNewStadiumOne();
+		return stadiumDAO.findRandomStadium();
 	}
 
 	public StadiumDTO findStadium(String stadiumNum) {
-		return stadiumDAO.getStadiums(stadiumNum);
+		return stadiumDAO.findByNumber(stadiumNum);
 	}
 
 	public void bookStadium(StadiumBookingDTO booking) {
-		stadiumDAO.booking1(booking);
+		stadiumDAO.bookStadium(booking);
 	}
 
 	public void createStadium(StadiumDTO stadium) {

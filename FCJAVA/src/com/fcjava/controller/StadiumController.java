@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fcjava.action.Action;
-import com.fcjava.action.Stadium_ControllApply;
-import com.fcjava.action.Stadium_Nextboo;
-import com.fcjava.action.Stadium_booking;
-import com.fcjava.action.Stadium_over;
+import com.fcjava.action.StadiumCreateAction;
+import com.fcjava.action.StadiumBookingFormAction;
+import com.fcjava.action.StadiumBookingAction;
+import com.fcjava.action.StadiumListAction;
 
 public class StadiumController extends HttpServlet {
 	private final Map<String, Action> actions = new HashMap<>();
 
 	@Override
 	public void init() throws ServletException {
-		actions.put("1", Stadium_ControllApply.getInstance());
-		actions.put("2", Stadium_over.getInstance());
-		actions.put("3", Stadium_Nextboo.getInstance());
-		actions.put("4", Stadium_booking.getInstance());
+		actions.put("create", StadiumCreateAction.getInstance());
+		actions.put("list", StadiumListAction.getInstance());
+		actions.put("bookingForm", StadiumBookingFormAction.getInstance());
+		actions.put("booking", StadiumBookingAction.getInstance());
 	}
 
 	@Override

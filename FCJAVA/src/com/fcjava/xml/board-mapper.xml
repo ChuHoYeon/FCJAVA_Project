@@ -27,7 +27,7 @@
 		WHERE number = #{number};
 	</select>
 
-	<select id="findFreeBoardLikesByUser" parameterType="java.lang.String" resultType="com.fcjava.dto.FreeBorderLikesDTO">
+	<select id="findFreeBoardLikesByUser" parameterType="java.lang.String" resultType="com.fcjava.dto.FreeBoardLikeDTO">
 		SELECT *
 		FROM fc_java.freeborderlikes
 		WHERE id = #{id};
@@ -67,19 +67,26 @@
 		  AND number = #{number};
 	</delete>
 
-	<select id="findProductReviews" resultType="com.fcjava.dto.PrdBbsDTO">
-		SELECT *
+	<select id="findProductReviews" resultType="com.fcjava.dto.ProductReviewDTO">
+		SELECT num,
+		       title,
+		       bon AS content,
+		       c_time AS createdAt,
+		       u_time AS updatedAt,
+		       user
 		FROM fc_java.prd_board
 		ORDER BY c_time DESC;
 	</select>
 
-	<insert id="insertProductReview" parameterType="com.fcjava.dto.PrdBbsDTO">
+	<insert id="insertProductReview" parameterType="com.fcjava.dto.ProductReviewDTO">
 		INSERT INTO fc_java.prd_board (title, bon, c_time, u_time, user)
-		VALUES (#{title}, #{bon}, now(), now(), 'default_user');
+		VALUES (#{title}, #{content}, now(), now(), 'default_user');
 	</insert>
 
-	<select id="findStadiumQnaList" resultType="com.fcjava.dto.StadiumBbsDTO">
-		SELECT *
+	<select id="findStadiumQnaList" resultType="com.fcjava.dto.StadiumQnaDTO">
+		SELECT title,
+		       u_name AS userName,
+		       content
 		FROM fc_java.str_qa;
 	</select>
 </mapper>

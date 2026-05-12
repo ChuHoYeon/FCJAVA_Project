@@ -120,7 +120,7 @@
 	<select id="selectScheduleList" parameterType="java.lang.String" resultType="com.fcjava.dto.TeamScheduleDTO">
 		SELECT sta_booking.b_date as reserdate, sta_booking.b_tiem as resertime, sta_booking.b_bk_tiem as receiptdate, sta_booking.b_vs_team as vs_team, sta_booking.b_vs_team_num as vs_team_num,
 				stadium.g_name as groundname, stadium.g_add as groundaddr,  
-				IFNULL(team_info.t_logo, null) AS vs_team_logo, IFNULL(team_info.t_name, null) AS vs_team_name
+				IFNULL(team_info.t_logo, null) AS vs_team_logo, IFNULL(team_info.t_name, null) AS vs_teamNames
 		FROM sta_booking 
 		JOIN stadium
 		ON sta_booking.b_ground_no = stadium.g_no 

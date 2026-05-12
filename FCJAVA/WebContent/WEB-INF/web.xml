@@ -27,12 +27,12 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>prd</servlet-name>
+        <servlet-name>product</servlet-name>
         <servlet-class>com.fcjava.controller.ProductController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>prd</servlet-name>
-        <url-pattern>*.prd</url-pattern>
+        <servlet-name>product</servlet-name>
+        <url-pattern>*.product</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -41,7 +41,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>stadium</servlet-name>
-        <url-pattern>*.stadium1</url-pattern>
+        <url-pattern>*.stadium</url-pattern>
     </servlet-mapping>
     
     <servlet>

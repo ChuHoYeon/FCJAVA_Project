@@ -12,7 +12,7 @@ public class TeamScheduleDTO {
 	private int vs_team;
 	private Integer vs_team_num;
 	private String vs_team_logo;
-	private String vs_team_name;
+	private String vs_teamNames;
 	
 	public Date getReserdate() {
 		return reserdate;
@@ -62,11 +62,11 @@ public class TeamScheduleDTO {
 	public void setVs_team_logo(String vs_team_logo) {
 		this.vs_team_logo = vs_team_logo;
 	}
-	public String getVs_team_name() {
-		return vs_team_name;
+	public String getVs_teamNames() {
+		return vs_teamNames;
 	}
-	public void setVs_team_name(String vs_team_name) {
-		this.vs_team_name = vs_team_name;
+	public void setVs_teamNames(String vs_teamNames) {
+		this.vs_teamNames = vs_teamNames;
 	}
 
 }

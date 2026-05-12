@@ -43,7 +43,7 @@ public class TeamDetailAction implements Action{
 		List<PlayerDTO> playerList = teamService.findPlayerList(teamNumber);
 		
 		// 성별, 나이, 포지션 정보 카운트
-		TeamCountPlayerInfo playerInfoCounter = new TeamCountPlayerInfo();
+		TeamPlayerSummaryCounter playerInfoCounter = new TeamPlayerSummaryCounter();
 		for(PlayerDTO player : playerList) {
 			playerInfoCounter.countGender(player.getGender());
             playerInfoCounter.countAge(player.getB_day());
