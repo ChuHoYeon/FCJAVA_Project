@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.fcjava.dto.GameApplyDTO;
-import com.fcjava.dto.GameApplyTeam;
+import com.fcjava.dto.GameApplyTeamDTO;
 import com.fcjava.dto.GameDTO;
 import com.fcjava.dto.GameResultDTO;
 import com.fcjava.util.MyBatisUtil;
@@ -90,8 +90,8 @@ public class GameDAO {
 		return gameList;
 	}
 	
-	public List<GameApplyTeam> selectApplyTeam(String game_num) {
-		GameApplyTeam gameApplyTeam = new GameApplyTeam();
+	public List<GameApplyTeamDTO> selectApplyTeam(String game_num) {
+		GameApplyTeamDTO gameApplyTeam = new GameApplyTeamDTO();
 		gameApplyTeam.setGame_num(Integer.parseInt(game_num));
 
 		try (SqlSession session = sqlSessionFactory.openSession()) {

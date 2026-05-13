@@ -1,61 +1,106 @@
 const express = require('express');
 const app = express();
+
 const server = require('http').createServer(app);
 const socketIo = require('socket.io');
 const cors = require('cors')
+
 const PORT = 3000;
+const CLIENT_URL = 'http://localhost:8080';
+
 const io = socketIo(server, {
     cors: {
-        origin: 'http://localhost:8080',
+        origin: CLIENT_URL,
         methods: ["GET", "POST"]
     }
 });
 
-app.use(cors())
+app.use(cors({
+	origin: CLIENT_URL
+}));
 
 let users = {}; 
+
+
+function updateTeamSize(t_num) {
+    io.in(t_num).allSockets()
+        .then(sockets => {
+            io.to(t_num).emit('team size', sockets.size);
+        })
+        .catch(err => {
+            console.error(`Error retrieving sockets for team ${t_num}:`, err);
+        });
+}
+
 
 io.on('connection', (socket) => {
 
     socket.on('join team', (data) => {
     	const {t_num, sessionID} = data;
-        socket.join(t_num);
-        users[socket.id] = { t_num, sessionID };
+		
+		if (!t_num || !sessionID) {
+			return;
+		}
+		
+		const roomId = String(t_num);
+		
+		if (users[socket.id]?.t_num === roomId) {
+			return;
+		}
+		
+        socket.join(roomId);
+        users[socket.id] = {
+			t_num: roomId,
+			sessionID
+		};
+		
         io.to(t_num).emit('user connected', sessionID);
         
-        io.in(t_num).allSockets().then(sockets => {
-            const numClients = sockets.size;
-            io.to(t_num).emit('team size', numClients);
-        }).catch(err => {
-            console.error(`Error retrieving sockets for team ${t_num}:`, err);
-        });
+        updateTeamSize(roomId);
     });
     
     socket.on('chat message', (message) => {
         const user = users[socket.id];
-        if (user) {
-            const { t_num, sessionID } = user;
-            io.to(t_num).emit('chat message', { sessionID, message });
-        }
+		
+		if (!user) {
+			return;
+		}
+		
+		if (!message || String(message).trim() === '') {
+			return;
+		}
+		
+		message = String(message).trim();
+		
+		if (message.length > 500) {
+			return;
+		}
+		
+        const { t_num, sessionID } = user;
+		
+        io.to(t_num).emit('chat message', {
+			sessionID,
+			message
+		});
     });
     
     socket.on('disconnect', () => {
         const user = users[socket.id];
-        if (user) {
-            const { t_num, sessionID } = user;
-            io.to(t_num).emit('user disconnected', sessionID);
-            delete users[socket.id];
-            
-            io.in(t_num).allSockets().then(sockets => {
-                const numClients = sockets.size;
-                io.to(t_num).emit('team size', numClients);
-            }).catch(err => {
-                console.error(`Error retrieving sockets for team ${t_num}:`, err);
-            });
-        }
+		
+		if (!user) {
+			return;
+		}
+		
+        const { t_num, sessionID } = user;
+		
+        delete users[socket.id];
+		
+        io.to(t_num).emit('user disconnected', sessionID);
+        
+        updateTeamSize(t_num);
     });
 });
 
 server.listen(PORT, () => {
-	console.log('Start Server');
+	console.log(`Chat server running on port ${PORT}`);
 });

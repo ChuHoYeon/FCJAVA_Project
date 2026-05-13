@@ -3,7 +3,7 @@ package com.fcjava.service;
 import java.util.List;
 
 import com.fcjava.dao.GameDAO;
-import com.fcjava.dto.GameApplyTeam;
+import com.fcjava.dto.GameApplyTeamDTO;
 import com.fcjava.dto.GameDTO;
 import com.fcjava.dto.GameResultDTO;
 
@@ -30,7 +30,7 @@ public class GameService {
 		return gameDAO.getSelectGame(gameNum);
 	}
 
-	public List<GameApplyTeam> findApplyTeams(String gameNum) {
+	public List<GameApplyTeamDTO> findApplyTeams(String gameNum) {
 		return gameDAO.selectApplyTeam(gameNum);
 	}
 

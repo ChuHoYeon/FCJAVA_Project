@@ -1,3 +1,5 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.fcjava.dto.GameDTO" %>
@@ -6,8 +8,8 @@
 <%@ page import="java.util.Date" %>
 <%
 	List<GameDTO> gameList = (List<GameDTO>) request.getAttribute("Games");
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	Date currentDate = new Date();
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	LocalDateTime currentDate = LocalDateTime.now();
 %>
 <!DOCTYPE html>
 <html>
@@ -61,45 +63,37 @@
 				int i=1;
 				for(GameDTO game : gameList) {
 					int per = (game.getGame_apply() * 100) / game.getGame_type();
-					Date substDate = dateFormat.parse(game.getGame_subst_date());
-					Date subfnDate = dateFormat.parse(game.getGame_subfn_date());
-					Date startDate = dateFormat.parse(game.getGame_st_date());
-					Date finalDate = dateFormat.parse(game.getGame_fn_date());
-					String hours = String.valueOf(startDate.getHours());
-					String minutes = String.valueOf(startDate.getMinutes());
-					if(hours.length() == 1) {
-						hours = "0"+hours;
-					}
-					if(minutes.length() == 1) {
-						minutes = "0"+minutes;
-					}
+					LocalDateTime substDate = game.getGame_subst_date();
+					LocalDateTime subfnDate = game.getGame_subfn_date();
+					LocalDateTime startDate = game.getGame_st_date();
+					LocalDateTime finalDate = game.getGame_fn_date();
 				%>
 					<li>
 						<a href="fcjava.game?page=detail&game_num=<%= game.getGame_num() %>" class="game-card">
 							<div class="card-thumb">
 								<div class="game-status">
-								<% if (currentDate.before(substDate)){%>
+								<% if (currentDate.isBefore(substDate)){%>
 									<span class="status">접수예정</span>
-								<% } else if(currentDate.after(subfnDate) && currentDate.before(startDate) || (currentDate.after(substDate) && currentDate.before(subfnDate) && per == 100)) { %>
+								<% } else if(currentDate.isAfter(subfnDate) && currentDate.isBefore(startDate) || (currentDate.isAfter(substDate) && currentDate.isBefore(subfnDate) && per == 100)) { %>
 									<span class="status end-status">접수마감</span>
-								<% } else if (currentDate.after(startDate) && currentDate.before(finalDate)) {%>
+								<% } else if (currentDate.isAfter(startDate) && currentDate.isBefore(finalDate)) {%>
 									<span class="status start-status">진행중</span>
-								<% } else if (currentDate.after(finalDate) || (currentDate.after(subfnDate) && per < 100)) { %>
+								<% } else if (currentDate.isAfter(finalDate) || (currentDate.isAfter(subfnDate) && per < 100)) { %>
 									<span class="status end-status">종료</span>
 								<% } else {%>
 									<span class="status">접수중</span>
 								<% } %>
 								</div>
-								<img src="png/gameposter<%=i %>.jpg"/>
+								<img src="png/gameposter<%= i %>.jpg"/>
 							</div>
 							<div class="card-title">
 								<article class="gameDate">
-									<p class="m"><%= startDate.getMonth()+1 %>월</p>
-									<p class="d"><%= startDate.getDate() %></p>
+									<p class="m"><%= startDate.getMonthValue() %>월</p>
+									<p class="d"><%= startDate.getDayOfMonth() %></p>
 								</article>
 								<div class="title-holder">
 									<h3><%= game.getGame_name() %></h3>
-									<p><%= hours %>:<%= minutes %> • <%= game.getGame_place() %> • <%= game.getGame_type() %>강</p>
+									<p><%= String.format("%02d", startDate.getHour()) %>:<%= String.format("%02d", startDate.getMinute()) %> • <%= game.getGame_place() %> • <%= game.getGame_type() %>강</p>
 								</div>
 							</div>
 						</a>

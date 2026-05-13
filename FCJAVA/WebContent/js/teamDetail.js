@@ -1,5 +1,7 @@
 let $createPlayerImgSrc = null;
 let $createPlayerName = null;
+const CHAT_SERVER = 'http://localhost:3000';
+
 //선수 소개 팝오버
 document.addEventListener('DOMContentLoaded', function() {
         var popoverTriggerList = [].slice.call(
@@ -518,63 +520,87 @@ $(document).on('click', function(event) {
 });
 
 let socket;
-	/* 채팅 영역*/
+// 팀 채팅
 $('#team-chating-btn').on("click", () => {
-	if(sessionID == 'null') {
+	if(!sessionID || sessionID === 'null') {
 		const goLogin = confirm('팀에 소속된 선수만 참가하실수 있습니다. 로그인하시겠습니까?');
-		if(goLogin) window.location.href = 'login.jsp';
+		if (goLogin) window.location.href = 'login.jsp';
 		return false;
 	}
+	
 	const chatDisplay = $('.chat-ab').css('display');
+	
 	if(chatDisplay == 'none'){
 		$('.chat-ab').show();
 		$('.chat-ab').css('display','flex');
-		socket = io('http://localhost:3000');
+		
+		if (!socket) {
+			socket = io(CHAT_SERVER);
+		}
+		
 		socket.emit('join team', { t_num, sessionID });
 		
-		socket.on('user connected', function(username) {
-			$('#messages').prepend($('<li>').html(`<div class="inChating">${username} 님이 참여하였습니다.</div>`));
+		// 채팅 입장
+		socket.off('user connected').on('user connected', function(username) {
+			const $li = $('<li>');
+			const $div = $('<div class="inChating">').text(`${username} 님이 참여하였습니다.`);
+            $li.append($div);
+            $('#messages').prepend($li);
 		});
 		
-		$('#chatingform').submit(function(e) {
+		$('#chatingform').off('submit').on('submit', function(e) {
 			e.preventDefault();
+			
 			const message = $('#chat-input').val();
-			if(message == '') {
+			
+			if (message === '') {
 				alert('메세지를 입력해주세요');
 				return false;
 			}
-			socket.emit('chat message', message); // 메시지를 서버로 전송
+			
+			// 채팅 서버로 메시지 전송
+			socket.emit('chat message', message);
 			$('#chat-input').val('');
+			
 			return false;
 		});
 		
-		socket.on('chat message', function(msg){
+		socket.off('chat message').on('chat message', function(msg){
 			const message = msg.message;
 			const writer = msg.sessionID;
-			if(writer == sessionID) {
-				$('#messages').prepend($('<li class="msg-send">').html(`<div class="msg-writer">${writer}</div><div class="msg-send-message">${message}</div>`)); // 서버로부터 받은 메시지를 표시				
-			} else {
-				$('#messages').prepend($('<li class="msg-receive">').html(`<div class="msg-writer">${writer}</div><div class="msg-receive-message">${message}</div>`));
-			}
+			
+			const isMine = writer === sessionID;
+			
+			const $li = $('<li>').addClass(isMine ? 'msg-send' : 'msg-receive');
+			const $writer = $('<div class="msg-writer">').text(writer);
+			const $message = $('<div>')
+			                .addClass(isMine ? 'msg-send-message' : 'msg-receive-message')
+			                .text(message);
+			
+			$li.append($writer).append($message);
+			$('#messages').prepend($li);
 		});
 		
-		socket.on('user disconnected', function(username) {
-			$('#messages').prepend($('<li>').html(`<div class="inChating">${username} 님이 퇴장하였습니다.</div>`));
+		socket.off('user disconnected').on('user disconnected', function(username) {
+			const $li = $('<li>');
+			const $div = $('<div class="inChating">').text(`${username} 님이 퇴장하였습니다.`);
+			$li.append($div);
+			$('#messages').prepend($li);
 		});
 		
-		socket.on('team size', function (numClients) {
+		socket.off('team size').on('team size', function (numClients) {
             $('#chatConNum').text(numClients);
         });
 				
 	} else {
 		const exitChating = confirm("채팅창을 나가시겠습니까?");
+		
 		if (exitChating) {
 			$('#messages').empty();
 			$('.chat-ab').hide();
-			console.log('소켓전');
-			console.log(socket);
+			
 			if (socket) {
-				console.log('소켓후');
+				console.log(socket);
 				socket.disconnect();
                 socket = null;
 			}

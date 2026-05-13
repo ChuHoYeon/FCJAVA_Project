@@ -1,11 +1,10 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page import="com.google.gson.internal.GsonBuildConfig"%>
-<%@ page import="com.google.gson.GsonBuilder"%>
-<%@ page import="org.json.simple.JSONArray"%>
-<%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="com.fcjava.dto.TeamDTO" %>
 <%@ page import="com.fcjava.dto.PlayerDTO" %>
 <%@ page import="com.fcjava.dto.TeamFormationDTO" %>
@@ -36,7 +35,9 @@
 	String boardpage = request.getParameter("boardpage");
 	int tabNumber = (Integer) request.getAttribute("tabNumber");
 	//List<TeamScheduleDTO> teamScheduleList = (List<TeamScheduleDTO>) request.getAttribute("teamScheduleList");
-
+	
+	Gson gson = new Gson();
+	
     int[] genders = (int[]) request.getAttribute("genders"); // [0]남자, [1]여자
     int[] ages = (int[]) request.getAttribute("ages"); // [0]10대, [1]20대, [2]30대, [3]40대, [4]50대, [5]60대 이상
 
@@ -64,27 +65,34 @@
 			applyCheck = 2; break;
 		}
 	}
+	
+	List<Map<String, Object>> formationViewList = new ArrayList<>();
 
-	JSONArray formationjsonArray = new JSONArray();
 	for (TeamFormationDTO formation : teamFormations) {
-	    JSONObject jsonFormation = new JSONObject();
-	    jsonFormation.put("formation", formation.getFormation());
-	    jsonFormation.put("formation_name", formation.getFormation_name());
-	    jsonFormation.put("position_num", formation.getPosition_num());
-	    jsonFormation.put("player_id", formation.getPlayer_id());
-	    for(PlayerDTO player : playerList) {
-		if(player.getId().equals(formation.getPlayer_id())) {
-			if(player.getPl_pic() !=null){
-				jsonFormation.put("player_pic", "/FCJAVA/png/playerPhoto/"+player.getPl_pic());break;
-			}else{
-				jsonFormation.put("player_pic", "png/default-profile.jpg");
+		Map<String, Object> formationView = new HashMap<>();
+		String playerPic = "png/default-profile.jpg";
+
+		for (PlayerDTO player : playerList) {
+			if (player.getId().equals(formation.getPlayer_id())) {
+				if (player.getPl_pic() != null) {
+					playerPic = "/FCJAVA/png/playerPhoto/" + player.getPl_pic();
 				}
-		} else {jsonFormation.put("player_pic", "png/default-profile.jpg");}
-	    }
-	    formationjsonArray.add(jsonFormation);
+				break;
+			}
+		}
+
+		formationView.put("formation", formation.getFormation());
+		formationView.put("formation_name", formation.getFormation_name());
+		formationView.put("position_num", formation.getPosition_num());
+		formationView.put("player_id", formation.getPlayer_id());
+		formationView.put("player_pic", playerPic);
+
+		formationViewList.add(formationView);
 	}
 
-	String jsonTeamBoardList = new Gson().toJson(teamBoardList);
+	String jsonFormationList = gson.toJson(formationViewList);
+	String jsonTeamBoardList = gson.toJson(teamBoardList);
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -104,7 +112,7 @@
 	<link rel="stylesheet" href="css/teamDetail.css" />
 </head>
 <script type="text/javascript">
-	const formationjsonArray = <%= formationjsonArray%>;
+	const formationjsonArray = <%= jsonFormationList%>;
 	const tabNumber = <%=tabNumber%>;
 	const jsonTeamBoardList = <%= jsonTeamBoardList %>;
     const sessionID = '<%= sessionID %>';//로그인한 아이디
@@ -217,7 +225,9 @@
 				<div class="stopApply"></div>
 				<div class="team-chating"><button id="team-chating-btn">팀 채팅</button></div>
 				<div class="chat-ab">
-					<div class="teamChatTitle"><%=team.getT_name() %><label id="chatConNum">3</label></div>
+					<div class="teamChatTitle"><%=team.getT_name() %>
+						<label id="chatConNum"></label>
+					</div>
 				<ul id="messages"></ul>
 					<form id="chatingform">
 				<input id="chat-input" autocomplete="off" /><button id="sendBtn"><img src="png/send29.svg"></button>

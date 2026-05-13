@@ -33,7 +33,7 @@
 		WHERE game_num = #{game_num};
 	</select>
 	
-	<select id="selectApplyTeam" resultType="com.fcjava.dto.GameApplyTeam">
+	<select id="selectApplyTeam" resultType="com.fcjava.dto.GameApplyTeamDTO">
 		SELECT game_apply.game_num, team_info.t_num, team_info.t_name, team_info.t_logo, game_apply.game_apply_date 
 		FROM game_apply 
 		JOIN fc_java.team_info

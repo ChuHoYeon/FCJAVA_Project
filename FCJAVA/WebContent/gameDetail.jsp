@@ -1,53 +1,38 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="com.google.gson.Gson"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.fcjava.dto.GameDTO" %>
 <%@ page import="com.fcjava.dto.TeamDTO" %>
 <%@ page import="com.fcjava.dto.GameResultDTO" %>
-<%@ page import="com.fcjava.dto.GameApplyTeam" %>
+<%@ page import="com.fcjava.dto.GameApplyTeamDTO" %>
 <%@ page import="com.fcjava.util.DateTextFormatter" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="org.json.simple.*" %>
 <%
-	String sessionID = (String) session.getAttribute("ID");
+String sessionID = (String) session.getAttribute("ID");
 	GameDTO game =(GameDTO) request.getAttribute("game");
 
-	//나의 팀 리스트
-  	JSONArray myTeamListArray = new JSONArray();
-	List<TeamDTO> myTeamList = (List<TeamDTO>) session.getAttribute("MyTeamList");
-	if (myTeamList != null) {
-        for (TeamDTO team : myTeamList) {
-            JSONObject teamObject = new JSONObject();
-            teamObject.put("num", team.getT_num());
-            teamObject.put("name", team.getT_name());
-            myTeamListArray.add(teamObject);
-        }
-    } 
-	String myTeamNameList = myTeamListArray.toJSONString();
-
-	//신청 팀 리스트
-	JSONArray applyTeamArray = new JSONArray();
-	List<GameApplyTeam> applyTeamList = (List<GameApplyTeam>) request.getAttribute("applyTeamList");
-	if (applyTeamList != null) {
-        for (GameApplyTeam applyteam : applyTeamList) {
-            JSONObject teamObject = new JSONObject();
-            teamObject.put("num", applyteam.getGame_num());
-            teamObject.put("name", applyteam.getT_name());
-            applyTeamArray.add(teamObject);
-        }
-    }
-	String applyTeamNameList = applyTeamArray.toJSONString();
+	Gson gson = new Gson();
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 	
+	//나의 팀 리스트
+	List<TeamDTO> myTeamList = (List<TeamDTO>) session.getAttribute("MyTeamList");
+	String myTeamNameList = (myTeamList == null || myTeamList.isEmpty()) ? "[]" : gson.toJson(myTeamList);
+	//신청 팀 리스트
+	List<GameApplyTeamDTO> applyTeamList = (List<GameApplyTeamDTO>) request.getAttribute("applyTeamList");
+	String applyTeamNameList = (applyTeamList == null || applyTeamList.isEmpty()) ? "[]" : gson.toJson(applyTeamList);
 	//게임 결과
 	List<GameResultDTO> gameResultList = (List<GameResultDTO>) request.getAttribute("gameResultList");
 	
 	//신청 팀 비율
 	int per = (applyTeamList.size() * 100) / game.getGame_type();
-	String subst_date = game.getGame_subst_date();
-	String subfn_date = game.getGame_subfn_date();
-	String st_date = game.getGame_st_date();
-	String fn_date = game.getGame_fn_date();
+	LocalDateTime subst_date = game.getGame_subst_date();
+	LocalDateTime subfn_date = game.getGame_subfn_date();
+	LocalDateTime st_date = game.getGame_st_date();
+	LocalDateTime fn_date = game.getGame_fn_date();
 %>
 <!DOCTYPE html>
 <html>
@@ -73,29 +58,41 @@
 	  <div class="modal-dialog modal-dialog-centered">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	      	<h1 class="modal-title fs-5" id="exampleModalLabel"><%= game.getGame_name() %></h1>
+	      	<h1 class="modal-title fs-5" id="exampleModalLabel"><%=game.getGame_name()%></h1>
 	      	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	      	<%if(myTeamList != null){%>
+	      	<%
+	      	if(myTeamList != null){
+	      	%>
       		<p>참가할 팀을 선택해주세요.</p>
 			<ul class="teamList">
-   			<% for (TeamDTO team : myTeamList){ %>
+   			<%
+   			for (TeamDTO team : myTeamList){
+   			%>
    				<li>
-	   				<a href="fcjava.game?page=apply&game_num=<%= game.getGame_num() %>&team_num=<%= team.getT_num() %>" class="teamChoice">
+	   				<a href="fcjava.game?page=apply&game_num=<%=game.getGame_num()%>&team_num=<%=team.getT_num()%>" class="teamChoice">
 		      			<div class="apply_team_area">
 							<div class="teamLogo">
-								<% if(team.getT_logo() != null){ %>
-								<img src="/FCJAVA/png/playerPhoto/<%=team.getT_logo() %>" />
-								<% }else{ %>
+								<%
+								if(team.getT_logo() != null){
+								%>
+								<img src="/FCJAVA/png/playerPhoto/<%=team.getT_logo()%>" />
+								<%
+								}else{
+								%>
 								<img src="png/defaultLogo.png" />
-								<% } %>
+								<%
+								}
+								%>
 							</div>
-							<div class="applyteamNameModal"><%= team.getT_name() %></div>
+							<div class="applyteamNameModal"><%=team.getT_name()%></div>
 						</div>
 					</a>
 				</li>
-   			<% }} else {out.print("<p>참가 할 수 있는 팀이 없습니다.</p>");} %>
+   			<%
+   			}} else {out.print("<p>참가 할 수 있는 팀이 없습니다.</p>");}
+   			%>
 	      	</ul>
 	      </div>
 	      <div class="modal-footer">
@@ -109,7 +106,7 @@
 		<div class="top-title-area">
 			<div class="top-title">
 				<button class="back-btn"><img alt="" src="png/arrow-left.svg"></button>
-				<h3><%= game.getGame_name() %></h3>
+				<h3><%=game.getGame_name()%></h3>
 			</div>
 		</div>
 		<div class="gameDetail_content">
@@ -117,56 +114,74 @@
 				<div class="img_area">
 					<img src="https://png.pngtree.com/thumb_back/fw800/background/20230521/pngtree-4-tee-wallpapers-for-footballers-with-highresolution-image_2669464.jpg"/>
 				</div>
-				<% if(gameResultList == null) { %>
-				<h4>참가팀 (<%= applyTeamList.size() %>)</h4>
+				<%
+				if(gameResultList == null) {
+				%>
+				<h4>참가팀 (<%=applyTeamList.size()%>)</h4>
 				<div class="main_bottom">
-					<% if(applyTeamList.size() > 0) { %>
+					<%
+					if(applyTeamList.size() > 0) {
+					%>
 					<ul class="teamList">
  					<%
-					    for(GameApplyTeam team : applyTeamList) {
-					%>
+ 					for(GameApplyTeamDTO team : applyTeamList) {
+ 					%>
 						<li>
-						<a href="/fcjava.team?page=detail&teamNumber=<%= team.getT_num() %>">
+						<a href="/fcjava.team?page=detail&teamNumber=<%=team.getT_num()%>">
 							<div class="apply_team_area">
 								<div class="teamLogo">
-									<% if(team.getT_logo() != null){ %>
-									<img src="/png/playerPhoto/<%=team.getT_logo() %>" />
-									<% }else{ %>
+									<%
+									if(team.getT_logo() != null){
+									%>
+									<img src="/png/playerPhoto/<%=team.getT_logo()%>" />
+									<%
+									}else{
+									%>
 									<img src="png/defaultLogo.png" />
-									<% } %>
+									<%
+									}
+									%>
 								</div>
-								<div class="applyteamName"><%= team.getT_name() %></div>
-								<div class="applyDate">신청일 <%= team.getGame_apply_date().substring(0, team.getGame_apply_date().length()-3) %></div>
+								<div class="applyteamName"><%=team.getT_name()%></div>
+								<div class="applyDate">신청일 <%=team.getGame_apply_date().substring(0, team.getGame_apply_date().length()-3)%></div>
 							</div>
 						</a>
 						</li>
 					<%
-					    }
+					}
 					%>
 					</ul>
-					<% } else { %>
+					<%
+					} else {
+					%>
 					<div class="no-apply"> 참가 신청한 팀이 없습니다.</div>
-					<% } %>
+					<%
+					}
+					%>
 				</div>
-				<% } %>
+				<%
+				}
+				%>
 			</section>
 			<aside class="gameApply_area">
 				<div class="apply_content">
 					<div class="game_info">
 						<span class="game_label">대회 타입</span>
-						<div class="game_data">토너먼트 <%= game.getGame_type() %>강</div>
+						<div class="game_data">토너먼트 <%=game.getGame_type()%>강</div>
 						<span class="game_label">대회 장소</span>
-						<div class="game_data"><%= game.getGame_place() %></div>
+						<div class="game_data"><%=game.getGame_place()%></div>
 						<span class="game_label">접수 기간</span>
-						<div class="game_data"><%= game.getGame_subst_date().substring(0, game.getGame_subst_date().length()-5) %><br>~ <%= game.getGame_subfn_date().substring(0, game.getGame_subfn_date().length()-5) %></div>
+						<div class="game_data"><%=game.getGame_subst_date().format(formatter)%><br>~ <%=game.getGame_subfn_date().format(formatter)%></div>
 						<span class="game_label">대회 기간</span>
-						<div class="game_data"><%= game.getGame_st_date().substring(0, game.getGame_st_date().length()-5) %><br>~ <%= game.getGame_fn_date().substring(0, game.getGame_fn_date().length()-5) %></div>
+						<div class="game_data"><%=game.getGame_st_date().format(formatter)%><br>~ <%=game.getGame_fn_date().format(formatter)%></div>
 						<span class="game_label">대회 정보</span>
-						<div class="game_data"><% if(game.getGame_memo() != null) {out.print(game.getGame_memo());}%></div>
+						<div class="game_data"><%
+						if(game.getGame_memo() != null) {out.print(game.getGame_memo());}
+						%></div>
 					</div>
 					<div class="bar-container">
 					    <div id="content_bar" class="bar"></div>
-					    <div class="content_int"><%= per %>%</div>
+					    <div class="content_int"><%=per%>%</div>
 					</div>
 					<div class="apply_btn_area">
 						<button type="button" class="apply_btn apply">신청 하기</button>
@@ -174,31 +189,35 @@
 				</div>
 			</aside>
 		</div>
-		<% if(gameResultList != null) {%>
+		<%
+		if(gameResultList != null) {
+		%>
 		<div class="gameResult_content">
 			<h4>경기 결과</h4>
-				<% if(gameResultList.size() > 0) { %>
+				<%
+				if(gameResultList.size() > 0) {
+				%>
 					<ul class="resultList">
-						<% 
+						<%
 						SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-						for(GameResultDTO result : gameResultList) {
-							Date gameDate = dateFormat.parse(result.getGame_date());
-							String month = String.valueOf(gameDate.getMonth()+1);
-							String date = String.valueOf(gameDate.getDate());
-							String day = DateTextFormatter.formatDayName(gameDate.getDay());
-							String hours = String.valueOf(gameDate.getHours());
-							String minutes = String.valueOf(gameDate.getMinutes());
-							String time = DateTextFormatter.padTwoDigits(month)+"."+DateTextFormatter.padTwoDigits(date)+" "+day+" "+DateTextFormatter.padTwoDigits(hours)+":"+DateTextFormatter.padTwoDigits(minutes);
-							
-							String team1 ="";
-							String team2 ="";
-							for(GameApplyTeam applyteam : applyTeamList){
-								if(applyteam.getT_num() == result.getTeam1_num()){
-									team1 = applyteam.getT_name();
-								} else if(applyteam.getT_num() == result.getTeam2_num()){
-									team2 = applyteam.getT_name();;
-								}
-							}
+										for(GameResultDTO result : gameResultList) {
+											Date gameDate = dateFormat.parse(result.getGame_date());
+											String month = String.valueOf(gameDate.getMonth()+1);
+											String date = String.valueOf(gameDate.getDate());
+											String day = DateTextFormatter.formatDayName(gameDate.getDay());
+											String hours = String.valueOf(gameDate.getHours());
+											String minutes = String.valueOf(gameDate.getMinutes());
+											String time = DateTextFormatter.padTwoDigits(month)+"."+DateTextFormatter.padTwoDigits(date)+" "+day+" "+DateTextFormatter.padTwoDigits(hours)+":"+DateTextFormatter.padTwoDigits(minutes);
+											
+											String team1 ="";
+											String team2 ="";
+											for(GameApplyTeamDTO applyteam : applyTeamList){
+												if(applyteam.getT_num() == result.getTeam1_num()){
+													team1 = applyteam.getT_name();
+												} else if(applyteam.getT_num() == result.getTeam2_num()){
+													team2 = applyteam.getT_name();;
+												}
+											}
 						%>
 						<li>
 							<div class="resultDate">
@@ -245,19 +264,19 @@
 	const myTeamNameList = <%= myTeamNameList %>;
 	const applyTeamNameList = <%= applyTeamNameList %>;
 	let duplication = false;
-	let duplicationName = "";
+	let duplicationName;
 	let duplicationNumber;
 	let nowDate = new Date();
 	let $scores = $('.score');
 	
 	$("#content_bar").css("width", per+"%");
-	
+
 	for(let i in myTeamNameList) {
 		for(let j in applyTeamNameList) {
-			if(myTeamNameList[i].name == applyTeamNameList[j].name) {
+			if(myTeamNameList[i].t_name == applyTeamNameList[j].t_name) {
 				duplication = true;
-				duplicationName = myTeamNameList[i].name;
-				duplicationNumber = myTeamNameList[i].num;
+				duplicationName = myTeamNameList[i].t_name;
+				duplicationNumber = myTeamNameList[i].t_num;
 			}
 		}
 	}
