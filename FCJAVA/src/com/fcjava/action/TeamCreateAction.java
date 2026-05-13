@@ -66,7 +66,6 @@ public class TeamCreateAction implements Action {
 				multi.getParameter("pl_memo"),
 				multi.getParameter("height"),
 				multi.getParameter("weight"));
-		teamService.createTeamBoardTable(teamNumber);
 
 		List<TeamDTO> myTeamList = teamService.findMyTeamList(id);
 		request.getSession().setAttribute("MyTeamList", myTeamList);

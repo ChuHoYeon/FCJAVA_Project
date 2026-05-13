@@ -1,5 +1,8 @@
 package com.fcjava.action;
 
+import java.io.File;
+import java.util.Enumeration;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +33,16 @@ public class TeamBoardWriteAction implements Action{
 		int fileSize=5*1024*1024;
 		ServletContext context = request.getServletContext();
 		realFolder=context.getRealPath(saveFolder);
+		if (realFolder == null) {
+			throw new IllegalStateException("Upload path cannot be resolved: " + saveFolder);
+		}
+		File uploadDir = new File(realFolder);
+		if (!uploadDir.exists() && !uploadDir.mkdirs()) {
+			throw new IllegalStateException("Upload directory cannot be created: " + realFolder);
+		}
+		if (!uploadDir.isDirectory()) {
+			throw new IllegalStateException("Upload path is not a directory: " + realFolder);
+		}
 		
 		MultipartRequest multi=new MultipartRequest(request,realFolder,fileSize, "UTF-8", new DefaultFileRenamePolicy());
 		t_num = multi.getParameter("t_num");
@@ -38,7 +51,11 @@ public class TeamBoardWriteAction implements Action{
 		teamBoard.setBoard_id(multi.getParameter("board_id"));
 		teamBoard.setBoard_title(multi.getParameter("board_title"));
 		teamBoard.setBoard_content(multi.getParameter("board_content"));
-		teamBoard.setBoard_file(multi.getOriginalFileName((String)multi.getFileNames().nextElement()));
+		Enumeration<?> fileNames = multi.getFileNames();
+		if (fileNames.hasMoreElements()) {
+			String fileName = (String) fileNames.nextElement();
+			teamBoard.setBoard_file(multi.getOriginalFileName(fileName));
+		}
 		
 		teamService.writeTeamBoard(teamBoard);
 		

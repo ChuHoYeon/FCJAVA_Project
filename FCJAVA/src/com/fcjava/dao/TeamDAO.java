@@ -111,7 +111,7 @@ public class TeamDAO {
 	
 	public int getBoardCount(String teamNumber) {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
-			return session.selectOne("team.teamBoardCount", teamNumber);
+			return session.selectOne("board.teamBoardCount", teamNumber);
 		}
 	}
 	
@@ -123,7 +123,7 @@ public class TeamDAO {
 		params.put("endrow", limit);
 		
 		try (SqlSession session = sqlSessionFactory.openSession()) {
-			return session.selectList("team.selectTeamBoardList", params);
+			return session.selectList("board.selectTeamBoardList", params);
 		}
 		
 	}
@@ -134,22 +134,27 @@ public class TeamDAO {
 		}
 	}
 	
-	public void createTeamBoardTable(String t_num) {
-		try (SqlSession session = sqlSessionFactory.openSession()) {
-			session.update("team.createTeamBoardTable", Integer.parseInt(t_num));
-			session.commit();			
-		}
-	}
-	
 	public void insertTeamBoard(TeamBoardDTO teamBoard) {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
-			int count = session.insert("team.insertTeamBoard", teamBoard);
+			int count = session.insert("board.insertTeamBoard", teamBoard);
 			if (count>=1) {
 				session.commit();
 			}			
 		}
 	}
 	
+	public void deleteTeamBoards(String t_num) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("t_num", Integer.parseInt(t_num));
+
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			int count = session.delete("board.deleteTeamBoards", params);
+			if (count > 0) {
+				session.commit();
+			}
+		}
+	}
+
 	//포메이션이름 중복체크
 	public boolean isFormationName(int t_num, String formation_name) {
 		TeamFormationDTO formation = new TeamFormationDTO();

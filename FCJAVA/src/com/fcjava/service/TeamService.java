@@ -48,10 +48,6 @@ public class TeamService {
     	return teamDAO.getLatestTeamNumByUser(id);
     }
 
-    public void createTeamBoardTable(String teamNumber) {
-    	teamDAO.createTeamBoardTable(teamNumber);
-    }
-    
     public void applyTeam(String teamNumber, String id, String playerPhoto, String backNumber, String position, String playerMemo, String height, String weight) {
 
         teamDAO.insertTeamApply(teamNumber, id, playerPhoto, backNumber, position, playerMemo, height, weight);
@@ -71,6 +67,10 @@ public class TeamService {
 
     public void writeTeamBoard(TeamBoardDTO teamBoard) {
     	teamDAO.insertTeamBoard(teamBoard);
+    }
+
+    public void deleteTeamBoards(String teamNumber) {
+        teamDAO.deleteTeamBoards(teamNumber);
     }
 
     public boolean isAvailableFormationName(int teamNumber, String formationName) {

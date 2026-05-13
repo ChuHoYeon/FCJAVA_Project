@@ -1,6 +1,36 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="board">
+	<!-- 팀 게시판 -->
+	<select id="teamBoardCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM fc_java.team_board
+		WHERE t_num = #{teamNumber};
+	</select>
+	
+	<select id="selectTeamBoardList" parameterType="java.util.Map" resultType="com.fcjava.dto.TeamBoardDTO">
+		SELECT *
+		FROM fc_java.team_board
+		WHERE t_num = #{t_num}
+		ORDER BY board_num DESC
+		LIMIT #{startrow}, #{endrow};
+	</select>
+
+	<insert id="insertTeamBoard" parameterType="com.fcjava.dto.TeamBoardDTO">
+		INSERT INTO fc_java.team_board
+		(t_num, board_num, board_id, board_title, board_content, board_file, board_readcount, board_createdate, board_lastupdate)
+		SELECT #{t_num}, COALESCE(MAX(board_num), 0) + 1, #{board_id}, #{board_title}, #{board_content}, #{board_file}, 0, now(), now()
+		FROM fc_java.team_board
+		WHERE t_num = #{t_num};
+	</insert>
+	
+	<delete id="deleteTeamBoards" parameterType="java.util.Map">
+		DELETE FROM fc_java.team_board
+		WHERE t_num = #{t_num};
+	</delete>
+
+
+	<!-- 자유 게시판 -->
 	<select id="findFreeBoards" parameterType="java.util.Map" resultType="com.fcjava.dto.FreeBoardDTO">
 		SELECT *
 		FROM fc_java.freeborder
@@ -67,6 +97,7 @@
 		  AND number = #{number};
 	</delete>
 
+	<!-- 상품 -->
 	<select id="findProductReviews" resultType="com.fcjava.dto.ProductReviewDTO">
 		SELECT num,
 		       title,
@@ -89,4 +120,5 @@
 		       content
 		FROM fc_java.str_qa;
 	</select>
+	
 </mapper>
